@@ -1,0 +1,37 @@
+#desktop-admin-settings code {
+    user-select: all;
+}
+
+.desktop-admin-status {
+    margin-left: 12px;
+    color: var(--color-text-maxcontrast);
+}
+
+/* Experimental file manager admin controls (v0.3.0) */
+#desktop-exp-groups { min-width: 280px; max-width: 420px; padding: 4px; }
+#desktop-exp-groups[disabled] { opacity: 0.5; }
+#desktop-admin-settings h3, #desktop-personal-settings h3 { margin-top: 18px; }
+.desktop-admin-status { margin-left: 10px; }
+
+/* Token multiselect for group selection (v0.3.1) */
+.desktop-group-select { display: inline-block; width: 100%; max-width: 440px; margin-top: 4px; }
+.desktop-msel-native { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.desktop-msel { position: relative; }
+.desktop-msel-control { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; min-height: 34px; padding: 4px 6px; border: 1px solid var(--color-border, #d0d0d0); border-radius: var(--border-radius-element, 8px); background: var(--color-main-background, #fff); cursor: text; }
+.desktop-msel.is-disabled { opacity: 0.5; pointer-events: none; }
+.desktop-msel-chip { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; background: var(--color-primary-element-light, #e3effb); color: var(--color-primary-element-light-text, inherit); border-radius: var(--border-radius-pill, 100px); font-size: var(--font-size-small, 13px); }
+.desktop-msel-remove { background: none; border: none; cursor: pointer; font-size: var(--default-font-size, 15px); line-height: 1; padding: 0; color: inherit; }
+.desktop-msel-input { flex: 1 1 90px; min-width: 90px; border: none; outline: none; background: transparent; padding: 2px; }
+.desktop-msel-dropdown { position: absolute; left: 0; right: 0; top: calc(100% + 2px); z-index: 50; max-height: 220px; overflow: auto; background: var(--color-main-background, #fff); border: 1px solid var(--color-border, #d0d0d0); border-radius: var(--border-radius-element, 8px); box-shadow: 0 6px 20px var(--color-box-shadow, rgba(0, 0, 0, 0.18)); }
+.desktop-msel-option { display: flex; align-items: center; width: 100%; min-height: var(--default-clickable-area, 34px); text-align: left; background: none; border: none; padding: 0 12px; cursor: pointer; font-size: var(--default-font-size, 15px); }
+.desktop-msel-option:hover, .desktop-msel-option.is-selected { background: var(--color-background-hover, #f3f4f6); }
+.desktop-msel-empty { padding: 7px 12px; color: var(--color-text-maxcontrast, #888); font-size: var(--font-size-small, 13px); }
+
+/* Multiple-windows app grid + usage stats (v0.6.0) */
+.desktop-multiwin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; margin: 12px 0; max-width: 760px; }
+.desktop-multiwin-card { display: flex; align-items: center; gap: 10px; min-height: var(--default-clickable-area, 34px); padding: 10px 12px; border: 1px solid var(--color-border, #d0d0d0); border-radius: var(--border-radius-element, 8px); cursor: pointer; }
+.desktop-multiwin-card:hover { background: var(--color-background-hover, #f3f4f6); }
+.desktop-multiwin-icon { width: 24px; height: 24px; object-fit: contain; flex: 0 0 auto; }
+.desktop-multiwin-name { flex: 1 1 auto; }
+.desktop-stats-table { border-collapse: collapse; margin: 6px 0 16px; }
+.desktop-stats-table td { padding: 3px 24px 3px 0; border-bottom: 1px solid var(--color-border, #eee); font-size: var(--default-font-size, 15px); }

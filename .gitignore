@@ -1,0 +1,17 @@
+# Build output
+/build/
+
+# Local certificates / secrets (never commit these)
+*.key
+*.crt
+*.csr
+
+# Editor / OS cruft
+*.swp
+*~
+.DS_Store
+.idea/
+.vscode/
+
+# Node (if you ever add a frontend build)
+node_modules/

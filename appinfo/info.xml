@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <id>desktop</id>
+    <name>Desktop Environment</name>
+    <summary>A desktop-like shell for Nextcloud apps</summary>
+    <description>Browser-contained desktop shell for Nextcloud: app windows, taskbar, clock/date, and a built-in file manager (the Files module). Open Nextcloud apps as draggable windows instead of juggling browser tabs.</description>
+    <version>0.10.2</version>
+    <licence>agpl</licence>
+    <author>Puppy</author>
+    <namespace>Desktop</namespace>
+    <category>customization</category>
+    <dependencies>
+        <nextcloud min-version="33" max-version="33" />
+    </dependencies>
+    <settings>
+        <admin>OCA\Desktop\Settings\Admin</admin>
+        <admin-section>OCA\Desktop\Settings\AdminSection</admin-section>
+        <personal>OCA\Desktop\Settings\Personal</personal>
+        <personal-section>OCA\Desktop\Settings\PersonalSection</personal-section>
+    </settings>
+    <navigations>
+        <navigation>
+            <name>Desktop</name>
+            <route>desktop.page.index</route>
+            <icon>app.svg</icon>
+            <order>0</order>
+        </navigation>
+    </navigations>
+</info>
