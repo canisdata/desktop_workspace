@@ -4,7 +4,7 @@
     const root = document.getElementById('desktop-personal-settings');
     if (!root) return;
 
-    const tr = (s, p) => (window.OC && OC.L10N ? OC.L10N.translate('desktop', s, p) : s);
+    const tr = (s, p) => (window.OC && OC.L10N ? OC.L10N.translate('desktop_workspace', s, p) : s);
     const saveUrl = root.dataset.saveUrl;
     const el = (id) => document.getElementById(id);
     const status = el('desktop-save-status');

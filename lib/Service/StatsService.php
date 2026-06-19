@@ -15,7 +15,7 @@ use OCP\IConfig;
  * plain counts; there is no stored list of which users used the app.
  */
 class StatsService {
-    public const APP_ID = 'desktop';
+    public const APP_ID = 'desktop_workspace';
     private const ACTIVE_KEY = 'active_instances';
     private const ACTIVE_TTL = 120; // seconds an instance counts as "active"
 

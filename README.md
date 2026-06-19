@@ -4,7 +4,9 @@ A browser-contained **desktop shell** for Nextcloud. Instead of juggling browser
 Nextcloud apps as draggable, resizable windows on a familiar desktop — with a taskbar, a clock,
 desktop icons, and an optional built-in file manager.
 
-> **Status:** early development (0.x). Targets **Nextcloud 33**.
+![Screenshot](screenshots/Desktop%20in%20NC%20002.png)
+
+> **Status:** early development (0.x). Targets **Nextcloud 33, 34**.
 
 ---
 
@@ -32,7 +34,7 @@ desktop icons, and an optional built-in file manager.
 
 ## Requirements
 
-- Nextcloud **33**
+- Nextcloud **33** or **34**
 - A standard Nextcloud app environment (PHP per the Nextcloud 33 requirements)
 
 ---
@@ -43,7 +45,7 @@ desktop icons, and an optional built-in file manager.
 
 1. Download the latest `desktop-<version>.tar.gz`.
 2. Extract it into your Nextcloud `custom_apps/` (or `apps/`) directory so the path is
-   `…/custom_apps/desktop/`.
+   `…/custom_apps/desktop_workspace/`.
 3. Enable the app:
    ```bash
    occ app:enable desktop
@@ -84,55 +86,6 @@ Place the resulting `desktop` folder in your Nextcloud apps directory and enable
 - **Debug logging** to a log file.
 - **Reset a single user's** desktop settings completely.
 - Basic **usage stats** (unique users per day/week).
-
----
-
-## How it works
-
-The app is a server-side Nextcloud app:
-
-- A page controller renders the desktop shell (`templates/main.php`) with the list of available
-  apps and the user's saved state.
-- The shell (`js/desktop.js`) opens apps in `<iframe>` windows, manages window state, desktop
-  icons (via WebDAV), and integrates with the Nextcloud header.
-- The optional file manager and its viewer live under `js/files/` and `templates/files/`.
-- Window state and icon positions are stored as per-user app config and restored on load.
-
-The file **viewer** route hosts the native `OCA.Viewer` (an NcModal). Because the modal is a
-fixed, full-viewport overlay, inside the window's iframe it renders with its own header (including
-the three-dot actions menu) and scrollable content — the same as inside the Files app.
-
----
-
-## Development
-
-```text
-appinfo/      routes, info.xml, app registration
-lib/          PHP: Controllers, Settings, Services
-templates/    PHP templates (shell + files module)
-js/           desktop shell + files module
-css/          styles
-l10n/         translations (en, de, fr)
-img/          app icons
-```
-
-Useful checks while developing:
-
-```bash
-# JavaScript syntax
-node --check js/desktop.js
-
-# PHP code checks (run inside Nextcloud)
-occ app:check-code desktop
-
-# Build a (signed, if a cert is present) appstore tarball
-make
-```
-
-Translations live in `l10n/<lang>.json` (+ a generated `<lang>.js`). Keep `en`, `de`, and `fr`
-in sync.
-
-See [CHANGELOG.md](CHANGELOG.md) for the version history.
 
 ---
 

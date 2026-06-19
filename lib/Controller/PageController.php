@@ -33,7 +33,7 @@ class PageController extends Controller {
         $multiWindow = is_array($multiWindow) ? $multiWindow : [];
         $apps = [];
         foreach ($this->navigationManager->getAll() as $entry) {
-            if (!isset($entry['id'], $entry['name'], $entry['href']) || $entry['id'] === 'desktop') {
+            if (!isset($entry['id'], $entry['name'], $entry['href']) || $entry['id'] === 'desktop_workspace') {
                 continue;
             }
             $apps[] = [
@@ -61,17 +61,17 @@ class PageController extends Controller {
             }
         }
 
-        return new TemplateResponse('desktop', 'main', [
+        return new TemplateResponse('desktop_workspace', 'main', [
             'apps' => $apps,
             'firstVisit' => $firstVisit,
-            'heartbeatUrl' => $this->urlGenerator->linkToRoute('desktop.settings.heartbeat'),
+            'heartbeatUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.heartbeat'),
             'desktopfilesEnabled' => $this->filesAvailability->enabledForUser($user),
-            'settingsUrl' => $this->urlGenerator->getAbsoluteURL('/index.php/settings/user/desktop'),
-            'personalSaveUrl' => $this->urlGenerator->linkToRoute('desktop.settings.savePersonalSettings'),
+            'settingsUrl' => $this->urlGenerator->getAbsoluteURL('/index.php/settings/user/desktop_workspace'),
+            'personalSaveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.savePersonalSettings'),
             'iconPositions' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::ICON_POSITIONS_KEY, '{}') : '{}',
-            'iconSaveUrl' => $this->urlGenerator->linkToRoute('desktop.settings.saveIconPositions'),
+            'iconSaveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveIconPositions'),
             'windowStates' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::WINDOW_STATES_KEY, '{"windows":[]}') : '{"windows":[]}',
-            'windowSaveUrl' => $this->urlGenerator->linkToRoute('desktop.settings.saveWindowStates'),
+            'windowSaveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveWindowStates'),
             'showFavorites' => $uid !== null && $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::SHOW_FAVORITES_KEY, 'no') === 'yes',
             'favoritesNoConfirm' => $uid !== null && $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::FAV_NO_CONFIRM_KEY, 'no') === 'yes',
             'showTrash' => $uid !== null && $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::SHOW_TRASH_KEY, 'no') === 'yes',
@@ -79,7 +79,7 @@ class PageController extends Controller {
             'desktopFolder' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::DESKTOP_FOLDER_KEY, '') : '',
             'trashNoConfirm' => $uid !== null && $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::TRASH_NO_CONFIRM_KEY, 'no') === 'yes',
             'debugEnabled' => $this->config->getAppValue(SettingsController::APP_ID, SettingsController::DEBUG_KEY, 'yes') !== 'no',
-            'debugUrl' => $this->urlGenerator->linkToRoute('desktop.settings.debug'),
+            'debugUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.debug'),
             'debugLogPath' => $dataDir . '/' . SettingsController::LOG_FILE,
         ]);
     }

@@ -1,5 +1,5 @@
 OC.L10N.register(
-    "desktop",
+    "desktop_workspace",
     {
     "Desktop Files": "Desktop-Dateien",
     "This file manager is part of the desktop environment and is intended to be opened from the apps menu.": "Dieser Dateimanager ist Teil der Desktop-Umgebung und soll über das Apps-Menü geöffnet werden.",
@@ -200,7 +200,8 @@ OC.L10N.register(
     "User reset. They will start fresh on their next visit.": "Benutzer zurückgesetzt. Beim nächsten Besuch beginnt er von vorn.",
     "All desktop settings were reset. Reload the desktop to apply.": "Alle Desktop-Einstellungen wurden zurückgesetzt. Lade den Desktop neu, um die Änderung anzuwenden.",
     "Reset all desktop settings? This cannot be undone.": "Alle Desktop-Einstellungen zurücksetzen? Das kann nicht rückgängig gemacht werden.",
-    "Changes are applied immediately.": "Änderungen werden sofort übernommen."
+    "Changes are applied immediately.": "Änderungen werden sofort übernommen.",
+    "Properties": "Eigenschaften"
 },
     "nplurals=2; plural=(n != 1);"
 );

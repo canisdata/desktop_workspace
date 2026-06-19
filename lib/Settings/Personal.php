@@ -27,7 +27,7 @@ class Personal implements ISettings {
         $optedIn = $user !== null
             && $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, FilesAvailability::USER_OPT_IN_KEY, 'no') === 'yes';
 
-        return new TemplateResponse('desktop', 'settings-personal', [
+        return new TemplateResponse('desktop_workspace', 'settings-personal', [
             'available' => $available,
             'globallyDisabled' => $this->filesAvailability->globallyDisabled(),
             'tryExperimentalFiles' => $optedIn,
@@ -44,16 +44,16 @@ class Personal implements ISettings {
                 : '',
             'trashNoConfirm' => $user !== null
                 && $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, SettingsController::TRASH_NO_CONFIRM_KEY, 'no') === 'yes',
-            'saveUrl' => $this->urlGenerator->linkToRoute('desktop.settings.savePersonalSettings'),
-            'resetIconsUrl' => $this->urlGenerator->linkToRoute('desktop.settings.resetIconPositions'),
-            'resetWindowsUrl' => $this->urlGenerator->linkToRoute('desktop.settings.resetWindowStates'),
-            'resetAllUrl' => $this->urlGenerator->linkToRoute('desktop.settings.resetAllPersonal'),
+            'saveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.savePersonalSettings'),
+            'resetIconsUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.resetIconPositions'),
+            'resetWindowsUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.resetWindowStates'),
+            'resetAllUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.resetAllPersonal'),
             'themingUrl' => $this->urlGenerator->getAbsoluteURL('/index.php/settings/user/theming'),
         ]);
     }
 
     public function getSection(): string {
-        return 'desktop';
+        return 'desktop_workspace';
     }
 
     public function getPriority(): int {

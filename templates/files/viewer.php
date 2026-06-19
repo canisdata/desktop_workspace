@@ -1,6 +1,6 @@
 <?php
-script('desktop', 'files/viewer');
-style('desktop', 'files/viewer');
+script('desktop_workspace', 'files/viewer');
+style('desktop_workspace', 'files/viewer');
 /** @var array $_ */
 ?>
 <div id="desktop-file-viewer-root"

@@ -35,10 +35,10 @@ class FilesController extends Controller {
         $isDesktopLaunch = $this->request->getParam('desktop') === '1';
         $user = $this->userSession->getUser();
 
-        return new TemplateResponse('desktop', 'files/main', [
+        return new TemplateResponse('desktop_workspace', 'files/main', [
             'isDesktopLaunch' => $isDesktopLaunch,
             'userId' => $user?->getUID() ?? '',
-            'desktopUrl' => $this->urlGenerator->linkToRoute('desktop.page.index'),
+            'desktopUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.page.index'),
         ]);
     }
 
@@ -52,7 +52,7 @@ class FilesController extends Controller {
 
         $this->eventDispatcher->dispatchTyped(new LoadViewer());
 
-        return new TemplateResponse('desktop', 'files/viewer', [
+        return new TemplateResponse('desktop_workspace', 'files/viewer', [
             'fileId' => $fileId,
             'name' => $name,
             'mime' => $mime,
@@ -64,7 +64,7 @@ class FilesController extends Controller {
     #[NoAdminRequired]
     #[NoCSRFRequired]
     public function details(): TemplateResponse {
-        return new TemplateResponse('desktop', 'files/details', [
+        return new TemplateResponse('desktop_workspace', 'files/details', [
             'userId' => $this->userSession->getUser()?->getUID() ?? '',
             'filePath' => (string)$this->request->getParam('filePath', '/'),
             'name' => (string)$this->request->getParam('name', 'Details'),

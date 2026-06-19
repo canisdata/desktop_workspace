@@ -4,10 +4,10 @@
     const root = document.getElementById('desktop-admin-settings');
     if (!root) return;
 
-    const tr = (s, p) => (window.OC && OC.L10N ? OC.L10N.translate('desktop', s, p) : s);
+    const tr = (s, p) => (window.OC && OC.L10N ? OC.L10N.translate('desktop_workspace', s, p) : s);
     const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-    const debugCb = document.getElementById('desktop-debug-enabled');
+    const debugCb = document.getElementById('desktop-debug-disabled');
     const expDisabledCb = document.getElementById('desktop-exp-disabled');
     const groupsSelect = document.getElementById('desktop-exp-groups');
     const button = document.getElementById('desktop-save-admin-settings');

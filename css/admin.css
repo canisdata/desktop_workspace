@@ -3,8 +3,22 @@
 }
 
 .desktop-admin-status {
+    display: inline-block;
+    min-width: 7em;
+    min-height: 1.4em;
     margin-left: 12px;
     color: var(--color-text-maxcontrast);
+}
+
+#desktop-personal-settings {
+    overflow-anchor: none;
+}
+
+#desktop-personal-settings p:has(#desktop-try-experimental) {
+    min-height: var(--default-clickable-area, 34px);
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 /* Experimental file manager admin controls (v0.3.0) */

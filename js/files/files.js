@@ -1,6 +1,6 @@
 (() => {
     'use strict';
-    const t = (text, vars = {}) => window.OC?.L10N?.translate ? OC.L10N.translate('desktop', text, vars) : text.replace(/\{([^}]+)\}/g, (_, key) => vars[key] ?? '');
+    const t = (text, vars = {}) => window.OC?.L10N?.translate ? OC.L10N.translate('desktop_workspace', text, vars) : text.replace(/\{([^}]+)\}/g, (_, key) => vars[key] ?? '');
 
     const root = document.querySelector('[data-desktop-files-root]');
     if (!root || root.dataset.desktopLaunch !== 'true') return;
@@ -10,10 +10,21 @@
     const tree = document.getElementById('desktop-files-tree');
     const detailSidebar = document.getElementById('desktop-files-detail-sidebar');
     const contextMenu = document.getElementById('desktop-files-context-menu');
+
+    // Thumbnail fallback to the mimetype icon (inline onerror is blocked by Nextcloud's CSP).
+    // Image error events don't bubble, so listen in the capture phase on the rows container.
+    rows.addEventListener('error', (event) => {
+        const img = event.target;
+        if (img && img.tagName === 'IMG' && img.dataset && img.dataset.fallback) {
+            const fb = img.dataset.fallback;
+            img.dataset.fallback = '';
+            img.src = fb;
+        }
+    }, true);
     const copyBtn = document.querySelector('[data-action="copy"]');
     const cutBtn = document.querySelector('[data-action="cut"]');
     const pasteBtn = document.querySelector('[data-action="paste"]');
-    const FILES_ICON = (window.OC && OC.imagePath && OC.imagePath('desktop', 'files.svg')) || '/apps/desktop/img/files.svg';
+    const FILES_ICON = (window.OC && OC.imagePath && OC.imagePath('desktop_workspace', 'files.svg')) || '/apps/desktop_workspace/img/files.svg';
     const uid = root.dataset.userId || OC?.getCurrentUser?.()?.uid || 'admin';
     let currentPath = '/';
     let currentItems = [];
@@ -34,7 +45,7 @@
         const fb = mimeIconUrl(item);
         if (!item.isFolder && item.fileId && window.OC && OC.generateUrl) {
             const url = OC.generateUrl('/core/preview?fileId={id}&x=64&y=64&a=1&mimeFallback=true', { id: String(item.fileId) });
-            return `<img class="desktop-files-thumb" src="${url}" alt="" loading="lazy"${fb ? ` onerror="this.onerror=null;this.src='${fb}'"` : ''}>`;
+            return `<img class="desktop-files-thumb" src="${url}" alt="" loading="lazy"${fb ? ` data-fallback="${escapeHtml(fb)}"` : ''}>`;
         }
         return `<img class="desktop-files-thumb" src="${fb}" alt="">`;
     }
@@ -146,7 +157,7 @@
 
     function isPropertyWindowOpen(item) {
         try {
-            const hrefPart = `/index.php/apps/desktop/files/details?`;
+            const hrefPart = `/index.php/apps/desktop_workspace/files/details?`;
             return [...window.parent.document.querySelectorAll('iframe.desktop-window-iframe')]
                 .some((frame) => frame.src.includes(hrefPart) && frame.src.includes(`filePath=${encodeURIComponent(item.path)}`));
         } catch (error) {
@@ -337,9 +348,12 @@
     function openItem(row) {
         const item = itemFromRow(row); if (!item) return;
         if (item.isFolder) { load(item.path).catch(showError); return; }
-        const directSupported = item.mime.startsWith('image/') || item.mime.startsWith('video/') || item.mime.startsWith('audio/') || item.mime === 'application/pdf' || item.mime.startsWith('text/') || /\.(md|txt|csv|log|json|xml|yml|yaml)$/i.test(item.name);
+        // Media opens in our fullscreen viewer page; everything Nextcloud opens in an editor
+        // (text/markdown/html/code via the Text editor, office docs, …) goes through the Files app
+        // deep link, where the native viewer/editor and its own header work correctly.
+        const directSupported = item.mime.startsWith('image/') || item.mime.startsWith('video/') || item.mime.startsWith('audio/') || item.mime === 'application/pdf';
         const query = new URLSearchParams({ fileId: item.fileId, name: item.name, mime: item.mime, filePath: item.path });
-        const href = directSupported && item.fileId ? `/index.php/apps/desktop/files/viewer?${query.toString()}` : (item.fileId ? `/index.php/f/${encodeURIComponent(item.fileId)}` : davUrl(item.path));
+        const href = directSupported && item.fileId ? `/index.php/apps/desktop_workspace/files/viewer?${query.toString()}` : (item.fileId ? `/index.php/f/${encodeURIComponent(item.fileId)}` : davUrl(item.path));
         postToDesktop({ type: 'nextcloud-desktop:open-file', appId: `file-${item.fileId || btoa(item.path).replace(/=+$/g, '')}`, title: item.name, subtitle: item.path, href, icon: FILES_ICON });
     }
 
@@ -348,7 +362,7 @@
         selectedItem = null;
         rows.querySelectorAll('tr.is-selected').forEach((row) => row.classList.remove('is-selected'));
         const query = new URLSearchParams({ filePath: item.path, name: item.name, fileId: item.fileId || '', folder: item.isFolder ? '1' : '0', size: item.size || '', mime: item.mime || '', modified: item.modified || '' });
-        postToDesktop({ type: 'nextcloud-desktop:open-app', appId: propertyWindowId(item), title: t('{name} Properties', { name: item.name }), subtitle: item.path, href: `/index.php/apps/desktop/files/details?${query.toString()}`, icon: FILES_ICON });
+        postToDesktop({ type: 'nextcloud-desktop:open-app', appId: propertyWindowId(item), title: t('{name} Properties', { name: item.name }), subtitle: item.path, href: `/index.php/apps/desktop_workspace/files/details?${query.toString()}`, icon: FILES_ICON });
     }
 
     async function deleteItem(item) {

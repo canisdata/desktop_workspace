@@ -1,9 +1,9 @@
 <?php
-\OCP\Util::addTranslations('desktop');
-script('desktop', 'files/details');
-style('desktop', 'files/files');
+\OCP\Util::addTranslations('desktop_workspace');
+script('desktop_workspace', 'files/details');
+style('desktop_workspace', 'files/files');
 /** @var array $_ */
-$l = \OC::$server->getL10N('desktop');
+$l = \OC::$server->getL10N('desktop_workspace');
 ?>
 <div id="desktop-files-details-root"
      class="desktop-files-details-root"

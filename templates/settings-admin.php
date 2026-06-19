@@ -1,9 +1,9 @@
 <?php
-\OCP\Util::addTranslations('desktop');
-script('desktop', 'admin');
-style('desktop', 'admin');
+\OCP\Util::addTranslations('desktop_workspace');
+script('desktop_workspace', 'admin');
+style('desktop_workspace', 'admin');
 /** @var array $_ */
-$l = \OC::$server->getL10N('desktop');
+$l = \OC::$server->getL10N('desktop_workspace');
 ?>
 <div id="desktop-admin-settings" class="section" data-save-url="<?= p($_['saveUrl']) ?>">
     <h2><?= p($l->t('Desktop Environment')) ?></h2>

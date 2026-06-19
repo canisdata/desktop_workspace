@@ -664,7 +664,7 @@ body:has(#desktop-root) .header-menu__wrapper {
 .desktop-fav:hover, .desktop-fav:focus-visible { background: var(--color-background-hover, rgba(127, 127, 127, 0.18)); outline: none; }
 .desktop-fav.is-dragging { opacity: 0.85; z-index: 10; }
 .desktop-fav-icon { position: relative; display: inline-block; }
-.desktop-fav-icon img, .desktop-fav-icon svg { width: 48px; height: 48px; object-fit: contain; pointer-events: none; }
+.desktop-fav-icon img, .desktop-fav-icon svg { width: 48px; height: 48px; object-fit: contain; pointer-events: none; -webkit-user-drag: none; user-select: none; }
 .desktop-fav-badge { position: absolute; left: -2px; bottom: -2px; width: 18px; height: 18px; line-height: 0; filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5)); pointer-events: none; }
 .desktop-fav-badge svg { width: 18px; height: 18px; display: block; }
 .desktop-fav-badge svg path { fill: var(--color-favorite, #a37200); }

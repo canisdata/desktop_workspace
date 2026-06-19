@@ -1,6 +1,6 @@
 (() => {
     'use strict';
-    const t = (text, vars = {}) => window.OC?.L10N?.translate ? OC.L10N.translate('desktop', text, vars) : text.replace(/\{([^}]+)\}/g, (_, key) => vars[key] ?? '');
+    const t = (text, vars = {}) => window.OC?.L10N?.translate ? OC.L10N.translate('desktop_workspace', text, vars) : text.replace(/\{([^}]+)\}/g, (_, key) => vars[key] ?? '');
     const root = document.querySelector('[data-desktop-files-details-root]');
     if (!root) return;
     const item = {
@@ -23,9 +23,34 @@
     const ocsUrl = (path, params = {}) => { const query = new URLSearchParams({ format: 'json', ...params }); return `/ocs/v2.php/${path.replace(/^\//, '')}?${query}`; };
     const versionDavUrl = (fileId, version = '') => `/remote.php/dav/versions/${encodeURIComponent(uid)}/versions/${encodeURIComponent(fileId)}${version ? `/${encodeURIComponent(version)}` : ''}`;
     const filesUrl = (path) => `/index.php/apps/files/files?dir=${encodeURIComponent(path || '/')}`;
-    const type = item.isFolder ? t('Folder') : (item.mime || t('File'));
+    const davUrl = (path) => `/remote.php/dav/files/${encodeURIComponent(uid)}${cleanPath(path).split('/').map(encodeURIComponent).join('/')}`;
+    const typeOf = () => item.isFolder ? t('Folder') : (item.mime || t('File'));
+
+    // Fill in authoritative metadata the opener may not have passed (size, modified, mime, fileId, folder).
+    async function hydrate() {
+        try {
+            const response = await fetch(davUrl(item.path), {
+                method: 'PROPFIND', credentials: 'same-origin',
+                headers: requestHeaders({ Depth: '0', 'Content-Type': 'application/xml; charset=utf-8' }),
+                body: '<?xml version="1.0"?><d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns"><d:prop><d:getcontentlength/><d:getlastmodified/><d:getcontenttype/><d:resourcetype/><oc:fileid/></d:prop></d:propfind>',
+            });
+            if (!response.ok) return;
+            const node = new DOMParser().parseFromString(await response.text(), 'application/xml').getElementsByTagNameNS('DAV:', 'response')[0];
+            if (!node) return;
+            item.isFolder = Boolean(node.getElementsByTagNameNS('DAV:', 'collection')[0]);
+            const size = node.getElementsByTagNameNS('DAV:', 'getcontentlength')[0]?.textContent || '';
+            const modified = node.getElementsByTagNameNS('DAV:', 'getlastmodified')[0]?.textContent || '';
+            const fileId = node.getElementsByTagNameNS('http://owncloud.org/ns', 'fileid')[0]?.textContent || '';
+            const mime = node.getElementsByTagNameNS('DAV:', 'getcontenttype')[0]?.textContent || '';
+            if (size) item.size = size;
+            if (modified) item.modified = modified;
+            if (fileId) item.fileId = fileId;
+            if (mime) item.mime = mime;
+        } catch (e) { /* keep whatever was passed in */ }
+    }
 
     function detailsPanelHtml() {
+        const type = typeOf();
         return `<dl class="desktop-files-detail-list"><dt>${escapeHtml(t('Location'))}</dt><dd>${escapeHtml(cleanPath(item.path))}</dd><dt>${escapeHtml(t('Type'))}</dt><dd>${escapeHtml(type)}</dd><dt>${escapeHtml(t('Size'))}</dt><dd>${item.isFolder ? '—' : escapeHtml(humanSize(item.size))}</dd><dt>${escapeHtml(t('Modified'))}</dt><dd>${escapeHtml(item.modified || '—')}</dd><dt>${escapeHtml(t('File ID'))}</dt><dd>${escapeHtml(item.fileId || '—')}</dd></dl>`;
     }
     async function sharingPanelHtml() {
@@ -63,7 +88,12 @@
     async function deleteShare(id) { const response = await fetch(`/ocs/v2.php/apps/files_sharing/api/v1/shares/${encodeURIComponent(id)}?format=json`, { method: 'DELETE', credentials: 'same-origin', headers: requestHeaders({ 'OCS-APIRequest': 'true', Accept: 'application/json' }) }); if (!response.ok) throw new Error(`HTTP ${response.status}`); await activate('sharing'); }
     async function restoreVersion(version) { const response = await fetch(versionDavUrl(item.fileId, version), { method: 'MOVE', credentials: 'same-origin', headers: requestHeaders({ Destination: new URL(`/remote.php/dav/versions/${encodeURIComponent(uid)}/restore/target`, window.location.origin).toString(), Overwrite: 'T' }) }); if (!response.ok) throw new Error(`HTTP ${response.status}`); await activate('versions'); }
 
-    panel.innerHTML = `<header class="desktop-files-detail-header"><div class="desktop-files-detail-icon">${iconHtml(item.isFolder ? 'folder' : 'file')}</div><div><h2>${escapeHtml(item.name)}</h2><p>${escapeHtml(type)}</p></div></header><nav class="desktop-files-detail-tabs" aria-label="${escapeHtml(t('Details sections'))}"><button type="button" data-tab="details" class="is-active">${escapeHtml(t('Details'))}</button><button type="button" data-tab="sharing">${escapeHtml(t('Sharing'))}</button><button type="button" data-tab="activity">${escapeHtml(t('Activity'))}</button>${item.isFolder ? '' : `<button type="button" data-tab="versions">${escapeHtml(t('Versions'))}</button>`}</nav><section class="desktop-files-tab-panel" data-current-tab="details">${detailsPanelHtml()}</section>`;
-    panel.addEventListener('click', (event) => { const tab = event.target.closest('button[data-tab]')?.dataset.tab; if (tab) { activate(tab); return; } const shareDelete = event.target.closest('button[data-share-delete]')?.dataset.shareDelete; if (shareDelete) { deleteShare(shareDelete).catch((error) => alert(error.message)); return; } if (event.target.closest('button[data-share-create-link]')) { createPublicLink().catch((error) => alert(error.message)); return; } if (event.target.closest('button[data-open-files-native]')) { window.parent?.postMessage({ type: 'nextcloud-desktop:open-app', appId: 'files-full', title: t('Files'), subtitle: item.path, href: filesUrl(parentPath(item.path)), icon: (window.OC && OC.imagePath && OC.imagePath('desktop','files.svg')) || '/apps/desktop/img/files.svg' }, window.location.origin); return; } const restore = event.target.closest('button[data-version-restore]')?.dataset.versionRestore; if (restore && window.confirm(t('Restore this version?'))) restoreVersion(restore).catch((error) => alert(error.message)); });
+    function render() {
+        const type = typeOf();
+        panel.innerHTML = `<header class="desktop-files-detail-header"><div class="desktop-files-detail-icon">${iconHtml(item.isFolder ? 'folder' : 'file')}</div><div><h2>${escapeHtml(item.name)}</h2><p>${escapeHtml(type)}</p></div></header><nav class="desktop-files-detail-tabs" aria-label="${escapeHtml(t('Details sections'))}"><button type="button" data-tab="details" class="is-active">${escapeHtml(t('Details'))}</button><button type="button" data-tab="sharing">${escapeHtml(t('Sharing'))}</button><button type="button" data-tab="activity">${escapeHtml(t('Activity'))}</button>${item.isFolder ? '' : `<button type="button" data-tab="versions">${escapeHtml(t('Versions'))}</button>`}</nav><section class="desktop-files-tab-panel" data-current-tab="details">${detailsPanelHtml()}</section>`;
+    }
+    render();
+    hydrate().then(render).catch(() => {});
+    panel.addEventListener('click', (event) => { const tab = event.target.closest('button[data-tab]')?.dataset.tab; if (tab) { activate(tab); return; } const shareDelete = event.target.closest('button[data-share-delete]')?.dataset.shareDelete; if (shareDelete) { deleteShare(shareDelete).catch((error) => alert(error.message)); return; } if (event.target.closest('button[data-share-create-link]')) { createPublicLink().catch((error) => alert(error.message)); return; } if (event.target.closest('button[data-open-files-native]')) { window.parent?.postMessage({ type: 'nextcloud-desktop:open-app', appId: 'files-full', title: t('Files'), subtitle: item.path, href: filesUrl(parentPath(item.path)), icon: (window.OC && OC.imagePath && OC.imagePath('desktop_workspace','files.svg')) || '/apps/desktop_workspace/img/files.svg' }, window.location.origin); return; } const restore = event.target.closest('button[data-version-restore]')?.dataset.versionRestore; if (restore && window.confirm(t('Restore this version?'))) restoreVersion(restore).catch((error) => alert(error.message)); });
     window.parent?.postMessage({ type: 'nextcloud-desktop:window-meta', appId: `details-${item.fileId || btoa(cleanPath(item.path)).replace(/=+$/g, '')}`, title: t('{name} Properties', { name: item.name }), subtitle: cleanPath(item.path) }, window.location.origin);
 })();

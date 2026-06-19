@@ -13,7 +13,7 @@ use OCP\IUserManager;
 use OCP\IUserSession;
 
 class SettingsController extends Controller {
-    public const APP_ID = 'desktop';
+    public const APP_ID = 'desktop_workspace';
     public const DEBUG_KEY = 'debug_enabled';
     public const LOG_FILE = 'desktop-debug.log';
     public const SHOW_FAVORITES_KEY = 'show_favorites';

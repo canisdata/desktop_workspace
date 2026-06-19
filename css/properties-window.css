@@ -1,0 +1,84 @@
+/* properties-window.css — PROTOTYPE
+   Frames the relocated Files sidebar as a floating desktop "Properties" window and overrides
+   the docked NcAppSidebar layout so it fills the window instead of sticking to the screen edge. */
+
+.dp-window {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    width: 420px;
+    height: 560px;
+    max-height: 80vh;
+    z-index: 100030;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-main-background, #fff);
+    border: 1px solid var(--color-border, #d0d0d0);
+    border-radius: var(--border-radius-large, 14px);
+    box-shadow: 0 16px 48px var(--color-box-shadow, rgba(0, 0, 0, 0.4));
+    overflow: hidden;
+}
+
+.dp-window-titlebar {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    height: 40px;
+    padding: 0 6px 0 14px;
+    cursor: grab;
+    background: var(--color-main-background, #fff);
+    border-bottom: 1px solid var(--color-border, #e0e0e0);
+}
+.dp-window-titlebar:active { cursor: grabbing; }
+
+.dp-window-title {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dp-window-close {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: var(--border-radius, 8px);
+    background: transparent;
+    color: var(--color-main-text, #222);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+.dp-window-close:hover { background: var(--color-background-hover, #ededed); }
+
+.dp-window-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Undock the real sidebar so it fills our window instead of the screen edge. */
+.dp-window-body .dp-sidebar-detached,
+.dp-window-body #app-sidebar-vue,
+.dp-window-body #app-sidebar,
+.dp-window-body .app-sidebar {
+    position: static !important;
+    inset: auto !important;
+    top: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 100% !important;
+    transform: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+/* We provide our own window close button, so hide the sidebar's built-in one. */
+.dp-window-body .app-sidebar__close,
+.dp-window-body .app-sidebar-header__close { display: none !important; }

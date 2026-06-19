@@ -3,6 +3,137 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.12.4 – 2026-06-19
+
+### Changed
+- **App id and folder renamed to `desktop_workspace`.** The app now uses the same id in `info.xml`,
+  route names, translations, asset loading and the app folder, so it installs cleanly as
+  `custom_apps/desktop_workspace` on Nextcloud 34.
+
+### Fixed
+- **Account-menu QR login works from the desktop taskbar.** The QR-code icon now reaches the native
+  Nextcloud confirmation and QR login dialog instead of being swallowed by desktop link handling.
+- **Account-menu status changing works from the desktop taskbar.** The “Set status” entry now opens
+  the native user-status modal instead of opening another Desktop window inside Desktop.
+- **Logout from the desktop taskbar user menu works.** Logout links bypass desktop window routing and
+  navigate through Nextcloud's normal logout URL.
+- **The bottom-right Nextcloud taskbar icon opens Files directly** (`/index.php/apps/files/`) instead
+  of `/index.php`, so it does not reopen Desktop when Desktop is configured as the default app.
+- **Desktop icons are safe on the right edge too.** Icon layout now treats the desktop as a bounded
+  two-dimensional grid and temporarily reflows icons left when the usable area shrinks horizontally,
+  matching the existing vertical safety behavior.
+- **The experimental file browser checkbox no longer makes the personal settings view jump.** The
+  settings section now has stable status sizing and disables scroll anchoring for that panel.
+
+## 0.12.3 – 2026-06-18
+
+### Fixed
+- **Text / Markdown / HTML / code files now open through the Files app** (`/index.php/f/<id>`), the
+  same path office documents already used, instead of the custom fullscreen viewer page whose
+  layout overrides broke the Nextcloud Viewer's own modal header (the close/menu bar). The custom
+  viewer page now handles only images, video, audio and PDF.
+- **Header removal can no longer touch a modal/viewer header.** The page-header cleanup explicitly
+  skips any `#header` that sits inside a `.modal-*`/`.viewer`/`#viewer` container, so the Viewer's
+  `.modal-header` (close, actions) is always preserved.
+
+## 0.12.2 – 2026-06-18
+
+### Changed
+- **Window chrome cleanup now removes the Nextcloud header instead of hiding it.** Hiding `#header`
+  with `display:none` left layout/scroll artefacts for some apps (the Text editor lost its controls
+  and didn't scroll). The header element is now removed from the embedded page, which renders
+  cleanly across office files, images, video, PDF and the Text editor alike — so the per-type
+  exception added in 0.12.1 is gone. Because Nextcloud apps may (re)mount their header after load, a
+  short-lived observer keeps it removed for the first 15 seconds.
+
+## 0.12.1 – 2026-06-18
+
+### Fixed
+- **Text/Markdown/HTML files keep their header in the window.** Files that Nextcloud opens in the
+  Text editor render their controls (menu, close) into the standard header. The window chrome
+  cleanup hid that header, removing those controls. These file types now keep the header (only the
+  global app menu and search are hidden); office files, images, video and PDF are unchanged. The
+  detected type list lives in `isTextViewerApp()` and is easy to extend.
+
+## 0.12.0 – 2026-06-18
+
+### Changed
+- **Properties now reuses the standalone details page** (`/apps/desktop_workspace/files/details`) instead of
+  trying to load the native Files sidebar. Right-click → *Properties* on the desktop opens a window
+  with Details / Sharing / Activity / Versions. This works even when the Desktop Files manager is
+  disabled, because the details page is a route of this app. (On Nextcloud 33/34 the native sidebar
+  shell — `OCA.Files.Sidebar` — isn't loadable on a custom page without bundling the Files SPA, so
+  this is both the reliable path and a clean base to extend later.)
+- The details page now fills in missing metadata itself via a `PROPFIND`, so the desktop only needs
+  to pass the file path.
+- **Unified search is hidden** in the header for now.
+
+### Added
+- Nextcloud **34** is now supported (`max-version="34"`).
+
+### Removed
+- The experimental native-sidebar properties window (`properties-window.js`/`.css`) and the
+  `LoadSidebar`/`addScript('files', …)` calls that came with it — which also clears the related CSP
+  warnings on the desktop page.
+
+## 0.11.4 – 2026-06-18
+
+### Changed
+- When the Files sidebar can't be found, the properties window now logs exactly which Files-related
+  scripts are present on the page and what `OCA.Files` exposes — diagnostics to pin down how to load
+  the sidebar shell on a custom page in this Nextcloud version.
+
+## 0.11.3 – 2026-06-18
+
+### Fixed
+- **CSP: inline image fallbacks removed.** Nextcloud's Content-Security-Policy blocks inline event
+  handlers (`script-src-attr`), so the `onerror` fallbacks on preview thumbnails (desktop icons and
+  Desktop Files) were blocked — broken previews didn't fall back to the mimetype icon. The fallback
+  is now wired in JavaScript (a capturing `error` listener) instead of an inline attribute.
+
+### Changed
+- The right-click **Properties** action now always logs to the console (whether or not the
+  properties module is reachable), to pin down why the sidebar isn't appearing.
+
+## 0.11.2 – 2026-06-18
+
+### Fixed
+- **Properties window now has the sidebar to show.** The page only loaded the sidebar's *tabs*
+  (via `LoadSidebar`), not the sidebar *shell* that defines `OCA.Files.Sidebar`. It now explicitly
+  loads the Files sidebar script, so `OCA.Files.Sidebar` is available on the desktop page.
+- **Stray drop frame / icon-image dragging (remaining edge cases).** Native drag is now cancelled
+  for anything starting inside the icon layer, so a fast mouse flick can no longer grab a preview
+  image and trigger the drop outline / accidental moves. Desktop icons only ever move via pointer
+  events, so they never need native drag.
+
+## 0.11.1 – 2026-06-18
+
+### Fixed
+- **Stray drop frame / accidental moves on the desktop.** Desktop icon images are now explicitly
+  non-draggable. They were natively draggable (especially in Firefox, where `pointer-events: none`
+  doesn't suppress image dragging), so repositioning icons or rubber-band selecting could start a
+  parallel native image-drag — showing the upload/move outline and, on drop, moving favorites into
+  the desktop folder.
+
+### Changed
+- **Properties** is now also available on favorites (not just desktop-folder files).
+- The properties window logs each step to the console so a non-opening sidebar can be diagnosed
+  (most likely cause: the Files sidebar scripts didn't load on the page).
+
+## 0.11.0 – 2026-06-18
+
+### Added
+- **Properties window (experimental):** a right-click "Properties" on a desktop file opens the
+  *real* Nextcloud Files sidebar — share, versions, tags, details — but as a floating desktop
+  window instead of docked on the right. This reuses Nextcloud's own sidebar (`OCA.Files.Sidebar`)
+  rather than reimplementing it: the page dispatches `\OCA\Files\Event\LoadSidebar` so the sidebar
+  and its tabs are available, then the sidebar element is relocated into a desktop window.
+
+### Notes
+- This is a first iteration of the "reference Files, don't reinvent it" direction and needs
+  verification on a live instance. Things to check in the browser: the sidebar's tabs still work
+  after being relocated, and its actions menu / popovers position correctly when undocked.
+
 ## 0.10.2 – 2026-06-16
 
 ### Fixed

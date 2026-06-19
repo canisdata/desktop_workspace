@@ -7,11 +7,11 @@
 #   make clean
 #
 # Signing expects (see Nextcloud "Code signing" docs):
-#   ~/.nextcloud/certificates/desktop.key   (your private key, keep secret)
-#   ~/.nextcloud/certificates/desktop.crt   (cert returned by Nextcloud)
+#   ~/.nextcloud/certificates/desktop_workspace.key   (your private key, keep secret)
+#   ~/.nextcloud/certificates/desktop_workspace.crt   (cert returned by Nextcloud)
 
-app_name = desktop
-version  = 0.10.2
+app_name = desktop_workspace
+version  = 0.12.4
 
 build_dir    = $(CURDIR)/build
 sign_dir     = $(build_dir)/sign

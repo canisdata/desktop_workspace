@@ -16,7 +16,7 @@ class PersonalSection implements IIconSection {
     }
 
     public function getID(): string {
-        return 'desktop';
+        return 'desktop_workspace';
     }
 
     public function getName(): string {
@@ -28,6 +28,6 @@ class PersonalSection implements IIconSection {
     }
 
     public function getIcon(): string {
-        return $this->urlGenerator->imagePath('desktop', 'app.svg');
+        return $this->urlGenerator->imagePath('desktop_workspace', 'app.svg');
     }
 }

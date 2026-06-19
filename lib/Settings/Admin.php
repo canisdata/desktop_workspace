@@ -44,7 +44,7 @@ class Admin implements ISettings {
         $multiWindow = is_array($multiWindow) ? $multiWindow : [];
         $apps = [];
         foreach ($this->navigationManager->getAll() as $entry) {
-            if (!isset($entry['id'], $entry['name']) || $entry['id'] === 'desktop' || $entry['id'] === 'files') {
+            if (!isset($entry['id'], $entry['name']) || $entry['id'] === 'desktop_workspace' || $entry['id'] === 'files') {
                 continue; // file managers always allow multiple windows
             }
             $apps[] = [
@@ -62,7 +62,7 @@ class Admin implements ISettings {
             $userIds[] = $u->getUID();
         }
 
-        return new TemplateResponse('desktop', 'settings-admin', [
+        return new TemplateResponse('desktop_workspace', 'settings-admin', [
             'debugEnabled' => $this->config->getAppValue(SettingsController::APP_ID, SettingsController::DEBUG_KEY, 'yes') !== 'no',
             'experimentalDisabled' => $this->filesAvailability->globallyDisabled(),
             'groups' => $groups,
@@ -71,14 +71,14 @@ class Admin implements ISettings {
             'activeCount' => $this->statsService->activeCount(),
             'dailyStats' => $this->statsService->dailyCounts(7),
             'weeklyStats' => $this->statsService->weeklyCounts(4),
-            'saveUrl' => $this->urlGenerator->linkToRoute('desktop.settings.saveAdminSettings'),
-            'resetUserUrl' => $this->urlGenerator->linkToRoute('desktop.settings.resetUserSettings'),
+            'saveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveAdminSettings'),
+            'resetUserUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.resetUserSettings'),
             'logPath' => $dataDir . '/' . SettingsController::LOG_FILE,
         ]);
     }
 
     public function getSection(): string {
-        return 'desktop';
+        return 'desktop_workspace';
     }
 
     public function getPriority(): int {

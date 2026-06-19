@@ -1,6 +1,6 @@
 (() => {
     'use strict';
-    const t = (text, vars = {}) => window.OC?.L10N?.translate ? OC.L10N.translate('desktop', text, vars) : text.replace(/\{([^}]+)\}/g, (_, key) => vars[key] ?? '');
+    const t = (text, vars = {}) => window.OC?.L10N?.translate ? OC.L10N.translate('desktop_workspace', text, vars) : text.replace(/\{([^}]+)\}/g, (_, key) => vars[key] ?? '');
 
     const root = document.querySelector('[data-desktop-app-root]');
     if (!root) return;
@@ -50,6 +50,8 @@
         if (!headerEnd) return;
         // The Contacts app is available on its own, so drop the header contacts menu.
         headerEnd.querySelectorAll('#contactsmenu, .contactsmenu, [id*="contactsmenu"]').forEach((el) => el.remove());
+        // Unified search is hidden for now.
+        headerEnd.querySelectorAll('#unified-search, [class*="unified-search"], [id*="unified-search"]').forEach((el) => el.remove());
         // Reload-desktop button was removed for now.
         headerEnd.querySelectorAll('#desktop-reload-button').forEach((el) => el.remove());
     }
@@ -102,7 +104,8 @@
     }
 
     function scheduleHeaderEndMenuPositioning() {
-        requestAnimationFrame(positionHeaderEndMenus);
+        bindNativeAccountMenuControls();
+        requestAnimationFrame(() => { positionHeaderEndMenus(); bindNativeAccountMenuControls(); });
         setTimeout(positionHeaderEndMenus, 80);
         setTimeout(positionHeaderEndMenus, 250);
         setTimeout(positionHeaderEndMenus, 700);
@@ -302,7 +305,7 @@
         const seen = new Set();
         const filtered = apps.filter((app) => {
             const key = `${app.name}:${app.href}`;
-            if (!app.name || !app.href || app.href.includes('/apps/desktop') || seen.has(key)) return false;
+            if (!app.name || !app.href || app.href.includes('/apps/desktop_workspace') || seen.has(key)) return false;
             seen.add(key);
             return true;
         });
@@ -315,8 +318,8 @@
         return [{
             id: 'desktop-files',
             name: t('Desktop Files'),
-            href: `${window.location.origin}/index.php/apps/desktop/files?desktop=1`,
-            icon: files?.icon || (window.OC && OC.imagePath && OC.imagePath('desktop','files.svg')) || '/apps/desktop/img/files.svg',
+            href: `${window.location.origin}/index.php/apps/desktop_workspace/files?desktop=1`,
+            icon: files?.icon || (window.OC && OC.imagePath && OC.imagePath('desktop_workspace','files.svg')) || '/apps/desktop_workspace/img/files.svg',
             desktopMode: 'iframe',
             fileApp: true,
             multiInstance: true,
@@ -359,13 +362,13 @@
 
     const settingsButton = document.getElementById('desktop-settings-button');
     function openDesktopSettings() {
-        const url = (settingsButton && settingsButton.dataset.settingsUrl) || '/index.php/settings/user/desktop';
-        const icon = (window.OC && OC.imagePath && OC.imagePath('desktop', 'app.svg')) || '/apps/desktop/img/app.svg';
+        const url = (settingsButton && settingsButton.dataset.settingsUrl) || '/index.php/settings/user/desktop_workspace';
+        const icon = (window.OC && OC.imagePath && OC.imagePath('desktop_workspace', 'app.svg')) || '/apps/desktop_workspace/img/app.svg';
         openExternalWindow({ appId: 'desktop-settings', title: t('Desktop Settings'), href: url, icon });
     }
     function openDesktopAdminSettings() {
-        const url = (window.OC && OC.generateUrl) ? OC.generateUrl('/settings/admin/desktop') : '/index.php/settings/admin/desktop';
-        const icon = (window.OC && OC.imagePath && OC.imagePath('desktop', 'app.svg')) || '/apps/desktop/img/app.svg';
+        const url = (window.OC && OC.generateUrl) ? OC.generateUrl('/settings/admin/desktop_workspace') : '/index.php/settings/admin/desktop_workspace';
+        const icon = (window.OC && OC.imagePath && OC.imagePath('desktop_workspace', 'app.svg')) || '/apps/desktop_workspace/img/app.svg';
         openExternalWindow({ appId: 'desktop-admin-settings', title: t('Desktop Admin Settings'), href: url, icon });
     }
     function isAdminUser() { return !!(window.OC && OC.isUserAdmin && OC.isUserAdmin()); }
@@ -532,6 +535,28 @@
         const id = String(appId || href || title).replace(/[^a-z0-9_-]/gi, '_');
         openWindow({ id, name: title || 'Nextcloud', href, icon, desktopMode: 'iframe' });
         setWindowMeta(id, { title: title || 'Nextcloud', subtitle });
+    }
+
+    function openProperties(el) {
+        if (!el || !el.dataset || !el.dataset.path) return;
+        const path = '/' + String(el.dataset.path).replace(/^\/+/, '');
+        const name = el.dataset.name || path.split('/').filter(Boolean).pop() || path;
+        const fileId = el.dataset.fileId || '';
+        const params = new URLSearchParams({
+            filePath: path, name, fileId,
+            folder: el.dataset.folder === 'true' ? '1' : '0',
+            mime: el.dataset.mime || '', size: '', modified: '',
+        });
+        const icon = (window.OC && OC.imagePath && OC.imagePath('desktop_workspace', 'files.svg')) || '/apps/desktop_workspace/img/files.svg';
+        let hash = fileId;
+        if (!hash) { try { hash = btoa(unescape(encodeURIComponent(path))).replace(/=+$/g, ''); } catch (e) { hash = path; } }
+        openExternalWindow({
+            appId: 'details-' + hash,
+            title: t('{name} Properties', { name }),
+            subtitle: path,
+            href: '/index.php/apps/desktop_workspace/files/details?' + params.toString(),
+            icon,
+        });
     }
 
     function normalizeDesktopHref(rawHref) {
@@ -834,25 +859,34 @@
         try {
             const doc = iframe.contentDocument;
             if (!doc) return;
-            doc.addEventListener('pointerdown', () => {
+            const focusSelf = () => {
                 const entry = windows.get(app.id);
                 if (entry && !entry.window.classList.contains('is-minimized')) focusWindow(app.id);
-            }, true);
-            doc.addEventListener('focusin', () => {
-                const entry = windows.get(app.id);
-                if (entry && !entry.window.classList.contains('is-minimized')) focusWindow(app.id);
-            }, true);
+            };
+            doc.addEventListener('pointerdown', focusSelf, true);
+            doc.addEventListener('focusin', focusSelf, true);
+
+            // Remove the Nextcloud top header outright. Hiding it with display:none left layout/scroll
+            // artefacts for some apps (notably the Text editor); removing the element renders cleanly.
+            // Only ever the page's own top header — never a header that belongs to a modal or the
+            // Viewer (e.g. .modal-header with the close button). Nextcloud apps are SPAs that may
+            // (re)mount their header after load, so we keep removing it for a short while, then stop.
+            const stripHeader = () => doc.querySelectorAll('#header, header#header').forEach((node) => {
+                if (node.closest('.modal-mask, .modal-container, .modal-wrapper, .viewer, #viewer, [class*="viewer"]')) return;
+                node.remove();
+            });
+            stripHeader();
+            const observer = new MutationObserver(stripHeader);
+            observer.observe(doc.documentElement, { childList: true, subtree: true });
+            setTimeout(() => observer.disconnect(), 15000);
+
+            // Reclaim the space the (fixed) header used to occupy and drop the skip-nav link.
             const style = doc.createElement('style');
             style.dataset.desktopChromePatch = 'true';
             style.textContent = `
-                #header, header#header, .skip-navigation, #appmenu, .app-menu-main, .unified-search {
-                    display: none !important;
-                }
-                #content, #content-vue, .content {
-                    margin-top: 0 !important;
-                    min-height: 100vh !important;
-                }
+                #content, #content-vue, .content { margin-top: 0 !important; min-height: 100vh !important; }
                 body { padding-top: 0 !important; }
+                .skip-navigation { display: none !important; }
             `;
             doc.head?.appendChild(style);
             debugLog('iframe_chrome_hidden', { appId: app.id, appName: app.name });
@@ -1209,18 +1243,35 @@
     document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeTaskContextMenu(); });
     headerEndSlot?.addEventListener('click', scheduleHeaderEndMenuPositioning, true);
     document.addEventListener('click', (event) => {
-        if (event.target.closest('#desktop-header-end-slot')) scheduleHeaderEndMenuPositioning();
+        if (event.target.closest('#desktop-header-end-slot')) {
+            scheduleHeaderEndMenuPositioning();
+            bindNativeAccountMenuControls();
+        }
     }, true);
 
     // Header-end menu items (notifications, search results, contacts, the user/account menu, …) open as
     // desktop windows instead of navigating the shell away or being swallowed by an app's own per-link
     // handler (e.g. the "External sites" app). Strategy: bind directly on each menu anchor as it appears
     // (stopImmediatePropagation beats per-link handlers), with a document-level capture fallback.
+    function isNativeAccountMenuAction(link) {
+        if (!link) return false;
+        const text = (link.getAttribute('aria-label') || link.textContent || '').trim().toLowerCase();
+        const href = link.getAttribute('href') || '';
+        const marker = `${link.id || ''} ${link.className || ''} ${link.closest('[id]')?.id || ''} ${link.closest('[class]')?.className || ''}`.toLowerCase();
+        // These account-menu entries are Nextcloud overlays/actions, not pages to iframe.
+        return marker.includes('user_status') || marker.includes('user-status') ||
+            marker.includes('qr') || marker.includes('qrcode') || marker.includes('login-flow') ||
+            href.includes('/logout') || href.includes('logout=true') ||
+            href.includes('/user_status/') || href.includes('/apps/user_status') ||
+            text === 'set status' || text === 'status setzen' || text === 'définir le statut' ||
+            text.includes('qr') || text.includes('log out') || text.includes('abmelden') || text.includes('déconnexion');
+    }
+
     function headerMenuTarget(link) {
         if (!link) return null;
         if (link.closest('#desktop-nextcloud-logo, #desktop-start-menu, #desktop-launcher, #desktop-task-list')) return null; // shell chrome
         if (link.closest('.avatardiv, .contact__avatar')) return null;                  // avatar trigger
-        if (link.closest('#user_status_menu_item, .user-status-menu-item, [data-id="user_status"]')) return null; // opens its own modal overlay
+        if (isNativeAccountMenuAction(link)) return null;                                // account overlays/logout stay native
         if (link.hasAttribute('aria-haspopup') || link.getAttribute('aria-expanded') !== null) return null; // a menu toggle
         if (link.hasAttribute('download')) return null;
         let url;
@@ -1237,14 +1288,36 @@
         return { appId: `headerlink_${url.pathname}`, title, href: url.href, icon };
     }
 
+    function bindNativeAccountMenuControls() {
+        document.querySelectorAll('#desktop-header-end-slot button:has(.qrcode-scan-icon), #desktop-header-end-slot a[href="#"]:has(.user-status-icon)').forEach((control) => {
+            if (control.dataset.desktopNativeBound === 'true') return;
+            control.dataset.desktopNativeBound = 'true';
+            // NcListItem/account-menu controls can be closed by ancestor pointer handling before their
+            // Vue click handler runs after the header was moved into the taskbar. Let the real control
+            // receive a synthetic click first, then keep the menu click from being converted to a window.
+            control.addEventListener('pointerdown', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                setTimeout(() => control.click(), 0);
+            });
+        });
+    }
+
     // Open as early as possible. Some menus (NcListItem inside the account menu's NcPopover) close and
     // DETACH the anchor on pointerdown, so the click never reaches a handler — opening on pointerdown
     // beats that. Propagation is left intact here so the menu still closes itself.
     document.addEventListener('pointerdown', (event) => {
         if (event.button) return;                               // primary button only
-        const url = headerMenuTarget(event.target.closest('a[href]'));
-        if (!url) return;
         const link = event.target.closest('a[href]');
+        if (link && /\/logout/i.test(new URL(link.href, window.location.origin).pathname)) {
+            // Account-menu links can be detached before click after the header is moved into the taskbar.
+            // For logout, navigate explicitly instead of letting the click disappear.
+            event.preventDefault();
+            window.location.href = link.href;
+            return;
+        }
+        const url = headerMenuTarget(link);
+        if (!url) return;
         event.preventDefault();
         debugLog('header_link_pointerdown', { path: url.pathname });
         openExternalWindow(buildHeaderLinkMeta(link, url));
@@ -1256,6 +1329,12 @@
         const link = event.target.closest('a[href]');
         if (!link) {
             if (event.target.closest('#desktop-header-end-slot')) debugLog('header_click_no_anchor', { tag: event.target.tagName, cls: String(event.target.className || '').slice(0, 140) });
+            return;
+        }
+        if (/\/logout/i.test(new URL(link.href, window.location.origin).pathname)) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            window.location.href = link.href;
             return;
         }
         const url = headerMenuTarget(link);
@@ -1377,8 +1456,9 @@
         const occupied = new Map();
         const keyOf = (c, r) => `${c},${r}`;
         const cellXY = (c, r) => ({ x: PAD + c * CELL_W, y: PAD + r * CELL_H });
-        // Usable height = from the top of the icon layer down to the top of the taskbar,
-        // so icons never sit behind the taskbar (in fullscreen or any window size).
+        // Usable area = the visible icon layer, excluding the taskbar at the bottom.
+        // Icons outside either edge are temporarily reflowed into safe cells without
+        // overwriting the saved cell, so they return when the desktop grows again.
         function usableHeight() {
             const lr = layer.getBoundingClientRect();
             const taskbar = document.querySelector('.desktop-taskbar');
@@ -1386,22 +1466,29 @@
             if (taskbar) bottom = Math.min(bottom, taskbar.getBoundingClientRect().top);
             return Math.max(CELL_H, bottom - lr.top);
         }
+        function usableWidth() {
+            const lr = layer.getBoundingClientRect();
+            return Math.max(CELL_W, lr.width);
+        }
         const rowsAvail = () => Math.max(1, Math.floor((usableHeight() - PAD) / CELL_H));
+        const colsAvail = () => Math.max(1, Math.floor((usableWidth() - PAD) / CELL_W));
         const isFree = (c, r, except) => { const o = occupied.get(keyOf(c, r)); return !o || o === except; };
         function nextFreeCell() {
             const rows = rowsAvail();
-            for (let c = 0; c < 1000; c++) for (let r = 0; r < rows; r++) if (isFree(c, r)) return { col: c, row: r };
-            return { col: 0, row: 0 };
+            const cols = colsAvail();
+            for (let c = 0; c < cols; c++) for (let r = 0; r < rows; r++) if (isFree(c, r)) return { col: c, row: r };
+            return { col: Math.max(0, cols - 1), row: 0 };
         }
         function nearestFreeCell(col, row, except) {
             const rows = rowsAvail();
-            col = Math.max(0, col);
+            const cols = colsAvail();
+            col = Math.min(Math.max(0, col), cols - 1); // never outside the right edge
             row = Math.min(Math.max(0, row), rows - 1); // never below the usable area
             if (isFree(col, row, except)) return { col, row };
             for (let radius = 1; radius < 80; radius++) {
                 for (let dc = -radius; dc <= radius; dc++) for (let dr = -radius; dr <= radius; dr++) {
                     const c = col + dc, r = row + dr;
-                    if (c < 0 || r < 0 || r >= rows) continue;
+                    if (c < 0 || c >= cols || r < 0 || r >= rows) continue;
                     if (isFree(c, r, except)) return { col: c, row: r };
                 }
             }
@@ -1425,9 +1512,9 @@
             const fb = (OC.MimeType && OC.MimeType.getIconUrl) ? OC.MimeType.getIconUrl(mime) : '';
             if (!item.isFolder && item.fileId && OC.generateUrl) {
                 const url = OC.generateUrl('/core/preview?fileId={id}&x=64&y=64&a=1&mimeFallback=true', { id: String(item.fileId) });
-                return `<img src="${url}" alt=""${fb ? ` onerror="this.onerror=null;this.src='${fb}'"` : ''}>`;
+                return `<img src="${url}" alt="" draggable="false"${fb ? ` data-fallback="${escapeHtml(fb)}"` : ''}>`;
             }
-            return `<img src="${fb}" alt="">`;
+            return `<img src="${fb}" alt="" draggable="false">`;
         }
         const STAR_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#a37200" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg>';
         function makeIcon(item) {
@@ -1443,10 +1530,17 @@
             el.dataset.favorited = item.favorited ? 'true' : 'false';
             if (item.special) el.dataset.special = item.special;
             const visual = item.special
-                ? (item.svg || `<img src="${item.iconUrl}" alt=""${item.iconFallback ? ` onerror="this.onerror=null;this.src='${item.iconFallback}'"` : ''}>`)
+                ? (item.svg || `<img src="${item.iconUrl}" alt="" draggable="false"${item.iconFallback ? ` data-fallback="${escapeHtml(item.iconFallback)}"` : ''}>`)
                 : favVisual(item);
             const badge = item.favorited ? `<span class="desktop-fav-badge">${STAR_SVG}</span>` : '';
             el.innerHTML = `<span class="desktop-fav-icon">${visual}${badge}</span><span class="desktop-fav-label">${escapeHtml(item.name)}</span>`;
+            // CSP-safe image fallback (inline onerror handlers are blocked by Nextcloud's CSP).
+            el.querySelectorAll('img[data-fallback]').forEach((img) => {
+                img.addEventListener('error', function onErr() {
+                    img.removeEventListener('error', onErr);
+                    if (img.dataset.fallback) img.src = img.dataset.fallback;
+                });
+            });
             return el;
         }
 
@@ -1533,8 +1627,8 @@
 
         function openFolderInDefaultManager(dir, fallbackTitle, idPrefix) {
             if (root.dataset.desktopfilesEnabled === 'true') {
-                const url = OC.generateUrl('/apps/desktop/files') + '?desktop=1&dir=' + encodeURIComponent(dir);
-                const icon = (OC.imagePath && OC.imagePath('desktop', 'files.svg')) || '/apps/desktop/img/files.svg';
+                const url = OC.generateUrl('/apps/desktop_workspace/files') + '?desktop=1&dir=' + encodeURIComponent(dir);
+                const icon = (OC.imagePath && OC.imagePath('desktop_workspace', 'files.svg')) || '/apps/desktop_workspace/img/files.svg';
                 openExternalWindow({ appId: `${idPrefix}-${Date.now()}`, title: t('Desktop Files'), subtitle: dir, href: url, icon });
             } else {
                 const url = OC.generateUrl('/apps/files/') + '?dir=' + encodeURIComponent(dir);
@@ -1561,11 +1655,14 @@
                 // experimental file manager being enabled.
                 const mime = el.dataset.mime || '';
                 const fileId = el.dataset.fileId || '';
-                const direct = mime.startsWith('image/') || mime.startsWith('video/') || mime.startsWith('audio/') || mime === 'application/pdf' || mime.startsWith('text/') || /\.(md|txt|csv|log|json|xml|yml|yaml)$/i.test(name);
+                // Media opens in our fullscreen viewer page; everything Nextcloud opens in an editor
+                // (text/markdown/html/code via the Text editor, office docs, …) goes through the Files
+                // app deep link, where the native viewer/editor and its own header work correctly.
+                const direct = mime.startsWith('image/') || mime.startsWith('video/') || mime.startsWith('audio/') || mime === 'application/pdf';
                 const absPath = '/' + path.replace(/^\/+/, ''); // viewer needs an absolute path, like Desktop Files passes
                 const query = new URLSearchParams({ fileId, name, mime, filePath: absPath });
                 const href = (direct && fileId)
-                    ? `${OC.getRootPath ? OC.getRootPath() : ''}/index.php/apps/desktop/files/viewer?${query.toString()}`
+                    ? `${OC.getRootPath ? OC.getRootPath() : ''}/index.php/apps/desktop_workspace/files/viewer?${query.toString()}`
                     : (fileId ? `${OC.getRootPath ? OC.getRootPath() : ''}/index.php/f/${encodeURIComponent(fileId)}` : '');
                 if (!href) return;
                 const mimeIcon = (OC.MimeType && OC.MimeType.getIconUrl) ? OC.MimeType.getIconUrl(mime || 'application/octet-stream') : '/core/img/logo/logo.svg';
@@ -1763,6 +1860,7 @@
                 const files = selected.filter((i) => i.dataset.kind === 'file' && i.dataset.path);
                 if (el.dataset.folder !== 'true') entries.push(['download', t('Download')]);
                 if (files.length === 1) entries.push(['rename', t('Rename')]);
+                if (files.length === 1) entries.push(['properties', t('Properties')]);
                 if (dfEnabled) {
                     entries.push(['cut', t('Cut')]);
                     entries.push(['copy', t('Copy')]);
@@ -1778,6 +1876,7 @@
                     if (act === 'open') openFavorite(el);
                     else if (act === 'download') downloadItem(el);
                     else if (act === 'rename') renameItem(el);
+                    else if (act === 'properties') openProperties(el);
                     else if (act === 'cut') cutCopy(files, 'move');
                     else if (act === 'copy') cutCopy(files, 'copy');
                     else if (act === 'paste') pasteIntoDesktop();
@@ -1790,11 +1889,13 @@
                 const favs = selected.filter((i) => i.dataset.kind === 'fav' && i.dataset.path);
                 const removeLabel = favs.length > 1 ? t('Remove {count} from favorites', { count: favs.length }) : t('Remove from favorites');
                 if (favs.length > 0) entries.push(['remove', removeLabel]);
+                if (favs.length === 1) entries.push(['properties', t('Properties')]);
                 buildMenu(entries, x, y).addEventListener('click', (ev) => {
                     const b = ev.target.closest('button'); if (!b) return;
                     const act = b.dataset.act; closeFavMenu();
                     if (act === 'open') openFavorite(el);
                     else if (act === 'remove') confirmRemove(favs);
+                    else if (act === 'properties') openProperties(el);
                 });
                 return;
             }
@@ -2006,6 +2107,11 @@
             });
         }
 
+        // Desktop icons are moved with pointer events only — they never use native HTML5 drag.
+        // Cancel any native drag that tries to start inside the icon layer (e.g. a fast mouse flick
+        // grabbing a preview image), which otherwise triggers the drop frame and stray file moves.
+        layer.addEventListener('dragstart', (e) => e.preventDefault());
+
         // --- rubber-band selection on empty desktop ---
         let band = null;
         stage.addEventListener('pointerdown', (e) => {
@@ -2048,10 +2154,11 @@
             icons = icons.filter((el) => el.isConnected);
             occupied.clear();
             const rows = rowsAvail();
+            const cols = colsAvail();
             const overflow = [];
             icons.forEach((el) => {
                 const saved = positions[el.dataset.fileId];
-                if (saved && saved.col >= 0 && saved.row >= 0 && saved.row < rows && isFree(saved.col, saved.row)) {
+                if (saved && saved.col >= 0 && saved.row >= 0 && saved.col < cols && saved.row < rows && isFree(saved.col, saved.row)) {
                     placeIcon(el, saved.col, saved.row);
                 } else {
                     overflow.push(el);

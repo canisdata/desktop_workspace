@@ -18,7 +18,7 @@ use OCP\IUser;
  *  - The user must additionally have opted in (personal setting).
  */
 class FilesAvailability {
-    public const APP_ID = 'desktop';
+    public const APP_ID = 'desktop_workspace';
     public const DISABLED_KEY = 'experimental_files_disabled';
     public const GROUPS_KEY = 'experimental_files_groups';
     public const USER_OPT_IN_KEY = 'try_experimental_files';

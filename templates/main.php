@@ -1,12 +1,12 @@
 <?php
-\OCP\Util::addTranslations('desktop');
-script('desktop', 'desktop');
-style('desktop', 'desktop');
+\OCP\Util::addTranslations('desktop_workspace');
+script('desktop_workspace', 'desktop');
+style('desktop_workspace', 'desktop');
 /** @var array $_ */
-$l = \OC::$server->getL10N('desktop');
+$l = \OC::$server->getL10N('desktop_workspace');
 $apps = $_['apps'] ?? [];
 $desktopfilesEnabled = !empty($_['desktopfilesEnabled']);
-$desktopVersion = \OCP\Server::get(\OCP\App\IAppManager::class)->getAppVersion('desktop');
+$desktopVersion = \OCP\Server::get(\OCP\App\IAppManager::class)->getAppVersion('desktop_workspace');
 try {
     $ncVersion = \OCP\Server::get(\OCP\ServerVersion::class)->getVersionString();
 } catch (\Throwable $e) {
@@ -42,6 +42,6 @@ try {
         <div id="desktop-task-list" class="desktop-task-list" aria-label="<?= p($l->t('Open windows')) ?>"></div>
         <div id="desktop-header-end-slot" class="desktop-header-end-slot" aria-label="<?= p($l->t('Nextcloud controls')) ?>"></div>
         <time id="desktop-clock" class="desktop-clock"></time>
-        <a id="desktop-nextcloud-logo" class="desktop-nextcloud-logo" href="/index.php" target="_blank" rel="noopener" title="<?= p($l->t('Open Nextcloud in a new tab')) ?>" aria-label="<?= p($l->t('Open Nextcloud in a new tab')) ?>"><span class="logo logo-icon" aria-hidden="true"></span></a>
+        <a id="desktop-nextcloud-logo" class="desktop-nextcloud-logo" href="/index.php/apps/files/" target="_blank" rel="noopener" title="<?= p($l->t('Open Nextcloud Files in a new tab')) ?>" aria-label="<?= p($l->t('Open Nextcloud Files in a new tab')) ?>"><span class="logo logo-icon" aria-hidden="true"></span></a>
     </footer>
 </div>
