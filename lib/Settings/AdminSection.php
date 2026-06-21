@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OCA\Desktop\Settings;
+namespace OCA\DesktopWorkspace\Settings;
 
 use OCP\IL10N;
 use OCP\IURLGenerator;

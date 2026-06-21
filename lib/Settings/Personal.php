@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OCA\Desktop\Settings;
+namespace OCA\DesktopWorkspace\Settings;
 
-use OCA\Desktop\Controller\SettingsController;
-use OCA\Desktop\Service\FilesAvailability;
+use OCA\DesktopWorkspace\Controller\SettingsController;
+use OCA\DesktopWorkspace\Service\FilesAvailability;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
 use OCP\IURLGenerator;

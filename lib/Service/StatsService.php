@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OCA\Desktop\Service;
+namespace OCA\DesktopWorkspace\Service;
 
 use OCP\ICacheFactory;
 use OCP\IConfig;

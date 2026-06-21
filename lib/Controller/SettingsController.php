@@ -1,7 +1,7 @@
 <?php
-namespace OCA\Desktop\Controller;
+namespace OCA\DesktopWorkspace\Controller;
 
-use OCA\Desktop\Service\FilesAvailability;
+use OCA\DesktopWorkspace\Service\FilesAvailability;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\Files\Folder;
@@ -32,7 +32,7 @@ class SettingsController extends Controller {
         IRequest $request,
         private IConfig $config,
         private IUserSession $userSession,
-        private \OCA\Desktop\Service\StatsService $statsService,
+        private \OCA\DesktopWorkspace\Service\StatsService $statsService,
         private IRootFolder $rootFolder,
         private IUserManager $userManager,
     ) {

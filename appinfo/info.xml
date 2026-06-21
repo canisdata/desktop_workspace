@@ -10,7 +10,7 @@ Admins can enable the app like any other Nextcloud app and configure the experim
     <version>0.12.6</version>
     <licence>AGPL-3.0-or-later</licence>
     <author homepage="https://canisdata.de/">canisdata</author>
-    <namespace>Desktop</namespace>
+    <namespace>DesktopWorkspace</namespace>
     <documentation>
         <user>https://github.com/canisdata/desktop_workspace#readme</user>
         <admin>https://github.com/canisdata/desktop_workspace#readme</admin>
@@ -24,10 +24,10 @@ Admins can enable the app like any other Nextcloud app and configure the experim
         <nextcloud min-version="33" max-version="34" />
     </dependencies>
     <settings>
-        <admin>OCA\Desktop\Settings\Admin</admin>
-        <admin-section>OCA\Desktop\Settings\AdminSection</admin-section>
-        <personal>OCA\Desktop\Settings\Personal</personal>
-        <personal-section>OCA\Desktop\Settings\PersonalSection</personal-section>
+        <admin>OCA\DesktopWorkspace\Settings\Admin</admin>
+        <admin-section>OCA\DesktopWorkspace\Settings\AdminSection</admin-section>
+        <personal>OCA\DesktopWorkspace\Settings\Personal</personal>
+        <personal-section>OCA\DesktopWorkspace\Settings\PersonalSection</personal-section>
     </settings>
     <navigations>
         <navigation>

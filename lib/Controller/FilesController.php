@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OCA\Desktop\Controller;
+namespace OCA\DesktopWorkspace\Controller;
 
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;

@@ -1,7 +1,7 @@
 <?php
-namespace OCA\Desktop\Controller;
+namespace OCA\DesktopWorkspace\Controller;
 
-use OCA\Desktop\Service\FilesAvailability;
+use OCA\DesktopWorkspace\Service\FilesAvailability;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
@@ -19,7 +19,7 @@ class PageController extends Controller {
         private IURLGenerator $urlGenerator,
         private IUserSession $userSession,
         private FilesAvailability $filesAvailability,
-        private \OCA\Desktop\Service\StatsService $statsService,
+        private \OCA\DesktopWorkspace\Service\StatsService $statsService,
     ) {
         parent::__construct($appName, $request);
     }
