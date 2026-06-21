@@ -11,11 +11,11 @@ Admins can enable the app like any other Nextcloud app and configure the experim
     <licence>AGPL-3.0-or-later</licence>
     <author homepage="https://canisdata.de/">canisdata</author>
     <namespace>Desktop</namespace>
-    <category>customization</category>
     <documentation>
         <user>https://github.com/canisdata/desktop_workspace#readme</user>
         <admin>https://github.com/canisdata/desktop_workspace#readme</admin>
     </documentation>
+    <category>customization</category>
     <website>https://github.com/canisdata/desktop_workspace</website>
     <bugs>https://github.com/canisdata/desktop_workspace/issues</bugs>
     <repository>https://github.com/canisdata/desktop_workspace</repository>
