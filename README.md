@@ -1,6 +1,6 @@
 # Desktop Workspace for Nextcloud
 
-A browser-contained **desktop shell** for Nextcloud. Instead of juggling browser tabs, open
+A browser-contained **desktop workspace** for Nextcloud. Instead of juggling browser tabs, open
 Nextcloud apps as draggable, resizable windows on a familiar desktop — with a taskbar, a clock,
 desktop icons, and an optional built-in file manager.
 
@@ -24,11 +24,11 @@ desktop icons, and an optional built-in file manager.
   native Nextcloud viewer.
 - **Window & icon state is saved to your account** — open windows reopen where you left them (at
   their last location), and icon positions follow you across devices.
-- **Header & account menu integration** — the Nextcloud header links open as desktop windows;
-  "Set status" and global search open as native overlays.
+- **Header & account menu integration** — the Nextcloud header links open as Desktop Workspace
+  windows; "Set status" and global search open as native overlays.
 - **Per-user and per-admin settings** — including a first-visit onboarding, full per-user reset,
   and an admin "reset a single user" action.
-- **Localized** — English, German, and French.
+- **Localized** — covers the Nextcloud language set where reliable translations are available.
 
 ---
 
@@ -43,24 +43,24 @@ desktop icons, and an optional built-in file manager.
 
 ### From a release tarball
 
-1. Download the latest `desktop-<version>.tar.gz`.
+1. Download the latest `desktop_workspace-<version>.tar.gz`.
 2. Extract it into your Nextcloud `custom_apps/` (or `apps/`) directory so the path is
    `…/custom_apps/desktop_workspace/`.
 3. Enable the app:
    ```bash
-   occ app:enable desktop
+   occ app:enable desktop_workspace
    ```
-4. Open **Desktop** from the app navigation.
+4. Open **Desktop Workspace** from the app navigation.
 
 ### From source
 
 ```bash
-git clone <this-repo> desktop
-cd desktop
-make            # builds build/appstore/desktop-<version>.tar.gz
+git clone <this-repo> desktop_workspace
+cd desktop_workspace
+make            # builds build/appstore/desktop_workspace-<version>.tar.gz
 ```
 
-Place the resulting `desktop` folder in your Nextcloud apps directory and enable it as above.
+Place the resulting `desktop_workspace` folder in your Nextcloud apps directory and enable it as above.
 
 ---
 
