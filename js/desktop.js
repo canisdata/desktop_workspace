@@ -430,6 +430,7 @@
             other.task.classList.toggle('is-minimized', isMinimized);
             other.task.setAttribute('aria-pressed', isFocused && !isMinimized ? 'true' : 'false');
         });
+        entry.task.scrollIntoView({ block: 'nearest', inline: 'nearest' });
         saveState();
     }
 
@@ -440,6 +441,8 @@
             entry.app.name = String(meta.title);
             entry.window.querySelector('[data-window-title]').textContent = entry.app.name;
             entry.task.querySelector('[data-task-title]').textContent = entry.app.name;
+            entry.task.title = entry.app.name;
+            entry.task.setAttribute('aria-label', entry.app.name);
         }
         const subtitle = meta.subtitle || '';
         entry.app.subtitle = subtitle;
@@ -722,6 +725,8 @@
         task.type = 'button';
         task.className = `desktop-task-button${win.classList.contains('is-minimized') ? ' is-minimized' : ' is-active'}`;
         task.innerHTML = `${app.icon ? `<img alt="" src="${escapeHtml(app.icon)}">` : ''}<span data-task-title>${escapeHtml(app.name)}</span>`;
+        task.title = app.name;
+        task.setAttribute('aria-label', app.name);
         task.setAttribute('aria-pressed', win.classList.contains('is-minimized') ? 'false' : 'true');
         task.addEventListener('click', () => {
             const isFocused = win.classList.contains('is-focused') && !win.classList.contains('is-minimized');
@@ -802,18 +807,16 @@
         iframe.title = app.name;
         iframe.src = absoluteHref;
         iframe.loading = 'eager';
-        const focusIfNotMinimized = () => {
+        const focusFromIntentionalPointer = () => {
             const entry = windows.get(app.id);
             if (!entry || entry.window.classList.contains('is-minimized')) return;
             focusWindow(app.id);
         };
-        iframe.addEventListener('pointerdown', focusIfNotMinimized);
-        iframe.addEventListener('focus', focusIfNotMinimized);
-        iframe.addEventListener('mouseenter', () => {
-            iframe.contentWindow?.addEventListener?.('pointerdown', focusIfNotMinimized, { once: true });
-        });
+        // Only raise a background iframe window for an explicit pointer press. Some embedded
+        // apps focus controls on hover (Deck cards, Memories year rail), which dispatches
+        // focus/focusin without the user clicking the window and used to raise it accidentally.
+        iframe.addEventListener('pointerdown', focusFromIntentionalPointer);
         iframe.addEventListener('load', () => {
-            focusIfNotMinimized();
             hideIframeChrome(iframe, app);
             watchIframeFileViewer(iframe, app);
             debugLog('iframe_app_loaded', { appId: app.id, appName: app.name, href: absoluteHref });
@@ -875,12 +878,12 @@
         try {
             const doc = iframe.contentDocument;
             if (!doc) return;
-            const focusSelf = () => {
+            const focusSelf = (event) => {
+                if (event?.type !== 'pointerdown') return;
                 const entry = windows.get(app.id);
                 if (entry && !entry.window.classList.contains('is-minimized')) focusWindow(app.id);
             };
             doc.addEventListener('pointerdown', focusSelf, true);
-            doc.addEventListener('focusin', focusSelf, true);
 
             // Remove the Nextcloud top header outright. Hiding it with display:none left layout/scroll
             // artefacts for some apps (notably the Text editor); removing the element renders cleanly.
@@ -897,11 +900,44 @@
             setTimeout(() => observer.disconnect(), 15000);
 
             // Reclaim the space the (fixed) header used to occupy and drop the skip-nav link.
+            // Dashboard deliberately keeps its own content/background layout: its widgets are
+            // meant to float as cards on the selected dashboard background, not be flattened
+            // into a full-bleed app panel like regular apps.
+            const isDashboard = app.id === 'dashboard' || app.sourceAppId === 'dashboard' || String(app.href || '').includes('/apps/dashboard');
             const style = doc.createElement('style');
             style.dataset.desktopChromePatch = 'true';
-            style.textContent = `
-                #content, #content-vue, .content { margin-top: 0 !important; min-height: 100vh !important; }
+            style.textContent = isDashboard ? `
                 body { padding-top: 0 !important; }
+                #content, #content-vue, .content { margin-top: 0 !important; }
+                .skip-navigation { display: none !important; }
+            ` : `
+                html, body {
+                    width: 100% !important;
+                    height: 100% !important;
+                    min-height: 100% !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    overflow: hidden !important;
+                    background: var(--color-main-background, #fff) !important;
+                }
+                #body-user, #content, #content-vue, .content, .app-content, #app-content, #app-content-vue {
+                    box-sizing: border-box !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                    min-width: 0 !important;
+                    min-height: 0 !important;
+                    max-width: none !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    border-radius: 0 !important;
+                    overflow: auto !important;
+                    background: var(--color-main-background, #fff) !important;
+                }
+                #content, #content-vue, .content {
+                    position: relative !important;
+                    inset: auto !important;
+                    margin-top: 0 !important;
+                }
                 .skip-navigation { display: none !important; }
             `;
             doc.head?.appendChild(style);

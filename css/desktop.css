@@ -338,10 +338,12 @@ body:has(#desktop-root) .content {
     position: relative;
     z-index: 100001;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     gap: 10px;
+    height: 54px;
     min-height: 54px;
-    max-height: 100px;
+    max-height: 54px;
+    box-sizing: border-box;
     padding: 8px 12px;
     background: var(--desktop-panel-background);
     border-top: 1px solid var(--desktop-panel-border);
@@ -379,8 +381,10 @@ body:has(#desktop-root) .content {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    flex: 0 1 220px;
+    flex: 1 1 160px;
+    min-width: 48px;
     max-width: 220px;
+    justify-content: flex-start;
 }
 
 .desktop-task-button img {
@@ -407,17 +411,19 @@ body:has(#desktop-root) .content {
 }
 
 .desktop-task-list {
-    flex: 1 1 auto;
+    flex: 1 1 0;
+    width: 0;
     min-width: 0;
-    max-height: 84px;
+    height: 38px;
+    max-height: 38px;
     display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    align-items: flex-start;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
     gap: 8px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: 0 2px 2px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 2px 0 0;
     scrollbar-width: thin;
 }
 

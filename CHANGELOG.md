@@ -3,6 +3,16 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.12.7 – 2026-06-23
+
+### Changed
+- **Taskbar buttons now stay on one row.** Open windows compress into a single horizontally scrollable taskbar row with full app names available via hover/accessible labels, matching common desktop OS taskbar behavior and avoiding hidden vertical rows.
+- **Embedded app windows fit their content better.** Regular app iframes now fill the available window content area, while Dashboard keeps its native card-on-background layout.
+
+### Fixed
+- **Background iframe apps no longer raise on hover/focus.** Deck cards and similar embedded controls only bring their window forward after an intentional pointer press.
+- **The taskbar height no longer changes when windows open.** Opening one app or overflowing many apps keeps the bottom taskbar at its fixed height.
+
 ## 0.12.6 – 2026-06-21
 
 ### Added

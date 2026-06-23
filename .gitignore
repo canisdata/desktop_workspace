@@ -15,4 +15,3 @@
 
 # Node (if you ever add a frontend build)
 node_modules/
-build/
