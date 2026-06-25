@@ -210,7 +210,13 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "Διαγραφή του αρχείου καταγραφής εντοπισμού σφαλμάτων επιφάνειας εργασίας; Αυτό δεν μπορεί να αναιρεθεί.",
     "Debug log cleared.": "Το αρχείο καταγραφής εντοπισμού σφαλμάτων διαγράφηκε.",
     "Open Desktop Workspace": "Άνοιγμα Desktop Workspace",
-    "Desktop Workspace": "Desktop Workspace"
+    "Desktop Workspace": "Desktop Workspace",
+    "Add to taskbar": "Add to taskbar",
+    "Remove from taskbar": "Remove from taskbar",
+    "Add to desktop": "Add to desktop",
+    "Remove from desktop": "Remove from desktop",
+    "Pinned apps": "Pinned apps",
+    "Search": "Search"
 },
     "nplurals=2; plural=(n != 1);"
 );

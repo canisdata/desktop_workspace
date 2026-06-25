@@ -210,7 +210,13 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "Het foutopsporingslogboek op het bureaublad wissen? Dit kan niet ongedaan worden gemaakt.",
     "Debug log cleared.": "Foutopsporingslogboek gewist.",
     "Open Desktop Workspace": "Open Desktop Workspace",
-    "Desktop Workspace": "Desktop Workspace"
+    "Desktop Workspace": "Desktop Workspace",
+    "Add to taskbar": "Aan taakbalk toevoegen",
+    "Remove from taskbar": "Van taakbalk verwijderen",
+    "Add to desktop": "Aan bureaublad toevoegen",
+    "Remove from desktop": "Van bureaublad verwijderen",
+    "Pinned apps": "Vastgemaakte apps",
+    "Search": "Zoeken"
 },
     "nplurals=2; plural=(n != 1);"
 );

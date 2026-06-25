@@ -210,7 +210,13 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "Ish stolidagi disk raskadrovka jurnali tozalansinmi? Buni ortga qaytarib bo‘lmaydi.",
     "Debug log cleared.": "Nosozliklarni tuzatish jurnali tozalandi.",
     "Open Desktop Workspace": "Ochish Desktop Workspace",
-    "Desktop Workspace": "Desktop Workspace"
+    "Desktop Workspace": "Desktop Workspace",
+    "Add to taskbar": "Add to taskbar",
+    "Remove from taskbar": "Remove from taskbar",
+    "Add to desktop": "Add to desktop",
+    "Remove from desktop": "Remove from desktop",
+    "Pinned apps": "Pinned apps",
+    "Search": "Search"
 },
     "nplurals=1; plural=0;"
 );

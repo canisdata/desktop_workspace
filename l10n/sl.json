@@ -209,7 +209,13 @@
         "Clear the desktop debug log? This cannot be undone.": "Počistiti dnevnik odpravljanja napak namizja? Tega ni mogoče razveljaviti.",
         "Debug log cleared.": "Dnevnik odpravljanja napak je počiščen.",
         "Open Desktop Workspace": "Odpri Desktop Workspace",
-        "Desktop Workspace": "Desktop Workspace"
+        "Desktop Workspace": "Desktop Workspace",
+        "Add to taskbar": "Add to taskbar",
+        "Remove from taskbar": "Remove from taskbar",
+        "Add to desktop": "Add to desktop",
+        "Remove from desktop": "Remove from desktop",
+        "Pinned apps": "Pinned apps",
+        "Search": "Search"
     },
     "pluralForm": "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"
 }

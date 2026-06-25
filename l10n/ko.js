@@ -210,7 +210,13 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "데스크톱 디버그 로그를 지우시겠습니까? 이 작업은 취소할 수 없습니다.",
     "Debug log cleared.": "디버그 로그가 삭제되었습니다.",
     "Open Desktop Workspace": "Desktop Workspace 열기",
-    "Desktop Workspace": "Desktop Workspace"
+    "Desktop Workspace": "Desktop Workspace",
+    "Add to taskbar": "Add to taskbar",
+    "Remove from taskbar": "Remove from taskbar",
+    "Add to desktop": "Add to desktop",
+    "Remove from desktop": "Remove from desktop",
+    "Pinned apps": "Pinned apps",
+    "Search": "Search"
 },
     "nplurals=1; plural=0;"
 );

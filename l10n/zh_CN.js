@@ -210,7 +210,13 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "清除桌面调试日志？此操作无法撤消。",
     "Debug log cleared.": "调试日志已清除。",
     "Open Desktop Workspace": "打开Desktop Workspace",
-    "Desktop Workspace": "Desktop Workspace"
+    "Desktop Workspace": "Desktop Workspace",
+    "Add to taskbar": "Add to taskbar",
+    "Remove from taskbar": "Remove from taskbar",
+    "Add to desktop": "Add to desktop",
+    "Remove from desktop": "Remove from desktop",
+    "Pinned apps": "Pinned apps",
+    "Search": "Search"
 },
     "nplurals=1; plural=0;"
 );

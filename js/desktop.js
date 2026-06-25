@@ -485,11 +485,14 @@
     function appsMenuMetrics(width = startMenu?.clientWidth || 320) {
         const appCount = Math.max(1, launcherApps.length || getApps().length || launcher?.children?.length || 1);
         const minColumns = 4;
-        const minWidth = 16 + minColumns * 69;
-        const columns = Math.max(minColumns, Math.floor((Math.max(minWidth, width) - 16) / 69));
+        const columnGap = 8;
+        const minWidth = 16 + minColumns * 69 + (minColumns - 1) * columnGap;
+        const columnPitch = 69 + columnGap;
+        const columns = Math.max(minColumns, Math.floor((Math.max(minWidth, width) - 16 + columnGap) / columnPitch));
         const rows = Math.max(1, Math.ceil(appCount / columns));
         const headerHeight = startMenu?.querySelector('.desktop-start-header')?.offsetHeight || 58;
-        const minHeight = headerHeight + 16 + rows * 76;
+        const rowPitch = 76;
+        const minHeight = headerHeight + 20 + rows * rowPitch;
         return { appCount, minColumns, minWidth, columns, rows, minHeight };
     }
     function clampAppsMenuSize(width, height) {
@@ -1511,7 +1514,8 @@
     function updateClock() {
         const now = new Date();
         clock.dateTime = now.toISOString();
-        clock.textContent = new Intl.DateTimeFormat(undefined, { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(now);
+        const locale = (window.OC?.getLanguage?.() || document.documentElement.lang || navigator.language || undefined)?.replace('_', '-');
+        clock.textContent = new Intl.DateTimeFormat(locale, { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(now);
     }
 
     startButton.addEventListener('click', toggleStartMenu);

@@ -210,7 +210,13 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "Vymazať denník ladenia pracovnej plochy? Toto sa nedá vrátiť späť.",
     "Debug log cleared.": "Denník ladenia bol vymazaný.",
     "Open Desktop Workspace": "Otvoriť Desktop Workspace",
-    "Desktop Workspace": "Desktop Workspace"
+    "Desktop Workspace": "Desktop Workspace",
+    "Add to taskbar": "Add to taskbar",
+    "Remove from taskbar": "Remove from taskbar",
+    "Add to desktop": "Add to desktop",
+    "Remove from desktop": "Remove from desktop",
+    "Pinned apps": "Pinned apps",
+    "Search": "Search"
 },
     "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);"
 );

@@ -210,7 +210,13 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "Xóa nhật ký gỡ lỗi trên máy tính để bàn? Điều này không thể hoàn tác được.",
     "Debug log cleared.": "Đã xóa nhật ký gỡ lỗi.",
     "Open Desktop Workspace": "Mở Desktop Workspace",
-    "Desktop Workspace": "Desktop Workspace"
+    "Desktop Workspace": "Desktop Workspace",
+    "Add to taskbar": "Add to taskbar",
+    "Remove from taskbar": "Remove from taskbar",
+    "Add to desktop": "Add to desktop",
+    "Remove from desktop": "Remove from desktop",
+    "Pinned apps": "Pinned apps",
+    "Search": "Search"
 },
     "nplurals=1; plural=0;"
 );

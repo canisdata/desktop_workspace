@@ -210,7 +210,13 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "Desktop-Debug-Protokoll leeren? Dies kann nicht rückgängig gemacht werden.",
     "Debug log cleared.": "Debug-Protokoll geleert.",
     "Open Desktop Workspace": "Desktop-Arbeitsbereich öffnen",
-    "Desktop Workspace": "Desktop-Arbeitsbereich"
+    "Desktop Workspace": "Desktop-Arbeitsbereich",
+    "Add to taskbar": "Add to taskbar",
+    "Remove from taskbar": "Remove from taskbar",
+    "Add to desktop": "Add to desktop",
+    "Remove from desktop": "Remove from desktop",
+    "Pinned apps": "Pinned apps",
+    "Search": "Search"
 },
     "nplurals=2; plural=(n != 1);"
 );

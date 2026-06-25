@@ -209,7 +209,13 @@
         "Clear the desktop debug log? This cannot be undone.": "Ștergeți jurnalul de depanare desktop? Acest lucru nu poate fi anulat.",
         "Debug log cleared.": "Jurnalul de depanare a fost șters.",
         "Open Desktop Workspace": "Deschide Desktop Workspace",
-        "Desktop Workspace": "Desktop Workspace"
+        "Desktop Workspace": "Desktop Workspace",
+        "Add to taskbar": "Add to taskbar",
+        "Remove from taskbar": "Remove from taskbar",
+        "Add to desktop": "Add to desktop",
+        "Remove from desktop": "Remove from desktop",
+        "Pinned apps": "Pinned apps",
+        "Search": "Search"
     },
     "pluralForm": "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));"
 }

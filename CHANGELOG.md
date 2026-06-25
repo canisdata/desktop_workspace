@@ -3,6 +3,13 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.13.1 – 2026-06-24
+
+### Fixed
+- **Pinned taskbar apps align cleanly.** Pinned app buttons are now vertically centered, use compact spacing, and show their app symbol inside a squircle instead of a wide rectangular button.
+- **Apps menu spacing and minimum height.** Apps menu icons now use equal row and column spacing, the minimum height keeps labels visible, and the menu avoids scrollbars by sizing to fit all apps.
+- **Translations filled in for 0.13 app-pinning labels.** Added missing labels such as add/remove from taskbar/desktop and pinned apps across locale files, and the taskbar date now formats with the active Nextcloud/browser language.
+
 ## 0.13.0 – 2026-06-24
 
 ### Added

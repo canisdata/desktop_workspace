@@ -209,7 +209,13 @@
         "Clear the desktop debug log? This cannot be undone.": "Десктопын дибаг хийх бүртгэлийг арилгах уу? Үүнийг буцаах боломжгүй.",
         "Debug log cleared.": "Дибаг хийх лог арилсан.",
         "Open Desktop Workspace": "Desktop Workspace нээх",
-        "Desktop Workspace": "Desktop Workspace"
+        "Desktop Workspace": "Desktop Workspace",
+        "Add to taskbar": "Add to taskbar",
+        "Remove from taskbar": "Remove from taskbar",
+        "Add to desktop": "Add to desktop",
+        "Remove from desktop": "Remove from desktop",
+        "Pinned apps": "Pinned apps",
+        "Search": "Search"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

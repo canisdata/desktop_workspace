@@ -190,8 +190,10 @@ body {
     padding: 6px;
     border: 1px solid var(--color-border, #d8dee9);
     border-radius: 12px;
-    background: var(--color-main-background, #fff);
-    box-shadow: 0 18px 48px rgba(0,0,0,.22);
+    background: color-mix(in srgb, var(--color-main-background, #fff) 86%, transparent);
+    box-shadow: 0 18px 60px rgba(0,0,0,.34);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 }
 .desktop-files-context-menu[hidden] { display: none; }
 .desktop-files-context-menu button {
@@ -206,6 +208,14 @@ body {
 }
 .desktop-files-context-menu button:hover,
 .desktop-files-context-menu button:focus-visible { background: var(--color-background-hover, #f4f6f8); }
+
+body:has(.desktop-files-root) .desktop-files-context-menu {
+    background: color-mix(in srgb, var(--color-main-background, #fff) 62%, transparent) !important;
+    border-color: color-mix(in srgb, var(--color-border, #d8dee9) 72%, transparent) !important;
+    box-shadow: 0 18px 60px rgba(0,0,0,.34) !important;
+    backdrop-filter: blur(18px) saturate(1.2) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(1.2) !important;
+}
 
 /* --- Toolbar (v0.2.3): grid mirrors main columns so labels align with their columns --- */
 .desktop-files-toolbar {

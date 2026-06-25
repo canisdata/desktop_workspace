@@ -209,7 +209,13 @@
         "Clear the desktop debug log? This cannot be undone.": "Effacer le journal de débogage du bureau ? Cette action est irréversible.",
         "Debug log cleared.": "Journal de débogage effacé.",
         "Open Desktop Workspace": "Ouvrir l’espace de travail du bureau",
-        "Desktop Workspace": "Espace de travail du bureau"
+        "Desktop Workspace": "Espace de travail du bureau",
+        "Add to taskbar": "Ajouter à la barre des tâches",
+        "Remove from taskbar": "Retirer de la barre des tâches",
+        "Add to desktop": "Ajouter au bureau",
+        "Remove from desktop": "Retirer du bureau",
+        "Pinned apps": "Applications épinglées",
+        "Search": "Rechercher"
     },
     "pluralForm": "nplurals=2; plural=(n > 1);"
 }

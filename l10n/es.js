@@ -210,7 +210,13 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "¿Borrar el registro de depuración del escritorio? Esto no se puede deshacer.",
     "Debug log cleared.": "Se borró el registro de depuración.",
     "Open Desktop Workspace": "Abierto Desktop Workspace",
-    "Desktop Workspace": "Desktop Workspace"
+    "Desktop Workspace": "Desktop Workspace",
+    "Add to taskbar": "Añadir a la barra de tareas",
+    "Remove from taskbar": "Quitar de la barra de tareas",
+    "Add to desktop": "Añadir al escritorio",
+    "Remove from desktop": "Quitar del escritorio",
+    "Pinned apps": "Aplicaciones fijadas",
+    "Search": "Buscar"
 },
     "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 );

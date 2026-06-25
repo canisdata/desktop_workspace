@@ -209,7 +209,13 @@
         "Clear the desktop debug log? This cannot be undone.": "Išvalyti darbalaukio derinimo žurnalą? To negalima anuliuoti.",
         "Debug log cleared.": "Derinimo žurnalas išvalytas.",
         "Open Desktop Workspace": "Atidaryti Desktop Workspace",
-        "Desktop Workspace": "Desktop Workspace"
+        "Desktop Workspace": "Desktop Workspace",
+        "Add to taskbar": "Add to taskbar",
+        "Remove from taskbar": "Remove from taskbar",
+        "Add to desktop": "Add to desktop",
+        "Remove from desktop": "Remove from desktop",
+        "Pinned apps": "Pinned apps",
+        "Search": "Search"
     },
     "pluralForm": "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);"
 }

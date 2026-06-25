@@ -209,7 +209,13 @@
         "Clear the desktop debug log? This cannot be undone.": "Очистити журнал налагодження робочого столу? Це неможливо скасувати.",
         "Debug log cleared.": "Журнал налагодження очищено.",
         "Open Desktop Workspace": "Відкрити Desktop Workspace",
-        "Desktop Workspace": "Desktop Workspace"
+        "Desktop Workspace": "Desktop Workspace",
+        "Add to taskbar": "Add to taskbar",
+        "Remove from taskbar": "Remove from taskbar",
+        "Add to desktop": "Add to desktop",
+        "Remove from desktop": "Remove from desktop",
+        "Pinned apps": "Pinned apps",
+        "Search": "Search"
     },
     "pluralForm": "nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);"
 }

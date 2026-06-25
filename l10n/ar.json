@@ -209,7 +209,13 @@
         "Clear the desktop debug log? This cannot be undone.": "هل تريد مسح سجل تصحيح سطح المكتب؟ لا يمكن التراجع عن هذا.",
         "Debug log cleared.": "تم مسح سجل التصحيح.",
         "Open Desktop Workspace": "مفتوح Desktop Workspace",
-        "Desktop Workspace": "Desktop Workspace"
+        "Desktop Workspace": "Desktop Workspace",
+        "Add to taskbar": "Add to taskbar",
+        "Remove from taskbar": "Remove from taskbar",
+        "Add to desktop": "Add to desktop",
+        "Remove from desktop": "Remove from desktop",
+        "Pinned apps": "Pinned apps",
+        "Search": "Search"
     },
     "pluralForm": "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;"
 }

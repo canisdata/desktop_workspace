@@ -210,7 +210,13 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "Hreinsa kembiforritið á skjáborðinu? Þetta er ekki hægt að afturkalla.",
     "Debug log cleared.": "Villuleitarskrá hreinsuð.",
     "Open Desktop Workspace": "Opna Desktop Workspace",
-    "Desktop Workspace": "Desktop Workspace"
+    "Desktop Workspace": "Desktop Workspace",
+    "Add to taskbar": "Add to taskbar",
+    "Remove from taskbar": "Remove from taskbar",
+    "Add to desktop": "Add to desktop",
+    "Remove from desktop": "Remove from desktop",
+    "Pinned apps": "Pinned apps",
+    "Search": "Search"
 },
     "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);"
 );

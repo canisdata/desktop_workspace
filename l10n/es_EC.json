@@ -209,7 +209,13 @@
         "Clear the desktop debug log? This cannot be undone.": "¿Borrar el registro de depuración del escritorio? Esto no se puede deshacer.",
         "Debug log cleared.": "Se borró el registro de depuración.",
         "Open Desktop Workspace": "Abierto Desktop Workspace",
-        "Desktop Workspace": "Desktop Workspace"
+        "Desktop Workspace": "Desktop Workspace",
+        "Add to taskbar": "Add to taskbar",
+        "Remove from taskbar": "Remove from taskbar",
+        "Add to desktop": "Add to desktop",
+        "Remove from desktop": "Remove from desktop",
+        "Pinned apps": "Pinned apps",
+        "Search": "Search"
     },
     "pluralForm": "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

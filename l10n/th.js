@@ -210,7 +210,13 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "ล้างบันทึกการแก้ไขข้อบกพร่องบนเดสก์ท็อปหรือไม่ สิ่งนี้ไม่สามารถยกเลิกได้",
     "Debug log cleared.": "ล้างบันทึกการแก้ไขข้อบกพร่องแล้ว",
     "Open Desktop Workspace": "เปิด Desktop Workspace",
-    "Desktop Workspace": "Desktop Workspace"
+    "Desktop Workspace": "Desktop Workspace",
+    "Add to taskbar": "Add to taskbar",
+    "Remove from taskbar": "Remove from taskbar",
+    "Add to desktop": "Add to desktop",
+    "Remove from desktop": "Remove from desktop",
+    "Pinned apps": "Pinned apps",
+    "Search": "Search"
 },
     "nplurals=1; plural=0;"
 );

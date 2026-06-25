@@ -209,7 +209,13 @@
         "Clear the desktop debug log? This cannot be undone.": "Limpar o log de depuração da área de trabalho? Isto não pode ser desfeito.",
         "Debug log cleared.": "Log de depuração limpo.",
         "Open Desktop Workspace": "Abra Desktop Workspace",
-        "Desktop Workspace": "Desktop Workspace"
+        "Desktop Workspace": "Desktop Workspace",
+        "Add to taskbar": "Adicionar à barra de tarefas",
+        "Remove from taskbar": "Remover da barra de tarefas",
+        "Add to desktop": "Adicionar ao ambiente de trabalho",
+        "Remove from desktop": "Remover do ambiente de trabalho",
+        "Pinned apps": "Aplicações fixadas",
+        "Search": "Pesquisar"
     },
     "pluralForm": "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

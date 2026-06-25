@@ -688,8 +688,8 @@ body:has(#desktop-root) .header-menu__wrapper {
 .desktop-fav.is-cut { opacity: 0.5; }
 .desktop-fav-label { font-size: var(--default-font-size, 13px); line-height: 1.2; max-width: 112px; word-break: break-word; color: var(--color-main-text, #f5f5f5); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 #desktop-root.desktop-theme-light .desktop-fav-label { text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9), 0 0 2px rgba(255, 255, 255, 0.7); }
-.desktop-fav-menu { position: fixed; z-index: 1000; background: var(--color-main-background, #fff); border: 1px solid var(--color-border, #d0d0d0); border-radius: var(--border-radius-element, 8px); box-shadow: 0 8px 24px var(--color-box-shadow, rgba(0, 0, 0, 0.2)); padding: var(--default-grid-baseline, 4px); min-width: 180px; }
-.desktop-fav-menu button { display: flex; align-items: center; width: 100%; min-height: var(--default-clickable-area, 34px); text-align: left; background: none; border: none; padding: 0 12px; border-radius: var(--border-radius-element, 8px); cursor: pointer; color: var(--color-main-text, inherit); font-size: var(--default-font-size, 13px); }
+.desktop-fav-menu { position: fixed; z-index: 100020; background: var(--desktop-panel-background, color-mix(in srgb, var(--color-main-background, #fff) 86%, transparent)); border: 1px solid var(--desktop-panel-border, var(--color-border, #d0d0d0)); border-radius: 12px; box-shadow: 0 18px 60px rgba(0,0,0,.34); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); padding: var(--default-grid-baseline, 4px); min-width: 180px; color: var(--desktop-panel-text, var(--color-main-text, inherit)); }
+.desktop-fav-menu button { display: flex; align-items: center; width: 100%; min-height: var(--default-clickable-area, 34px); text-align: left; background: none; border: none; padding: 0 12px; border-radius: var(--border-radius-element, 8px); cursor: pointer; color: var(--desktop-panel-text, var(--color-main-text, inherit)); font-size: var(--default-font-size, 13px); }
 .desktop-fav-menu button:hover { background: var(--color-background-hover, #f3f4f6); }
 .desktop-fav-dialog-overlay { position: absolute; inset: 0; z-index: 1001; background: rgba(0, 0, 0, 0.35); display: flex; align-items: center; justify-content: center; }
 .desktop-fav-dialog { background: var(--color-main-background, #fff); color: var(--color-main-text, inherit); border-radius: var(--border-radius-container, 12px); padding: 20px; max-width: 380px; box-shadow: 0 12px 40px var(--color-box-shadow, rgba(0, 0, 0, 0.3)); }
@@ -804,4 +804,53 @@ body:has(#desktop-root) .header-menu__wrapper {
 }
 .desktop-fav[data-special="trash"] .desktop-fav-icon {
     background: color-mix(in srgb, var(--color-error, #e9322d) 14%, var(--color-main-background, #fff)) !important;
+}
+
+
+/* 0.13.1 apps-menu spacing and compact pinned taskbar apps */
+.desktop-pinned-apps {
+    align-self: center;
+    min-height: 34px !important;
+    gap: 4px;
+    padding: 0 1px;
+    scrollbar-width: none;
+}
+.desktop-pinned-apps::-webkit-scrollbar { display: none; }
+.desktop-pinned-app {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    background: transparent !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.desktop-pinned-app:hover,
+.desktop-pinned-app:focus-visible { background: var(--desktop-control-hover) !important; }
+.desktop-pinned-app .desktop-app-menu-icon {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 12px !important;
+}
+.desktop-pinned-app .desktop-app-menu-icon img { width: 20px !important; height: 20px !important; }
+.desktop-launcher {
+    gap: 8px !important;
+    overflow: hidden !important;
+}
+.desktop-start-menu .desktop-app-tile {
+    min-height: 68px !important;
+    padding: 8px 0 6px !important;
+}
+
+/* Keep all desktop right-click menus visibly glassy, including menus appended outside #desktop-root. */
+body:has(#desktop-root) .desktop-task-context-menu,
+body:has(#desktop-root) .desktop-fav-menu {
+    background: color-mix(in srgb, var(--color-main-background, #fff) 62%, transparent) !important;
+    border-color: color-mix(in srgb, var(--color-border, #d8dee9) 72%, transparent) !important;
+    box-shadow: 0 18px 60px rgba(0,0,0,.34) !important;
+    backdrop-filter: blur(18px) saturate(1.2) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(1.2) !important;
 }

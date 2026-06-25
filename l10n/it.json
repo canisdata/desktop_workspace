@@ -209,7 +209,13 @@
         "Clear the desktop debug log? This cannot be undone.": "Cancellare il registro di debug del desktop? Questa operazione non può essere annullata.",
         "Debug log cleared.": "Registro di debug cancellato.",
         "Open Desktop Workspace": "Apri Desktop Workspace",
-        "Desktop Workspace": "Desktop Workspace"
+        "Desktop Workspace": "Desktop Workspace",
+        "Add to taskbar": "Aggiungi alla barra delle applicazioni",
+        "Remove from taskbar": "Rimuovi dalla barra delle applicazioni",
+        "Add to desktop": "Aggiungi al desktop",
+        "Remove from desktop": "Rimuovi dal desktop",
+        "Pinned apps": "App aggiunte",
+        "Search": "Cerca"
     },
     "pluralForm": "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

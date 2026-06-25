@@ -210,7 +210,13 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "Ĉu forigi la labortablan sencimigan protokolon? Ĉi tio ne povas esti malfarita.",
     "Debug log cleared.": "Sencimiga protokolo forigita.",
     "Open Desktop Workspace": "Malfermu Desktop Workspace",
-    "Desktop Workspace": "Desktop Workspace"
+    "Desktop Workspace": "Desktop Workspace",
+    "Add to taskbar": "Add to taskbar",
+    "Remove from taskbar": "Remove from taskbar",
+    "Add to desktop": "Add to desktop",
+    "Remove from desktop": "Remove from desktop",
+    "Pinned apps": "Pinned apps",
+    "Search": "Search"
 },
     "nplurals=2; plural=(n != 1);"
 );

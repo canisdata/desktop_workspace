@@ -209,7 +209,13 @@
         "Clear the desktop debug log? This cannot be undone.": "Да се исчисти дневникот за отстранување грешки на работната површина? Ова не може да се врати.",
         "Debug log cleared.": "Дневникот за отстранување грешки е исчистен.",
         "Open Desktop Workspace": "Отвори Desktop Workspace",
-        "Desktop Workspace": "Desktop Workspace"
+        "Desktop Workspace": "Desktop Workspace",
+        "Add to taskbar": "Add to taskbar",
+        "Remove from taskbar": "Remove from taskbar",
+        "Add to desktop": "Add to desktop",
+        "Remove from desktop": "Remove from desktop",
+        "Pinned apps": "Pinned apps",
+        "Search": "Search"
     },
     "pluralForm": "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"
 }

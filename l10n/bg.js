@@ -210,7 +210,13 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "Изчистване на регистрационния файл за отстраняване на грешки на работния плот? Това не може да бъде отменено.",
     "Debug log cleared.": "Регистърът за отстраняване на грешки е изчистен.",
     "Open Desktop Workspace": "Отворете Desktop Workspace",
-    "Desktop Workspace": "Desktop Workspace"
+    "Desktop Workspace": "Desktop Workspace",
+    "Add to taskbar": "Add to taskbar",
+    "Remove from taskbar": "Remove from taskbar",
+    "Add to desktop": "Add to desktop",
+    "Remove from desktop": "Remove from desktop",
+    "Pinned apps": "Pinned apps",
+    "Search": "Search"
 },
     "nplurals=2; plural=(n != 1);"
 );
