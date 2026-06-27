@@ -7,7 +7,7 @@
     <description><![CDATA[Desktop Workspace adds a browser-contained workspace to Nextcloud with app windows, a taskbar, app pinning, desktop icons, saved window/app-menu/icon state, and optional desktop-folder/file-manager features.
 
 Admins can enable the app like any other Nextcloud app and configure the experimental file manager, multiple-window behavior, debug logging, and per-user resets from the Desktop Workspace admin settings. Users can adjust their own desktop icons, desktop folder, window state, and reset options from the Desktop personal settings.]]></description>
-    <version>0.13.1</version>
+    <version>0.13.2</version>
     <licence>AGPL-3.0-or-later</licence>
     <author homepage="https://canisdata.de/">canisdata</author>
     <namespace>DesktopWorkspace</namespace>

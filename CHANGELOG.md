@@ -3,6 +3,14 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.13.2 – 2026-06-26
+
+### Fixed
+- **Unified context menu hover styling.** Taskbar, Apps menu, desktop, and Desktop Files right-click menus now use the same translucent glass panel and the same native hover highlight.
+- **Opened file windows show file identity.** Files opened through Desktop Files now keep the open file name in the window title/taskbar and use the file mimetype icon for PDFs, images, text files, and office documents instead of the generic Files icon.
+- **Native Files window metadata follows navigation.** Embedded Nextcloud Files windows now show the current folder as the title and path as the subtitle, switch to the active file icon/title when a file viewer/editor opens inside the iframe, and restore the Files icon/folder title when the file closes.
+- **Faster window closing.** Iframe windows now keep the graceful viewer cleanup request but remove the desktop shell window with a much shorter delay.
+
 ## 0.13.1 – 2026-06-24
 
 ### Fixed

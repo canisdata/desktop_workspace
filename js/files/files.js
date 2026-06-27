@@ -354,7 +354,7 @@
         const directSupported = item.mime.startsWith('image/') || item.mime.startsWith('video/') || item.mime.startsWith('audio/') || item.mime === 'application/pdf';
         const query = new URLSearchParams({ fileId: item.fileId, name: item.name, mime: item.mime, filePath: item.path });
         const href = directSupported && item.fileId ? `/index.php/apps/desktop_workspace/files/viewer?${query.toString()}` : (item.fileId ? `/index.php/f/${encodeURIComponent(item.fileId)}` : davUrl(item.path));
-        postToDesktop({ type: 'nextcloud-desktop:open-file', appId: `file-${item.fileId || btoa(item.path).replace(/=+$/g, '')}`, title: item.name, subtitle: item.path, href, icon: FILES_ICON });
+        postToDesktop({ type: 'nextcloud-desktop:open-file', appId: `file-${item.fileId || btoa(item.path).replace(/=+$/g, '')}`, title: item.name, subtitle: item.path, href, icon: mimeIconUrl(item) || FILES_ICON });
     }
 
     function openDetailsWindow(item) {

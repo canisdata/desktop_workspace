@@ -8,7 +8,9 @@
     const fileId = root.dataset.fileId || '';
     const name = root.dataset.name || 'File';
     const path = root.dataset.path || '/';
+    const mime = root.dataset.mime || 'application/octet-stream';
     const appId = `file-${fileId || btoa(path).replace(/=+$/g, '')}`;
+    const mimeIcon = () => (window.OC?.MimeType?.getIconUrl ? OC.MimeType.getIconUrl(mime || 'application/octet-stream') : '');
 
     function post(message) {
         window.parent?.postMessage(message, window.location.origin);
@@ -134,6 +136,7 @@
         appId,
         title: name,
         subtitle: path,
+        icon: mimeIcon(),
     });
 
     function openNativeViewer() {

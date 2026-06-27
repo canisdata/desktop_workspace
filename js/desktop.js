@@ -253,30 +253,39 @@
     function saveState() {
         const registered = new Set(getApps().map((a) => a.id));
         const data = {
-            windows: Array.from(windows.values()).map(({ app, window: win }) => ({
-                appId: app.id,
-                sourceAppId: app.sourceAppId || app.id,
-                name: app.name || '',
-                icon: app.icon || '',
-                href: app.href || '',
-                desktopMode: app.desktopMode || '',
-                fileApp: !!app.fileApp,
-                multiInstance: !!app.multiInstance,
-                appWindow: registered.has(app.sourceAppId || app.id),
-                checkPath: targetPathFromHref(app.href || ''),
-                left: win.style.left,
-                top: win.style.top,
-                width: win.style.width,
-                height: win.style.height,
-                zIndex: win.style.zIndex,
-                hidden: win.classList.contains('is-minimized'),
-                minimized: win.classList.contains('is-minimized'),
-                restoreLeft: win.dataset.restoreLeft || '',
-                restoreTop: win.dataset.restoreTop || '',
-                restoreWidth: win.dataset.restoreWidth || '',
-                restoreHeight: win.dataset.restoreHeight || '',
-                maximized: win.classList.contains('is-maximized'),
-            })),
+            windows: Array.from(windows.values()).map(({ app, window: win }) => {
+                const nativeFilesWindow = /\/apps\/files(\/|$)/.test(String(app.href || '')) || app.id === 'files';
+                const folderMode = nativeFilesWindow && win.dataset.nativeFilesFileOpen !== 'true';
+                const savedApp = folderMode ? {
+                    ...app,
+                    icon: win.dataset.nativeFilesBaseIcon || app.icon || '',
+                    name: win.querySelector('[data-window-title]')?.textContent || app.name || 'Files',
+                } : app;
+                return {
+                    appId: savedApp.id,
+                    sourceAppId: savedApp.sourceAppId || savedApp.id,
+                    name: savedApp.name || '',
+                    icon: savedApp.icon || '',
+                    href: savedApp.href || '',
+                    desktopMode: savedApp.desktopMode || '',
+                    fileApp: !!savedApp.fileApp,
+                    multiInstance: !!savedApp.multiInstance,
+                    appWindow: registered.has(savedApp.sourceAppId || savedApp.id),
+                    checkPath: targetPathFromHref(savedApp.href || ''),
+                    left: win.style.left,
+                    top: win.style.top,
+                    width: win.style.width,
+                    height: win.style.height,
+                    zIndex: win.style.zIndex,
+                    hidden: win.classList.contains('is-minimized'),
+                    minimized: win.classList.contains('is-minimized'),
+                    restoreLeft: win.dataset.restoreLeft || '',
+                    restoreTop: win.dataset.restoreTop || '',
+                    restoreWidth: win.dataset.restoreWidth || '',
+                    restoreHeight: win.dataset.restoreHeight || '',
+                    maximized: win.classList.contains('is-maximized'),
+                };
+            }),
         };
         const url = root.dataset.windowSaveUrl;
         if (!url || !window.OC) return;
@@ -410,7 +419,7 @@
         const height = menu.offsetHeight || 90;
         menu.style.left = `${Math.max(8, Math.min(event.clientX, window.innerWidth - width - 8))}px`;
         menu.style.top = `${Math.max(8, Math.min(event.clientY, window.innerHeight - height - 8))}px`;
-        menu.querySelector('button')?.focus();
+        menu.querySelector('button')?.blur();
     }
     function renderPinnedApps() {
         if (!pinnedApps) return;
@@ -658,9 +667,20 @@
         saveState();
     }
 
+    function setWindowIcon(entry, icon) {
+        if (!entry || !icon) return;
+        entry.app.icon = String(icon);
+        const html = `<img alt="" draggable="false" src="${escapeHtml(entry.app.icon)}">`;
+        const windowIcon = entry.window.querySelector('.desktop-window-icon');
+        const taskIcon = entry.task.querySelector('.desktop-task-icon');
+        if (windowIcon) windowIcon.innerHTML = html;
+        if (taskIcon) taskIcon.innerHTML = html;
+    }
+
     function setWindowMeta(id, meta = {}) {
         const entry = windows.get(id);
         if (!entry) return;
+        if (meta.icon) setWindowIcon(entry, meta.icon);
         if (meta.title) {
             entry.app.name = String(meta.title);
             entry.window.querySelector('[data-window-title]').textContent = entry.app.name;
@@ -752,7 +772,7 @@
         menu.querySelector('[data-action="maximize"]').textContent = entry.window.classList.contains('is-maximized') ? t('Restore size') : t('Maximize');
         menu.querySelector('[data-action="taskbar-pin"]').textContent = isAppPinned(entry.app, 'taskbar') ? t('Remove from taskbar') : t('Add to taskbar');
         menu.querySelector('[data-action="desktop-pin"]').textContent = isAppPinned(entry.app, 'desktop') ? t('Remove from desktop') : t('Add to desktop');
-        menu.querySelector('button')?.focus();
+        menu.querySelector('button')?.blur();
     }
 
     function removeWindowEntry(id, reason = 'window_closed') {
@@ -793,13 +813,13 @@
         if (entry.window.dataset.desktopClosing === 'true') return;
         entry.window.dataset.desktopClosing = 'true';
         const graceful = prepareIframeForClose(entry);
-        window.setTimeout(() => removeWindowEntry(id, reason), graceful ? 500 : 0);
+        window.setTimeout(() => removeWindowEntry(id, reason), graceful ? 120 : 0);
     }
 
     function openExternalWindow({ appId, title, subtitle = '', href, icon = '' }) {
         const id = String(appId || href || title).replace(/[^a-z0-9_-]/gi, '_');
         openWindow({ id, name: title || 'Nextcloud', href, icon, desktopMode: 'iframe' });
-        setWindowMeta(id, { title: title || 'Nextcloud', subtitle });
+        setWindowMeta(id, { title: title || 'Nextcloud', subtitle, icon });
     }
 
     function openProperties(el) {
@@ -986,7 +1006,7 @@
         const task = document.createElement('button');
         task.type = 'button';
         task.className = `desktop-task-button${win.classList.contains('is-minimized') ? ' is-minimized' : ' is-active'}`;
-        task.innerHTML = `${app.icon ? `<img alt="" src="${escapeHtml(app.icon)}">` : ''}<span data-task-title>${escapeHtml(app.name)}</span>`;
+        task.innerHTML = `${app.icon ? `<span class="desktop-task-icon"><img alt="" src="${escapeHtml(app.icon)}"></span>` : '<span class="desktop-task-icon" aria-hidden="true"></span>'}<span data-task-title>${escapeHtml(app.name)}</span>`;
         task.title = app.name;
         task.setAttribute('aria-label', app.name);
         task.setAttribute('aria-pressed', win.classList.contains('is-minimized') ? 'false' : 'true');
@@ -1084,23 +1104,99 @@
             debugLog('iframe_app_loaded', { appId: app.id, appName: app.name, href: absoluteHref });
         });
         target.appendChild(iframe);
+        watchIframeFileViewer(iframe, app);
         debugLog('iframe_fallback_opened', { appId: app.id, appName: app.name, href: absoluteHref });
     }
 
+    function inferMimeFromName(name = '') {
+        const ext = String(name).split('.').pop().toLowerCase();
+        if (['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg', 'bmp', 'tif', 'tiff', 'heic', 'avif'].includes(ext)) return `image/${ext === 'jpg' ? 'jpeg' : ext}`;
+        if (ext === 'pdf') return 'application/pdf';
+        if (['txt', 'md', 'markdown', 'log', 'csv'].includes(ext)) return 'text/plain';
+        if (['odt', 'ott'].includes(ext)) return 'application/vnd.oasis.opendocument.text';
+        if (['ods', 'ots'].includes(ext)) return 'application/vnd.oasis.opendocument.spreadsheet';
+        if (['odp', 'otp'].includes(ext)) return 'application/vnd.oasis.opendocument.presentation';
+        if (['doc', 'docx'].includes(ext)) return 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+        if (['xls', 'xlsx'].includes(ext)) return 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+        if (['ppt', 'pptx'].includes(ext)) return 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
+        return 'application/octet-stream';
+    }
+
+    function iconForFileName(name = '') {
+        return window.OC?.MimeType?.getIconUrl ? OC.MimeType.getIconUrl(inferMimeFromName(name)) : '';
+    }
+
+    function readFilesFolder(doc, iframe) {
+        const fromUrl = () => {
+            try {
+                const url = new URL(iframe.contentWindow?.location?.href || iframe.src, window.location.origin);
+                const dir = url.searchParams.get('dir') || url.searchParams.get('path') || '';
+                if (dir) return dir.startsWith('/') ? dir : `/${dir}`;
+                if (url.hash) {
+                    const hashParams = new URLSearchParams(url.hash.replace(/^#/, '').replace(/^.*?\?/, ''));
+                    const hashDir = hashParams.get('dir') || hashParams.get('path');
+                    if (hashDir) return hashDir.startsWith('/') ? hashDir : `/${hashDir}`;
+                }
+            } catch (e) { /* ignore */ }
+            return '';
+        };
+        const path = fromUrl();
+        const pathLabel = path.split('/').filter(Boolean).pop();
+        const titleMatch = String(doc.title || '').match(/^(.+?)\s+-\s+(?:All files|Files)\b/i);
+        const label = pathLabel || titleMatch?.[1]?.trim() || 'Files';
+        return { label, path: path || (label === 'Files' ? '/' : `/${label}`) };
+    }
+
+    function readViewerFileName(doc, iframe) {
+        const title = (doc.title || '').replace(/\s[-–]\sNextcloud.*$/i, '').trim();
+        const titleLooksLikeFile = /\.[A-Za-z0-9]{1,8}(\s|$)/.test(title);
+        if (titleLooksLikeFile && title !== 'Files') return title;
+        const selectors = [
+            '.viewer__file-title', '.viewer__file-name', '.modal-header h2', '.modal-header__title',
+            '[data-cy-files-preview-title]', '.app-sidebar-header__figure + h2',
+            '[data-filename]', '[data-file-name]',
+        ];
+        let fallback = '';
+        for (const selector of selectors) {
+            const nodes = Array.from(doc.querySelectorAll(selector));
+            for (const node of nodes) {
+                // Ignore Files recommendation/list/sidebar names while a viewer is mounting; those can
+                // contain unrelated recent documents such as the Welcome .docx recommendation.
+                if (node.closest('.files-list__header-recommendations, .recommendation, .files-list__row, .files-list, #app-navigation')) continue;
+                const value = (node?.dataset?.filename || node?.dataset?.fileName || node?.getAttribute?.('title') || node?.textContent || '').trim();
+                if (!value) continue;
+                if (/\.[A-Za-z0-9]{1,8}(\s|$)/.test(value)) return value;
+                if (!fallback) fallback = value;
+            }
+        }
+        if (title && title !== 'Files' && !/\s+-\s+(?:All files|Files)\b/i.test(title)) return title;
+        if (fallback) return fallback;
+        try {
+            const url = new URL(iframe.contentWindow?.location?.href || iframe.src, window.location.origin);
+            const path = url.searchParams.get('filePath') || url.searchParams.get('dir') || url.pathname;
+            const leaf = decodeURIComponent(String(path).split('/').filter(Boolean).pop() || '');
+            return leaf.includes('.') ? leaf : '';
+        } catch (e) { return ''; }
+    }
+
     function watchIframeFileViewer(iframe, app) {
-        if (!String(app.id).startsWith('file-') && !String(app.id).startsWith('file_')) return;
+        const isFileWindow = String(app.id).startsWith('file-') || String(app.id).startsWith('file_');
+        const isNativeFilesWindow = /\/apps\/files(\/|$)/.test(String(app.href || '')) || app.id === 'files';
+        if (!isFileWindow && !isNativeFilesWindow) return;
+        if (iframe.dataset.desktopMetaWatch === 'true') return;
+        iframe.dataset.desktopMetaWatch = 'true';
+        const baseTitle = app.name || 'Files';
+        const baseIcon = app.icon || ((window.OC && OC.imagePath && OC.imagePath('core', 'places/files.svg')) || '');
+        iframe.closest('.desktop-window')?.setAttribute('data-native-files-base-icon', baseIcon);
         let interval = null;
+        let lastTitle = '';
         const closeFileWindow = () => {
+            if (!isFileWindow) return;
             closeWindow(app.id, 'file_window_closed_by_viewer');
             if (interval) clearInterval(interval);
         };
         try {
             const doc = iframe.contentDocument;
-            if (!doc) return;
-            doc.addEventListener('pointerdown', () => {
-                const entry = windows.get(app.id);
-                if (entry && !entry.window.classList.contains('is-minimized')) focusWindow(app.id);
-            }, true);
             const closeSelectors = [
                 '.viewer__close',
                 '.viewer-close',
@@ -1110,17 +1206,49 @@
                 '[data-cy-files-preview-close]',
                 '.icon-close',
             ].join(',');
-            doc.addEventListener('click', (event) => {
-                if (event.target.closest(closeSelectors)) {
-                    setTimeout(closeFileWindow, 100);
-                }
-            }, true);
+            if (doc) {
+                doc.addEventListener('pointerdown', () => {
+                    const entry = windows.get(app.id);
+                    if (entry && !entry.window.classList.contains('is-minimized')) focusWindow(app.id);
+                }, true);
+                doc.addEventListener('click', (event) => {
+                    if (event.target.closest(closeSelectors)) {
+                        setTimeout(closeFileWindow, 100);
+                    }
+                }, true);
+            }
             interval = setInterval(() => {
                 try {
+                    const currentDoc = iframe.contentDocument;
+                    if (!currentDoc) return;
                     const url = iframe.contentWindow?.location?.href || '';
-                    const hasViewer = Boolean(doc.querySelector('.viewer, #viewer, [class*="viewer"], [id*="viewer"], .modal-container'));
-                    const hasClose = Boolean(doc.querySelector(closeSelectors));
-                    if (!url.includes('/index.php/f/') && !hasViewer && !hasClose) closeFileWindow();
+                    const hasViewer = Boolean(currentDoc.querySelector('#viewer, .viewer__file, .modal-container, .modal-mask, [data-cy-files-preview-close]'));
+                    const hasOfficeFrame = Boolean(currentDoc.querySelector('iframe[src*="richdocuments"], iframe[src*="onlyoffice"], iframe[id*="richdocuments"], iframe[name*="richdocuments"], #richdocumentsframe'));
+                    const hasClose = Boolean(currentDoc.querySelector(closeSelectors));
+                    const hasViewerClose = Boolean(currentDoc.querySelector('.viewer__close, .viewer-close, .modal-header__close, [data-cy-files-preview-close]'));
+                    const viewerTitle = readViewerFileName(currentDoc, iframe);
+                    const looksLikeFileTitle = /\.[A-Za-z0-9]{1,8}(\s|$)/.test(viewerTitle);
+                    const fileRoute = url.includes('/index.php/f/') || /\/apps\/(richdocuments|onlyoffice|text)\b/.test(url);
+                    const nativeFilesFileOpen = isNativeFilesWindow && (hasViewerClose || hasViewer || hasOfficeFrame) && looksLikeFileTitle;
+                    if (isFileWindow || fileRoute || nativeFilesFileOpen) {
+                        const title = viewerTitle;
+                        if (title && title !== lastTitle) {
+                            lastTitle = title;
+                            iframe.closest('.desktop-window')?.setAttribute('data-native-files-file-open', 'true');
+                            setWindowMeta(app.id, { title, icon: iconForFileName(title) });
+                        }
+                    } else if (isNativeFilesWindow) {
+                        const folder = readFilesFolder(currentDoc, iframe);
+                        const title = folder.label || baseTitle;
+                        const subtitle = folder.path || '';
+                        const key = `${title}\n${subtitle}`;
+                        if (key !== lastTitle) {
+                            lastTitle = key;
+                            iframe.closest('.desktop-window')?.setAttribute('data-native-files-file-open', 'false');
+                            setWindowMeta(app.id, { title, subtitle, icon: baseIcon });
+                        }
+                    }
+                    if (isFileWindow && !url.includes('/index.php/f/') && !hasViewer && !hasClose) closeFileWindow();
                 } catch {
                     clearInterval(interval);
                 }

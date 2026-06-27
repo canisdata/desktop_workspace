@@ -212,9 +212,17 @@ body {
 body:has(.desktop-files-root) .desktop-files-context-menu {
     background: color-mix(in srgb, var(--color-main-background, #fff) 62%, transparent) !important;
     border-color: color-mix(in srgb, var(--color-border, #d8dee9) 72%, transparent) !important;
+    color: var(--color-main-text, #111827) !important;
     box-shadow: 0 18px 60px rgba(0,0,0,.34) !important;
     backdrop-filter: blur(18px) saturate(1.2) !important;
     -webkit-backdrop-filter: blur(18px) saturate(1.2) !important;
+}
+body:has(.desktop-files-root) .desktop-files-context-menu button {
+    color: var(--color-main-text, #111827) !important;
+}
+body:has(.desktop-files-root) .desktop-files-context-menu button:hover,
+body:has(.desktop-files-root) .desktop-files-context-menu button:focus-visible {
+    background: var(--color-background-hover, rgba(127,127,127,.15)) !important;
 }
 
 /* --- Toolbar (v0.2.3): grid mirrors main columns so labels align with their columns --- */
