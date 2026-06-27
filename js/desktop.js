@@ -500,8 +500,11 @@
         const columns = Math.max(minColumns, Math.floor((Math.max(minWidth, width) - 16 + columnGap) / columnPitch));
         const rows = Math.max(1, Math.ceil(appCount / columns));
         const headerHeight = startMenu?.querySelector('.desktop-start-header')?.offsetHeight || 58;
-        const rowPitch = 76;
-        const minHeight = headerHeight + 20 + rows * rowPitch;
+        const minVisibleRows = Math.min(3, rows);
+        const tileHeight = 68;
+        const rowGap = 8;
+        const launcherPadding = 16;
+        const minHeight = headerHeight + launcherPadding * 2 + minVisibleRows * tileHeight + Math.max(0, minVisibleRows - 1) * rowGap + 12;
         return { appCount, minColumns, minWidth, columns, rows, minHeight };
     }
     function clampAppsMenuSize(width, height) {

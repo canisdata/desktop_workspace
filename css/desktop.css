@@ -770,7 +770,7 @@ body:has(#desktop-root) .header-menu__wrapper {
 /* Apps menu sizing and taskbar unified-search hiding */
 .desktop-start-menu {
     min-width: 292px;
-    min-height: 260px;
+    min-height: 322px;
     max-width: calc(100vw - 28px);
     max-height: calc(100vh - 110px);
     resize: both;
