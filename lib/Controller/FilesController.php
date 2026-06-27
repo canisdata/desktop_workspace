@@ -6,6 +6,7 @@ namespace OCA\DesktopWorkspace\Controller;
 
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCA\Viewer\Event\LoadViewer;
@@ -29,17 +30,24 @@ class FilesController extends Controller {
         parent::__construct($appName, $request);
     }
 
+    private function allowSelfFraming(TemplateResponse $response): TemplateResponse {
+        $csp = new ContentSecurityPolicy();
+        $csp->addAllowedFrameDomain("'self'");
+        $response->setContentSecurityPolicy($csp);
+        return $response;
+    }
+
     #[NoAdminRequired]
     #[NoCSRFRequired]
     public function index(): TemplateResponse {
         $isDesktopLaunch = $this->request->getParam('desktop') === '1';
         $user = $this->userSession->getUser();
 
-        return new TemplateResponse('desktop_workspace', 'files/main', [
+        return $this->allowSelfFraming(new TemplateResponse('desktop_workspace', 'files/main', [
             'isDesktopLaunch' => $isDesktopLaunch,
             'userId' => $user?->getUID() ?? '',
             'desktopUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.page.index'),
-        ]);
+        ]));
     }
 
     #[NoAdminRequired]
@@ -52,19 +60,19 @@ class FilesController extends Controller {
 
         $this->eventDispatcher->dispatchTyped(new LoadViewer());
 
-        return new TemplateResponse('desktop_workspace', 'files/viewer', [
+        return $this->allowSelfFraming(new TemplateResponse('desktop_workspace', 'files/viewer', [
             'fileId' => $fileId,
             'name' => $name,
             'mime' => $mime,
             'path' => $path,
             'userId' => $this->userSession->getUser()?->getUID() ?? '',
-        ]);
+        ]));
     }
 
     #[NoAdminRequired]
     #[NoCSRFRequired]
     public function details(): TemplateResponse {
-        return new TemplateResponse('desktop_workspace', 'files/details', [
+        return $this->allowSelfFraming(new TemplateResponse('desktop_workspace', 'files/details', [
             'userId' => $this->userSession->getUser()?->getUID() ?? '',
             'filePath' => (string)$this->request->getParam('filePath', '/'),
             'name' => (string)$this->request->getParam('name', 'Details'),
@@ -73,6 +81,6 @@ class FilesController extends Controller {
             'size' => (string)$this->request->getParam('size', ''),
             'mime' => (string)$this->request->getParam('mime', ''),
             'modified' => (string)$this->request->getParam('modified', ''),
-        ]);
+        ]));
     }
 }

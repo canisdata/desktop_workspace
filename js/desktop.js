@@ -724,8 +724,6 @@
         menu.innerHTML = `
             <button type="button" role="menuitem" data-action="minimize">${escapeHtml(t('Minimize'))}</button>
             <button type="button" role="menuitem" data-action="maximize">${escapeHtml(t('Maximize'))}</button>
-            <button type="button" role="menuitem" data-action="taskbar-pin"></button>
-            <button type="button" role="menuitem" data-action="desktop-pin"></button>
             <button type="button" role="menuitem" data-action="close">${escapeHtml(t('Close'))}</button>`;
         document.body.appendChild(menu);
         menu.addEventListener('click', (event) => {
@@ -742,8 +740,6 @@
                 focusWindow(id);
                 saveState();
             }
-            if (action === 'taskbar-pin') setAppPinned(entry.app, 'taskbar', !isAppPinned(entry.app, 'taskbar'));
-            if (action === 'desktop-pin') setAppPinned(entry.app, 'desktop', !isAppPinned(entry.app, 'desktop'));
             if (action === 'close') closeWindow(id);
             closeTaskContextMenu();
         });
@@ -773,8 +769,6 @@
         menu.style.top = `${Math.max(8, y)}px`;
         menu.querySelector('[data-action="minimize"]').textContent = entry.window.classList.contains('is-minimized') ? t('Restore') : t('Minimize');
         menu.querySelector('[data-action="maximize"]').textContent = entry.window.classList.contains('is-maximized') ? t('Restore size') : t('Maximize');
-        menu.querySelector('[data-action="taskbar-pin"]').textContent = isAppPinned(entry.app, 'taskbar') ? t('Remove from taskbar') : t('Add to taskbar');
-        menu.querySelector('[data-action="desktop-pin"]').textContent = isAppPinned(entry.app, 'desktop') ? t('Remove from desktop') : t('Add to desktop');
         menu.querySelector('button')?.blur();
     }
 
@@ -1125,8 +1119,44 @@
         return 'application/octet-stream';
     }
 
+    function iconForMime(mime = '') {
+        return window.OC?.MimeType?.getIconUrl ? OC.MimeType.getIconUrl(mime || 'application/octet-stream') : '';
+    }
+
     function iconForFileName(name = '') {
-        return window.OC?.MimeType?.getIconUrl ? OC.MimeType.getIconUrl(inferMimeFromName(name)) : '';
+        return iconForMime(inferMimeFromName(name));
+    }
+
+    function readViewerFileMime(doc, title = '') {
+        const selectors = [
+            '[data-mime]', '[data-mimetype]', '[data-file-mimetype]', '[data-contenttype]',
+            '.viewer__file [data-mime]', '.viewer__file [data-mimetype]',
+            '.modal-container [data-mime]', '.modal-container [data-mimetype]'
+        ];
+        for (const selector of selectors) {
+            for (const node of Array.from(doc.querySelectorAll(selector))) {
+                if (node.closest('.files-list__header-recommendations, .recommendation, .files-list__row, .files-list, #app-navigation')) continue;
+                const mime = node.dataset?.mime || node.dataset?.mimetype || node.dataset?.fileMimetype || node.dataset?.contenttype || '';
+                if (mime && mime.includes('/')) return mime;
+            }
+        }
+        return inferMimeFromName(title);
+    }
+
+    function readViewerFileIcon(doc, title = '') {
+        const iconSelectors = [
+            '.viewer__file-title img[src]', '.viewer__file-name img[src]', '.modal-header img[src]',
+            '[data-cy-files-preview-title] img[src]', '.app-sidebar-header img[src]',
+            'img[src*="/core/img/filetypes/"]', 'img[src*="/apps/files/img/filetypes/"]'
+        ];
+        for (const selector of iconSelectors) {
+            for (const img of Array.from(doc.querySelectorAll(selector))) {
+                if (img.closest('.files-list__header-recommendations, .recommendation, .files-list__row, .files-list, #app-navigation')) continue;
+                const src = img.getAttribute('src') || '';
+                if (src && !/filetypes\/file(?:\.|$)/.test(src)) return new URL(src, window.location.origin).toString();
+            }
+        }
+        return iconForMime(readViewerFileMime(doc, title));
     }
 
     function readFilesFolder(doc, iframe) {
@@ -1193,6 +1223,7 @@
         iframe.closest('.desktop-window')?.setAttribute('data-native-files-base-icon', baseIcon);
         let interval = null;
         let lastTitle = '';
+        let lastIcon = '';
         const closeFileWindow = () => {
             if (!isFileWindow) return;
             closeWindow(app.id, 'file_window_closed_by_viewer');
@@ -1235,10 +1266,14 @@
                     const nativeFilesFileOpen = isNativeFilesWindow && (hasViewerClose || hasViewer || hasOfficeFrame) && looksLikeFileTitle;
                     if (isFileWindow || fileRoute || nativeFilesFileOpen) {
                         const title = viewerTitle;
-                        if (title && title !== lastTitle) {
-                            lastTitle = title;
-                            iframe.closest('.desktop-window')?.setAttribute('data-native-files-file-open', 'true');
-                            setWindowMeta(app.id, { title, icon: iconForFileName(title) });
+                        if (title) {
+                            const icon = readViewerFileIcon(currentDoc, title) || iconForFileName(title);
+                            if (title !== lastTitle || icon !== lastIcon) {
+                                lastTitle = title;
+                                lastIcon = icon;
+                                iframe.closest('.desktop-window')?.setAttribute('data-native-files-file-open', 'true');
+                                setWindowMeta(app.id, { title, icon });
+                            }
                         }
                     } else if (isNativeFilesWindow) {
                         const folder = readFilesFolder(currentDoc, iframe);

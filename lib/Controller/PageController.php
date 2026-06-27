@@ -3,6 +3,7 @@ namespace OCA\DesktopWorkspace\Controller;
 
 use OCA\DesktopWorkspace\Service\FilesAvailability;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
 use OCP\INavigationManager;
@@ -61,7 +62,7 @@ class PageController extends Controller {
             }
         }
 
-        return new TemplateResponse('desktop_workspace', 'main', [
+        $response = new TemplateResponse('desktop_workspace', 'main', [
             'apps' => $apps,
             'firstVisit' => $firstVisit,
             'heartbeatUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.heartbeat'),
@@ -82,5 +83,9 @@ class PageController extends Controller {
             'debugUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.debug'),
             'debugLogPath' => $dataDir . '/' . SettingsController::LOG_FILE,
         ]);
+        $csp = new ContentSecurityPolicy();
+        $csp->addAllowedFrameDomain("'self'");
+        $response->setContentSecurityPolicy($csp);
+        return $response;
     }
 }

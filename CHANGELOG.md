@@ -3,6 +3,13 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.13.3 – 2026-06-27
+
+### Fixed
+- **NC 34 app windows can frame same-origin content again.** Desktop Workspace and Desktop Files routes now set an explicit CSP allowing same-origin iframe windows.
+- **Open-window task menus only show window actions.** Removed non-functional add/remove taskbar and desktop pin actions from taskbar buttons for already-open windows.
+- **Native Files file windows use mimetype icons.** Embedded Files windows now prefer the actual file/viewer mimetype icon, then mimetype metadata, then filename fallback when updating titlebar and taskbar icons.
+
 ## 0.13.2 – 2026-06-26
 
 ### Fixed
