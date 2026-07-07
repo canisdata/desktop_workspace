@@ -3,6 +3,16 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.14.2 – 2026-07-07
+
+### Fixed
+- **Native Files iframe navigation behaves like desktop windows.** File rows open their viewer/editor in a separate Desktop Workspace iframe, middle-click/Ctrl-click on folders opens another Files iframe window instead of a browser tab, and Office documents keep the native Files open-file route so editors retain their normal save/collaboration behavior.
+- **Header menu native overlays stay native.** The account menu “About & What's new” entry is bound like the native status/QR controls and is no longer intercepted into a desktop iframe window, so Nextcloud can open its intended overlay.
+- **Desktop icon highlighting is always visible.** Desktop icons now keep a very low-opacity highlight at rest, increase that highlight on hover/focus, and keep the existing selected-item highlight unchanged.
+- **Desktop icon layout spacing avoids two-line overlap.** The desktop icon grid now uses a slightly taller cell so labels that wrap to two lines do not collide with icons below.
+- **Transient button highlights clear after actions.** Fullscreen, titlebar window controls, and open-window task buttons blur after their click handling so they do not keep a pressed/focused-looking highlight after the action finishes.
+- **Mobile taskbar controls are easier to reach.** Only when Desktop Workspace detects a mobile browser, the fullscreen button swaps places with the “Open Nextcloud Files in a new tab” button.
+
 ## 0.14.1 – 2026-07-07
 
 ### Fixed

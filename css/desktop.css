@@ -602,6 +602,14 @@ body:has(#desktop-root) .header-menu__wrapper {
     background: var(--desktop-control-hover);
 }
 
+#desktop-root.desktop-mobile-browser .taskbar-fullscreen {
+    order: 20;
+}
+
+#desktop-root.desktop-mobile-browser .desktop-nextcloud-logo {
+    order: -20;
+}
+
 .desktop-nextcloud-logo .logo,
 .desktop-nextcloud-logo .logo-icon {
     width: 28px !important;
@@ -675,8 +683,8 @@ body:has(#desktop-root) .header-menu__wrapper {
 
 /* Desktop favorites (v0.4.0) */
 .desktop-favorites { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-.desktop-fav { position: absolute; width: 112px; display: flex; flex-direction: column; align-items: center; gap: var(--default-grid-baseline, 4px); padding: 6px 4px; border-radius: var(--border-radius-element, 8px); cursor: default; pointer-events: auto; user-select: none; text-align: center; }
-.desktop-fav:hover, .desktop-fav:focus-visible { background: var(--color-background-hover, rgba(127, 127, 127, 0.18)); outline: none; }
+.desktop-fav { position: absolute; width: 112px; display: flex; flex-direction: column; align-items: center; gap: var(--default-grid-baseline, 4px); padding: 6px 4px; border-radius: var(--border-radius-element, 8px); cursor: default; pointer-events: auto; user-select: none; text-align: center; background: color-mix(in srgb, var(--color-background-hover, rgba(127, 127, 127, 0.18)) 24%, transparent); }
+.desktop-fav:hover, .desktop-fav:focus-visible { background: color-mix(in srgb, var(--color-background-hover, rgba(127, 127, 127, 0.18)) 72%, transparent); outline: none; }
 .desktop-fav.is-dragging { opacity: 0.85; z-index: 10; }
 .desktop-fav-icon { position: relative; display: inline-block; }
 .desktop-fav-icon img, .desktop-fav-icon svg { width: 48px; height: 48px; object-fit: contain; pointer-events: none; -webkit-user-drag: none; user-select: none; }

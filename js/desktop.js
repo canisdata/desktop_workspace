@@ -658,9 +658,19 @@
     function openStartMenu() { ensureAppsMenuResizeHandles(); applyAppsMenuSize(); startMenu.hidden = false; startButton.setAttribute('aria-expanded', 'true'); alignAppsMenuIcons(); search?.focus(); }
     function closeStartMenu() { startMenu.hidden = true; startButton.setAttribute('aria-expanded', 'false'); }
     function toggleStartMenu() { startMenu.hidden ? openStartMenu() : closeStartMenu(); }
+    function clearTransientButtonHighlight(button) { setTimeout(() => button?.blur?.(), 0); }
 
     const fullscreenButton = document.getElementById('desktop-fullscreen');
-    fullscreenButton?.addEventListener('click', () => {
+    function detectMobileBrowserTaskbar() {
+        const ua = navigator.userAgent || '';
+        const mobileUa = /Android|iPhone|iPad|iPod|Windows Phone|Mobile/i.test(ua);
+        const coarseSmall = window.matchMedia?.('(pointer: coarse)')?.matches && window.matchMedia?.('(max-width: 900px)')?.matches;
+        root.classList.toggle('desktop-mobile-browser', Boolean(mobileUa || coarseSmall));
+    }
+    detectMobileBrowserTaskbar();
+    window.addEventListener('resize', detectMobileBrowserTaskbar);
+    fullscreenButton?.addEventListener('click', (event) => {
+        clearTransientButtonHighlight(event.currentTarget);
         if (document.fullscreenElement) {
             (document.exitFullscreen && document.exitFullscreen()) || (document.webkitExitFullscreen && document.webkitExitFullscreen());
         } else {
@@ -895,6 +905,171 @@
         setWindowMeta(id, { title: title || 'Nextcloud', subtitle, icon });
     }
 
+    // Official Nextcloud Files translations for the row action labelled "View" (NC34).
+    // Used only to recognise the native Files row-name View button; folders and downloads are left alone.
+    const NATIVE_FILES_VIEW_LABELS = new Set([
+        'amharc', 'angalia', 'ansehen', 'ansicht', 'bekijken', 'görüntüle', 'harah', 'ikusi',
+        'nézet', 'näytä', 'podgląd', 'pogled', 'pogledaj', 'pregledaj', 'προβολή', 'режим просмотра',
+        'rodyti', 'skoa', 'skoða', 'tampilan', 'ver', 'view', 'vis', 'visa', 'vista',
+        'visualizza', 'visualització', 'visualização', 'voir', 'vaata', 'xem', 'zobrazit',
+        'zobraziť', 'выгляд', 'изглед', 'подання', 'поглед', 'погледај', 'харах',
+        'عرض', 'نمایش', 'كۆرۈنۈش', 'ເບິ່ງ', '보기', '表示', '查看', '檢視'
+    ].map((label) => String(label).toLocaleLowerCase()));
+
+    function normaliseActionLabel(value = '') {
+        return String(value || '').trim().replace(/\s+/g, ' ').toLocaleLowerCase();
+    }
+
+    function isDownloadLikeLink(anchor) {
+        if (!anchor) return false;
+        const href = anchor.getAttribute('href') || '';
+        return anchor.hasAttribute('download') || /(?:^|[/?&])download(?:[=/?&]|$)|[?&]download(?:=1|=true)?(?:&|$)/i.test(href);
+    }
+
+    function sameOriginHref(href) {
+        try {
+            const url = new URL(href, window.location.origin);
+            if (url.origin !== window.location.origin) return '';
+            return url.toString();
+        } catch (e) { return ''; }
+    }
+
+    function titleFromIframeLink(anchor, href) {
+        const text = anchor?.textContent?.trim() || anchor?.getAttribute?.('title') || anchor?.getAttribute?.('aria-label') || '';
+        if (text) return text.replace(/\s+/g, ' ');
+        try { return decodeURIComponent(new URL(href, window.location.origin).pathname.split('/').filter(Boolean).pop() || 'Nextcloud'); } catch (e) { return 'Nextcloud'; }
+    }
+
+    function isNewWindowGesture(event) {
+        return event && (event.button === 1 || event.ctrlKey || event.metaKey);
+    }
+
+    function rowFileId(row) {
+        return row?.dataset?.fileid || row?.dataset?.fileId || row?.dataset?.cyFilesListRowFileid || row?.getAttribute?.('data-fileid') || row?.getAttribute?.('data-id') || row?.getAttribute?.('data-cy-files-list-row-fileid') || '';
+    }
+
+    function rowName(row, button = null) {
+        const nameNode = row?.querySelector?.('.files-list__row-name-text, .files-list__row-name-link, [data-cy-files-list-row-name]');
+        return (row?.getAttribute?.('data-cy-files-list-row-name') || nameNode?.textContent || button?.textContent || button?.getAttribute?.('title') || '').trim().replace(/\s+/g, ' ');
+    }
+
+    function currentFilesDir(doc) {
+        try {
+            const url = new URL(doc.defaultView?.location?.href || '', window.location.origin);
+            const dir = url.searchParams.get('dir') || url.searchParams.get('path') || '';
+            return dir ? (dir.startsWith('/') ? dir : `/${dir}`) : '/';
+        } catch (e) { return '/'; }
+    }
+
+    function joinFilesPath(dir, name) {
+        const base = String(dir || '/').replace(/\/+$/, '');
+        const leaf = String(name || '').replace(/^\/+/, '');
+        return `${base || ''}/${leaf}` || '/';
+    }
+
+    function filesOpenFileHref(fileId, doc, editing = false) {
+        const url = new URL(`/index.php/apps/files/files/${encodeURIComponent(fileId)}`, window.location.origin);
+        url.searchParams.set('dir', currentFilesDir(doc));
+        url.searchParams.set('openfile', 'true');
+        if (editing) url.searchParams.set('editing', 'true');
+        return url.toString();
+    }
+
+    function filesFolderHref(name, doc) {
+        const url = new URL('/index.php/apps/files/files', window.location.origin);
+        url.searchParams.set('dir', joinFilesPath(currentFilesDir(doc), name));
+        return url.toString();
+    }
+
+    function isOfficeFileName(name = '') {
+        return ['odt', 'ott', 'ods', 'ots', 'odp', 'otp', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'rtf'].includes(fileExtension(name));
+    }
+
+    function openIframeHrefInDesktopWindow(href, title = '', sourceApp = null) {
+        const absolute = sameOriginHref(href);
+        if (!absolute) return false;
+        let hash = '';
+        try { hash = btoa(unescape(encodeURIComponent(absolute))).replace(/=+$/g, '').slice(0, 48); } catch (e) { hash = String(Date.now()); }
+        openWindow({
+            id: uniqueWindowId(`iframe-link-${hash}`),
+            name: title || 'Nextcloud',
+            href: absolute,
+            icon: sourceApp?.icon || '',
+            desktopMode: 'iframe',
+        });
+        debugLog('iframe_new_tab_intercepted', { href: absolute, title: title || '', sourceAppId: sourceApp?.id || '' });
+        return true;
+    }
+
+    function openNativeFilesViewerWindow(row, button, sourceApp = null) {
+        if (!row || !button) return false;
+        const fileId = rowFileId(row);
+        if (!fileId) return false;
+        const name = rowName(row, button) || t('File');
+        const icon = iconForFileName(name) || sourceApp?.icon || '';
+        const id = `file-${String(fileId).replace(/[^a-z0-9_-]/gi, '_')}`;
+        const href = isOfficeFileName(name) ? filesOpenFileHref(fileId, row.ownerDocument, true) : `/index.php/f/${encodeURIComponent(fileId)}`;
+        openWindow({ id, name, href, icon, desktopMode: 'iframe' });
+        setWindowMeta(id, { title: name, icon });
+        debugLog('native_files_view_opened_separate_window', { fileId, name, sourceAppId: sourceApp?.id || '' });
+        return true;
+    }
+
+    function openNativeFilesFolderWindow(row, button, sourceApp = null) {
+        const name = rowName(row, button);
+        if (!name) return false;
+        const href = filesFolderHref(name, row.ownerDocument);
+        const id = uniqueWindowId(`files-${name.replace(/[^a-z0-9_-]/gi, '_')}`);
+        const icon = sourceApp?.icon || ((window.OC && OC.imagePath && OC.imagePath('core', 'places/files.svg')) || '');
+        openWindow({ id, name, href, icon, desktopMode: 'iframe' });
+        setWindowMeta(id, { title: name, subtitle: new URL(href).searchParams.get('dir') || '', icon });
+        debugLog('native_files_folder_opened_separate_window', { name, href, sourceAppId: sourceApp?.id || '' });
+        return true;
+    }
+
+    function wireIframeNavigationInterception(doc, app) {
+        if (!doc || doc.__desktopNavigationIntercept === true) return;
+        doc.__desktopNavigationIntercept = true;
+        if (doc.documentElement?.dataset) doc.documentElement.dataset.desktopNavigationIntercept = 'true';
+        const shouldOpenNewDesktopWindow = (event, anchor) => {
+            if (!anchor || isDownloadLikeLink(anchor)) return false;
+            return event.button === 1 || event.ctrlKey || event.metaKey || anchor.target === '_blank';
+        };
+        const onActivate = (event) => {
+            const button = event.target?.closest?.('.files-list__row-name-link');
+            if (button) {
+                const label = normaliseActionLabel(button.getAttribute('title') || button.getAttribute('aria-label') || '');
+                const row = button.closest('.files-list__row');
+                const isFolderRow = row?.classList.contains('files-list__row--folder') || /^open folder\b/i.test(button.getAttribute('title') || button.getAttribute('aria-label') || '');
+                if (isFolderRow && isNewWindowGesture(event)) {
+                    if (openNativeFilesFolderWindow(row, button, app)) {
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                        return;
+                    }
+                }
+                if (NATIVE_FILES_VIEW_LABELS.has(label) && row && !row.classList.contains('files-list__row--folder')) {
+                    if (openNativeFilesViewerWindow(row, button, app)) {
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                        return;
+                    }
+                }
+            }
+            const anchor = event.target?.closest?.('a[href]');
+            if (anchor && shouldOpenNewDesktopWindow(event, anchor)) {
+                const href = anchor.getAttribute('href');
+                const absolute = sameOriginHref(href);
+                if (absolute && openIframeHrefInDesktopWindow(absolute, titleFromIframeLink(anchor, absolute), app)) {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                }
+            }
+        };
+        doc.addEventListener('click', onActivate, true);
+        doc.addEventListener('auxclick', onActivate, true);
+    }
+
     function openProperties(el) {
         if (!el || !el.dataset || !el.dataset.path) return;
         const path = '/' + String(el.dataset.path).replace(/^\/+/, '');
@@ -965,6 +1140,14 @@
         return Boolean(link.closest('[id*="unified-search"], [class*="unified-search"], [class*="search-result"], [class*="search__result"]'));
     }
 
+    function isNativeHeaderOverlayLink(link) {
+        if (!link) return false;
+        if (link.id === 'firstrunwizard_about' || link.closest('#firstrunwizard_about')) return true;
+        const rawHref = link.getAttribute('href');
+        const text = (link.textContent || '').trim().replace(/\s+/g, ' ');
+        return rawHref === '' && /About\s*&\s*What/i.test(text);
+    }
+
     function isNotificationPopoverInteraction(event, link) {
         const notificationRoot = link.closest('#notifications, [id*="notification"], [class*="notification"]');
         if (!notificationRoot) return false;
@@ -984,6 +1167,7 @@
         const link = event.target.closest?.('a[href]');
         if (!link) return;
         if (link.closest('#user_status_menu_item, .user-status-menu-item, [data-id="user_status"]')) return; // native status modal
+        if (isNativeHeaderOverlayLink(link)) return; // native About/What's New modal
         const inMovedHeaderMenu = Boolean(headerEndSlot?.contains(link));
         const inSearchResult = isUnifiedSearchResultLink(link);
         if (!inMovedHeaderMenu && !inSearchResult) return;
@@ -1083,7 +1267,8 @@
         task.title = app.name;
         task.setAttribute('aria-label', app.name);
         task.setAttribute('aria-pressed', win.classList.contains('is-minimized') ? 'false' : 'true');
-        task.addEventListener('click', () => {
+        task.addEventListener('click', (event) => {
+            clearTransientButtonHighlight(event.currentTarget);
             const isFocused = win.classList.contains('is-focused') && !win.classList.contains('is-minimized');
             if (isFocused) {
                 minimizeWindow(app.id);
@@ -1162,6 +1347,7 @@
         iframe.title = app.name;
         iframe.src = absoluteHref;
         iframe.loading = 'eager';
+        iframe.dataset.desktopCreatedAt = String(Date.now());
         const focusFromIntentionalPointer = () => {
             const entry = windows.get(app.id);
             if (!entry || entry.window.classList.contains('is-minimized')) return;
@@ -1172,12 +1358,14 @@
         // focus/focusin without the user clicking the window and used to raise it accidentally.
         iframe.addEventListener('pointerdown', focusFromIntentionalPointer);
         iframe.addEventListener('load', () => {
+            iframe.dataset.desktopLoadedAt = String(Date.now());
             refreshThemingIframeMonitor(iframe);
             hideIframeChrome(iframe, app);
             watchIframeFileViewer(iframe, app);
             debugLog('iframe_app_loaded', { appId: app.id, appName: app.name, href: absoluteHref });
         });
         target.appendChild(iframe);
+        primeIframeChromeHiding(iframe, app);
         refreshThemingIframeMonitor(iframe);
         watchIframeFileViewer(iframe, app);
         debugLog('iframe_fallback_opened', { appId: app.id, appName: app.name, href: absoluteHref });
@@ -1372,6 +1560,7 @@
                 '.icon-close',
             ].join(',');
             if (doc) {
+                wireIframeNavigationInterception(doc, app);
                 doc.addEventListener('pointerdown', () => {
                     const entry = windows.get(app.id);
                     if (entry && !entry.window.classList.contains('is-minimized')) focusWindow(app.id);
@@ -1417,7 +1606,10 @@
                             setWindowMeta(app.id, { title, subtitle, icon: baseIcon });
                         }
                     }
-                    if (isFileWindow && !url.includes('/index.php/f/') && !hasViewer && !hasClose) closeFileWindow();
+                    const createdAt = Number(iframe.dataset.desktopCreatedAt || 0);
+                    const loadedAt = Number(iframe.dataset.desktopLoadedAt || 0);
+                    const fileWindowReadyForAutoClose = Boolean(loadedAt) && Date.now() - Math.max(createdAt, loadedAt) > 15000;
+                    if (isFileWindow && fileWindowReadyForAutoClose && !url.includes('/index.php/f/') && !hasViewer && !hasClose) closeFileWindow();
                 } catch {
                     clearInterval(interval);
                 }
@@ -1427,16 +1619,41 @@
         }
     }
 
+    function primeIframeChromeHiding(iframe, app) {
+        let attempts = 0;
+        const timer = setInterval(() => {
+            attempts += 1;
+            try {
+                hideIframeChrome(iframe, app);
+                if (iframe.contentDocument?.body || attempts > 80) clearInterval(timer);
+            } catch (e) {
+                if (attempts > 80) clearInterval(timer);
+            }
+        }, 50);
+    }
+
     function hideIframeChrome(iframe, app) {
         try {
             const doc = iframe.contentDocument;
             if (!doc) return;
+            if (doc.documentElement?.dataset.desktopChromePrimed !== 'true') {
+                doc.documentElement.dataset.desktopChromePrimed = 'true';
+                const earlyStyle = doc.createElement('style');
+                earlyStyle.dataset.desktopEarlyChromePatch = 'true';
+                earlyStyle.textContent = `
+                    #header, header#header, .skip-navigation { display: none !important; }
+                    body { padding-top: 0 !important; }
+                    #content, #content-vue, .content { margin-top: 0 !important; }
+                `;
+                (doc.head || doc.documentElement).appendChild(earlyStyle);
+            }
             const focusSelf = (event) => {
                 if (event?.type !== 'pointerdown') return;
                 const entry = windows.get(app.id);
                 if (entry && !entry.window.classList.contains('is-minimized')) focusWindow(app.id);
             };
             doc.addEventListener('pointerdown', focusSelf, true);
+            wireIframeNavigationInterception(doc, app);
 
             // Remove the Nextcloud top header outright. Hiding it with display:none left layout/scroll
             // artefacts for some apps (notably the Text editor); removing the element renders cleanly.
@@ -1458,6 +1675,7 @@
             // into a full-bleed app panel like regular apps.
             const isDashboard = app.id === 'dashboard' || app.sourceAppId === 'dashboard' || String(app.href || '').includes('/apps/dashboard');
             const style = doc.createElement('style');
+            if (doc.head?.querySelector('style[data-desktop-chrome-patch="true"]')) return;
             style.dataset.desktopChromePatch = 'true';
             style.textContent = isDashboard ? `
                 body { padding-top: 0 !important; }
@@ -1705,6 +1923,7 @@
         const handleMinimize = (event) => {
             event.preventDefault();
             event.stopImmediatePropagation();
+            clearTransientButtonHighlight(event.currentTarget);
             if (!win.classList.contains('is-minimized')) minimizeWindow(id);
         };
         minimizeButton?.addEventListener('pointerdown', handleMinimize);
@@ -1712,6 +1931,7 @@
         win.querySelector('[data-action="maximize"]')?.addEventListener('click', (event) => {
             event.preventDefault();
             event.stopPropagation();
+            clearTransientButtonHighlight(event.currentTarget);
             win.classList.toggle('is-maximized');
             focusWindow(id);
             saveState();
@@ -1719,6 +1939,7 @@
         win.querySelector('[data-action="reload"]')?.addEventListener('click', (event) => {
             event.preventDefault();
             event.stopPropagation();
+            clearTransientButtonHighlight(event.currentTarget);
             focusWindow(id);
             const iframe = win.querySelector('.desktop-window-iframe');
             if (iframe) {
@@ -1734,6 +1955,7 @@
         win.querySelector('[data-action="close"]')?.addEventListener('click', (event) => {
             event.preventDefault();
             event.stopPropagation();
+            clearTransientButtonHighlight(event.currentTarget);
             closeWindow(id);
         });
     }
@@ -1864,10 +2086,12 @@
         const marker = `${link.id || ''} ${link.className || ''} ${link.closest('[id]')?.id || ''} ${link.closest('[class]')?.className || ''}`.toLowerCase();
         // These account-menu entries are Nextcloud overlays/actions, not pages to iframe.
         return marker.includes('user_status') || marker.includes('user-status') ||
+            marker.includes('firstrunwizard_about') ||
             marker.includes('qr') || marker.includes('qrcode') || marker.includes('login-flow') ||
             href.includes('/logout') || href.includes('logout=true') ||
             href.includes('/user_status/') || href.includes('/apps/user_status') ||
             text === 'set status' || text === 'status setzen' || text === 'définir le statut' ||
+            /about\s*&\s*what/i.test(text) ||
             text.includes('qr') || text.includes('log out') || text.includes('abmelden') || text.includes('déconnexion');
     }
 
@@ -1895,7 +2119,7 @@
     }
 
     function bindNativeAccountMenuControls() {
-        document.querySelectorAll('button:has(.qrcode-scan-icon), a[href="#"]:has(.user-status-icon)').forEach((control) => {
+        document.querySelectorAll('button:has(.qrcode-scan-icon), a[href="#"]:has(.user-status-icon), #firstrunwizard_about a, a#firstrunwizard_about').forEach((control) => {
             if (control.dataset.desktopNativeBound === 'true') return;
             control.dataset.desktopNativeBound = 'true';
             // NcListItem/account-menu controls can be closed by ancestor pointer handling before their
@@ -2006,7 +2230,7 @@
         if (!uid) return;
         layer.hidden = false;
 
-        const CELL_W = 120, CELL_H = 100, PAD = 16;
+        const CELL_W = 120, CELL_H = 112, PAD = 16;
         let noConfirm = root.dataset.favoritesNoConfirm === 'true';
         let trashNoConfirm = root.dataset.trashNoConfirm === 'true';
         let clipboard = null; // { mode: 'move'|'copy', refs: [{path,name}] }
