@@ -967,22 +967,10 @@
         return `${base || ''}/${leaf}` || '/';
     }
 
-    function filesOpenFileHref(fileId, doc, editing = false) {
-        const url = new URL(`/index.php/apps/files/files/${encodeURIComponent(fileId)}`, window.location.origin);
-        url.searchParams.set('dir', currentFilesDir(doc));
-        url.searchParams.set('openfile', 'true');
-        if (editing) url.searchParams.set('editing', 'true');
-        return url.toString();
-    }
-
     function filesFolderHref(name, doc) {
         const url = new URL('/index.php/apps/files/files', window.location.origin);
         url.searchParams.set('dir', joinFilesPath(currentFilesDir(doc), name));
         return url.toString();
-    }
-
-    function isOfficeFileName(name = '') {
-        return ['odt', 'ott', 'ods', 'ots', 'odp', 'otp', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'rtf'].includes(fileExtension(name));
     }
 
     function openIframeHrefInDesktopWindow(href, title = '', sourceApp = null) {
@@ -1008,8 +996,7 @@
         const name = rowName(row, button) || t('File');
         const icon = iconForFileName(name) || sourceApp?.icon || '';
         const id = `file-${String(fileId).replace(/[^a-z0-9_-]/gi, '_')}`;
-        const href = isOfficeFileName(name) ? filesOpenFileHref(fileId, row.ownerDocument, true) : `/index.php/f/${encodeURIComponent(fileId)}`;
-        openWindow({ id, name, href, icon, desktopMode: 'iframe' });
+        openWindow({ id, name, href: `/index.php/f/${encodeURIComponent(fileId)}`, icon, desktopMode: 'iframe' });
         setWindowMeta(id, { title: name, icon });
         debugLog('native_files_view_opened_separate_window', { fileId, name, sourceAppId: sourceApp?.id || '' });
         return true;
