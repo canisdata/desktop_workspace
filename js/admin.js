@@ -76,7 +76,6 @@
     };
     expDisabledCb.addEventListener('change', syncGroupsState);
     syncGroupsState();
-
     button.addEventListener('click', async () => {
         status.textContent = tr('Saving…');
         button.disabled = true;

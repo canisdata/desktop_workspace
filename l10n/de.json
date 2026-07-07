@@ -215,7 +215,9 @@
         "Remove from desktop": "Vom Desktop entfernen",
         "Pinned apps": "Angeheftete Apps",
         "Search": "Suchen",
-        "All translations are machine translations.": "Alle Übersetzungen sind maschinelle Übersetzungen."
+        "All translations are machine translations.": "Alle Übersetzungen sind maschinelle Übersetzungen.",
+        "Back": "Zurück",
+        "Browser": "Browser"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

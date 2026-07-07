@@ -28,6 +28,6 @@ class PersonalSection implements IIconSection {
     }
 
     public function getIcon(): string {
-        return $this->urlGenerator->imagePath('desktop_workspace', 'app.svg');
+        return $this->urlGenerator->imagePath('desktop_workspace', 'app-dark.svg');
     }
 }

@@ -42,6 +42,11 @@ class PageController extends Controller {
                 'name' => $entry['name'],
                 'href' => $entry['href'],
                 'icon' => $entry['icon'] ?? '',
+                // External sites uses the navigation entry's target flag for sites that
+                // must leave the Nextcloud frame (redirect/new-tab sites). Preserve it so
+                // Desktop Workspace can match the standard app overview behaviour instead
+                // of forcing those URLs into an iframe window.
+                'target' => !empty($entry['target']),
                 'multiInstance' => in_array($entry['id'], $multiWindow, true),
             ];
         }

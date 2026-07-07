@@ -49,12 +49,15 @@ $l = \OC::$server->getL10N('desktop_workspace');
 
     <?php if ($_['available']): ?>
         <h3><?= p($l->t('Experimental')) ?></h3>
+    <?php endif; ?>
+    <?php if ($_['available']): ?>
         <p class="settings-hint"><?= p($l->t('By default, Nextcloud Files is your file manager. You can try the experimental Desktop File Manager that opens inside the desktop environment.')) ?></p>
         <p>
             <input type="checkbox" id="desktop-try-experimental" class="checkbox" <?= $_['tryExperimentalFiles'] ? 'checked' : '' ?> />
             <label for="desktop-try-experimental"><?= p($l->t('Try out Desktop File Manager - Experimental')) ?></label>
         </p>
     <?php endif; ?>
+
 
     <h3><?= p($l->t('Reset')) ?></h3>
     <p class="settings-hint"><?= p($l->t('Desktop icon positions and open windows are saved to your account and follow you to other devices.')) ?></p>

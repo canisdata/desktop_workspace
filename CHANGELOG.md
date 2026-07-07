@@ -3,6 +3,21 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.14.1 – 2026-07-07
+
+### Fixed
+- **Theming changes apply live from embedded Appearance settings.** When a desktop iframe is on `/settings/user/theming`, Desktop Workspace watches that same-origin settings page and mirrors theme, primary colour, text/background colours, and wallpaper changes onto the desktop shell without reloading `/apps/desktop_workspace`. The mirrored values remain stable after the settings iframe closes, Home and folder desktop icons follow primary-colour changes, Home uses the same themed squircle treatment as the Recycling Bin, the Recycling Bin icon keeps enough contrast in dark themes, window titlebars keep stacked title/subtitle text with normalized icon sizing, the Apps menu/taskbar/header popovers use the same translucent opacity as right-click menus, and app-menu buttons sit on a slightly more opaque surface with lower-opacity icon squircles that become fully opaque on hover.
+
+## 0.14.0 – 2026-07-07
+
+### Removed
+- **Experimental URL windows.** Removed the arbitrary URL window launcher and its admin/personal settings. External Sites remains supported through the normal Nextcloud app navigation entries.
+
+### Fixed
+- **External Sites new-tab entries.** Desktop Workspace now preserves the navigation target flag used by External Sites for redirect/non-embeddable sites, so those entries open in a real browser tab instead of a desktop iframe window.
+- **Apps menu always fits full rows.** The Apps menu keeps a minimum of three rows and four columns, can expand to additional columns, and expands its height for every required row so app icons are not squeezed or hidden in normal viewport sizes.
+- **Apps menu rows remain reachable when resized small.** The launcher area now scrolls instead of hiding lower app rows when the Apps menu height is too small.
+
 ## 0.13.4 – 2026-06-27
 
 ### Fixed

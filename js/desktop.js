@@ -24,6 +24,7 @@
     let headerMenuPositionObserver = null;
     let favoritesReload = null;
     let applyIconSettings = null;
+    let liveThemingApplied = false;
 
     const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({
         '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;',
@@ -142,40 +143,42 @@
         debugLog('header_logo_copied_to_taskbar');
     }
 
-    function syncDesktopTheme() {
-        const source = document.body || document.documentElement;
-        const computed = getComputedStyle(source);
-        const variables = [
-            '--color-main-background', '--color-main-background-rgb', '--color-main-text', '--color-primary', '--color-primary-text',
-            '--color-primary-light', '--color-border', '--color-background-hover', '--color-background-darker', '--color-text-maxcontrast',
-            '--color-primary-element', '--color-primary-element-text', '--color-primary-element-light', '--color-primary-element-light-text'
-        ];
-        for (const variable of variables) {
+    const THEME_VARIABLES = [
+        '--color-main-background', '--color-main-background-rgb', '--color-main-text', '--color-primary', '--color-primary-text',
+        '--color-primary-light', '--color-border', '--color-background-hover', '--color-background-darker', '--color-text-maxcontrast',
+        '--color-primary-element', '--color-primary-element-text', '--color-primary-element-light', '--color-primary-element-light-text'
+    ];
+
+    function syncDesktopTheme(sourceDocument = document) {
+        const source = sourceDocument.body || sourceDocument.documentElement;
+        if (!source) return;
+        const computed = sourceDocument.defaultView.getComputedStyle(source);
+        for (const variable of THEME_VARIABLES) {
             const value = computed.getPropertyValue(variable).trim();
             if (value) root.style.setProperty(variable, value);
         }
-        root.dataset.theme = document.documentElement.dataset.theme || document.body.dataset.theme || '';
+        root.dataset.theme = sourceDocument.documentElement.dataset.theme || sourceDocument.body?.dataset.theme || '';
     }
 
-    function applyUserBackground() {
-        const candidates = [document.body, document.documentElement, document.querySelector('#body-user')].filter(Boolean);
+    function applyUserBackground(sourceDocument = document) {
+        const candidates = [sourceDocument.body, sourceDocument.documentElement, sourceDocument.querySelector('#body-user')].filter(Boolean);
         for (const element of candidates) {
-            const style = getComputedStyle(element);
+            const style = sourceDocument.defaultView.getComputedStyle(element);
             for (const key of ['--image-background', '--image-background-default']) {
                 const value = style.getPropertyValue(key).trim();
                 if (value && value !== 'none') {
                     root.style.setProperty('--desktop-background-image', value);
-                    debugLog('background_applied', { source: key, value });
+                    debugLog('background_applied', { source: key, value, from: sourceDocument === document ? 'desktop' : 'theming-iframe' });
                     return;
                 }
             }
             if (style.backgroundImage && style.backgroundImage !== 'none') {
                 root.style.setProperty('--desktop-background-image', style.backgroundImage);
-                debugLog('background_applied', { source: 'computed-background-image', value: style.backgroundImage });
+                debugLog('background_applied', { source: 'computed-background-image', value: style.backgroundImage, from: sourceDocument === document ? 'desktop' : 'theming-iframe' });
                 return;
             }
         }
-        debugLog('background_fallback_used');
+        debugLog('background_fallback_used', { from: sourceDocument === document ? 'desktop' : 'theming-iframe' });
     }
 
     function applyLogoContrast() {
@@ -195,7 +198,7 @@
         node.style.setProperty('filter', lum > 0.5 ? 'invert(1) hue-rotate(180deg) saturate(1.2)' : 'none', 'important');
     }
 
-    function applyIconTextContrast() {
+    function applyIconTextContrast(sourceDocument = document) {
         // Light theme -> dark label text -> needs a white shadow to stand out on dark wallpapers.
         // Dark theme  -> light label text -> keep the black shadow.
         const parseLum = (raw) => {
@@ -213,27 +216,88 @@
             const [r, g, b] = m.map(Number);
             return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
         };
-        const lum = parseLum(getComputedStyle(document.body).getPropertyValue('--color-main-text'));
+        const lum = parseLum(sourceDocument.defaultView.getComputedStyle(sourceDocument.body).getPropertyValue('--color-main-text'));
         // dark text (low luminance) => light theme
         root.classList.toggle('desktop-theme-light', lum !== null && lum < 0.5);
     }
 
-    function syncAppearance() {
-        syncDesktopTheme();
-        applyUserBackground();
+    function syncAppearance(sourceDocument = document) {
+        syncDesktopTheme(sourceDocument);
+        applyUserBackground(sourceDocument);
         applyLogoContrast();
-        applyIconTextContrast();
+        applyIconTextContrast(sourceDocument);
     }
 
     function observeAppearanceChanges() {
-        const observer = new MutationObserver(() => syncAppearance());
+        const syncNativeAppearance = () => { if (!liveThemingApplied) syncAppearance(); };
+        const observer = new MutationObserver(syncNativeAppearance);
         for (const element of [document.documentElement, document.body, document.querySelector('#body-user')].filter(Boolean)) {
             observer.observe(element, { attributes: true, attributeFilter: ['style', 'class', 'data-theme'] });
         }
         window.addEventListener('storage', (event) => {
-            if (String(event.key || '').toLowerCase().includes('background') || String(event.key || '').toLowerCase().includes('theme')) syncAppearance();
+            if (!liveThemingApplied && (String(event.key || '').toLowerCase().includes('background') || String(event.key || '').toLowerCase().includes('theme'))) syncAppearance();
         });
-        setInterval(syncAppearance, 5000);
+        setInterval(syncNativeAppearance, 5000);
+    }
+
+    const themingIframeMonitors = new WeakMap();
+
+    function isThemingSettingsUrl(href = '') {
+        try {
+            const url = new URL(href, window.location.origin);
+            return url.origin === window.location.origin && /\/settings\/user\/theming\/?$/.test(url.pathname);
+        } catch (e) { return false; }
+    }
+
+    function iframeHref(iframe) {
+        try { return iframe.contentWindow?.location?.href || iframe.src || ''; }
+        catch (e) { return iframe.src || ''; }
+    }
+
+    function syncAppearanceFromThemingIframe(iframe) {
+        try {
+            const doc = iframe.contentDocument;
+            if (!doc || !isThemingSettingsUrl(iframeHref(iframe))) return;
+            liveThemingApplied = true;
+            syncAppearance(doc);
+            debugLog('theming_iframe_appearance_synced', { href: iframeHref(iframe) });
+        } catch (error) {
+            debugLog('theming_iframe_appearance_sync_failed', { message: error.message });
+        }
+    }
+
+    function monitorThemingIframe(iframe) {
+        if (!iframe || !isThemingSettingsUrl(iframeHref(iframe)) || themingIframeMonitors.has(iframe)) return;
+        let observer = null;
+        const sync = () => syncAppearanceFromThemingIframe(iframe);
+        try {
+            const doc = iframe.contentDocument;
+            if (!doc) return;
+            observer = new MutationObserver(sync);
+            for (const element of [doc.documentElement, doc.body, doc.querySelector('#body-user')].filter(Boolean)) {
+                observer.observe(element, { attributes: true, attributeFilter: ['style', 'class', 'data-theme'] });
+            }
+        } catch (error) {
+            debugLog('theming_iframe_observer_failed', { message: error.message });
+        }
+        const timer = window.setInterval(sync, 500);
+        themingIframeMonitors.set(iframe, { observer, timer });
+        sync();
+        debugLog('theming_iframe_monitor_started', { href: iframeHref(iframe) });
+    }
+
+    function stopThemingIframeMonitor(iframe) {
+        const monitor = themingIframeMonitors.get(iframe);
+        if (!monitor) return;
+        monitor.observer?.disconnect();
+        window.clearInterval(monitor.timer);
+        themingIframeMonitors.delete(iframe);
+        debugLog('theming_iframe_monitor_stopped');
+    }
+
+    function refreshThemingIframeMonitor(iframe) {
+        if (isThemingSettingsUrl(iframeHref(iframe))) monitorThemingIframe(iframe);
+        else stopThemingIframeMonitor(iframe);
     }
 
     function loadState() {
@@ -306,6 +370,7 @@
                 name: String(entry.name || 'App'),
                 href: String(entry.href || '#'),
                 icon: String(entry.icon || ''),
+                target: Boolean(entry.target),
                 multiInstance: Boolean(entry.multiInstance),
             }));
         } catch (error) {
@@ -352,6 +417,12 @@
         if (where === 'desktop' && typeof favoritesReload === 'function') favoritesReload();
     }
     function launchApp(app) {
+        if (app.target) {
+            closeStartMenu();
+            window.open(app.href, '_blank', 'noopener,noreferrer');
+            debugLog('app_opened_new_tab', { appId: app.id, appName: app.name, href: app.href });
+            return;
+        }
         const isFileApp = app.fileApp === true || app.id === 'files' || (app.href && app.href.includes('/apps/files'));
         const allowMulti = isFileApp || app.multiInstance === true;
         closeStartMenu();
@@ -493,28 +564,31 @@
     }
     function appsMenuMetrics(width = startMenu?.clientWidth || 320) {
         const appCount = Math.max(1, launcherApps.length || getApps().length || launcher?.children?.length || 1);
+        const minRows = 3;
         const minColumns = 4;
+        const tileWidth = 69;
+        const tileHeight = 76;
         const columnGap = 8;
-        const minWidth = 16 + minColumns * 69 + (minColumns - 1) * columnGap;
-        const columnPitch = 69 + columnGap;
-        const columns = Math.max(minColumns, Math.floor((Math.max(minWidth, width) - 16 + columnGap) / columnPitch));
-        const rows = Math.max(1, Math.ceil(appCount / columns));
-        const headerHeight = startMenu?.querySelector('.desktop-start-header')?.offsetHeight || 58;
-        const minVisibleRows = Math.min(3, rows);
-        const tileHeight = 68;
         const rowGap = 8;
         const launcherPadding = 16;
-        const minHeight = headerHeight + launcherPadding * 2 + minVisibleRows * tileHeight + Math.max(0, minVisibleRows - 1) * rowGap + 12;
-        return { appCount, minColumns, minWidth, columns, rows, minHeight };
+        const minWidth = launcherPadding * 2 + minColumns * tileWidth + (minColumns - 1) * columnGap + 12;
+        const columnPitch = tileWidth + columnGap;
+        const availableColumns = Math.floor((Math.max(tileWidth, width) - launcherPadding * 2 + columnGap) / columnPitch);
+        const columns = Math.max(minColumns, availableColumns);
+        const rows = Math.max(minRows, Math.ceil(appCount / columns));
+        const headerHeight = startMenu?.querySelector('.desktop-start-header')?.offsetHeight || 58;
+        const minHeight = headerHeight + launcherPadding * 2 + rows * tileHeight + Math.max(0, rows - 1) * rowGap + 12;
+        return { appCount, minRows, minColumns, minWidth, columns, rows, minHeight, tileWidth };
     }
     function clampAppsMenuSize(width, height) {
-        const maxWidth = Math.max(292, window.innerWidth - 28);
-        const maxHeight = Math.max(260, window.innerHeight - 110);
-        const widthBase = Math.min(Math.max(Math.round(width || 320), appsMenuMetrics().minWidth), maxWidth);
+        const metricsAtMinimum = appsMenuMetrics();
+        const maxWidth = Math.max(metricsAtMinimum.minWidth, window.innerWidth - 28);
+        const maxHeight = Math.max(260, window.innerHeight - 80);
+        const widthBase = Math.min(Math.max(Math.round(width || 320), metricsAtMinimum.minWidth), maxWidth);
         const metrics = appsMenuMetrics(widthBase);
         return {
             width: widthBase,
-            height: Math.min(Math.max(Math.round(height || 520), metrics.minHeight), maxHeight),
+            height: Math.min(Math.max(Math.round(height || metrics.minHeight), metrics.minHeight), maxHeight),
         };
     }
     function applyAppsMenuSize() {
@@ -775,6 +849,8 @@
     function removeWindowEntry(id, reason = 'window_closed') {
         const entry = windows.get(id);
         if (!entry) return;
+        const iframe = entry.window.querySelector('iframe.desktop-window-iframe');
+        if (iframe) stopThemingIframeMonitor(iframe);
         entry.window.remove();
         entry.task.remove();
         windows.delete(id);
@@ -1096,11 +1172,13 @@
         // focus/focusin without the user clicking the window and used to raise it accidentally.
         iframe.addEventListener('pointerdown', focusFromIntentionalPointer);
         iframe.addEventListener('load', () => {
+            refreshThemingIframeMonitor(iframe);
             hideIframeChrome(iframe, app);
             watchIframeFileViewer(iframe, app);
             debugLog('iframe_app_loaded', { appId: app.id, appName: app.name, href: absoluteHref });
         });
         target.appendChild(iframe);
+        refreshThemingIframeMonitor(iframe);
         watchIframeFileViewer(iframe, app);
         debugLog('iframe_fallback_opened', { appId: app.id, appName: app.name, href: absoluteHref });
     }
@@ -1690,6 +1768,7 @@
                 u.searchParams.delete('windowId');
                 const cleaned = u.toString();
                 if (cleaned && cleaned !== entry.app.href) { entry.app.href = cleaned; changed = true; }
+                refreshThemingIframeMonitor(iframe);
             } catch (e) { /* ignore */ }
         });
         if (changed) saveState();
@@ -1886,6 +1965,7 @@
     observeAppsMenuSize();
     const apps = renderLauncher();
     launcherApps = apps;
+    applyAppsMenuSize();
     renderPinnedApps();
     initPinnedAppReordering();
     hideHeaderApps(apps);
@@ -2058,7 +2138,11 @@
         function favVisual(item) {
             const mime = item.isFolder ? folderMime(item) : (item.mime || 'application/octet-stream');
             const fb = (OC.MimeType && OC.MimeType.getIconUrl) ? OC.MimeType.getIconUrl(mime) : '';
-            if (!item.isFolder && item.fileId && OC.generateUrl) {
+            if (item.isFolder) {
+                return '<svg class="desktop-folder-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+                    + '<path fill="currentColor" d="M10,4L12,6H20A2,2 0 0,1 22,8V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4H10Z"/></svg>';
+            }
+            if (item.fileId && OC.generateUrl) {
                 const url = OC.generateUrl('/core/preview?fileId={id}&x=64&y=64&a=1&mimeFallback=true', { id: String(item.fileId) });
                 return `<img src="${url}" alt="" draggable="false"${fb ? ` data-fallback="${escapeHtml(fb)}"` : ''}>`;
             }
@@ -2099,14 +2183,15 @@
 
         function trashItem() {
             // Material Design "delete" icon (inline). core/img icons are deprecated since NC 25.
-            // Dark fill so it stays visible on the white tile.
+            // The fill follows CSS color so it can stay visible in both light and dark themes.
             const svg = '<svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true" focusable="false">'
-                + '<path fill="#2c2c2c" d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z"/></svg>';
+                + '<path fill="currentColor" d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z"/></svg>';
             return { id: '__trash__', special: 'trash', name: t('Recycling Bin'), svg, isFolder: true };
         }
         function homeItem() {
-            const icon = (OC.MimeType && OC.MimeType.getIconUrl) ? OC.MimeType.getIconUrl('dir') : '';
-            return { id: '__home__', special: 'home', name: t('Home'), iconUrl: icon, iconFallback: icon, isFolder: true };
+            const svg = '<svg class="desktop-folder-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+                + '<path fill="currentColor" d="M10,4L12,6H20A2,2 0 0,1 22,8V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4H10Z"/></svg>';
+            return { id: '__home__', special: 'home', name: t('Home'), svg, isFolder: true };
         }
 
         async function fetchFavorites() {
@@ -2854,7 +2939,7 @@
         applyIconSettings = (s) => {
             if ('showFavorites' in s) { showFav = !!s.showFavorites; root.dataset.showFavorites = showFav ? 'true' : 'false'; }
             if ('desktopFolder' in s) { desktopFolder = (s.desktopFolder || '').trim(); root.dataset.desktopFolder = desktopFolder; }
-            if ('desktopfilesEnabled' in s) { dfEnabled = !!s.desktopfilesEnabled; }
+            if ('desktopfilesEnabled' in s) { dfEnabled = !!s.desktopfilesEnabled; root.dataset.desktopfilesEnabled = dfEnabled ? 'true' : 'false'; renderLauncher(); renderPinnedApps(); }
             if ('showTrash' in s) root.dataset.showTrash = s.showTrash ? 'true' : 'false';
             if ('showHome' in s) root.dataset.showHome = s.showHome ? 'true' : 'false';
             if ('trashNoConfirm' in s) trashNoConfirm = !!s.trashNoConfirm;

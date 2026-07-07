@@ -26,6 +26,7 @@ $l = \OC::$server->getL10N('desktop_workspace');
     </p>
     <p class="settings-hint"><?= p($l->t('When disabled for everyone, only these groups can still test it. When enabled for everyone, this list is ignored. Users still have to enable it in their personal settings.')) ?></p>
 
+
     <h3><?= p($l->t('Multiple windows')) ?></h3>
     <p class="settings-hint"><?= p($l->t('Usually only one window per app can be opened from the Apps menu. Here you can allow your users to open several windows of the same app. (The file managers can always be opened in multiple windows.)')) ?></p>
     <?php if (empty($_['apps'])): ?>

@@ -217,70 +217,62 @@ body:has(#desktop-root) .content {
     user-select: none;
 }
 
-.desktop-window-titlebar:active { cursor: grabbing; }
 
 .desktop-window-title {
-    min-width: 0;
     display: flex;
     align-items: center;
-    gap: 10px;
-    cursor: grab;
+    gap: 8px;
+    min-width: 0;
+    flex: 1 1 auto;
 }
-.desktop-window-title:active { cursor: grabbing; }
-.desktop-window-actions button { cursor: pointer; }
 
 .desktop-window-icon {
-    width: 30px;
-    height: 30px;
-    flex: 0 0 auto;
-    border-radius: 9px;
-    display: grid;
-    place-items: center;
-    background: var(--color-background-darker, rgba(0,0,0,.08));
-    font-weight: 800;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-element, 8px);
+    overflow: hidden;
+    color: var(--color-main-text, #111827);
+    font-weight: 700;
+    line-height: 1;
 }
 
-.desktop-window-icon img { max-width: 22px; max-height: 22px; -webkit-user-drag: none; user-select: none; pointer-events: none; }
+.desktop-window-icon img,
+.desktop-window-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    object-fit: contain;
+    display: block;
+}
 
 .desktop-window-title-text {
     min-width: 0;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     line-height: 1.15;
 }
 
 .desktop-window-title-text strong,
 .desktop-window-title-text small {
+    display: block;
+    min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .desktop-window-title-text small {
-    color: var(--color-text-maxcontrast, #64748b);
+    margin-top: 2px;
+    color: var(--color-text-maxcontrast, #59636e);
     font-size: 12px;
+    font-weight: 400;
 }
-
-.desktop-window-actions { display: flex; gap: 6px; }
-.desktop-window-actions button {
-    width: 30px;
-    height: 28px;
-    border: 0;
-    border-radius: 9px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    line-height: 1;
-    background: var(--color-background-darker, rgba(0,0,0,.08));
-    color: var(--color-main-text, #111827);
-    cursor: pointer;
-}
-.desktop-window-actions button[data-action="minimize"] {
-    line-height: 0;
-    padding-bottom: 2px;
-}
-.desktop-window-actions button:hover { background: var(--color-background-hover, rgba(0,0,0,.16)); }
 
 .desktop-window-body {
     height: calc(100% - 48px);
@@ -756,23 +748,23 @@ body:has(#desktop-root) .header-menu__wrapper {
 .desktop-app-tile { width: 69px; min-height: 60px; height: auto; border: 0; border-radius: var(--border-radius-element, 8px); background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 4px; padding: 8px 0 4px; text-align: center; font-weight: 400; color: var(--color-main-text, var(--desktop-panel-text)); }
 .desktop-app-tile:hover, .desktop-app-tile:focus-visible { background: var(--color-background-hover, rgba(127, 127, 127, 0.15)); transform: none; }
 .desktop-app-tile .desktop-app-menu-icon { width: 40px; height: 40px; flex: 0 0 40px; border-radius: 50%; background: var(--color-primary-element, var(--color-primary, #00679e)); display: flex; align-items: center; justify-content: center; }
-.desktop-app-tile .desktop-app-menu-icon img { width: 24px; height: 24px; filter: var(--background-invert-if-dark, none); }
+.desktop-app-tile .desktop-app-menu-icon img { width: 24px; height: 24px; }
 .desktop-app-tile .desktop-app-menu-label { width: 64px; max-width: 64px; font-size: 12px; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--color-main-text, inherit); }
 .desktop-pinned-app .desktop-app-menu-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--color-primary-element, var(--color-primary, #00679e)); display: flex; align-items: center; justify-content: center; }
-.desktop-pinned-app .desktop-app-menu-icon img { width: 18px; height: 18px; filter: var(--background-invert-if-dark, none); }
+.desktop-pinned-app .desktop-app-menu-icon img { width: 18px; height: 18px; }
 .desktop-fav[data-kind="app"] .desktop-fav-icon { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; }
 .desktop-app-shortcut-circle { width: 48px; height: 48px; border-radius: 50%; background: var(--color-primary-element, var(--color-primary, #00679e)); display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px var(--color-box-shadow, rgba(0, 0, 0, 0.25)); }
-.desktop-app-shortcut-circle img { width: 30px !important; height: 30px !important; filter: var(--background-invert-if-dark, none); }
+.desktop-app-shortcut-circle img { width: 30px !important; height: 30px !important; }
 
-.desktop-start-menu .desktop-app-tile { box-sizing: border-box; width: 69px !important; min-height: 60px !important; padding: 8px 0 4px !important; }
+.desktop-start-menu .desktop-app-tile { box-sizing: border-box; width: 69px !important; min-height: 76px !important; padding: 8px 0 8px !important; }
 
 
 /* Apps menu sizing and taskbar unified-search hiding */
 .desktop-start-menu {
-    min-width: 292px;
+    min-width: 344px;
     min-height: 322px;
     max-width: calc(100vw - 28px);
-    max-height: calc(100vh - 110px);
+    max-height: calc(100vh - 80px);
     resize: both;
 }
 .desktop-start-header > div > span { display: none; }
@@ -809,10 +801,26 @@ body:has(#desktop-root) .header-menu__wrapper {
 }
 .desktop-fav[data-folder="true"]:not([data-special]) .desktop-fav-icon {
     background: transparent !important;
+    color: var(--color-primary-element, var(--color-primary, #00679e));
     box-shadow: none !important;
+}
+.desktop-fav[data-folder="true"]:not([data-special]) .desktop-folder-symbol,
+.desktop-fav[data-special="home"] .desktop-folder-symbol {
+    width: 48px;
+    height: 48px;
+}
+.desktop-fav[data-special="home"] .desktop-fav-icon {
+    background: color-mix(in srgb, var(--color-primary-element-light, var(--color-primary-light, #e5f2fa)) 82%, var(--color-main-background, #fff)) !important;
+    color: var(--color-primary-element, var(--color-primary, #00679e));
+    box-shadow: 0 1px 3px var(--color-box-shadow, rgba(0, 0, 0, 0.25)) !important;
 }
 .desktop-fav[data-special="trash"] .desktop-fav-icon {
     background: color-mix(in srgb, var(--color-error, #e9322d) 14%, var(--color-main-background, #fff)) !important;
+    color: #2c2c2c;
+}
+#desktop-root:not(.desktop-theme-light) .desktop-fav[data-special="trash"] .desktop-fav-icon {
+    background: color-mix(in srgb, var(--color-error, #e9322d) 24%, var(--color-main-background, #111)) !important;
+    color: color-mix(in srgb, var(--color-error, #ff6b66) 42%, var(--color-main-text, #fff));
 }
 
 
@@ -847,16 +855,24 @@ body:has(#desktop-root) .header-menu__wrapper {
 .desktop-pinned-app .desktop-app-menu-icon img { width: 20px !important; height: 20px !important; }
 .desktop-launcher {
     gap: 8px !important;
-    overflow: hidden !important;
+    overflow: auto !important;
+    align-content: start;
+    scrollbar-width: thin;
 }
 .desktop-start-menu .desktop-app-tile {
-    min-height: 68px !important;
-    padding: 8px 0 6px !important;
+    min-height: 76px !important;
+    padding: 8px 0 8px !important;
 }
 
 /* Keep all desktop right-click menus visibly glassy, including menus appended outside #desktop-root. */
+body:has(#desktop-root) .desktop-taskbar,
+body:has(#desktop-root) .desktop-start-menu,
 body:has(#desktop-root) .desktop-task-context-menu,
-body:has(#desktop-root) .desktop-fav-menu {
+body:has(#desktop-root) .desktop-fav-menu,
+body:has(#desktop-root) .header-menu__wrapper,
+body:has(#desktop-root) .desktop-header-end-slot .popovermenu:not(.account-menu__avatar):not(.avatar):not(.avatardiv),
+body:has(#desktop-root) .desktop-header-end-slot .popovermenu-wrapper:not(.account-menu__avatar):not(.avatar):not(.avatardiv),
+body:has(#desktop-root) .desktop-header-end-slot [class*="popover"]:not(button):not(svg):not(.account-menu__avatar):not(.avatar):not(.avatardiv):not(.avatardiv__user-status) {
     background: color-mix(in srgb, var(--color-main-background, #fff) 62%, transparent) !important;
     border-color: color-mix(in srgb, var(--color-border, #d8dee9) 72%, transparent) !important;
     color: var(--color-main-text, #111827) !important;
@@ -877,4 +893,19 @@ body:has(#desktop-root) .desktop-fav-menu button:focus-visible {
 body:has(#desktop-root) .desktop-task-context-menu button:focus:not(:hover),
 body:has(#desktop-root) .desktop-fav-menu button:focus:not(:hover) {
     background: transparent !important;
+}
+
+body:has(#desktop-root) .desktop-start-menu .desktop-app-tile {
+    background: color-mix(in srgb, var(--color-main-background, #fff) 72%, transparent) !important;
+}
+body:has(#desktop-root) .desktop-start-menu .desktop-app-tile:hover,
+body:has(#desktop-root) .desktop-start-menu .desktop-app-tile:focus-visible {
+    background: color-mix(in srgb, var(--color-background-hover, #f3f4f6) 84%, transparent) !important;
+}
+body:has(#desktop-root) .desktop-start-menu .desktop-app-tile .desktop-app-menu-icon {
+    background: color-mix(in srgb, var(--color-primary-element, var(--color-primary, #00679e)) 72%, transparent) !important;
+}
+body:has(#desktop-root) .desktop-start-menu .desktop-app-tile:hover .desktop-app-menu-icon,
+body:has(#desktop-root) .desktop-start-menu .desktop-app-tile:focus-visible .desktop-app-menu-icon {
+    background: var(--color-primary-element, var(--color-primary, #00679e)) !important;
 }
