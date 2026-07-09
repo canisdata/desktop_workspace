@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "새 탭에서 열림",
     "All translations are machine translations.": "모든 번역은 기계 번역입니다."
 },
     "nplurals=1; plural=0;"

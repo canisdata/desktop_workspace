@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "Allar þýðingar eru vélþýðingar."
+        "All translations are machine translations.": "Allar þýðingar eru vélþýðingar.",
+        "Opens in new tab": "Opnast í nýjum flipa"
     },
     "pluralForm": "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);"
 }

@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "Všetky preklady sú strojové preklady."
+        "All translations are machine translations.": "Všetky preklady sú strojové preklady.",
+        "Opens in new tab": "Otvorí sa na novej karte"
     },
     "pluralForm": "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);"
 }

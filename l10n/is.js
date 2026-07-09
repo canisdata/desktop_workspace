@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "Opnast í nýjum flipa",
     "All translations are machine translations.": "Allar þýðingar eru vélþýðingar."
 },
     "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);"

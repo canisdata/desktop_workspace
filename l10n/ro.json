@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "Toate traducerile sunt traduceri automate."
+        "All translations are machine translations.": "Toate traducerile sunt traduceri automate.",
+        "Opens in new tab": "Se deschide într-o filă nouă"
     },
     "pluralForm": "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));"
 }

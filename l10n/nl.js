@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Van bureaublad verwijderen",
     "Pinned apps": "Vastgemaakte apps",
     "Search": "Zoeken",
+    "Opens in new tab": "Opent in een nieuw tabblad",
     "All translations are machine translations.": "Alle vertalingen zijn machinevertalingen."
 },
     "nplurals=2; plural=(n != 1);"

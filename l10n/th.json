@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "คำแปลทั้งหมดเป็นคำแปลด้วยเครื่อง"
+        "All translations are machine translations.": "คำแปลทั้งหมดเป็นคำแปลด้วยเครื่อง",
+        "Opens in new tab": "เปิดในแท็บใหม่"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

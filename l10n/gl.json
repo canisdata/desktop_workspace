@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "Todas as traducións son traducións automáticas."
+        "All translations are machine translations.": "Todas as traducións son traducións automáticas.",
+        "Opens in new tab": "Ábrese nunha nova lapela"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

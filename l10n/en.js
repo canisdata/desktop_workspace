@@ -216,6 +216,7 @@ OC.L10N.register(
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
+    "Opens in new tab": "Opens in new tab",
         "All translations are machine translations.": "All translations are machine translations.",
         "Back": "Back",
         "Browser": "Browser",

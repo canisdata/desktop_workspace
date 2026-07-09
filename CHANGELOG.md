@@ -3,6 +3,16 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.14.4 – 2026-07-09
+
+### Added
+- **Localized app names after reload.** Desktop Workspace refreshes localized app names, shell labels, and restored app-window titles from Nextcloud navigation metadata when the desktop loads.
+- **New-tab app tooltip.** External Sites entries that open outside Desktop Workspace now show a short apps-menu tooltip on hover indicating they open in a new tab.
+
+### Fixed
+- **Desktop drag responsiveness.** Localized app-title refreshes now update desktop-pinned app labels in place and no longer reload the desktop folder contents while the user is interacting with icons.
+- **Nextcloud app-management preview thumbnail.** The first app-store screenshot is now the small thumbnail image URL, matching apps that reliably show a preview in Nextcloud's built-in install/uninstall app list. The full-size screenshot remains available as the second screenshot for the public app-store page.
+
 ## 0.14.3 – 2026-07-07
 
 ### Fixed

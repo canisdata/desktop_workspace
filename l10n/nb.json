@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "Alle oversettelser er maskinoversettelser."
+        "All translations are machine translations.": "Alle oversettelser er maskinoversettelser.",
+        "Opens in new tab": "Åpnes i en ny fane"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

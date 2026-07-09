@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "ການແປທັງໝົດແມ່ນການແປດ້ວຍເຄື່ອງ."
+        "All translations are machine translations.": "ການແປທັງໝົດແມ່ນການແປດ້ວຍເຄື່ອງ.",
+        "Opens in new tab": "ເປີດໃນແທັບໃໝ່"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

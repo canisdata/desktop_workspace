@@ -217,7 +217,8 @@
         "Search": "Search",
         "All translations are machine translations.": "All translations are machine translations.",
         "Back": "Back",
-        "Browser": "Browser"
+        "Browser": "Browser",
+        "Opens in new tab": "Opens in new tab"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

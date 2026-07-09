@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "Kaikki käännökset ovat konekäännöksiä."
+        "All translations are machine translations.": "Kaikki käännökset ovat konekäännöksiä.",
+        "Opens in new tab": "Avautuu uuteen välilehteen"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

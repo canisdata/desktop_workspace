@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "Terbuka di tab baru",
     "All translations are machine translations.": "Semua terjemahan adalah terjemahan mesin."
 },
     "nplurals=1; plural=0;"

@@ -4,6 +4,7 @@ namespace OCA\DesktopWorkspace\Controller;
 use OCA\DesktopWorkspace\Service\FilesAvailability;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
+use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
 use OCP\INavigationManager;
@@ -25,11 +26,7 @@ class PageController extends Controller {
         parent::__construct($appName, $request);
     }
 
-    /**
-     * @NoAdminRequired
-     * @NoCSRFRequired
-     */
-    public function index(): TemplateResponse {
+    private function navigationApps(): array {
         $multiWindow = json_decode($this->config->getAppValue(SettingsController::APP_ID, SettingsController::MULTI_WINDOW_KEY, '[]'), true);
         $multiWindow = is_array($multiWindow) ? $multiWindow : [];
         $apps = [];
@@ -50,6 +47,33 @@ class PageController extends Controller {
                 'multiInstance' => in_array($entry['id'], $multiWindow, true),
             ];
         }
+        return $apps;
+    }
+
+    /**
+     * @NoAdminRequired
+     * @NoCSRFRequired
+     */
+    public function dynamicData(): JSONResponse {
+        $l = \OC::$server->getL10N('desktop_workspace');
+        return new JSONResponse([
+            'apps' => $this->navigationApps(),
+            'labels' => [
+                'Apps' => $l->t('Apps'),
+                'Search' => $l->t('Search'),
+                'Desktop Settings' => $l->t('Desktop Settings'),
+                'Desktop Admin Settings' => $l->t('Desktop Admin Settings'),
+                'Desktop Files' => $l->t('Desktop Files'),
+            ],
+        ]);
+    }
+
+    /**
+     * @NoAdminRequired
+     * @NoCSRFRequired
+     */
+    public function index(): TemplateResponse {
+        $apps = $this->navigationApps();
 
         $dataDir = rtrim($this->config->getSystemValueString('datadirectory', '/var/www/html/data'), '/');
 
@@ -71,6 +95,7 @@ class PageController extends Controller {
             'apps' => $apps,
             'firstVisit' => $firstVisit,
             'heartbeatUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.heartbeat'),
+            'dynamicDataUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.page.dynamicData'),
             'desktopfilesEnabled' => $this->filesAvailability->enabledForUser($user),
             'settingsUrl' => $this->urlGenerator->getAbsoluteURL('/index.php/settings/user/desktop_workspace'),
             'personalSaveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.savePersonalSettings'),

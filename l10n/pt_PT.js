@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remover do ambiente de trabalho",
     "Pinned apps": "Aplicações fixadas",
     "Search": "Pesquisar",
+    "Opens in new tab": "Abre num novo separador",
     "All translations are machine translations.": "Todas as traduções são traduções automáticas."
 },
     "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"

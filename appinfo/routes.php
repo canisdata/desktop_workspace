@@ -3,6 +3,7 @@ return [
     'routes' => [
         // Shell
         ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
+        ['name' => 'page#dynamicData', 'url' => '/dynamic', 'verb' => 'GET'],
         ['name' => 'settings#saveAdminSettings', 'url' => '/settings/admin', 'verb' => 'POST'],
         ['name' => 'settings#savePersonalSettings', 'url' => '/settings/personal', 'verb' => 'POST'],
         ['name' => 'settings#heartbeat', 'url' => '/settings/heartbeat', 'verb' => 'POST'],

@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "모든 번역은 기계 번역입니다."
+        "All translations are machine translations.": "모든 번역은 기계 번역입니다.",
+        "Opens in new tab": "새 탭에서 열림"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "يېڭى بەتكۈچتە ئېچىلىدۇ",
     "All translations are machine translations.": "بارلىق تەرجىمىلەر ماشىنا تەرجىمىسىدۇر."
 },
     "nplurals=2; plural=(n != 1);"

@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "Сите преводи се машински преводи."
+        "All translations are machine translations.": "Сите преводи се машински преводи.",
+        "Opens in new tab": "Се отвора во ново јазиче"
     },
     "pluralForm": "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"
 }

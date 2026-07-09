@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "在新标签页中打开",
     "All translations are machine translations.": "所有翻译均为机器翻译。"
 },
     "nplurals=1; plural=0;"

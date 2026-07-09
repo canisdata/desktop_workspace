@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "Semua terjemahan adalah terjemahan mesin."
+        "All translations are machine translations.": "Semua terjemahan adalah terjemahan mesin.",
+        "Opens in new tab": "Terbuka di tab baru"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

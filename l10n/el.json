@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "Όλες οι μεταφράσεις είναι μηχανικές μεταφράσεις."
+        "All translations are machine translations.": "Όλες οι μεταφράσεις είναι μηχανικές μεταφράσεις.",
+        "Opens in new tab": "Ανοίγει σε νέα καρτέλα"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

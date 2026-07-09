@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "Barcha tarjimalar mashina tarjimalaridir."
+        "All translations are machine translations.": "Barcha tarjimalar mashina tarjimalaridir.",
+        "Opens in new tab": "Yangi varaqda ochiladi"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

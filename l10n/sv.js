@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "Öppnas i ny flik",
     "All translations are machine translations.": "Alla översättningar är maskinöversättningar."
 },
     "nplurals=2; plural=(n != 1);"

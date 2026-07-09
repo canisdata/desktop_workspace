@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "新しいタブで開きます",
     "All translations are machine translations.": "すべての翻訳は機械翻訳です。"
 },
     "nplurals=1; plural=0;"

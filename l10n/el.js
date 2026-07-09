@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "Ανοίγει σε νέα καρτέλα",
     "All translations are machine translations.": "Όλες οι μεταφράσεις είναι μηχανικές μεταφράσεις."
 },
     "nplurals=2; plural=(n != 1);"

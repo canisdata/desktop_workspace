@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "იხსნება ახალ ჩანართში",
     "All translations are machine translations.": "ყველა თარგმანი მანქანური თარგმანია."
 },
     "nplurals=2; plural=(n!=1);"

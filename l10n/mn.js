@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "Шинэ таб дээр нээгдэнэ",
     "All translations are machine translations.": "Бүх орчуулга нь машин орчуулга юм."
 },
     "nplurals=2; plural=(n != 1);"

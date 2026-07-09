@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "すべての翻訳は機械翻訳です。"
+        "All translations are machine translations.": "すべての翻訳は機械翻訳です。",
+        "Opens in new tab": "新しいタブで開きます"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

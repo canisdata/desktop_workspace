@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "Is aistriúcháin mheaisín iad na haistriúcháin uile."
+        "All translations are machine translations.": "Is aistriúcháin mheaisín iad na haistriúcháin uile.",
+        "Opens in new tab": "Osclaítear i gcluaisín nua"
     },
     "pluralForm": "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);"
 }

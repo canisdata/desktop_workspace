@@ -1,6 +1,7 @@
 (() => {
     'use strict';
     const t = (text, vars = {}) => window.OC?.L10N?.translate ? OC.L10N.translate('desktop_workspace', text, vars) : text.replace(/\{([^}]+)\}/g, (_, key) => vars[key] ?? '');
+    const dt = (text, vars = {}) => dynamicLabels[text] || t(text, vars);
 
     const root = document.querySelector('[data-desktop-app-root]');
     if (!root) return;
@@ -21,8 +22,12 @@
     const windows = new Map();
     let zIndex = 20;
     let launcherApps = [];
+    let dynamicLabels = {};
+    let dynamicDataReloadTimer = null;
+    let dynamicDataReloading = false;
     let headerMenuPositionObserver = null;
     let favoritesReload = null;
+    let refreshDesktopPinnedApps = null;
     let applyIconSettings = null;
     let liveThemingApplied = false;
 
@@ -241,6 +246,8 @@
     }
 
     const themingIframeMonitors = new WeakMap();
+    const desktopLanguage = (window.OC?.getLanguage?.() || document.documentElement.lang || '').replace('-', '_');
+    const desktopLocale = (document.documentElement.dataset.locale || desktopLanguage || navigator.language || '').replace('-', '_');
 
     function isThemingSettingsUrl(href = '') {
         try {
@@ -391,13 +398,77 @@
         const withoutFiles = filtered.filter((app) => !(app.id === 'files' || app.href.includes('/apps/files')));
         return [{
             id: 'desktop-files',
-            name: t('Desktop Files'),
+            name: dt('Desktop Files'),
             href: `${window.location.origin}/index.php/apps/desktop_workspace/files?desktop=1`,
             icon: files?.icon || (window.OC && OC.imagePath && OC.imagePath('desktop_workspace','files.svg')) || '/apps/desktop_workspace/img/files.svg',
             desktopMode: 'iframe',
             fileApp: true,
             multiInstance: true,
         }, ...withoutFiles];
+    }
+
+    function appById(apps, id) {
+        return apps.find((app) => app.id === id) || null;
+    }
+
+    function applyDynamicAppData(data = {}) {
+        const previousApps = getApps();
+        if (data.labels && typeof data.labels === 'object') dynamicLabels = data.labels;
+        if (Array.isArray(data.apps)) root.dataset.apps = JSON.stringify(data.apps);
+        const nextApps = getApps();
+        launcherApps = nextApps;
+        renderLauncher();
+        renderPinnedApps();
+        renderPinnedDesktopApps();
+        hideHeaderApps(nextApps);
+        if (startButton) startButton.textContent = dt('Apps');
+        search?.querySelector('span:last-child')?.replaceChildren(dt('Search'));
+        if (settingsButton) {
+            settingsButton.title = dt('Desktop Settings');
+            settingsButton.setAttribute('aria-label', dt('Desktop Settings'));
+        }
+        windows.forEach((entry) => {
+            if (entry.app.id === 'desktop-settings' || /\/settings\/user\//.test(entry.app.href || '')) {
+                const currentTitle = entry.window.querySelector('[data-window-title]')?.textContent || entry.app.name;
+                const settingsTitle = dt('Desktop Settings');
+                if (currentTitle === entry.app.name || currentTitle === t('Desktop Settings') || currentTitle === 'Desktop Settings') {
+                    entry.app.name = settingsTitle;
+                    entry.window.querySelector('[data-window-title]').textContent = settingsTitle;
+                    entry.task.querySelector('[data-task-title]').textContent = settingsTitle;
+                    entry.task.title = settingsTitle;
+                    entry.task.setAttribute('aria-label', settingsTitle);
+                }
+                return;
+            }
+            const next = appById(nextApps, entry.app.id);
+            const previous = appById(previousApps, entry.app.id);
+            if (!next) return;
+            const currentTitle = entry.window.querySelector('[data-window-title]')?.textContent || entry.app.name;
+            const titleWasAppName = currentTitle === entry.app.name || currentTitle === previous?.name;
+            entry.app = { ...entry.app, ...next };
+            if (titleWasAppName && next.name && next.name !== currentTitle) setWindowMeta(entry.app.id, { title: next.name, icon: next.icon || entry.app.icon });
+        });
+        debugLog('dynamic_app_data_applied', { apps: nextApps.length, labels: Object.keys(dynamicLabels).length });
+    }
+
+    async function reloadDynamicAppData() {
+        const url = root.dataset.dynamicDataUrl;
+        if (!url || dynamicDataReloading) return;
+        dynamicDataReloading = true;
+        try {
+            const response = await fetch(url, { headers: { Accept: 'application/json' } });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            applyDynamicAppData(await response.json());
+        } catch (error) {
+            debugLog('dynamic_app_data_reload_failed', { message: error.message });
+        } finally {
+            dynamicDataReloading = false;
+        }
+    }
+
+    function scheduleDynamicAppDataReload(delay = 250) {
+        window.clearTimeout(dynamicDataReloadTimer);
+        dynamicDataReloadTimer = window.setTimeout(reloadDynamicAppData, delay);
     }
 
     const APP_PIN_KEY = 'desktop_workspace:app-pins:v1';
@@ -436,6 +507,9 @@
         button.dataset.pinLocation = location;
         button.title = app.name;
         button.setAttribute('aria-label', app.name);
+        if (location === 'menu' && app.target) {
+            button.dataset.externalNewTabTooltip = t('Opens in new tab');
+        }
         button.innerHTML = `<span class="desktop-app-menu-icon">${app.icon ? `<img alt="" draggable="false" src="${escapeHtml(app.icon)}">` : escapeHtml(app.name.slice(0, 1))}</span><span class="desktop-app-menu-label">${escapeHtml(app.name)}</span>`;
         button.addEventListener('click', () => launchApp(app));
         button.addEventListener('contextmenu', (event) => openAppContextMenu(app, event, location));
@@ -535,7 +609,7 @@
             reorderPinnedApps(dragKey, beforeKey);
         });
     }
-    function renderPinnedDesktopApps() { if (typeof favoritesReload === 'function') favoritesReload(); }
+    function renderPinnedDesktopApps() { if (typeof refreshDesktopPinnedApps === 'function') refreshDesktopPinnedApps(); }
     function openUnifiedSearchOverlay() {
         closeStartMenu();
         const selectors = [
@@ -684,7 +758,7 @@
     function openDesktopSettings() {
         const url = (settingsButton && settingsButton.dataset.settingsUrl) || '/index.php/settings/user/desktop_workspace';
         const icon = (window.OC && OC.imagePath && OC.imagePath('desktop_workspace', 'app.svg')) || '/apps/desktop_workspace/img/app.svg';
-        openExternalWindow({ appId: 'desktop-settings', title: t('Desktop Settings'), href: url, icon });
+        openExternalWindow({ appId: 'desktop-settings', title: dt('Desktop Settings'), href: url, icon });
     }
     function openDesktopAdminSettings() {
         const url = (window.OC && OC.generateUrl) ? OC.generateUrl('/settings/admin/desktop_workspace') : '/index.php/settings/admin/desktop_workspace';
@@ -2021,8 +2095,10 @@
     function updateClock() {
         const now = new Date();
         clock.dateTime = now.toISOString();
-        const locale = (window.OC?.getLanguage?.() || document.documentElement.lang || navigator.language || undefined)?.replace('_', '-');
-        clock.textContent = new Intl.DateTimeFormat(locale, { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(now);
+        const locale = (desktopLocale || desktopLanguage || window.OC?.getLanguage?.() || document.documentElement.lang || navigator.language || undefined)?.replace('_', '-');
+        const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+        try { clock.textContent = new Intl.DateTimeFormat(locale, options).format(now); }
+        catch (e) { clock.textContent = new Intl.DateTimeFormat(undefined, options).format(now); }
     }
 
     startButton.addEventListener('click', toggleStartMenu);
@@ -2183,6 +2259,7 @@
     setTimeout(() => hideHeaderApps(launcherApps), 500);
     setTimeout(() => hideHeaderApps(launcherApps), 1500);
     restoreWindows(apps);
+    scheduleDynamicAppDataReload(100);
     initFavorites();
     updateClock();
     if (root.dataset.firstVisit === 'true') {
@@ -2895,8 +2972,8 @@
             const entries = [];
             if (desktopFolder) entries.push(['newfolder', t('New folder')]);
             if (dfEnabled && desktopFolder && readSharedClipboard()) entries.push(['paste', t('Paste')]);
-            entries.push(['settings', t('Desktop Settings')]);
-            if (isAdminUser()) entries.push(['adminsettings', t('Desktop Admin Settings')]);
+            entries.push(['settings', dt('Desktop Settings')]);
+            if (isAdminUser()) entries.push(['adminsettings', dt('Desktop Admin Settings')]);
             buildMenu(entries, e.clientX, e.clientY).addEventListener('click', (ev) => {
                 const b = ev.target.closest('button'); if (!b) return;
                 const act = b.dataset.act; closeFavMenu();
@@ -3147,6 +3224,17 @@
             debugLog('desktop_icons_loaded', { count: icons.length });
         }
         favoritesReload = renderAll;
+        refreshDesktopPinnedApps = () => {
+            layer.querySelectorAll('.desktop-fav[data-kind="app"][data-app-key]').forEach((el) => {
+                const app = appFromKey(el.dataset.appKey);
+                if (!app) return;
+                el.dataset.name = app.name;
+                const label = el.querySelector('.desktop-fav-label');
+                if (label) label.textContent = app.name;
+                const img = el.querySelector('.desktop-app-shortcut-circle img');
+                if (img && app.icon && img.getAttribute('src') !== app.icon) img.setAttribute('src', app.icon);
+            });
+        };
         applyIconSettings = (s) => {
             if ('showFavorites' in s) { showFav = !!s.showFavorites; root.dataset.showFavorites = showFav ? 'true' : 'false'; }
             if ('desktopFolder' in s) { desktopFolder = (s.desktopFolder || '').trim(); root.dataset.desktopFolder = desktopFolder; }

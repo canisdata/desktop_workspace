@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "Mở trong thẻ mới",
     "All translations are machine translations.": "Tất cả bản dịch đều là bản dịch máy."
 },
     "nplurals=1; plural=0;"

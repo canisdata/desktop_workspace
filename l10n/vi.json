@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "Tất cả bản dịch đều là bản dịch máy."
+        "All translations are machine translations.": "Tất cả bản dịch đều là bản dịch máy.",
+        "Opens in new tab": "Mở trong thẻ mới"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

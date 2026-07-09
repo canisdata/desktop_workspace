@@ -11,7 +11,7 @@
 #   ~/.nextcloud/certificates/desktop_workspace.crt   (cert returned by Nextcloud)
 
 app_name = desktop_workspace
-version  = 0.14.3
+version  = 0.14.4
 
 build_dir    = $(CURDIR)/build
 sign_dir     = $(build_dir)/sign

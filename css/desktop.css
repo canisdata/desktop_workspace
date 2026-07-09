@@ -753,8 +753,30 @@ body:has(#desktop-root) .header-menu__wrapper {
 .desktop-start-menu { width: min(320px, calc(100vw - 28px)); }
 .desktop-start-header { grid-template-columns: 1fr minmax(120px, 1fr) auto; gap: 10px; padding: 10px; }
 .desktop-launcher { display: grid; grid-template-columns: repeat(4, 69px); justify-content: start; gap: 0; padding: 8px; }
-.desktop-app-tile { width: 69px; min-height: 60px; height: auto; border: 0; border-radius: var(--border-radius-element, 8px); background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 4px; padding: 8px 0 4px; text-align: center; font-weight: 400; color: var(--color-main-text, var(--desktop-panel-text)); }
+.desktop-app-tile { position: relative; width: 69px; min-height: 60px; height: auto; border: 0; border-radius: var(--border-radius-element, 8px); background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 4px; padding: 8px 0 4px; text-align: center; font-weight: 400; color: var(--color-main-text, var(--desktop-panel-text)); }
 .desktop-app-tile:hover, .desktop-app-tile:focus-visible { background: var(--color-background-hover, rgba(127, 127, 127, 0.15)); transform: none; }
+.desktop-app-tile[data-external-new-tab-tooltip]:hover::after {
+    content: attr(data-external-new-tab-tooltip);
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 6px);
+    z-index: 100000;
+    width: max-content;
+    max-width: min(220px, 70vw);
+    transform: translateX(-50%);
+    padding: 5px 8px;
+    border: 1px solid var(--desktop-panel-border);
+    border-radius: var(--border-radius-small, 6px);
+    background: color-mix(in srgb, var(--color-main-background, #fff) 82%, transparent);
+    color: var(--color-main-text, #111);
+    box-shadow: 0 6px 18px var(--color-box-shadow, rgba(0, 0, 0, .18));
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    font-size: 12px;
+    line-height: 1.25;
+    white-space: normal;
+    pointer-events: none;
+}
 .desktop-app-tile .desktop-app-menu-icon { width: 40px; height: 40px; flex: 0 0 40px; border-radius: 50%; background: var(--color-primary-element, var(--color-primary, #00679e)); display: flex; align-items: center; justify-content: center; }
 .desktop-app-tile .desktop-app-menu-icon img { width: 24px; height: 24px; }
 .desktop-app-tile .desktop-app-menu-label { width: 64px; max-width: 64px; font-size: 12px; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--color-main-text, inherit); }

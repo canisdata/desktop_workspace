@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "Avautuu uuteen välilehteen",
     "All translations are machine translations.": "Kaikki käännökset ovat konekäännöksiä."
 },
     "nplurals=2; plural=(n != 1);"

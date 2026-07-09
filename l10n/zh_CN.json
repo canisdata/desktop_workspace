@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "所有翻译均为机器翻译。"
+        "All translations are machine translations.": "所有翻译均为机器翻译。",
+        "Opens in new tab": "在新标签页中打开"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

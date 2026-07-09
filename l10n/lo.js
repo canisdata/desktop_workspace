@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "ເປີດໃນແທັບໃໝ່",
     "All translations are machine translations.": "ການແປທັງໝົດແມ່ນການແປດ້ວຍເຄື່ອງ."
 },
     "nplurals=1; plural=0;"

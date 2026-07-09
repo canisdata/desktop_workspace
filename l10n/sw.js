@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "Hufunguka kwenye kichupo kipya",
     "All translations are machine translations.": "Tafsiri zote ni tafsiri za mashine."
 },
     "nplurals=2; plural=(n != 1);"

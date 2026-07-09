@@ -216,6 +216,7 @@ OC.L10N.register(
     "Remove from desktop": "Remove from desktop",
     "Pinned apps": "Pinned apps",
     "Search": "Search",
+    "Opens in new tab": "เปิดในแท็บใหม่",
     "All translations are machine translations.": "คำแปลทั้งหมดเป็นคำแปลด้วยเครื่อง"
 },
     "nplurals=1; plural=0;"

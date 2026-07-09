@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "همه ترجمه‌ها، ترجمه ماشینی هستند."
+        "All translations are machine translations.": "همه ترجمه‌ها، ترجمه ماشینی هستند.",
+        "Opens in new tab": "در زبانهٔ جدید باز می‌شود"
     },
     "pluralForm": "nplurals=2; plural=(n > 1);"
 }

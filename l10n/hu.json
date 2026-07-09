@@ -215,7 +215,8 @@
         "Remove from desktop": "Remove from desktop",
         "Pinned apps": "Pinned apps",
         "Search": "Search",
-        "All translations are machine translations.": "Minden fordítás gépi fordítás."
+        "All translations are machine translations.": "Minden fordítás gépi fordítás.",
+        "Opens in new tab": "Új lapon nyílik meg"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }
