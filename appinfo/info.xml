@@ -19,8 +19,7 @@ Admins can enable the app like any other Nextcloud app and configure the experim
     <website>https://github.com/canisdata/desktop_workspace</website>
     <bugs>https://github.com/canisdata/desktop_workspace/issues</bugs>
     <repository>https://github.com/canisdata/desktop_workspace</repository>
-    <screenshot><![CDATA[https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/Desktop_in_NC_003_thumbnail.png]]></screenshot>
-    <screenshot><![CDATA[https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/Desktop_in_NC_003.png]]></screenshot>
+    <screenshot small-thumbnail="https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/Desktop_in_NC_003_thumbnail.png"><![CDATA[https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/Desktop_in_NC_003.png]]></screenshot>
     <dependencies>
         <nextcloud min-version="33" max-version="34" />
     </dependencies>
