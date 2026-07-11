@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "Odpre se v novem zavihku",
-    "All translations are machine translations.": "Vsi prevodi so strojni prevodi."
+    "All translations are machine translations.": "Vsi prevodi so strojni prevodi.",
+    "Allow users to choose a desktop decoration": "Omogočite uporabnikom, da izberejo dekoracijo namizja",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Izberite videz namiznih oken, opravilne vrstice in menijev z desnim klikom. Svetle in temne barve še naprej sledijo vašim nastavitvam videza Nextcloud.",
+    "Decoration": "Dekoracija",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Vaš skrbnik je onemogočil možnosti dekoracije. Prosite skrbnika, da jih omogoči.",
+    "Decorations": "Okraski",
+    "Desktop decoration": "Dekoracija namizja",
+    "Redmond": "Redmond",
+    "Standard": "Standardno",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Ko je onemogočeno, vsi uporabniki uporabljajo standardno okno Nextcloud, opravilno vrstico in dekoracijo menija.",
+    "Back": "Nazaj",
+    "Browser": "Brskalnik",
+    "Delete": "Izbriši",
+    "No files": "Brez datotek",
+    "Open folder": "Odpri mapo"
 },
     "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"
 );

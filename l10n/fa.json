@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "همه ترجمه‌ها، ترجمه ماشینی هستند.",
-        "Opens in new tab": "در زبانهٔ جدید باز می‌شود"
+        "Opens in new tab": "در زبانهٔ جدید باز می‌شود",
+        "Allow users to choose a desktop decoration": "به کاربران امکان انتخاب دکوراسیون دسکتاپ را بدهید",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "ظاهر پنجره های دسکتاپ، نوار وظیفه و منوهای راست کلیک را انتخاب کنید. رنگ‌های روشن و تیره همچنان از تنظیمات ظاهری Nextcloud شما پیروی می‌کنند.",
+        "Decoration": "دکوراسیون",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "انتخاب های دکوراسیون توسط سرپرست شما غیرفعال شده است. از سرپرست خود بخواهید آنها را فعال کند.",
+        "Decorations": "تزئینات",
+        "Desktop decoration": "دکوراسیون رومیزی",
+        "Redmond": "ردموند",
+        "Standard": "استاندارد",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "وقتی غیرفعال است، همه کاربران از پنجره استاندارد Nextcloud، نوار وظیفه و دکوراسیون منو استفاده می کنند.",
+        "Back": "برگشت",
+        "Browser": "مرورگر",
+        "Delete": "حذف کنید",
+        "No files": "بدون فایل",
+        "Open folder": "پوشه را باز کنید"
     },
     "pluralForm": "nplurals=2; plural=(n > 1);"
 }

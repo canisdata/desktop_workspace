@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "Avautuu uuteen välilehteen",
-    "All translations are machine translations.": "Kaikki käännökset ovat konekäännöksiä."
+    "All translations are machine translations.": "Kaikki käännökset ovat konekäännöksiä.",
+    "Allow users to choose a desktop decoration": "Salli käyttäjien valita työpöydän koristelu",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Valitse työpöydän ikkunoiden ulkoasu, tehtäväpalkki ja hiiren kakkospainikkeella napsautetut valikot. Vaaleat ja tummat värit noudattavat edelleen Nextcloudin ulkoasuasetuksiasi.",
+    "Decoration": "Sisustus",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Järjestelmänvalvojasi on poistanut koristeluvalinnat käytöstä. Pyydä järjestelmänvalvojaa ottamaan ne käyttöön.",
+    "Decorations": "Koristeet",
+    "Desktop decoration": "Työpöydän koristelu",
+    "Redmond": "Redmond",
+    "Standard": "Vakio",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Kun se on poistettu käytöstä, kaikki käyttäjät käyttävät tavallista Nextcloud-ikkunaa, tehtäväpalkkia ja valikon koristelua.",
+    "Back": "Takaisin",
+    "Browser": "Selain",
+    "Delete": "Poistaa",
+    "Open folder": "Avaa kansio",
+    "No files": "Ei tiedostoja"
 },
     "nplurals=2; plural=(n != 1);"
 );

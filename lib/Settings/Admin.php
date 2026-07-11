@@ -28,8 +28,6 @@ class Admin implements ISettings {
     }
 
     public function getForm(): TemplateResponse {
-        $dataDir = rtrim($this->config->getSystemValueString('datadirectory', '/var/www/html/data'), '/');
-
         $allowed = $this->filesAvailability->allowedGroups();
         $groups = [];
         foreach ($this->groupManager->search('') as $group) {
@@ -63,7 +61,7 @@ class Admin implements ISettings {
         }
 
         return new TemplateResponse('desktop_workspace', 'settings-admin', [
-            'debugEnabled' => $this->config->getAppValue(SettingsController::APP_ID, SettingsController::DEBUG_KEY, 'yes') !== 'no',
+            'userDecorationsEnabled' => $this->config->getAppValue(SettingsController::APP_ID, SettingsController::USER_DECORATIONS_ENABLED_KEY, 'yes') !== 'no',
             'experimentalDisabled' => $this->filesAvailability->globallyDisabled(),
             'groups' => $groups,
             'apps' => $apps,
@@ -72,9 +70,8 @@ class Admin implements ISettings {
             'dailyStats' => $this->statsService->dailyCounts(7),
             'weeklyStats' => $this->statsService->weeklyCounts(4),
             'saveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveAdminSettings'),
+            'decorationPolicyUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveDecorationPolicy'),
             'resetUserUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.resetUserSettings'),
-            'resetLogUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.resetDebugLog'),
-            'logPath' => $dataDir . '/' . SettingsController::LOG_FILE,
         ]);
     }
 

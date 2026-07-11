@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "Atsidaro naujame skirtuke",
-    "All translations are machine translations.": "Visi vertimai yra mašininiai vertimai."
+    "All translations are machine translations.": "Visi vertimai yra mašininiai vertimai.",
+    "Allow users to choose a desktop decoration": "Leiskite vartotojams pasirinkti darbalaukio apdailą",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Pasirinkite darbalaukio langų išvaizdą, užduočių juostą ir dešiniuoju pelės mygtuku spustelėkite meniu. Šviesios ir tamsios spalvos ir toliau atitinka Nextcloud išvaizdos nustatymus.",
+    "Decoration": "Dekoravimas",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Jūsų administratorius išjungė dekoravimo pasirinkimą. Paprašykite administratoriaus juos įjungti.",
+    "Decorations": "Dekoracijos",
+    "Desktop decoration": "Darbastalio apdaila",
+    "Redmond": "Redmondas",
+    "Standard": "Standartinis",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Kai išjungta, visi vartotojai naudoja standartinį Nextcloud langą, užduočių juostą ir meniu dekoravimą.",
+    "Back": "Atgal",
+    "Browser": "Naršyklė",
+    "Delete": "Ištrinti",
+    "Open folder": "Atidaryti aplanką",
+    "No files": "Failų nėra"
 },
     "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);"
 );

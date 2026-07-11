@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "Ĉiuj tradukoj estas maŝinaj tradukoj.",
-        "Opens in new tab": "Malfermiĝas en nova langeto"
+        "Opens in new tab": "Malfermiĝas en nova langeto",
+        "Allow users to choose a desktop decoration": "Permesu uzantojn elekti labortablan ornamon",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Elektu la aspekton de labortablaj fenestroj, la taskobreto kaj dekstre klakmenuoj. Helaj kaj malhelaj koloroj daŭre sekvas viajn aparajn agordojn de Nextcloud.",
+        "Decoration": "Dekoracio",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Dekoraciaj elektoj estis malŝaltitaj de via administranto. Petu vian administranton ebligi ilin.",
+        "Decorations": "Dekoracioj",
+        "Desktop decoration": "Surtabla ornamado",
+        "Redmond": "Redmond",
+        "Standard": "Normo",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Kiam estas malebligita, ĉiuj uzantoj uzas la norman Nextcloud-fenestron, taskobreton kaj menuornamadon.",
+        "Back": "Reen",
+        "Browser": "Retumilo",
+        "Delete": "Forigi",
+        "Open folder": "Malfermu dosierujon",
+        "No files": "Neniuj dosieroj"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

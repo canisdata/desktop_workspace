@@ -57,30 +57,30 @@
         const response = await fetch(ocsUrl('/apps/files_sharing/api/v1/shares', { path: item.path, reshares: 'true', subfiles: 'false' }), { credentials: 'same-origin', headers: requestHeaders({ 'OCS-APIRequest': 'true', Accept: 'application/json' }) });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const shares = (await response.json()).ocs?.data || [];
-        const list = shares.length ? `<ul class="desktop-files-api-list">${shares.map((share) => `<li data-share-id="${escapeHtml(share.id)}"><strong>${escapeHtml(share.share_with_displayname || share.share_with || share.token || t('Public link'))}</strong><span>${escapeHtml(share.url ? t('Public link') : `Type ${share.share_type}`)}</span>${share.url ? `<a href="${escapeHtml(share.url)}" target="_blank" rel="noreferrer">Open link</a>` : ''}<button type="button" data-share-delete="${escapeHtml(share.id)}">Remove</button></li>`).join('')}</ul>` : '<p class="desktop-files-detail-note">No shares yet.</p>';
-        return `${list}<div class="desktop-files-api-actions"><button type="button" data-share-create-link>Create public link</button><button type="button" data-open-files-native>Open in Files for advanced sharing</button></div>`;
+        const list = shares.length ? `<ul class="desktop-files-api-list">${shares.map((share) => `<li data-share-id="${escapeHtml(share.id)}"><strong>${escapeHtml(share.share_with_displayname || share.share_with || share.token || t('Public link'))}</strong><span>${escapeHtml(share.url ? t('Public link') : `Type ${share.share_type}`)}</span>${share.url ? `<a href="${escapeHtml(share.url)}" target="_blank" rel="noreferrer">${escapeHtml(t('Open link'))}</a>` : ''}<button type="button" data-share-delete="${escapeHtml(share.id)}">${escapeHtml(t('Remove'))}</button></li>`).join('')}</ul>` : `<p class="desktop-files-detail-note">${escapeHtml(t('No shares yet.'))}</p>`;
+        return `${list}<div class="desktop-files-api-actions"><button type="button" data-share-create-link>${escapeHtml(t('Create public link'))}</button><button type="button" data-open-files-native>${escapeHtml(t('Open in Files for advanced sharing'))}</button></div>`;
     }
     async function activityPanelHtml() {
-        if (!item.fileId) return '<p class="desktop-files-detail-note">No file id available.</p>';
+        if (!item.fileId) return `<p class="desktop-files-detail-note">${escapeHtml(t('No file id available.'))}</p>`;
         const response = await fetch(ocsUrl('/apps/activity/api/v2/activity/filter', { object_type: 'files', object_id: item.fileId }), { credentials: 'same-origin', headers: requestHeaders({ 'OCS-APIRequest': 'true', Accept: 'application/json' }) });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const activities = (await response.json()).ocs?.data || [];
-        return activities.length ? `<ul class="desktop-files-api-list">${activities.map((a) => `<li><strong>${escapeHtml(a.subject || a.type || t('Activity'))}</strong><span>${escapeHtml(a.message || '')}</span><time>${escapeHtml(a.datetime || '')}</time></li>`).join('')}</ul>` : '<p class="desktop-files-detail-note">No activity yet.</p>';
+        return activities.length ? `<ul class="desktop-files-api-list">${activities.map((a) => `<li><strong>${escapeHtml(a.subject || a.type || t('Activity'))}</strong><span>${escapeHtml(a.message || '')}</span><time>${escapeHtml(a.datetime || '')}</time></li>`).join('')}</ul>` : `<p class="desktop-files-detail-note">${escapeHtml(t('No activity yet.'))}</p>`;
     }
     async function versionsPanelHtml() {
-        if (!item.fileId || item.isFolder) return '<p class="desktop-files-detail-note">Versions are available for files only.</p>';
+        if (!item.fileId || item.isFolder) return `<p class="desktop-files-detail-note">${escapeHtml(t('Versions are available for files only.'))}</p>`;
         const body = '<?xml version="1.0"?><d:propfind xmlns:d="DAV:" xmlns:nc="http://nextcloud.org/ns"><d:prop><d:getcontentlength/><d:getlastmodified/><d:getcontenttype/><d:getetag/><nc:version-label/><nc:version-author/><nc:has-preview/></d:prop></d:propfind>';
         const response = await fetch(versionDavUrl(item.fileId), { method: 'PROPFIND', credentials: 'same-origin', headers: requestHeaders({ Depth: '1', 'Content-Type': 'application/xml; charset=utf-8' }), body });
-        if (response.status === 404) return '<p class="desktop-files-detail-note">No versions available.</p>';
+        if (response.status === 404) return `<p class="desktop-files-detail-note">${escapeHtml(t('No versions available.'))}</p>`;
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const xml = new DOMParser().parseFromString(await response.text(), 'application/xml');
         const versions = Array.from(xml.getElementsByTagNameNS('DAV:', 'response')).slice(1).map((node) => { const href = node.getElementsByTagNameNS('DAV:', 'href')[0]?.textContent || ''; const version = decodeURIComponent(href.replace(/\/$/, '').split('/').pop() || ''); const size = node.getElementsByTagNameNS('DAV:', 'getcontentlength')[0]?.textContent || '0'; const modified = node.getElementsByTagNameNS('DAV:', 'getlastmodified')[0]?.textContent || ''; const label = node.getElementsByTagNameNS('http://nextcloud.org/ns', 'version-label')[0]?.textContent || ''; return { version, size, modified, label }; }).filter((v) => v.version).sort((a, b) => Number(b.version) - Number(a.version));
-        return versions.length ? `<ul class="desktop-files-api-list">${versions.map((v) => `<li><strong>${escapeHtml(v.label || new Date(Number(v.version) * 1000).toLocaleString())}</strong><span>${escapeHtml(humanSize(v.size))} · ${escapeHtml(v.modified)}</span><a href="${escapeHtml(versionDavUrl(item.fileId, v.version))}" download>Download</a><button type="button" data-version-restore="${escapeHtml(v.version)}">Restore</button></li>`).join('')}</ul>` : '<p class="desktop-files-detail-note">No versions available.</p>';
+        return versions.length ? `<ul class="desktop-files-api-list">${versions.map((v) => `<li><strong>${escapeHtml(v.label || new Date(Number(v.version) * 1000).toLocaleString())}</strong><span>${escapeHtml(humanSize(v.size))} · ${escapeHtml(v.modified)}</span><a href="${escapeHtml(versionDavUrl(item.fileId, v.version))}" download>${escapeHtml(t('Download'))}</a><button type="button" data-version-restore="${escapeHtml(v.version)}">${escapeHtml(t('Restore'))}</button></li>`).join('')}</ul>` : `<p class="desktop-files-detail-note">${escapeHtml(t('No versions available.'))}</p>`;
     }
     async function activate(tab) {
         panel.querySelectorAll('.desktop-files-detail-tabs button').forEach((button) => button.classList.toggle('is-active', button.dataset.tab === tab));
         const target = panel.querySelector('.desktop-files-tab-panel');
-        target.innerHTML = '<p class="desktop-files-detail-note">Loading…</p>';
+        target.innerHTML = `<p class="desktop-files-detail-note">${escapeHtml(t('Loading…'))}</p>`;
         try { target.innerHTML = tab === 'details' ? detailsPanelHtml() : tab === 'sharing' ? await sharingPanelHtml() : tab === 'activity' ? await activityPanelHtml() : await versionsPanelHtml(); }
         catch (error) { target.innerHTML = `<p class="desktop-files-detail-note">${escapeHtml(t('Could not load {tab}: {message}', { tab, message: error.message }))}</p>`; }
     }

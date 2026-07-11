@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "すべての翻訳は機械翻訳です。",
-        "Opens in new tab": "新しいタブで開きます"
+        "Opens in new tab": "新しいタブで開きます",
+        "Allow users to choose a desktop decoration": "ユーザーがデスクトップの装飾を選択できるようにする",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "デスクトップ ウィンドウ、タスクバー、および右クリック メニューの外観を選択します。明るい色と暗い色は引き続き Nextcloud の外観設定に従います。",
+        "Decoration": "装飾",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "装飾の選択は管理者によって無効にされています。管理者にそれらを有効にするよう依頼してください。",
+        "Decorations": "装飾品",
+        "Desktop decoration": "デスクトップの装飾",
+        "Redmond": "レドモンド",
+        "Standard": "標準",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "無効にすると、すべてのユーザーは標準の Nextcloud ウィンドウ、タスクバー、メニュー装飾を使用します。",
+        "Back": "戻る",
+        "Browser": "ブラウザ",
+        "Delete": "消去",
+        "Open folder": "フォルダーを開く",
+        "No files": "ファイルがありません"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

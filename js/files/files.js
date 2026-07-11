@@ -311,20 +311,20 @@
     }
 
     async function activityPanelHtml(item) {
-        if (!item.fileId) return '<p class="desktop-files-detail-note">No file id available.</p>';
+        if (!item.fileId) return `<p class="desktop-files-detail-note">${escapeHtml(t('No file id available.'))}</p>`;
         const response = await fetch(ocsUrl('/apps/activity/api/v2/activity/filter', { object_type: 'files', object_id: item.fileId }), { credentials: 'same-origin', headers: requestHeaders({ 'OCS-APIRequest': 'true', Accept: 'application/json' }) });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
         const activities = data.ocs?.data || [];
         return activities.length ? `<ul class="desktop-files-api-list">${activities.map((a) => `
-            <li><strong>${escapeHtml(a.subject || a.type || t('Activity'))}</strong><span>${escapeHtml(a.message || '')}</span><time>${escapeHtml(a.datetime || '')}</time></li>`).join('')}</ul>` : '<p class="desktop-files-detail-note">No activity yet.</p>';
+            <li><strong>${escapeHtml(a.subject || a.type || t('Activity'))}</strong><span>${escapeHtml(a.message || '')}</span><time>${escapeHtml(a.datetime || '')}</time></li>`).join('')}</ul>` : `<p class="desktop-files-detail-note">${escapeHtml(t('No activity yet.'))}</p>`;
     }
 
     async function versionsPanelHtml(item) {
-        if (!item.fileId || item.isFolder) return '<p class="desktop-files-detail-note">Versions are available for files only.</p>';
+        if (!item.fileId || item.isFolder) return `<p class="desktop-files-detail-note">${escapeHtml(t('Versions are available for files only.'))}</p>`;
         const body = '<?xml version="1.0"?><d:propfind xmlns:d="DAV:" xmlns:nc="http://nextcloud.org/ns"><d:prop><d:getcontentlength/><d:getlastmodified/><d:getcontenttype/><d:getetag/><nc:version-label/><nc:version-author/><nc:has-preview/></d:prop></d:propfind>';
         const response = await fetch(versionDavUrl(item.fileId), { method: 'PROPFIND', credentials: 'same-origin', headers: requestHeaders({ Depth: '1', 'Content-Type': 'application/xml; charset=utf-8' }), body });
-        if (response.status === 404) return '<p class="desktop-files-detail-note">No versions available.</p>';
+        if (response.status === 404) return `<p class="desktop-files-detail-note">${escapeHtml(t('No versions available.'))}</p>`;
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const xml = new DOMParser().parseFromString(await response.text(), 'application/xml');
         const versions = Array.from(xml.getElementsByTagNameNS('DAV:', 'response')).slice(1).map((node) => {
@@ -336,7 +336,7 @@
             return { version, size, modified, label, href };
         }).filter((v) => v.version).sort((a, b) => Number(b.version) - Number(a.version));
         return versions.length ? `<ul class="desktop-files-api-list">${versions.map((v) => `
-            <li data-version="${escapeHtml(v.version)}"><strong>${escapeHtml(v.label || new Date(Number(v.version) * 1000).toLocaleString())}</strong><span>${escapeHtml(humanSize(v.size))} · ${escapeHtml(v.modified)}</span><a href="${escapeHtml(versionDavUrl(item.fileId, v.version))}" download>Download</a><button type="button" data-version-restore="${escapeHtml(v.version)}">Restore</button></li>`).join('')}</ul>` : '<p class="desktop-files-detail-note">No versions available.</p>';
+            <li data-version="${escapeHtml(v.version)}"><strong>${escapeHtml(v.label || new Date(Number(v.version) * 1000).toLocaleString())}</strong><span>${escapeHtml(humanSize(v.size))} · ${escapeHtml(v.modified)}</span><a href="${escapeHtml(versionDavUrl(item.fileId, v.version))}" download>${escapeHtml(t('Download'))}</a><button type="button" data-version-restore="${escapeHtml(v.version)}">${escapeHtml(t('Restore'))}</button></li>`).join('')}</ul>` : `<p class="desktop-files-detail-note">${escapeHtml(t('No versions available.'))}</p>`;
     }
 
     async function restoreVersion(item, version) {
@@ -373,7 +373,7 @@
     }
 
     async function renameItem(item) {
-        const next = window.prompt('Rename', item.name); if (!next || next === item.name) return;
+        const next = window.prompt(t('Rename'), item.name); if (!next || next === item.name) return;
         await moveItem(item.path, parentPath(item.path), next); await load(currentPath); await refreshTree();
     }
 
@@ -448,15 +448,15 @@
         rows.querySelectorAll('tr.is-context-target').forEach((row) => row.classList.remove('is-context-target'));
         rows.querySelector(`tr[data-path="${CSS.escape(item.path)}"]`)?.classList.add('is-context-target');
         const actions = [
-            ['open', item.isFolder ? 'Open folder' : 'Open'],
+            ['open', item.isFolder ? t('Open folder') : t('Open')],
             ['details', t('Details')],
             ['open-files', t('Open in Files')],
             ['copy', t('Copy')],
             ['cut', t('Cut')],
             ['paste', t('Paste')],
             ['download', t('Download')],
-            ['rename', 'Rename'],
-            ['delete', 'Delete'],
+            ['rename', t('Rename')],
+            ['delete', t('Delete')],
         ];
         contextMenu.innerHTML = actions.map(([action, label]) => `<button type="button" data-action="${action}">${escapeHtml(label)}</button>`).join('');
         contextMenu.hidden = false;

@@ -17,6 +17,7 @@
             const s = {};
             Object.entries(fields).forEach(([k, v]) => { if (map[k]) s[map[k]] = (v === 'yes'); });
             if ('desktop_folder' in fields) s.desktopFolder = fields.desktop_folder;
+            if ('decoration' in fields) s.decoration = fields.decoration === 'redmond' ? 'redmond' : 'standard';
             if (Object.keys(s).length) window.parent.postMessage({ type: 'nextcloud-desktop:settings-changed', settings: s }, window.location.origin);
         } catch (e) { /* ignore */ }
     }
@@ -38,7 +39,7 @@
             err.code = data.message;
             throw err;
         }
-        notifyDesktop({ [field]: value });
+        notifyDesktop({ [field]: field === 'decoration' ? (data.decoration || 'standard') : value });
         return data;
     }
 
@@ -59,6 +60,26 @@
     wireToggle('desktop-favorites-no-confirm', 'favorites_no_confirm');
     wireToggle('desktop-trash-no-confirm', 'trash_no_confirm');
     wireToggle('desktop-try-experimental', 'try_experimental_files');
+
+    const decorationSelect = el('desktop-decoration');
+    if (decorationSelect) {
+        decorationSelect.addEventListener('change', async () => {
+            decorationSelect.disabled = true;
+            const previous = decorationSelect.dataset.savedValue || 'standard';
+            try {
+                const data = await applyField('decoration', decorationSelect.value);
+                decorationSelect.value = data.decoration || 'standard';
+                decorationSelect.dataset.savedValue = decorationSelect.value;
+                if (status) status.textContent = tr('Saved.');
+            } catch (error) {
+                decorationSelect.value = previous;
+                if (status) status.textContent = tr('Save failed: {msg}', { msg: error.message });
+            } finally {
+                decorationSelect.disabled = false;
+            }
+        });
+        decorationSelect.dataset.savedValue = decorationSelect.value;
+    }
 
     // Desktop folder picker — applies immediately, with validation feedback.
     const folderInput = el('desktop-folder-path');

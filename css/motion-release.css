@@ -1,0 +1,64 @@
+/* Fluent's fastest standard duration is 83ms: brief enough for shell interactions. */
+:root {
+    --desktop-motion-fast: 83ms;
+    --desktop-motion-enter: cubic-bezier(0, 0, 0, 1);
+    --desktop-motion-exit: cubic-bezier(1, 0, 1, 1);
+}
+
+.desktop-window {
+    transition:
+        left var(--desktop-motion-fast) var(--desktop-motion-enter),
+        top var(--desktop-motion-fast) var(--desktop-motion-enter),
+        width var(--desktop-motion-fast) var(--desktop-motion-enter),
+        height var(--desktop-motion-fast) var(--desktop-motion-enter),
+        opacity var(--desktop-motion-fast) var(--desktop-motion-enter),
+        transform var(--desktop-motion-fast) var(--desktop-motion-enter),
+        visibility 0s linear;
+    transform-origin: center bottom;
+    will-change: left, top, width, height, opacity, transform;
+}
+
+.desktop-window.is-minimized {
+    transition-timing-function: var(--desktop-motion-exit);
+    transition-delay: 0s, 0s, 0s, 0s, 0s, 0s, var(--desktop-motion-fast);
+}
+
+.desktop-window.is-geometry-animating {
+    transition: none;
+    transform-origin: top left;
+}
+
+@keyframes desktop-menu-enter {
+    from {
+        opacity: 0;
+        transform: translateY(3px) scale(.985);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.desktop-start-menu:not([hidden]),
+.desktop-task-context-menu:not([hidden]),
+.desktop-app-context-menu:not([hidden]),
+.desktop-fav-menu:not([hidden]),
+.desktop-context-menu:not([hidden]) {
+    animation: desktop-menu-enter var(--desktop-motion-fast) var(--desktop-motion-enter) both;
+    transform-origin: var(--desktop-menu-origin, bottom left);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .desktop-window {
+        transition: none;
+        will-change: auto;
+    }
+
+    .desktop-start-menu:not([hidden]),
+    .desktop-task-context-menu:not([hidden]),
+    .desktop-app-context-menu:not([hidden]),
+    .desktop-fav-menu:not([hidden]),
+    .desktop-context-menu:not([hidden]) {
+        animation: none;
+    }
+}

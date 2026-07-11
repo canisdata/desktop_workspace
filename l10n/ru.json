@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "Все переводы являются машинными переводами.",
-        "Opens in new tab": "Откроется в новой вкладке"
+        "Opens in new tab": "Откроется в новой вкладке",
+        "Allow users to choose a desktop decoration": "Разрешить пользователям выбирать украшение рабочего стола",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Выберите внешний вид окон рабочего стола, панели задач и контекстных меню. Светлые и темные цвета по-прежнему соответствуют вашим настройкам внешнего вида Nextcloud.",
+        "Decoration": "Украшение",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Выбор украшений отключен вашим администратором. Попросите администратора включить их.",
+        "Decorations": "Украшения",
+        "Desktop decoration": "Украшение рабочего стола",
+        "Redmond": "Редмонд",
+        "Standard": "Стандартный",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "При отключении все пользователи используют стандартное окно Nextcloud, панель задач и оформление меню.",
+        "Back": "Назад",
+        "Browser": "Браузер",
+        "Delete": "Удалить",
+        "No files": "Нет файлов",
+        "Open folder": "Открыть папку"
     },
     "pluralForm": "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"
 }

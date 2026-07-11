@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "Opnast í nýjum flipa",
-    "All translations are machine translations.": "Allar þýðingar eru vélþýðingar."
+    "All translations are machine translations.": "Allar þýðingar eru vélþýðingar.",
+    "Allow users to choose a desktop decoration": "Leyfðu notendum að velja skrifborðsskraut",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Veldu útlit skjáborðsglugga, verkstiku og hægrismelltu á valmyndir. Ljósir og dökkir litir halda áfram að fylgja Nextcloud útlitsstillingunum þínum.",
+    "Decoration": "Skreyting",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Skreytingarval hefur verið gert óvirkt af kerfisstjóranum þínum. Biddu stjórnanda þinn um að virkja þau.",
+    "Decorations": "Skreytingar",
+    "Desktop decoration": "Skreyting á skrifborði",
+    "Redmond": "Redmond",
+    "Standard": "Standard",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Þegar slökkt er á því nota allir notendur staðlaða Nextcloud gluggann, verkstikuna og valmyndarskreytinguna.",
+    "Back": "Til baka",
+    "Browser": "Vafri",
+    "Delete": "Eyða",
+    "Open folder": "Opna möppu",
+    "No files": "Engar skrár"
 },
     "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);"
 );

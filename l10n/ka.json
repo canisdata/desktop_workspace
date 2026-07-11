@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "ყველა თარგმანი მანქანური თარგმანია.",
-        "Opens in new tab": "იხსნება ახალ ჩანართში"
+        "Opens in new tab": "იხსნება ახალ ჩანართში",
+        "Allow users to choose a desktop decoration": "მიეცით საშუალება მომხმარებლებს აირჩიონ დესკტოპის დეკორაცია",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "აირჩიეთ დესკტოპის ფანჯრების გარეგნობა, დავალების პანელი და მარჯვენა ღილაკით მენიუები. ღია და მუქი ფერები აგრძელებენ თქვენი Nextcloud გარეგნობის პარამეტრებს.",
+        "Decoration": "გაფორმება",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "დეკორაციის არჩევანი გათიშულია თქვენი ადმინისტრატორის მიერ. სთხოვეთ თქვენს ადმინისტრატორს ჩართოს ისინი.",
+        "Decorations": "დეკორაციები",
+        "Desktop decoration": "დესკტოპის გაფორმება",
+        "Redmond": "რედმონდი",
+        "Standard": "სტანდარტული",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "როდესაც გამორთულია, ყველა მომხმარებელი იყენებს სტანდარტულ Nextcloud ფანჯარას, დავალების ზოლს და მენიუს გაფორმებას.",
+        "Back": "უკან",
+        "Browser": "ბრაუზერი",
+        "Delete": "წაშლა",
+        "No files": "ფაილები არ არის",
+        "Open folder": "გახსენით საქაღალდე"
     },
     "pluralForm": "nplurals=2; plural=(n!=1);"
 }

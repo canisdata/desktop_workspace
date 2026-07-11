@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "모든 번역은 기계 번역입니다.",
-        "Opens in new tab": "새 탭에서 열림"
+        "Opens in new tab": "새 탭에서 열림",
+        "Allow users to choose a desktop decoration": "사용자가 데스크탑 장식을 선택할 수 있도록 허용",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "데스크탑 창, 작업 표시줄 및 마우스 오른쪽 버튼 클릭 메뉴의 모양을 선택합니다. 밝은 색상과 어두운 색상은 계속해서 Nextcloud 모양 설정을 따릅니다.",
+        "Decoration": "장식",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "관리자가 장식 선택을 비활성화했습니다. 관리자에게 활성화해 달라고 요청하세요.",
+        "Decorations": "장식물",
+        "Desktop decoration": "데스크탑 장식",
+        "Redmond": "레드먼드",
+        "Standard": "기준",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "비활성화되면 모든 사용자는 표준 Nextcloud 창, 작업 표시줄 및 메뉴 장식을 사용합니다.",
+        "Back": "뒤쪽에",
+        "Browser": "브라우저",
+        "Delete": "삭제",
+        "No files": "파일 없음",
+        "Open folder": "폴더 열기"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

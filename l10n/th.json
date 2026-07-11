@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "คำแปลทั้งหมดเป็นคำแปลด้วยเครื่อง",
-        "Opens in new tab": "เปิดในแท็บใหม่"
+        "Opens in new tab": "เปิดในแท็บใหม่",
+        "Allow users to choose a desktop decoration": "อนุญาตให้ผู้ใช้เลือกการตกแต่งเดสก์ท็อป",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "เลือกลักษณะที่ปรากฏของหน้าต่างเดสก์ท็อป ทาสก์บาร์ และเมนูคลิกขวา สีอ่อนและสีเข้มยังคงเป็นไปตามการตั้งค่าลักษณะ Nextcloud ของคุณ",
+        "Decoration": "การตกแต่ง",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "ตัวเลือกการตกแต่งถูกปิดใช้งานโดยผู้ดูแลระบบของคุณ ขอให้ผู้ดูแลระบบของคุณเปิดใช้งาน",
+        "Decorations": "ของตกแต่ง",
+        "Desktop decoration": "การตกแต่งเดสก์ท็อป",
+        "Redmond": "เรดมันด์",
+        "Standard": "มาตรฐาน",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "เมื่อปิดใช้งาน ผู้ใช้ทั้งหมดจะใช้หน้าต่าง Nextcloud มาตรฐาน ทาสก์บาร์ และการตกแต่งเมนู",
+        "Back": "กลับ",
+        "Browser": "เบราว์เซอร์",
+        "Delete": "ลบ",
+        "Open folder": "เปิดโฟลเดอร์",
+        "No files": "ไม่มีไฟล์"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

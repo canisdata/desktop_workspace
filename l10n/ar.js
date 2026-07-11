@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "يفتح في علامة تبويب جديدة",
-    "All translations are machine translations.": "جميع الترجمات هي ترجمات آلية."
+    "All translations are machine translations.": "جميع الترجمات هي ترجمات آلية.",
+    "Decoration": "زخرفة",
+    "Decorations": "الأوسمة",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "اختر مظهر نوافذ سطح المكتب وشريط المهام وقوائم النقر بزر الماوس الأيمن. تستمر الألوان الفاتحة والداكنة في اتباع إعدادات مظهر Nextcloud.",
+    "Desktop decoration": "زخرفة سطح المكتب",
+    "Redmond": "ريدموند",
+    "Standard": "معيار",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "تم تعطيل خيارات الزخرفة من قبل المسؤول لديك. اطلب من المسؤول تمكينها.",
+    "Back": "خلف",
+    "Browser": "المتصفح",
+    "Allow users to choose a desktop decoration": "السماح للمستخدمين باختيار زخرفة سطح المكتب",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "عند التعطيل، يستخدم جميع المستخدمين نافذة Nextcloud القياسية وشريط المهام وزخرفة القائمة.",
+    "Delete": "يمسح",
+    "No files": "لا توجد ملفات",
+    "Open folder": "افتح المجلد"
 },
     "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;"
 );

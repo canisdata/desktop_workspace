@@ -4,7 +4,7 @@ A browser-contained **desktop workspace** for Nextcloud. Instead of juggling bro
 Nextcloud apps as draggable, resizable windows on a familiar desktop — with a taskbar, a clock,
 desktop icons, and an optional built-in file manager.
 
-![Screenshot](screenshots/Desktop_in_NC_003.png)
+![Screenshot](screenshots/01-standard-light.png)
 
 > **Status:** early development (0.x). Targets **Nextcloud 33, 34**.
 

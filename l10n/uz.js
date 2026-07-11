@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "Yangi varaqda ochiladi",
-    "All translations are machine translations.": "Barcha tarjimalar mashina tarjimalaridir."
+    "All translations are machine translations.": "Barcha tarjimalar mashina tarjimalaridir.",
+    "Allow users to choose a desktop decoration": "Foydalanuvchilarga ish stoli bezaklarini tanlashga ruxsat bering",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Ish stoli oynalarining ko'rinishini, vazifalar panelini va sichqonchaning o'ng tugmachasini bosish menyularini tanlang. Ochiq va quyuq ranglar Nextcloud ko‘rinish sozlamalaringizga amal qilishda davom etadi.",
+    "Decoration": "Bezatish",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Bezatish parametrlari administrator tomonidan o‘chirib qo‘yilgan. Administratoringizdan ularni yoqishini so'rang.",
+    "Decorations": "Dekoratsiyalar",
+    "Desktop decoration": "Ish stolini bezash",
+    "Redmond": "Redmond",
+    "Standard": "Standart",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "O'chirilganda, barcha foydalanuvchilar standart Nextcloud oynasi, vazifalar paneli va menyu bezaklaridan foydalanadilar.",
+    "Back": "Orqaga",
+    "Browser": "Brauzer",
+    "Delete": "Oʻchirish",
+    "No files": "Fayl yo'q",
+    "Open folder": "Jildni oching"
 },
     "nplurals=1; plural=0;"
 );

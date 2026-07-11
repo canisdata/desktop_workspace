@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "Otevře se na nové kartě",
-    "All translations are machine translations.": "Všechny překlady jsou strojové překlady."
+    "All translations are machine translations.": "Všechny překlady jsou strojové překlady.",
+    "Decoration": "Dekorace",
+    "Allow users to choose a desktop decoration": "Umožněte uživatelům vybrat si dekoraci pracovní plochy",
+    "Decorations": "Dekorace",
+    "Standard": "Norma",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Váš administrátor deaktivoval možnosti dekorací. Požádejte správce, aby je povolil.",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Vyberte vzhled oken plochy, hlavního panelu a nabídek po kliknutí pravým tlačítkem. Světlé a tmavé barvy se nadále řídí nastavením vzhledu Nextcloud.",
+    "Back": "Zadní",
+    "Browser": "Prohlížeč",
+    "Redmond": "Redmond",
+    "Desktop decoration": "Stolní dekorace",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Je-li zakázáno, všichni uživatelé používají standardní okno Nextcloud, hlavní panel a dekoraci nabídky.",
+    "Delete": "Vymazat",
+    "No files": "Žádné soubory",
+    "Open folder": "Otevřete složku"
 },
     "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
 );

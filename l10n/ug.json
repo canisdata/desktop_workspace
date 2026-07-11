@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "بارلىق تەرجىمىلەر ماشىنا تەرجىمىسىدۇر.",
-        "Opens in new tab": "يېڭى بەتكۈچتە ئېچىلىدۇ"
+        "Opens in new tab": "يېڭى بەتكۈچتە ئېچىلىدۇ",
+        "Allow users to choose a desktop decoration": "ئىشلەتكۈچىلەرنىڭ ئۈستەل بېزەكلىرىنى تاللىشىغا يول قويۇڭ",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "ئۈستەل يۈزى كۆزنىكى ، ۋەزىپە بالدىقى ۋە تىزىملىكنىڭ ئوڭ كۇنۇپكىسىنى تاللاڭ. سۇس ۋە قېنىق رەڭلەر سىزنىڭ كېيىنكى بۇلۇت كۆرۈنۈش تەڭشىكىڭىزگە ئەگىشىدۇ.",
+        "Decoration": "بېزەك",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "بېزەك تاللاشلىرى باشقۇرغۇچىڭىز تەرىپىدىن چەكلەنگەن. باشقۇرغۇچىڭىزدىن ئۇلارنى قوزغىتىشنى سوراڭ.",
+        "Decorations": "بېزەكلەر",
+        "Desktop decoration": "ئۈستەل بېزەكچىلىكى",
+        "Redmond": "Redmond",
+        "Standard": "Standard",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "چەكلەنگەندە ، بارلىق ئىشلەتكۈچىلەر ئۆلچەملىك Nextcloud كۆزنىكى ، ۋەزىپە بالدىقى ۋە تىزىملىك ​​بېزەكلىرىنى ئىشلىتىدۇ.",
+        "Back": "قايتىش",
+        "Browser": "توركۆرگۈ",
+        "Delete": "ئۆچۈرۈش",
+        "Open folder": "ھۆججەت قىسقۇچنى ئېچىڭ",
+        "No files": "ھۆججەت يوق"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

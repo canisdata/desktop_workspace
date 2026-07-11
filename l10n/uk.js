@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "Відкриється в новій вкладці",
-    "All translations are machine translations.": "Усі переклади є машинними перекладами."
+    "All translations are machine translations.": "Усі переклади є машинними перекладами.",
+    "Allow users to choose a desktop decoration": "Дозволити користувачам вибирати оформлення робочого столу",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Виберіть зовнішній вигляд вікон робочого столу, панелі завдань і меню, що відкриваються правою кнопкою миші. Світлі та темні кольори продовжують відповідати вашим налаштуванням вигляду Nextcloud.",
+    "Decoration": "Прикраса",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Ваш адміністратор вимкнув параметри декорування. Попросіть свого адміністратора ввімкнути їх.",
+    "Decorations": "Прикраси",
+    "Desktop decoration": "Прикраса робочого столу",
+    "Redmond": "Редмонд",
+    "Standard": "Стандартний",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Якщо вимкнено, усі користувачі використовують стандартне вікно Nextcloud, панель завдань і оформлення меню.",
+    "Back": "Назад",
+    "Browser": "Браузер",
+    "Delete": "Видалити",
+    "Open folder": "Відкрити папку",
+    "No files": "Немає файлів"
 },
     "nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);"
 );

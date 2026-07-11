@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "Fitxa berrian irekitzen da",
-    "All translations are machine translations.": "Itzulpen guztiak itzulpen automatikoak dira."
+    "All translations are machine translations.": "Itzulpen guztiak itzulpen automatikoak dira.",
+    "Allow users to choose a desktop decoration": "Eman erabiltzaileei mahaigaineko dekorazioa aukeratzeko",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Aukeratu mahaigaineko leihoen, ataza-barraren eta eskuineko botoiaren menuen itxura. Kolore argiek eta ilunek zure Nextcloud-en itxura-ezarpenak jarraitzen jarraitzen dute.",
+    "Decoration": "Dekorazioa",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Administratzaileak dekorazio-aukerak desgaitu ditu. Eskatu administratzaileari haiek gaitzeko.",
+    "Decorations": "Apaingarriak",
+    "Desktop decoration": "Mahaigaineko dekorazioa",
+    "Redmond": "Redmond",
+    "Standard": "Estandarra",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Desgaituta dagoenean, erabiltzaile guztiek Nextcloud-eko leiho estandarra, ataza-barra eta menu-apainketa erabiltzen dituzte.",
+    "Back": "Itzuli",
+    "Browser": "Arakatzailea",
+    "Delete": "Ezabatu",
+    "No files": "Ez dago fitxategirik",
+    "Open folder": "Ireki karpeta"
 },
     "nplurals=2; plural=(n != 1);"
 );

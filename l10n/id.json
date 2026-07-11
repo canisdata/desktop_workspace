@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "Semua terjemahan adalah terjemahan mesin.",
-        "Opens in new tab": "Terbuka di tab baru"
+        "Opens in new tab": "Terbuka di tab baru",
+        "Allow users to choose a desktop decoration": "Izinkan pengguna memilih dekorasi desktop",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Pilih tampilan jendela desktop, taskbar, dan menu klik kanan. Warna terang dan gelap tetap mengikuti pengaturan tampilan Nextcloud Anda.",
+        "Decoration": "Dekorasi",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Pilihan dekorasi telah dinonaktifkan oleh administrator Anda. Minta administrator Anda untuk mengaktifkannya.",
+        "Decorations": "Dekorasi",
+        "Desktop decoration": "Dekorasi meja",
+        "Redmond": "Redmond",
+        "Standard": "Standar",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Saat dinonaktifkan, semua pengguna menggunakan jendela Nextcloud standar, bilah tugas, dan dekorasi menu.",
+        "Back": "Kembali",
+        "Browser": "Peramban",
+        "Delete": "Menghapus",
+        "Open folder": "Buka map",
+        "No files": "Tidak ada file"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

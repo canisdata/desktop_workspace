@@ -1,13 +1,20 @@
 <?php
 \OCP\Util::addTranslations('desktop_workspace');
-script('desktop_workspace', 'admin');
+script('desktop_workspace', 'admin-settings');
 style('desktop_workspace', 'admin');
 /** @var array $_ */
 $l = \OC::$server->getL10N('desktop_workspace');
 ?>
-<div id="desktop-admin-settings" class="section" data-save-url="<?= p($_['saveUrl']) ?>">
+<div id="desktop-admin-settings" class="section" data-save-url="<?= p($_['saveUrl']) ?>" data-decoration-policy-url="<?= p($_['decorationPolicyUrl']) ?>">
     <h2><?= p($l->t('Desktop Workspace')) ?></h2>
     <p class="settings-hint"><?= p($l->t('Configure the browser-contained desktop shell.')) ?></p>
+
+    <h3><?= p($l->t('Decorations')) ?></h3>
+    <p>
+        <input type="checkbox" id="desktop-user-decorations-enabled" class="checkbox" <?= $_['userDecorationsEnabled'] ? 'checked' : '' ?> />
+        <label for="desktop-user-decorations-enabled"><?= p($l->t('Allow users to choose a desktop decoration')) ?></label>
+    </p>
+    <p class="settings-hint"><?= p($l->t('When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.')) ?></p>
 
     <h3><?= p($l->t('Experimental Desktop File Manager')) ?></h3>
     <p>
@@ -43,19 +50,6 @@ $l = \OC::$server->getL10N('desktop_workspace');
         </div>
     <?php endif; ?>
 
-    <h3><?= p($l->t('Debugging')) ?></h3>
-    <p>
-        <input type="checkbox" id="desktop-debug-enabled" class="checkbox" <?= $_['debugEnabled'] ? 'checked' : '' ?> />
-        <label for="desktop-debug-enabled"><?= p($l->t('Enable desktop debug logging')) ?></label>
-    </p>
-    <p class="settings-hint">
-        <?= p($l->t('Log file:')) ?> <code><?= p($_['logPath']) ?></code><br />
-        <?= p($l->t('From the host:')) ?> <code>docker exec nc33-app tail -n 200 <?= p($_['logPath']) ?></code>
-    </p>
-    <p>
-        <button id="desktop-reset-debug-log" type="button" class="error" data-reset-url="<?= p($_['resetLogUrl']) ?>"><?= p($l->t('Reset debug log')) ?></button>
-        <span id="desktop-reset-debug-log-status" class="desktop-admin-status" aria-live="polite"></span>
-    </p>
 
     <button id="desktop-save-admin-settings" type="button" class="primary"><?= p($l->t('Save')) ?></button>
     <span id="desktop-admin-settings-status" class="desktop-admin-status" aria-live="polite"></span>

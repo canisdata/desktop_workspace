@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "Alle oversettelser er maskinoversettelser.",
-        "Opens in new tab": "Åpnes i en ny fane"
+        "Opens in new tab": "Åpnes i en ny fane",
+        "Allow users to choose a desktop decoration": "Tillat brukere å velge en skrivebordsdekorasjon",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Velg utseendet til skrivebordsvinduer, oppgavelinjen og høyreklikkmenyer. Lyse og mørke farger fortsetter å følge Nextcloud-utseendeinnstillingene dine.",
+        "Decoration": "Dekorasjon",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Innredningsvalg har blitt deaktivert av administratoren din. Be administratoren om å aktivere dem.",
+        "Decorations": "Dekorasjoner",
+        "Desktop decoration": "Skrivebordsdekorasjon",
+        "Redmond": "Redmond",
+        "Standard": "Standard",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Når deaktivert, bruker alle brukere standard Nextcloud-vindu, oppgavelinje og menydekorasjon.",
+        "Back": "Tilbake",
+        "Browser": "Nettleser",
+        "Delete": "Slett",
+        "No files": "Ingen filer",
+        "Open folder": "Åpne mappen"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

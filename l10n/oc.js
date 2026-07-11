@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "Se dobrís dins un onglet novèl",
-    "All translations are machine translations.": "Totas las traduccions son de traduccions automaticas."
+    "All translations are machine translations.": "Totas las traduccions son de traduccions automaticas.",
+    "Allow users to choose a desktop decoration": "Permetre als utilizaires de causir una decoracion de burèu",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Causissètz l'aparéncia de las fenèstras del burèu, la barra de prètzfaches e los menús de clic drech. Las colors claras e escuras contunhan de seguir vòstres paramètres d'aparéncia Nextcloud.",
+    "Decoration": "Decoracion",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Las causidas de decoracion son estadas desactivadas per vòstre administrator. Demandatz a vòstre administrator de las activar.",
+    "Decorations": "Decoracions",
+    "Desktop decoration": "Decoracion de burèu",
+    "Redmond": "Redmond",
+    "Standard": "Estandard",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Quand es desactivat, totes los utilizaires utilizan la fenèstra, la barra de prètzfaches e la decoracion del menú estandard Nextcloud.",
+    "Back": "Arrièr",
+    "Browser": "Navigador",
+    "Delete": "Escafar",
+    "No files": "Pas de fichièrs",
+    "Open folder": "Dobrir lo dorsièr"
 },
     "nplurals=2; plural=(n > 1);"
 );

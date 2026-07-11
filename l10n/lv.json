@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "Visi tulkojumi ir mašīntulkojumi.",
-        "Opens in new tab": "Atveras jaunā cilnē"
+        "Opens in new tab": "Atveras jaunā cilnē",
+        "Allow users to choose a desktop decoration": "Ļaujiet lietotājiem izvēlēties darbvirsmas apdari",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Izvēlieties darbvirsmas logu izskatu, uzdevumjoslu un ar peles labo pogu noklikšķiniet uz izvēlnēm. Gaišas un tumšas krāsas turpina atbilst jūsu Nextcloud izskata iestatījumiem.",
+        "Decoration": "Dekorācija",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Jūsu administrators ir atspējojis dekorācijas izvēli. Lūdziet administratoram tos iespējot.",
+        "Decorations": "Dekorācijas",
+        "Desktop decoration": "Darbvirsmas dekorēšana",
+        "Redmond": "Redmonda",
+        "Standard": "Standarta",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Ja tas ir atspējots, visi lietotāji izmanto standarta Nextcloud logu, uzdevumjoslu un izvēlņu apdari.",
+        "Back": "Atpakaļ",
+        "Browser": "Pārlūkprogramma",
+        "Delete": "Dzēst",
+        "Open folder": "Atvērt mapi",
+        "No files": "Nav failu"
     },
     "pluralForm": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);"
 }

@@ -1,0 +1,133 @@
+/* Redmond decoration: XP Royale in light mode, Royale Noir in dark mode. Content and menu structure stay native. */
+#desktop-root[data-decoration="redmond"] {
+    --redmond-blue-top: #5f9df1;
+    --redmond-blue-mid: #1d5fd1;
+    --redmond-blue-bottom: #153d9c;
+    --redmond-task-top: #3168d5;
+    --redmond-task-bottom: #1744a4;
+    --redmond-button-top: #77aaf3;
+    --redmond-button-bottom: #2453b8;
+    --redmond-close-top: #f49a7d;
+    --redmond-close-bottom: #c82f1d;
+}
+#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light) {
+    --redmond-blue-top: #3d475b;
+    --redmond-blue-mid: #202b45;
+    --redmond-blue-bottom: #10182b;
+    --redmond-task-top: #303b53;
+    --redmond-task-bottom: #151e33;
+    --redmond-button-top: #68758f;
+    --redmond-button-bottom: #2b354c;
+    --redmond-close-top: #a75b62;
+    --redmond-close-bottom: #682b34;
+}
+#desktop-root[data-decoration="redmond"] .desktop-window {
+    border: 3px solid var(--redmond-blue-mid);
+    border-radius: 8px 8px 2px 2px;
+    box-shadow: 2px 3px 10px rgba(0,0,0,.46);
+}
+#desktop-root[data-decoration="redmond"] .desktop-window.is-focused { outline: none; }
+#desktop-root[data-decoration="redmond"] .desktop-window-titlebar {
+    height: 32px;
+    min-height: 32px;
+    padding: 0 4px 0 7px;
+    color: #fff;
+    border-bottom: 1px solid #0d318c;
+    border-radius: 4px 4px 0 0;
+    background: linear-gradient(180deg, var(--redmond-blue-top) 0%, var(--redmond-blue-mid) 48%, var(--redmond-blue-bottom) 100%);
+    text-shadow: 1px 1px 1px #10245e;
+}
+#desktop-root[data-decoration="redmond"] .desktop-window-body { height: calc(100% - 32px); }
+#desktop-root[data-decoration="redmond"] .desktop-window-title-text small { color: rgba(255,255,255,.82); }
+#desktop-root[data-decoration="redmond"] .desktop-window-icon { width: 22px; min-width: 22px; height: 22px; border-radius: 2px; color: #fff; }
+#desktop-root[data-decoration="redmond"] .desktop-window-actions button {
+    width: 23px;
+    height: 23px;
+    min-width: 23px;
+    max-width: 23px;
+    min-height: 23px;
+    max-height: 23px;
+    flex: 0 0 23px;
+    padding: 0;
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 4px !important;
+    color: #fff;
+    background: linear-gradient(135deg, var(--redmond-button-top), var(--redmond-button-bottom));
+    box-shadow: inset 1px 1px rgba(255,255,255,.48), inset -1px -1px rgba(0,0,0,.28);
+}
+#desktop-root[data-decoration="redmond"] .desktop-window-actions button:last-child { background: linear-gradient(135deg, var(--redmond-close-top), var(--redmond-close-bottom)); }
+#desktop-root[data-decoration="redmond"] .desktop-window-actions button:hover,
+#desktop-root[data-decoration="redmond"] .desktop-window-actions button:focus-visible {
+    filter: brightness(1.18);
+    box-shadow: inset 1px 1px rgba(255,255,255,.62), inset -1px -1px rgba(0,0,0,.2), 0 0 0 1px rgba(255,255,255,.24);
+}
+#desktop-root[data-decoration="redmond"] .desktop-taskbar {
+    height: 42px;
+    min-height: 42px;
+    max-height: 42px;
+    padding: 3px 6px;
+    gap: 4px;
+    border-top: 1px solid #6e9aff;
+    background: linear-gradient(180deg, var(--redmond-task-top), var(--redmond-task-bottom)) !important;
+    backdrop-filter: none !important;
+}
+#desktop-root[data-decoration="redmond"] .taskbar-button,
+#desktop-root[data-decoration="redmond"] .desktop-task-button {
+    height: 32px;
+    border-radius: 3px;
+    border-color: rgba(255,255,255,.42);
+    color: #fff;
+    background: linear-gradient(180deg, rgba(110,159,235,.9), rgba(38,91,180,.92));
+    box-shadow: inset 1px 1px rgba(255,255,255,.22);
+}
+#desktop-root[data-decoration="redmond"] .taskbar-start {
+    border-radius: 0 14px 14px 0;
+    border-color: #2c7d2c;
+    background: linear-gradient(180deg, #74c66a 0%, #3a9b39 48%, #176c21 100%);
+    box-shadow: inset 0 1px rgba(255,255,255,.45), 1px 1px 3px rgba(0,0,0,.45);
+}
+#desktop-root[data-decoration="redmond"] .desktop-task-button.is-active { background: linear-gradient(180deg, #1f4f9f, #183d80); box-shadow: inset 1px 2px 3px rgba(0,0,0,.42); }
+#desktop-root[data-decoration="redmond"] .taskbar-start:hover,
+#desktop-root[data-decoration="redmond"] .taskbar-start:focus-visible,
+#desktop-root[data-decoration="redmond"] .desktop-task-button:hover,
+#desktop-root[data-decoration="redmond"] .desktop-task-button:focus-visible {
+    filter: brightness(1.16);
+    box-shadow: inset 1px 1px rgba(255,255,255,.38), 0 0 0 1px rgba(255,255,255,.18);
+}
+body:has(#desktop-root[data-decoration="redmond"]) .desktop-start-menu,
+body:has(#desktop-root[data-decoration="redmond"]) .desktop-task-context-menu,
+body:has(#desktop-root[data-decoration="redmond"]) .desktop-fav-menu {
+    border: 1px solid #2455a5 !important;
+    border-radius: 2px !important;
+    padding: 2px !important;
+    color: #101010 !important;
+    background: #f5f5ee !important;
+    box-shadow: 2px 3px 7px rgba(0,0,0,.42) !important;
+    backdrop-filter: none !important;
+}
+body:has(#desktop-root[data-decoration="redmond"]) .desktop-task-context-menu button,
+body:has(#desktop-root[data-decoration="redmond"]) .desktop-fav-menu button {
+    min-height: 26px;
+    border-radius: 0;
+    color: #101010 !important;
+}
+body:has(#desktop-root[data-decoration="redmond"]) .desktop-task-context-menu button:hover,
+body:has(#desktop-root[data-decoration="redmond"]) .desktop-task-context-menu button:focus-visible,
+body:has(#desktop-root[data-decoration="redmond"]) .desktop-fav-menu button:hover,
+body:has(#desktop-root[data-decoration="redmond"]) .desktop-fav-menu button:focus-visible {
+    color: #fff !important;
+    background: #316ac5 !important;
+}
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-start-menu,
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-task-context-menu,
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-fav-menu {
+    color: #f4f6fb !important;
+    background: #202638 !important;
+}
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-task-context-menu button,
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-fav-menu button { color: #f4f6fb !important; }
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-task-context-menu button:hover,
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-task-context-menu button:focus-visible,
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-fav-menu button:hover,
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-fav-menu button:focus-visible { background: #385887 !important; }
+

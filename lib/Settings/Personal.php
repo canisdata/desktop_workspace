@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OCA\DesktopWorkspace\Settings;
 
 use OCA\DesktopWorkspace\Controller\SettingsController;
+use OCA\DesktopWorkspace\Service\DecorationService;
 use OCA\DesktopWorkspace\Service\FilesAvailability;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
@@ -18,6 +19,7 @@ class Personal implements ISettings {
         private IURLGenerator $urlGenerator,
         private IUserSession $userSession,
         private FilesAvailability $filesAvailability,
+        private DecorationService $decorationService,
     ) {
     }
 
@@ -31,6 +33,8 @@ class Personal implements ISettings {
             'available' => $available,
             'globallyDisabled' => $this->filesAvailability->globallyDisabled(),
             'tryExperimentalFiles' => $optedIn,
+            'userDecorationsEnabled' => $this->decorationService->userSelectionEnabled(),
+            'decoration' => $this->decorationService->effectiveForUser($user?->getUID()),
             'showFavorites' => $user !== null
                 && $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, SettingsController::SHOW_FAVORITES_KEY, 'no') === 'yes',
             'favoritesNoConfirm' => $user !== null

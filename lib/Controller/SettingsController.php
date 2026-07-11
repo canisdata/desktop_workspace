@@ -1,6 +1,7 @@
 <?php
 namespace OCA\DesktopWorkspace\Controller;
 
+use OCA\DesktopWorkspace\Service\DecorationService;
 use OCA\DesktopWorkspace\Service\FilesAvailability;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\JSONResponse;
@@ -14,8 +15,6 @@ use OCP\IUserSession;
 
 class SettingsController extends Controller {
     public const APP_ID = 'desktop_workspace';
-    public const DEBUG_KEY = 'debug_enabled';
-    public const LOG_FILE = 'desktop-debug.log';
     public const SHOW_FAVORITES_KEY = 'show_favorites';
     public const FAV_NO_CONFIRM_KEY = 'favorites_no_confirm';
     public const SHOW_TRASH_KEY = 'show_trash';
@@ -26,6 +25,8 @@ class SettingsController extends Controller {
     public const VISITED_KEY = 'visited';
     public const DESKTOP_FOLDER_KEY = 'desktop_folder';
     public const TRASH_NO_CONFIRM_KEY = 'trash_no_confirm';
+    public const USER_DECORATIONS_ENABLED_KEY = 'user_decorations_enabled';
+    public const DECORATION_KEY = 'decoration';
 
     public function __construct(
         string $appName,
@@ -35,6 +36,7 @@ class SettingsController extends Controller {
         private \OCA\DesktopWorkspace\Service\StatsService $statsService,
         private IRootFolder $rootFolder,
         private IUserManager $userManager,
+        private DecorationService $decorationService,
     ) {
         parent::__construct($appName, $request);
     }
@@ -43,14 +45,11 @@ class SettingsController extends Controller {
      * @AdminRequired
      */
     public function saveAdminSettings(
-        string $debug_enabled = 'no',
         string $experimental_disabled = 'no',
         string $experimental_groups = '[]',
         string $multi_window_apps = '[]',
+        string $user_decorations_enabled = 'yes',
     ): JSONResponse {
-        $debug = $debug_enabled === 'yes' || $debug_enabled === 'true' || $debug_enabled === '1';
-        $this->config->setAppValue(self::APP_ID, self::DEBUG_KEY, $debug ? 'yes' : 'no');
-
         $disabled = $experimental_disabled === 'yes' || $experimental_disabled === 'true' || $experimental_disabled === '1';
         $this->config->setAppValue(self::APP_ID, FilesAvailability::DISABLED_KEY, $disabled ? 'yes' : 'no');
 
@@ -68,20 +67,25 @@ class SettingsController extends Controller {
         $multi = array_values(array_filter($multi, 'is_string'));
         $this->config->setAppValue(self::APP_ID, self::MULTI_WINDOW_KEY, json_encode($multi));
 
-        $this->writeLog('admin_setting_changed', [
-            'debugEnabled' => $debug,
-            'experimentalDisabled' => $disabled,
-            'experimentalGroups' => $groups,
-            'multiWindowApps' => $multi,
-        ]);
+        $userDecorationsEnabled = $user_decorations_enabled === 'yes' || $user_decorations_enabled === 'true' || $user_decorations_enabled === '1';
+        $this->config->setAppValue(self::APP_ID, self::USER_DECORATIONS_ENABLED_KEY, $userDecorationsEnabled ? 'yes' : 'no');
+
         return new JSONResponse([
             'status' => 'ok',
-            'debugEnabled' => $debug,
             'experimentalDisabled' => $disabled,
             'experimentalGroups' => $groups,
             'multiWindowApps' => $multi,
+            'userDecorationsEnabled' => $userDecorationsEnabled,
             'logFile' => $this->getLogPath(),
         ]);
+    }
+
+
+    /** @AdminRequired */
+    public function saveDecorationPolicy(string $enabled = 'no'): JSONResponse {
+        $value = $enabled === 'yes' || $enabled === 'true' || $enabled === '1';
+        $this->config->setAppValue(self::APP_ID, self::USER_DECORATIONS_ENABLED_KEY, $value ? 'yes' : 'no');
+        return new JSONResponse(['status' => 'ok', 'userDecorationsEnabled' => $value]);
     }
 
     /**
@@ -191,21 +195,6 @@ class SettingsController extends Controller {
     }
 
     /**
-     * Admin only: truncate the shared desktop debug log.
-     */
-    public function resetDebugLog(): JSONResponse {
-        $path = $this->getLogPath();
-        $dir = dirname($path);
-        if (!is_dir($dir) || !is_writable($dir)) {
-            return new JSONResponse(['status' => 'error', 'message' => 'log_directory_not_writable'], 500);
-        }
-        if (@file_put_contents($path, '') === false) {
-            return new JSONResponse(['status' => 'error', 'message' => 'log_file_not_writable'], 500);
-        }
-        return new JSONResponse(['status' => 'ok', 'logFile' => $path]);
-    }
-
-    /**
      * @NoAdminRequired
      */
     public function savePersonalSettings(
@@ -216,6 +205,7 @@ class SettingsController extends Controller {
         ?string $show_home = null,
         ?string $desktop_folder = null,
         ?string $trash_no_confirm = null,
+        ?string $decoration = null,
     ): JSONResponse {
         $user = $this->userSession->getUser();
         if ($user === null) {
@@ -224,6 +214,16 @@ class SettingsController extends Controller {
         $uid = $user->getUID();
         $truthy = static fn (string $v): bool => $v === 'yes' || $v === 'true' || $v === '1';
         $result = ['status' => 'ok'];
+        if ($decoration !== null) {
+            $selected = in_array($decoration, [DecorationService::STANDARD, DecorationService::REDMOND], true)
+                ? $decoration
+                : DecorationService::STANDARD;
+            if (!$this->decorationService->userSelectionEnabled()) {
+                $selected = DecorationService::STANDARD;
+            }
+            $this->config->setUserValue($uid, self::APP_ID, self::DECORATION_KEY, $selected);
+            $result['decoration'] = $selected;
+        }
         if ($try_experimental_files !== null) {
             $b = $truthy($try_experimental_files);
             $this->config->setUserValue($uid, self::APP_ID, FilesAvailability::USER_OPT_IN_KEY, $b ? 'yes' : 'no');
@@ -291,43 +291,4 @@ class SettingsController extends Controller {
         return new JSONResponse($result);
     }
 
-    /**
-     * @NoAdminRequired
-     */
-    public function debug(string $event = 'client_event', string $payload = '{}'): JSONResponse {
-        if (!$this->isDebugEnabled()) {
-            return new JSONResponse(['status' => 'disabled']);
-        }
-
-        $decodedPayload = json_decode($payload, true);
-        if (!is_array($decodedPayload)) {
-            $decodedPayload = ['raw' => $payload];
-        }
-
-        $this->writeLog($event, $decodedPayload);
-        return new JSONResponse(['status' => 'ok']);
-    }
-
-    public function isDebugEnabled(): bool {
-        return $this->config->getAppValue(self::APP_ID, self::DEBUG_KEY, 'yes') !== 'no';
-    }
-
-    public function getLogPath(): string {
-        $dataDir = rtrim($this->config->getSystemValueString('datadirectory', '/var/www/html/data'), '/');
-        return $dataDir . '/' . self::LOG_FILE;
-    }
-
-    private function writeLog(string $event, array $payload = []): void {
-        $user = $this->userSession->getUser();
-        $line = json_encode([
-            'time' => gmdate('c'),
-            'user' => $user ? $user->getUID() : null,
-            'event' => $event,
-            'payload' => $payload,
-            'requestId' => $this->request->getId(),
-            'remoteAddress' => $this->request->getRemoteAddress(),
-        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . PHP_EOL;
-
-        @file_put_contents($this->getLogPath(), $line, FILE_APPEND | LOCK_EX);
-    }
 }

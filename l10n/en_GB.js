@@ -220,6 +220,18 @@ OC.L10N.register(
         "All translations are machine translations.": "All translations are machine translations.",
         "Back": "Back",
         "Browser": "Browser",
+        "Allow users to choose a desktop decoration": "Allow users to choose a desktop decoration",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.",
+        "Decoration": "Decoration",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.",
+        "Decorations": "Decorations",
+        "Desktop decoration": "Desktop decoration",
+        "Redmond": "Redmond",
+        "Standard": "Standard",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.",
+        "Delete": "Delete",
+        "No files": "No files",
+        "Open folder": "Open folder"
     },
     "nplurals=2; plural=(n != 1);"
 );

@@ -3,6 +3,21 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.15.0 – 2026-07-10
+
+### Added
+- Added administrator-controlled per-user desktop decorations, including the Redmond light and dark variants.
+
+### Changed
+- Decoration changes apply live, and disabled user choices remain visible with administrator guidance.
+- Redmond styles desktop windows, operation buttons, the taskbar, and desktop context menus without changing app content or menu structure.
+- Added short, reduced-motion-aware animations for maximizing, restoring, minimizing, taskbar restoration, the Apps menu, and desktop context menus.
+- Removed the Desktop debug-log settings and client logging feature.
+
+### Fixed
+- Administrator decoration policy changes save immediately and are enforced server-side.
+- Redmond title-bar operation buttons use fixed square dimensions with lightly rounded corners and a matching dark palette.
+
 ## 0.14.4 – 2026-07-09
 
 ### Added

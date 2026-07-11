@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "Mở trong thẻ mới",
-    "All translations are machine translations.": "Tất cả bản dịch đều là bản dịch máy."
+    "All translations are machine translations.": "Tất cả bản dịch đều là bản dịch máy.",
+    "Allow users to choose a desktop decoration": "Cho phép người dùng lựa chọn trang trí desktop",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Chọn giao diện của cửa sổ màn hình, thanh tác vụ và menu chuột phải. Màu sáng và tối tiếp tục tuân theo cài đặt giao diện Nextcloud của bạn.",
+    "Decoration": "trang trí",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Các lựa chọn trang trí đã bị quản trị viên của bạn vô hiệu hóa. Hãy yêu cầu quản trị viên của bạn kích hoạt chúng.",
+    "Decorations": "đồ trang trí",
+    "Desktop decoration": "Trang trí bàn làm việc",
+    "Redmond": "Redmond",
+    "Standard": "Tiêu chuẩn",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Khi bị tắt, tất cả người dùng sẽ sử dụng trang trí cửa sổ, thanh tác vụ và menu Nextcloud tiêu chuẩn.",
+    "Back": "Mặt sau",
+    "Browser": "Trình duyệt",
+    "Delete": "Xóa bỏ",
+    "Open folder": "Mở thư mục",
+    "No files": "Không có tập tin"
 },
     "nplurals=1; plural=0;"
 );

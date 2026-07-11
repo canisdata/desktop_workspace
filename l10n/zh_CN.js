@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "在新标签页中打开",
-    "All translations are machine translations.": "所有翻译均为机器翻译。"
+    "All translations are machine translations.": "所有翻译均为机器翻译。",
+    "Allow users to choose a desktop decoration": "允许用户选择桌面装饰",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "选择桌面窗口、任务栏和右键菜单的外观。浅色和深色继续遵循您的 Nextcloud 外观设置。",
+    "Decoration": "装饰",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "您的管理员已禁用装饰选项。请您的管理员启用它们。",
+    "Decorations": "装饰",
+    "Desktop decoration": "桌面装饰",
+    "Redmond": "雷德蒙德",
+    "Standard": "标准",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "禁用后，所有用户都使用标准 Nextcloud 窗口、任务栏和菜单装饰。",
+    "Back": "后退",
+    "Browser": "浏览器",
+    "Delete": "删除",
+    "No files": "没有文件",
+    "Open folder": "打开文件夹"
 },
     "nplurals=1; plural=0;"
 );

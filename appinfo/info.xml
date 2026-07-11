@@ -6,8 +6,8 @@
     <summary>Open Nextcloud apps in a desktop-style workspace.</summary>
     <description><![CDATA[Desktop Workspace adds a browser-contained workspace to Nextcloud with app windows, a taskbar, app pinning, desktop icons, saved window/app-menu/icon state, and optional desktop-folder/file-manager features.
 
-Admins can enable the app like any other Nextcloud app and configure the experimental file manager, multiple-window behavior, debug logging, and per-user resets from the Desktop Workspace admin settings. Users can adjust their own desktop icons, desktop folder, experimental opt-ins, window state, and reset options from the Desktop personal settings.]]></description>
-    <version>0.14.4</version>
+Admins can enable the app like any other Nextcloud app and configure decorations, the experimental file manager, multiple-window behavior, and per-user resets from the Desktop Workspace admin settings. Users can adjust their own desktop icons, desktop folder, decoration, experimental opt-ins, window state, and reset options from the Desktop personal settings.]]></description>
+    <version>0.15.0</version>
     <licence>AGPL-3.0-or-later</licence>
     <author homepage="https://canisdata.de/">canisdata</author>
     <namespace>DesktopWorkspace</namespace>
@@ -19,7 +19,10 @@ Admins can enable the app like any other Nextcloud app and configure the experim
     <website>https://github.com/canisdata/desktop_workspace</website>
     <bugs>https://github.com/canisdata/desktop_workspace/issues</bugs>
     <repository>https://github.com/canisdata/desktop_workspace</repository>
-    <screenshot small-thumbnail="https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/Desktop_in_NC_003_thumbnail.png"><![CDATA[https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/Desktop_in_NC_003.png]]></screenshot>
+    <screenshot small-thumbnail="https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/01-standard-light_thumbnail.png"><![CDATA[https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/01-standard-light.png]]></screenshot>
+    <screenshot small-thumbnail="https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/02-standard-dark_thumbnail.png"><![CDATA[https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/02-standard-dark.png]]></screenshot>
+    <screenshot small-thumbnail="https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/03-redmond-light_thumbnail.png"><![CDATA[https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/03-redmond-light.png]]></screenshot>
+    <screenshot small-thumbnail="https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/04-redmond-dark_thumbnail.png"><![CDATA[https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/04-redmond-dark.png]]></screenshot>
     <dependencies>
         <nextcloud min-version="33" max-version="34" />
     </dependencies>

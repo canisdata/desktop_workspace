@@ -7,7 +7,8 @@
     const tr = (s, p) => (window.OC && OC.L10N ? OC.L10N.translate('desktop_workspace', s, p) : s);
     const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-    const debugCb = document.getElementById('desktop-debug-enabled');
+
+    const userDecorationsCb = document.getElementById('desktop-user-decorations-enabled');
     const expDisabledCb = document.getElementById('desktop-exp-disabled');
     const groupsSelect = document.getElementById('desktop-exp-groups');
     const button = document.getElementById('desktop-save-admin-settings');
@@ -76,6 +77,30 @@
     };
     expDisabledCb.addEventListener('change', syncGroupsState);
     syncGroupsState();
+    if (userDecorationsCb) {
+        userDecorationsCb.addEventListener('change', async () => {
+            const previous = !userDecorationsCb.checked;
+            userDecorationsCb.disabled = true;
+            status.textContent = tr('Saving…');
+            try {
+                const body = new URLSearchParams({ enabled: userDecorationsCb.checked ? 'yes' : 'no', requesttoken: OC.requestToken });
+                const response = await fetch(root.dataset.decorationPolicyUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8', requesttoken: OC.requestToken },
+                    body,
+                });
+                const data = await response.json().catch(() => ({}));
+                if (!response.ok || data.status === 'error') throw new Error(data.message || `HTTP ${response.status}`);
+                userDecorationsCb.checked = data.userDecorationsEnabled === true;
+                status.textContent = tr('Saved.');
+            } catch (error) {
+                userDecorationsCb.checked = previous;
+                status.textContent = tr('Save failed: {msg}', { msg: error.message });
+            } finally {
+                userDecorationsCb.disabled = false;
+            }
+        });
+    }
     button.addEventListener('click', async () => {
         status.textContent = tr('Saving…');
         button.disabled = true;
@@ -83,10 +108,11 @@
             const groups = groupsSelect ? Array.from(groupsSelect.selectedOptions).map((o) => o.value) : [];
             const multiWindow = Array.from(document.querySelectorAll('.desktop-multiwin-app:checked')).map((c) => c.value);
             const body = new URLSearchParams();
-            body.set('debug_enabled', debugCb.checked ? 'yes' : 'no');
+
             body.set('experimental_disabled', expDisabledCb.checked ? 'yes' : 'no');
             body.set('experimental_groups', JSON.stringify(groups));
             body.set('multi_window_apps', JSON.stringify(multiWindow));
+            body.set('user_decorations_enabled', userDecorationsCb && userDecorationsCb.checked ? 'yes' : 'no');
             body.set('requesttoken', OC.requestToken);
 
             const response = await fetch(root.dataset.saveUrl, {
@@ -104,35 +130,6 @@
         }
     });
 
-    // Reset the shared desktop debug log without changing the debug-enabled flag.
-    const resetLogBtn = document.getElementById('desktop-reset-debug-log');
-    const resetLogStatus = document.getElementById('desktop-reset-debug-log-status');
-    if (resetLogBtn) {
-        resetLogBtn.addEventListener('click', async () => {
-            if (!window.confirm(tr('Clear the desktop debug log? This cannot be undone.'))) return;
-            resetLogStatus.textContent = tr('Saving…');
-            resetLogBtn.disabled = true;
-            try {
-                const body = new URLSearchParams();
-                body.set('requesttoken', OC.requestToken);
-                const response = await fetch(resetLogBtn.dataset.resetUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8', requesttoken: OC.requestToken },
-                    body,
-                });
-                const data = await response.json().catch(() => ({}));
-                if (!response.ok || data.status === 'error') {
-                    resetLogStatus.textContent = tr('Save failed: {msg}', { msg: data.message || ('HTTP ' + response.status) });
-                    return;
-                }
-                resetLogStatus.textContent = tr('Debug log cleared.');
-            } catch (error) {
-                resetLogStatus.textContent = tr('Save failed: {msg}', { msg: error.message });
-            } finally {
-                resetLogBtn.disabled = false;
-            }
-        });
-    }
 
     // Reset a single user's desktop settings.
     const resetUserBtn = document.getElementById('desktop-reset-user');

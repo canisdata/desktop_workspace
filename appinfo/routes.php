@@ -5,6 +5,7 @@ return [
         ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
         ['name' => 'page#dynamicData', 'url' => '/dynamic', 'verb' => 'GET'],
         ['name' => 'settings#saveAdminSettings', 'url' => '/settings/admin', 'verb' => 'POST'],
+        ['name' => 'settings#saveDecorationPolicy', 'url' => '/settings/admin/decorations', 'verb' => 'POST'],
         ['name' => 'settings#savePersonalSettings', 'url' => '/settings/personal', 'verb' => 'POST'],
         ['name' => 'settings#heartbeat', 'url' => '/settings/heartbeat', 'verb' => 'POST'],
         ['name' => 'settings#saveIconPositions', 'url' => '/settings/iconpositions', 'verb' => 'POST'],
@@ -13,8 +14,6 @@ return [
         ['name' => 'settings#resetWindowStates', 'url' => '/settings/windowstates/reset', 'verb' => 'POST'],
         ['name' => 'settings#resetAllPersonal', 'url' => '/settings/personal/reset', 'verb' => 'POST'],
         ['name' => 'settings#resetUserSettings', 'url' => '/settings/admin/resetuser', 'verb' => 'POST'],
-        ['name' => 'settings#resetDebugLog', 'url' => '/settings/admin/resetlog', 'verb' => 'POST'],
-        ['name' => 'settings#debug', 'url' => '/debug', 'verb' => 'POST'],
 
         // Files module (formerly the standalone "desktopfiles" app)
         ['name' => 'files#index', 'url' => '/files', 'verb' => 'GET'],

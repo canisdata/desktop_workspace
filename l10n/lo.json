@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "ການແປທັງໝົດແມ່ນການແປດ້ວຍເຄື່ອງ.",
-        "Opens in new tab": "ເປີດໃນແທັບໃໝ່"
+        "Opens in new tab": "ເປີດໃນແທັບໃໝ່",
+        "Allow users to choose a desktop decoration": "ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ເລືອກການຕົກແຕ່ງ desktop",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "ເລືອກລັກສະນະຂອງໜ້າຕ່າງເດັສທັອບ, ແຖບໜ້າວຽກ ແລະຄລິກຂວາໃສ່ເມນູ. ສີອ່ອນ ແລະສີເຂັ້ມສືບຕໍ່ປະຕິບັດຕາມການຕັ້ງຄ່າຮູບລັກສະນະ Nextcloud ຂອງທ່ານ.",
+        "Decoration": "ຕົກແຕ່ງ",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "ຕົວເລືອກການຕົກແຕ່ງຖືກປິດການນຳໃຊ້ໂດຍຜູ້ເບິ່ງແຍງລະບົບຂອງທ່ານ. ຂໍໃຫ້ຜູ້ເບິ່ງແຍງລະບົບຂອງເຈົ້າເປີດໃຊ້ພວກມັນ.",
+        "Decorations": "ຕົບແຕ່ງ",
+        "Desktop decoration": "ການຕົບແຕ່ງ desktop",
+        "Redmond": "ເຣດມອນ",
+        "Standard": "ມາດຕະຖານ",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "ເມື່ອປິດການໃຊ້ງານ, ຜູ້ໃຊ້ທຸກຄົນໃຊ້ມາດຕະຖານ Nextcloud window, taskbar, ແລະການຕົບແຕ່ງເມນູ.",
+        "Back": "ກັບຄືນໄປບ່ອນ",
+        "Browser": "ຕົວທ່ອງເວັບ",
+        "Delete": "ລຶບ",
+        "No files": "ບໍ່ມີໄຟລ໌",
+        "Open folder": "ເປີດໂຟນເດີ"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

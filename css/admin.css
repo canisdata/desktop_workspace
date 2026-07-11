@@ -26,6 +26,7 @@
 #desktop-exp-groups[disabled] { opacity: 0.5; }
 #desktop-admin-settings h3, #desktop-personal-settings h3 { margin-top: 18px; }
 .desktop-admin-status { margin-left: 10px; }
+.desktop-setting-disabled { opacity: .55; }
 
 /* Token multiselect for group selection (v0.3.1) */
 .desktop-group-select { display: inline-block; width: 100%; max-width: 440px; margin-top: 4px; }

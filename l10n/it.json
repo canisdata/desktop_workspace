@@ -216,7 +216,21 @@
         "Pinned apps": "App aggiunte",
         "Search": "Cerca",
         "All translations are machine translations.": "Tutte le traduzioni sono traduzioni automatiche.",
-        "Opens in new tab": "Si apre in una nuova scheda"
+        "Opens in new tab": "Si apre in una nuova scheda",
+        "Allow users to choose a desktop decoration": "Consenti agli utenti di scegliere una decorazione per il desktop",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Scegli l'aspetto delle finestre del desktop, della barra delle applicazioni e dei menu di scelta rapida. I colori chiari e scuri continuano a seguire le impostazioni dell'aspetto di Nextcloud.",
+        "Decoration": "Decorazione",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Le scelte di decorazione sono state disabilitate dall'amministratore. Chiedi al tuo amministratore di abilitarli.",
+        "Decorations": "Decorazioni",
+        "Desktop decoration": "Decorazione della scrivania",
+        "Redmond": "Redmond",
+        "Standard": "Standard",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Quando disabilitato, tutti gli utenti utilizzano la finestra, la barra delle applicazioni e la decorazione del menu standard di Nextcloud.",
+        "Back": "Indietro",
+        "Browser": "Navigatore",
+        "Delete": "Eliminare",
+        "No files": "Nessun file",
+        "Open folder": "Apri cartella"
     },
     "pluralForm": "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

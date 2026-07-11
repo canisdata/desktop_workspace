@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Applications épinglées",
     "Search": "Rechercher",
     "Opens in new tab": "S’ouvre dans un nouvel onglet",
-    "All translations are machine translations.": "Toutes les traductions sont des traductions automatiques."
+    "All translations are machine translations.": "Toutes les traductions sont des traductions automatiques.",
+    "Allow users to choose a desktop decoration": "Autoriser les utilisateurs à choisir une décoration de bureau",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Choisissez l'apparence des fenêtres du bureau, de la barre des tâches et des menus contextuels. Les couleurs claires et foncées continuent de suivre vos paramètres d'apparence Nextcloud.",
+    "Decoration": "Décoration",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Les choix de décoration ont été désactivés par votre administrateur. Demandez à votre administrateur de les activer.",
+    "Decorations": "Décorations",
+    "Desktop decoration": "Décoration de bureau",
+    "Redmond": "Redmond",
+    "Standard": "Standard",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Lorsqu'ils sont désactivés, tous les utilisateurs utilisent la fenêtre, la barre des tâches et la décoration de menu Nextcloud standard.",
+    "Back": "Dos",
+    "Browser": "Navigateur",
+    "Delete": "Supprimer",
+    "No files": "Aucun fichier",
+    "Open folder": "Ouvrir le dossier"
 },
     "nplurals=2; plural=(n > 1);"
 );

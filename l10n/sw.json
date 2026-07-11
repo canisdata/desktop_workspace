@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "Tafsiri zote ni tafsiri za mashine.",
-        "Opens in new tab": "Hufunguka kwenye kichupo kipya"
+        "Opens in new tab": "Hufunguka kwenye kichupo kipya",
+        "Allow users to choose a desktop decoration": "Ruhusu watumiaji kuchagua mapambo ya eneo-kazi",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Chagua mwonekano wa madirisha ya eneo-kazi, upau wa kazi, na menyu za kubofya kulia. Rangi nyepesi na nyeusi zinaendelea kufuata mipangilio yako ya mwonekano wa Nextcloud.",
+        "Decoration": "Mapambo",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Chaguo za mapambo zimezimwa na msimamizi wako. Uliza msimamizi wako awawezeshe.",
+        "Decorations": "Mapambo",
+        "Desktop decoration": "Mapambo ya Desktop",
+        "Redmond": "Redmond",
+        "Standard": "Kawaida",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Inapozimwa, watumiaji wote hutumia dirisha la kawaida la Nextcloud, upau wa kazi na mapambo ya menyu.",
+        "Back": "Nyuma",
+        "Browser": "Kivinjari",
+        "Delete": "Futa",
+        "Open folder": "Fungua folda",
+        "No files": "Hakuna faili"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

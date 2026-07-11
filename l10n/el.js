@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "Ανοίγει σε νέα καρτέλα",
-    "All translations are machine translations.": "Όλες οι μεταφράσεις είναι μηχανικές μεταφράσεις."
+    "All translations are machine translations.": "Όλες οι μεταφράσεις είναι μηχανικές μεταφράσεις.",
+    "Allow users to choose a desktop decoration": "Επιτρέψτε στους χρήστες να επιλέξουν μια διακόσμηση επιφάνειας εργασίας",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Επιλέξτε την εμφάνιση των παραθύρων της επιφάνειας εργασίας, τη γραμμή εργασιών και τα μενού με δεξί κλικ. Τα ανοιχτά και τα σκούρα χρώματα συνεχίζουν να ακολουθούν τις ρυθμίσεις εμφάνισης του Nextcloud.",
+    "Decoration": "Διακόσμηση",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Οι επιλογές διακόσμησης έχουν απενεργοποιηθεί από τον διαχειριστή σας. Ζητήστε από τον διαχειριστή σας να τα ενεργοποιήσει.",
+    "Decorations": "Διακοσμήσεις",
+    "Desktop decoration": "Διακόσμηση επιφάνειας εργασίας",
+    "Redmond": "Ρέντμοντ",
+    "Standard": "Πρότυπο",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Όταν είναι απενεργοποιημένο, όλοι οι χρήστες χρησιμοποιούν το τυπικό παράθυρο, τη γραμμή εργασιών και τη διακόσμηση μενού Nextcloud.",
+    "Back": "Πίσω",
+    "Browser": "Πρόγραμμα περιήγησης",
+    "Delete": "Διαγράφω",
+    "Open folder": "Άνοιγμα φακέλου",
+    "No files": "Δεν υπάρχουν αρχεία"
 },
     "nplurals=2; plural=(n != 1);"
 );

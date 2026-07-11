@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "Бүх орчуулга нь машин орчуулга юм.",
-        "Opens in new tab": "Шинэ таб дээр нээгдэнэ"
+        "Opens in new tab": "Шинэ таб дээр нээгдэнэ",
+        "Allow users to choose a desktop decoration": "Хэрэглэгчдэд ширээний чимэглэл сонгохыг зөвшөөрнө үү",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Ширээний цонхны харагдах байдал, taskbar болон хулганы баруун товчийг дарах цэсийг сонгоно уу. Цайвар болон бараан өнгө таны Nextcloud харагдах байдлын тохиргоог дагасаар байна.",
+        "Decoration": "Чимэглэл",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Чимэглэлийн сонголтыг таны админ идэвхгүй болгосон. Тэдгээрийг идэвхжүүлэхийг админаасаа хүс.",
+        "Decorations": "Чимэглэл",
+        "Desktop decoration": "Ширээний чимэглэл",
+        "Redmond": "Редмонд",
+        "Standard": "Стандарт",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Идэвхгүй болсон үед бүх хэрэглэгчид Nextcloud стандарт цонх, taskbar болон цэсийн чимэглэлийг ашигладаг.",
+        "Back": "Буцах",
+        "Browser": "Хөтөч",
+        "Delete": "Устгах",
+        "No files": "Файл байхгүй",
+        "Open folder": "Фолдер нээх"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

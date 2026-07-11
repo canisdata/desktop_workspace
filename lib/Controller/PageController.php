@@ -1,6 +1,7 @@
 <?php
 namespace OCA\DesktopWorkspace\Controller;
 
+use OCA\DesktopWorkspace\Service\DecorationService;
 use OCA\DesktopWorkspace\Service\FilesAvailability;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
@@ -22,6 +23,7 @@ class PageController extends Controller {
         private IUserSession $userSession,
         private FilesAvailability $filesAvailability,
         private \OCA\DesktopWorkspace\Service\StatsService $statsService,
+        private DecorationService $decorationService,
     ) {
         parent::__construct($appName, $request);
     }
@@ -56,6 +58,7 @@ class PageController extends Controller {
      */
     public function dynamicData(): JSONResponse {
         $l = \OC::$server->getL10N('desktop_workspace');
+        $user = $this->userSession->getUser();
         return new JSONResponse([
             'apps' => $this->navigationApps(),
             'labels' => [
@@ -65,6 +68,7 @@ class PageController extends Controller {
                 'Desktop Admin Settings' => $l->t('Desktop Admin Settings'),
                 'Desktop Files' => $l->t('Desktop Files'),
             ],
+            'decoration' => $this->decorationService->effectiveForUser($user?->getUID()),
         ]);
     }
 
@@ -74,8 +78,6 @@ class PageController extends Controller {
      */
     public function index(): TemplateResponse {
         $apps = $this->navigationApps();
-
-        $dataDir = rtrim($this->config->getSystemValueString('datadirectory', '/var/www/html/data'), '/');
 
         $user = $this->userSession->getUser();
         $uid = $user !== null ? $user->getUID() : null;
@@ -109,9 +111,7 @@ class PageController extends Controller {
             'showHome' => $uid !== null && $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::SHOW_HOME_KEY, 'no') === 'yes',
             'desktopFolder' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::DESKTOP_FOLDER_KEY, '') : '',
             'trashNoConfirm' => $uid !== null && $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::TRASH_NO_CONFIRM_KEY, 'no') === 'yes',
-            'debugEnabled' => $this->config->getAppValue(SettingsController::APP_ID, SettingsController::DEBUG_KEY, 'yes') !== 'no',
-            'debugUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.debug'),
-            'debugLogPath' => $dataDir . '/' . SettingsController::LOG_FILE,
+            'decoration' => $this->decorationService->effectiveForUser($uid),
         ]);
         $csp = new ContentSecurityPolicy();
         $csp->addAllowedFrameDomain("'self'");

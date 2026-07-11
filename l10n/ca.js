@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "S’obre en una pestanya nova",
-    "All translations are machine translations.": "Totes les traduccions són traduccions automàtiques."
+    "All translations are machine translations.": "Totes les traduccions són traduccions automàtiques.",
+    "Decoration": "Decoració",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Trieu l'aspecte de les finestres de l'escriptori, la barra de tasques i els menús del botó dret. Els colors clars i foscos segueixen la configuració de l'aparença de Nextcloud.",
+    "Standard": "Estàndard",
+    "Allow users to choose a desktop decoration": "Permet als usuaris triar una decoració d'escriptori",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "El vostre administrador ha desactivat les opcions de decoració. Demaneu al vostre administrador que els habiliti.",
+    "Back": "Enrere",
+    "Browser": "Navegador",
+    "Redmond": "Redmond",
+    "Desktop decoration": "Decoració d'escriptori",
+    "Decorations": "Decoracions",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Quan està desactivat, tots els usuaris utilitzen la finestra estàndard de Nextcloud, la barra de tasques i la decoració del menú.",
+    "Delete": "Suprimeix",
+    "Open folder": "Obre la carpeta",
+    "No files": "No hi ha fitxers"
 },
     "nplurals=2; plural=(n != 1);"
 );

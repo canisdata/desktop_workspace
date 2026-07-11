@@ -10,6 +10,21 @@ $l = \OC::$server->getL10N('desktop_workspace');
      data-reset-all-url="<?= p($_['resetAllUrl']) ?>">
     <h2><?= p($l->t('Desktop')) ?></h2>
 
+    <h3><?= p($l->t('Decoration')) ?></h3>
+    <div class="<?= $_['userDecorationsEnabled'] ? '' : 'desktop-setting-disabled' ?>">
+        <p class="settings-hint"><?= p($l->t('Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.')) ?></p>
+        <p>
+            <label for="desktop-decoration"><?= p($l->t('Desktop decoration')) ?></label>
+            <select id="desktop-decoration" <?= $_['userDecorationsEnabled'] ? '' : 'disabled' ?>>
+                <option value="standard" <?= ($_['decoration'] ?? 'standard') === 'standard' ? 'selected' : '' ?>><?= p($l->t('Standard')) ?></option>
+                <option value="redmond" <?= ($_['decoration'] ?? 'standard') === 'redmond' ? 'selected' : '' ?>><?= p($l->t('Redmond')) ?></option>
+            </select>
+        </p>
+    </div>
+    <?php if (!$_['userDecorationsEnabled']): ?>
+        <p class="settings-hint"><?= p($l->t('Decoration choices have been disabled by your administrator. Ask your administrator to enable them.')) ?></p>
+    <?php endif; ?>
+
     <h3><?= p($l->t('Desktop icons')) ?></h3>
     <p>
         <input type="checkbox" id="desktop-show-favorites" class="checkbox" <?= $_['showFavorites'] ? 'checked' : '' ?> />

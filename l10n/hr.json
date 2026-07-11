@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "Svi prijevodi su strojni prijevodi.",
-        "Opens in new tab": "Otvara se u novoj kartici"
+        "Opens in new tab": "Otvara se u novoj kartici",
+        "Allow users to choose a desktop decoration": "Omogućite korisnicima da odaberu dekoraciju radne površine",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Odaberite izgled prozora radne površine, programske trake i izbornika desnom tipkom miša. Svijetle i tamne boje i dalje slijede vaše postavke izgleda Nextclouda.",
+        "Decoration": "Ukras",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Vaš je administrator onemogućio odabire ukrasa. Zamolite svog administratora da ih omogući.",
+        "Decorations": "Dekoracije",
+        "Desktop decoration": "Dekoracija radne površine",
+        "Redmond": "Redmond",
+        "Standard": "Standard",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Kada je onemogućeno, svi korisnici koriste standardni Nextcloud prozor, programsku traku i dekoraciju izbornika.",
+        "Back": "Nazad",
+        "Browser": "preglednik",
+        "Delete": "Izbrisati",
+        "Open folder": "Otvori mapu",
+        "No files": "Nema datoteka"
     },
     "pluralForm": "nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;"
 }

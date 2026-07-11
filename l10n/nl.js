@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Vastgemaakte apps",
     "Search": "Zoeken",
     "Opens in new tab": "Opent in een nieuw tabblad",
-    "All translations are machine translations.": "Alle vertalingen zijn machinevertalingen."
+    "All translations are machine translations.": "Alle vertalingen zijn machinevertalingen.",
+    "Allow users to choose a desktop decoration": "Sta gebruikers toe een bureaubladdecoratie te kiezen",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Kies het uiterlijk van bureaubladvensters, de taakbalk en rechtermuisknopmenu's. Lichte en donkere kleuren blijven uw Nextcloud-weergave-instellingen volgen.",
+    "Decoration": "Decoratie",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Decoratiekeuzes zijn uitgeschakeld door uw beheerder. Vraag uw beheerder om deze in te schakelen.",
+    "Decorations": "Decoraties",
+    "Desktop decoration": "Bureaubladdecoratie",
+    "Redmond": "Redmond",
+    "Standard": "Standaard",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Indien uitgeschakeld, gebruiken alle gebruikers het standaard Nextcloud-venster, de taakbalk en de menudecoratie.",
+    "Back": "Rug",
+    "Browser": "Browser",
+    "Delete": "Verwijderen",
+    "No files": "Geen bestanden",
+    "Open folder": "Map openen"
 },
     "nplurals=2; plural=(n != 1);"
 );

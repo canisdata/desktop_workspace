@@ -217,7 +217,21 @@ OC.L10N.register(
     "Pinned apps": "Pinned apps",
     "Search": "Search",
     "Opens in new tab": "Osclaítear i gcluaisín nua",
-    "All translations are machine translations.": "Is aistriúcháin mheaisín iad na haistriúcháin uile."
+    "All translations are machine translations.": "Is aistriúcháin mheaisín iad na haistriúcháin uile.",
+    "Allow users to choose a desktop decoration": "Lig d'úsáideoirí maisiú deisce a roghnú",
+    "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Roghnaigh cuma fuinneoga deisce, an tascbharra, agus roghchláir deaschliceáil. Leanann dathanna éadroma agus dorcha de do shocruithe cuma Nextcloud a leanúint.",
+    "Decoration": "Maisiú",
+    "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Dhíchumasaigh do riarthóir roghanna maisiúcháin. Iarr ar do riarthóir iad a chumasú.",
+    "Decorations": "Maisiúcháin",
+    "Desktop decoration": "Maisiú deasc",
+    "Redmond": "Redmond",
+    "Standard": "Caighdeán",
+    "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Nuair atá sé díchumasaithe, úsáideann gach úsáideoir an fhuinneog caighdeánach Nextcloud, an tascbharra agus an maisiú roghchláir.",
+    "Back": "Ar ais",
+    "Browser": "Brabhsálaí",
+    "Delete": "Scrios",
+    "Open folder": "Oscail fillteán",
+    "No files": "Uimh comhaid"
 },
     "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);"
 );

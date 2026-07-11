@@ -17,8 +17,6 @@
     const headerEndSlot = document.getElementById('desktop-header-end-slot');
     const desktopLogo = document.getElementById('desktop-nextcloud-logo');
 
-    const debugEnabled = root.dataset.debugEnabled === 'true';
-    const debugUrl = root.dataset.debugUrl;
     const windows = new Map();
     let zIndex = 20;
     let launcherApps = [];
@@ -35,22 +33,6 @@
         '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;',
     }[char]));
 
-    function debugLog(event, payload = {}) {
-        if (!debugEnabled || !debugUrl) return;
-        const body = new URLSearchParams();
-        body.set('event', event);
-        body.set('payload', JSON.stringify(payload));
-        if (window.OC?.requestToken) body.set('requesttoken', OC.requestToken);
-        fetch(debugUrl, {
-            method: 'POST',
-            keepalive: true,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-                ...(window.OC?.requestToken ? { requesttoken: OC.requestToken } : {}),
-            },
-            body,
-        }).catch(() => {});
-    }
 
     function pruneHeaderEnd() {
         const headerEnd = headerEndSlot && headerEndSlot.querySelector('.header-end');
@@ -66,13 +48,13 @@
         if (!headerEndSlot || headerEndSlot.dataset.moved === 'true') return;
         const headerEnd = document.querySelector('#header .header-end');
         if (!headerEnd) {
-            debugLog('header_end_not_found');
+
             return;
         }
         headerEndSlot.replaceChildren(headerEnd);
         headerEndSlot.dataset.moved = 'true';
         pruneHeaderEnd();
-        debugLog('header_end_moved_to_taskbar');
+
     }
 
     function positionHeaderEndMenus() {
@@ -131,7 +113,7 @@
         if (!desktopLogo || desktopLogo.dataset.logoCopied === 'true') return;
         const originalLogo = document.querySelector('#nextcloud .logo, #nextcloud .logo-icon');
         if (!originalLogo) {
-            debugLog('header_logo_not_found');
+
             return;
         }
         const clonedLogo = originalLogo.cloneNode(true);
@@ -145,7 +127,7 @@
         desktopLogo.replaceChildren(clonedLogo);
         desktopLogo.dataset.logoCopied = 'true';
         applyLogoContrast();
-        debugLog('header_logo_copied_to_taskbar');
+
     }
 
     const THEME_VARIABLES = [
@@ -173,17 +155,17 @@
                 const value = style.getPropertyValue(key).trim();
                 if (value && value !== 'none') {
                     root.style.setProperty('--desktop-background-image', value);
-                    debugLog('background_applied', { source: key, value, from: sourceDocument === document ? 'desktop' : 'theming-iframe' });
+
                     return;
                 }
             }
             if (style.backgroundImage && style.backgroundImage !== 'none') {
                 root.style.setProperty('--desktop-background-image', style.backgroundImage);
-                debugLog('background_applied', { source: 'computed-background-image', value: style.backgroundImage, from: sourceDocument === document ? 'desktop' : 'theming-iframe' });
+
                 return;
             }
         }
-        debugLog('background_fallback_used', { from: sourceDocument === document ? 'desktop' : 'theming-iframe' });
+
     }
 
     function applyLogoContrast() {
@@ -246,8 +228,8 @@
     }
 
     const themingIframeMonitors = new WeakMap();
-    const desktopLanguage = (window.OC?.getLanguage?.() || document.documentElement.lang || '').replace('-', '_');
-    const desktopLocale = (document.documentElement.dataset.locale || desktopLanguage || navigator.language || '').replace('-', '_');
+    const desktopLanguage = window.OC?.getLanguage?.() || document.documentElement.lang || navigator.language || '';
+    const desktopLocale = window.OC?.getLocale?.() || document.documentElement.dataset.locale || desktopLanguage;
 
     function isThemingSettingsUrl(href = '') {
         try {
@@ -267,9 +249,9 @@
             if (!doc || !isThemingSettingsUrl(iframeHref(iframe))) return;
             liveThemingApplied = true;
             syncAppearance(doc);
-            debugLog('theming_iframe_appearance_synced', { href: iframeHref(iframe) });
+
         } catch (error) {
-            debugLog('theming_iframe_appearance_sync_failed', { message: error.message });
+
         }
     }
 
@@ -285,12 +267,12 @@
                 observer.observe(element, { attributes: true, attributeFilter: ['style', 'class', 'data-theme'] });
             }
         } catch (error) {
-            debugLog('theming_iframe_observer_failed', { message: error.message });
+
         }
         const timer = window.setInterval(sync, 500);
         themingIframeMonitors.set(iframe, { observer, timer });
         sync();
-        debugLog('theming_iframe_monitor_started', { href: iframeHref(iframe) });
+
     }
 
     function stopThemingIframeMonitor(iframe) {
@@ -299,7 +281,7 @@
         monitor.observer?.disconnect();
         window.clearInterval(monitor.timer);
         themingIframeMonitors.delete(iframe);
-        debugLog('theming_iframe_monitor_stopped');
+
     }
 
     function refreshThemingIframeMonitor(iframe) {
@@ -381,7 +363,7 @@
                 multiInstance: Boolean(entry.multiInstance),
             }));
         } catch (error) {
-            debugLog('app_list_parse_failed', { message: error.message });
+
         }
         const seen = new Set();
         const filtered = apps.filter((app) => {
@@ -411,8 +393,13 @@
         return apps.find((app) => app.id === id) || null;
     }
 
+    function applyDecoration(value) {
+        root.dataset.decoration = value === 'redmond' ? 'redmond' : 'standard';
+    }
+
     function applyDynamicAppData(data = {}) {
         const previousApps = getApps();
+        if (typeof data.decoration === 'string') applyDecoration(data.decoration);
         if (data.labels && typeof data.labels === 'object') dynamicLabels = data.labels;
         if (Array.isArray(data.apps)) root.dataset.apps = JSON.stringify(data.apps);
         const nextApps = getApps();
@@ -448,7 +435,7 @@
             entry.app = { ...entry.app, ...next };
             if (titleWasAppName && next.name && next.name !== currentTitle) setWindowMeta(entry.app.id, { title: next.name, icon: next.icon || entry.app.icon });
         });
-        debugLog('dynamic_app_data_applied', { apps: nextApps.length, labels: Object.keys(dynamicLabels).length });
+
     }
 
     async function reloadDynamicAppData() {
@@ -460,7 +447,7 @@
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             applyDynamicAppData(await response.json());
         } catch (error) {
-            debugLog('dynamic_app_data_reload_failed', { message: error.message });
+
         } finally {
             dynamicDataReloading = false;
         }
@@ -491,7 +478,7 @@
         if (app.target) {
             closeStartMenu();
             window.open(app.href, '_blank', 'noopener,noreferrer');
-            debugLog('app_opened_new_tab', { appId: app.id, appName: app.name, href: app.href });
+
             return;
         }
         const isFileApp = app.fileApp === true || app.id === 'files' || (app.href && app.href.includes('/apps/files'));
@@ -618,8 +605,8 @@
             'button[aria-label*="Search"]', 'button[title*="Search"]'
         ];
         const trigger = selectors.map((sel) => document.querySelector(sel)).find((el) => el && !search?.contains(el));
-        if (trigger) { trigger.click(); setTimeout(positionHeaderEndMenus, 0); debugLog('unified_search_triggered_from_apps_menu'); return; }
-        debugLog('unified_search_trigger_not_found');
+        if (trigger) { trigger.click(); setTimeout(positionHeaderEndMenus, 0);  return; }
+
     }
     function renderLauncher() {
         const apps = getApps();
@@ -801,12 +788,12 @@
             entry.task.classList.remove('is-active');
             entry.task.classList.add('is-minimized');
             entry.task.setAttribute('aria-pressed', 'false');
-            debugLog('window_minimized', { appId: id });
+
         } else {
             win.classList.remove('is-minimized');
             win.removeAttribute('aria-hidden');
             restoreWindowGeometry(entry);
-            debugLog('window_unminimized', { appId: id });
+
         }
         saveState();
     }
@@ -871,6 +858,29 @@
         setWindowMinimized(id, true);
     }
 
+    function toggleWindowMaximized(id) {
+        const entry = windows.get(id);
+        if (!entry) return;
+        setWindowMinimized(id, false);
+        const win = entry.window;
+        const before = win.getBoundingClientRect();
+        win.classList.add('is-geometry-animating');
+        win.classList.toggle('is-maximized');
+        const after = win.getBoundingClientRect();
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && before.width && before.height && after.width && after.height) {
+            const animation = win.animate([
+                { transform: `translate(${before.left - after.left}px, ${before.top - after.top}px) scale(${before.width / after.width}, ${before.height / after.height})` },
+                { transform: 'translate(0, 0) scale(1)' },
+            ], { duration: 83, easing: 'cubic-bezier(0, 0, 0, 1)' });
+            animation.addEventListener('finish', () => win.classList.remove('is-geometry-animating'), { once: true });
+            animation.addEventListener('cancel', () => win.classList.remove('is-geometry-animating'), { once: true });
+        } else {
+            win.classList.remove('is-geometry-animating');
+        }
+        focusWindow(id);
+        saveState();
+    }
+
     function ensureTaskContextMenu() {
         let menu = document.getElementById('desktop-task-context-menu');
         if (menu) return menu;
@@ -893,10 +903,7 @@
             const action = button.dataset.action;
             if (action === 'minimize') minimizeWindow(id);
             if (action === 'maximize') {
-                setWindowMinimized(id, false);
-                entry.window.classList.toggle('is-maximized');
-                focusWindow(id);
-                saveState();
+                toggleWindowMaximized(id);
             }
             if (action === 'close') closeWindow(id);
             closeTaskContextMenu();
@@ -939,7 +946,7 @@
         entry.task.remove();
         windows.delete(id);
         saveState();
-        debugLog(reason, { appId: id, appName: entry.app?.name || '' });
+
     }
 
     function prepareIframeForClose(entry) {
@@ -950,7 +957,7 @@
             iframe.contentWindow?.postMessage({ type: 'nextcloud-desktop:prepare-close', appId: entry.app?.id || '' }, window.location.origin);
             requested = true;
         } catch (error) {
-            debugLog('iframe_prepare_close_post_failed', { appId: entry.app?.id || '', message: error.message });
+
         }
         try {
             const viewer = iframe.contentWindow?.OCA?.Viewer;
@@ -959,7 +966,7 @@
                 requested = true;
             }
         } catch (error) {
-            debugLog('iframe_viewer_close_failed', { appId: entry.app?.id || '', message: error.message });
+
         }
         return requested;
     }
@@ -1059,7 +1066,7 @@
             icon: sourceApp?.icon || '',
             desktopMode: 'iframe',
         });
-        debugLog('iframe_new_tab_intercepted', { href: absolute, title: title || '', sourceAppId: sourceApp?.id || '' });
+
         return true;
     }
 
@@ -1072,7 +1079,7 @@
         const id = `file-${String(fileId).replace(/[^a-z0-9_-]/gi, '_')}`;
         openWindow({ id, name, href: `/index.php/f/${encodeURIComponent(fileId)}`, icon, desktopMode: 'iframe' });
         setWindowMeta(id, { title: name, icon });
-        debugLog('native_files_view_opened_separate_window', { fileId, name, sourceAppId: sourceApp?.id || '' });
+
         return true;
     }
 
@@ -1084,7 +1091,7 @@
         const icon = sourceApp?.icon || ((window.OC && OC.imagePath && OC.imagePath('core', 'places/files.svg')) || '');
         openWindow({ id, name, href, icon, desktopMode: 'iframe' });
         setWindowMeta(id, { title: name, subtitle: new URL(href).searchParams.get('dir') || '', icon });
-        debugLog('native_files_folder_opened_separate_window', { name, href, sourceAppId: sourceApp?.id || '' });
+
         return true;
     }
 
@@ -1193,7 +1200,7 @@
             href: url.toString(),
             icon: '/core/img/logo/logo.svg',
         });
-        debugLog('desktop_link_opened_in_window', { source, title, href: url.toString() });
+
         return true;
     }
 
@@ -1344,7 +1351,7 @@
         windows.set(app.id, { window: win, task, app });
         if (!win.classList.contains('is-minimized')) focusWindow(app.id);
         saveState();
-        debugLog(restoredState ? 'window_restored' : 'window_opened', { appId: app.id, appName: app.name, mode: 'safe-native' });
+
         loadNativeApp(app, win.querySelector('.desktop-window-body'));
     }
 
@@ -1356,7 +1363,7 @@
             target.classList.remove('is-loading');
             target.innerHTML = `<div class="desktop-window-error"><div><strong>${escapeHtml(app.name)} could not be opened natively.</strong><p>${escapeHtml(error.message)}</p><button class="desktop-window-open-full" type="button">Open as full page</button></div></div>`;
             target.querySelector('button')?.addEventListener('click', () => { window.location.href = app.href; });
-            debugLog('native_app_load_failed', { appId: app.id, appName: app.name, href: app.href, message: error.message });
+
         }
     }
 
@@ -1388,10 +1395,10 @@
         target.classList.remove('is-loading');
         target.innerHTML = `
             <div class="desktop-files-native">
-                <div class="desktop-files-toolbar"><strong>Files</strong><span>${escapeHtml(cleanDir)}</span><button type="button" data-refresh>Refresh</button></div>
+                <div class="desktop-files-toolbar"><strong>${escapeHtml(t('Files'))}</strong><span>${escapeHtml(cleanDir)}</span><button type="button" data-refresh>${escapeHtml(t('Refresh'))}</button></div>
                 <table class="desktop-files-table">
-                    <thead><tr><th>Name</th><th>Type</th><th>Size</th><th>Modified</th></tr></thead>
-                    <tbody>${rows.map((row) => `<tr><td>${row.isFolder ? '📁' : '📄'} ${escapeHtml(row.name)}</td><td>${row.isFolder ? 'Folder' : 'File'}</td><td>${row.isFolder ? '' : escapeHtml(row.size)}</td><td>${escapeHtml(row.modified)}</td></tr>`).join('') || '<tr><td colspan="4">No files</td></tr>'}</tbody>
+                    <thead><tr><th>${escapeHtml(t('Name'))}</th><th>${escapeHtml(t('Type'))}</th><th>${escapeHtml(t('Size'))}</th><th>${escapeHtml(t('Modified'))}</th></tr></thead>
+                    <tbody>${rows.map((row) => `<tr><td>${row.isFolder ? '📁' : '📄'} ${escapeHtml(row.name)}</td><td>${escapeHtml(row.isFolder ? t('Folder') : t('File'))}</td><td>${row.isFolder ? '' : escapeHtml(row.size)}</td><td>${escapeHtml(row.modified)}</td></tr>`).join('') || `<tr><td colspan="4">${escapeHtml(t('No files'))}</td></tr>`}</tbody>
                 </table>
             </div>`;
         target.querySelector('[data-refresh]')?.addEventListener('click', () => loadNativeFiles(target, cleanDir));
@@ -1423,13 +1430,13 @@
             refreshThemingIframeMonitor(iframe);
             hideIframeChrome(iframe, app);
             watchIframeFileViewer(iframe, app);
-            debugLog('iframe_app_loaded', { appId: app.id, appName: app.name, href: absoluteHref });
+
         });
         target.appendChild(iframe);
         primeIframeChromeHiding(iframe, app);
         refreshThemingIframeMonitor(iframe);
         watchIframeFileViewer(iframe, app);
-        debugLog('iframe_fallback_opened', { appId: app.id, appName: app.name, href: absoluteHref });
+
     }
 
     function normalizeFileTitle(name = '') {
@@ -1676,7 +1683,7 @@
                 }
             }, 1000);
         } catch (error) {
-            debugLog('file_viewer_watch_failed', { appId: app.id, message: error.message });
+
         }
     }
 
@@ -1773,9 +1780,9 @@
                 .skip-navigation { display: none !important; }
             `;
             doc.head?.appendChild(style);
-            debugLog('iframe_chrome_hidden', { appId: app.id, appName: app.name });
+
         } catch (error) {
-            debugLog('iframe_chrome_hide_failed', { appId: app.id, appName: app.name, message: error.message });
+
         }
     }
 
@@ -1993,9 +2000,7 @@
             event.preventDefault();
             event.stopPropagation();
             clearTransientButtonHighlight(event.currentTarget);
-            win.classList.toggle('is-maximized');
-            focusWindow(id);
-            saveState();
+            toggleWindowMaximized(id);
         });
         win.querySelector('[data-action="reload"]')?.addEventListener('click', (event) => {
             event.preventDefault();
@@ -2011,7 +2016,7 @@
                 const body = win.querySelector('.desktop-window-body');
                 if (entry && body) loadNativeApp(entry.app, body);
             }
-            debugLog('window_reloaded', { appId: id });
+
         });
         win.querySelector('[data-action="close"]')?.addEventListener('click', (event) => {
             event.preventDefault();
@@ -2095,7 +2100,7 @@
     function updateClock() {
         const now = new Date();
         clock.dateTime = now.toISOString();
-        const locale = (desktopLocale || desktopLanguage || window.OC?.getLanguage?.() || document.documentElement.lang || navigator.language || undefined)?.replace('_', '-');
+        const locale = (desktopLocale || desktopLanguage || navigator.language || undefined)?.replace(/_/g, '-');
         const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
         try { clock.textContent = new Intl.DateTimeFormat(locale, options).format(now); }
         catch (e) { clock.textContent = new Intl.DateTimeFormat(undefined, options).format(now); }
@@ -2109,11 +2114,12 @@
             setWindowMeta(String(event.data.appId || ''), event.data);
         } else if (event.data?.type === 'nextcloud-desktop:open-file' || event.data?.type === 'nextcloud-desktop:open-app') {
             openExternalWindow(event.data);
-            debugLog(event.data.type === 'nextcloud-desktop:open-file' ? 'file_window_requested' : 'app_window_requested', event.data);
+
         } else if (event.data?.type === 'nextcloud-desktop:desktop-reload') {
             if (typeof favoritesReload === 'function') favoritesReload();
         } else if (event.data?.type === 'nextcloud-desktop:settings-changed') {
             if (typeof applyIconSettings === 'function') applyIconSettings(event.data.settings || {});
+            if (event.data.settings && 'decoration' in event.data.settings) applyDecoration(event.data.settings.decoration);
         } else if (event.data?.type === 'nextcloud-desktop:close-window') {
             const id = String(event.data.appId || '').replace(/[^a-z0-9_-]/gi, '_');
             if (windows.has(id)) {
@@ -2212,7 +2218,7 @@
         const url = headerMenuTarget(link);
         if (!url) return;
         event.preventDefault();
-        debugLog('header_link_pointerdown', { path: url.pathname });
+
         openExternalWindow(buildHeaderLinkMeta(link, url));
     }, true);
 
@@ -2221,7 +2227,7 @@
     document.addEventListener('click', (event) => {
         const link = event.target.closest('a[href]');
         if (!link) {
-            if (event.target.closest('#desktop-header-end-slot')) debugLog('header_click_no_anchor', { tag: event.target.tagName, cls: String(event.target.className || '').slice(0, 140) });
+            if (event.target.closest('#desktop-header-end-slot'))
             return;
         }
         if (/\/logout/i.test(new URL(link.href, window.location.origin).pathname)) {
@@ -2234,7 +2240,7 @@
         if (!url) return;
         event.preventDefault();
         event.stopImmediatePropagation();
-        debugLog('header_link_open', { path: url.pathname });
+
         openExternalWindow(buildHeaderLinkMeta(link, url));
     }, true);
     window.addEventListener('resize', positionHeaderEndMenus);
@@ -2260,13 +2266,15 @@
     setTimeout(() => hideHeaderApps(launcherApps), 1500);
     restoreWindows(apps);
     scheduleDynamicAppDataReload(100);
+    // Keep administrator policy changes effective for already-running desktops.
+    window.setInterval(reloadDynamicAppData, 30000);
     initFavorites();
     updateClock();
     if (root.dataset.firstVisit === 'true') {
         // First visit ever (also after a full reset): show the user their desktop settings.
         setTimeout(() => { try { openDesktopSettings(); } catch (e) { /* ignore */ } }, 400);
     }
-    debugLog('desktop_loaded', { appCount: apps.length, logPath: root.dataset.debugLogPath, mode: 'safe-native' });
+
     setInterval(updateClock, 30000);
 
     (function startHeartbeat() {
@@ -2644,11 +2652,11 @@
             const cur = el.dataset.name || oldPath.split('/').pop();
             const next = (window.prompt(t('New name'), cur) || '').trim();
             if (!next || next === cur) return;
-            if (/[\\/]/.test(next)) { debugLog('rename_invalid', { next }); return; }
+            if (/[\\/]/.test(next)) {  return; }
             const parent = oldPath.split('/').slice(0, -1).join('/');
             const dest = (parent ? parent + '/' : '') + next;
             try { await davMove(oldPath, dest); favoritesReload(); }
-            catch (e) { debugLog('rename_failed', { message: e.message }); }
+            catch (e) {  }
         }
         function cutCopy(items, mode) {
             const refs = items.filter((el) => el.dataset.kind === 'file' && el.dataset.path)
@@ -2668,7 +2676,7 @@
                 if (cb.mode === 'cut' && (ref.path.split('/').slice(0, -1).join('/').replace(/^\/+/, '')) === targetDir) continue; // already here
                 const dest = targetDir + '/' + ref.name;
                 try { if (cb.mode === 'cut') await davMove(ref.path, dest); else await davCopy(ref.path, dest); } // eslint-disable-line no-await-in-loop
-                catch (e) { debugLog('paste_failed', { message: e.message }); }
+                catch (e) {  }
             }
             if (cb.mode === 'cut') { clearSharedClipboard(); clipboard = null; }
             favoritesReload();
@@ -2677,7 +2685,7 @@
             const targets = items.filter((el) => el.dataset.kind === 'file' && el.dataset.path);
             if (!targets.length) return;
             const on = !targets.some((el) => el.dataset.favorited === 'true');
-            for (const el of targets) { try { await setFavorite(el.dataset.path, on); } catch (e) { debugLog('favorite_toggle_failed', { message: e.message }); } } // eslint-disable-line no-await-in-loop
+            for (const el of targets) { try { await setFavorite(el.dataset.path, on); } catch (e) {  } } // eslint-disable-line no-await-in-loop
             favoritesReload();
         }
         async function deleteToTrash(items) {
@@ -2690,7 +2698,7 @@
                     deselectIcon(el);
                     icons = icons.filter((x) => x !== el);
                     el.remove();
-                } catch (e) { debugLog('trash_failed', { message: e.message }); }
+                } catch (e) {  }
             }
             savePositions();
         }
@@ -2737,7 +2745,7 @@
                 });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
             } catch (e) {
-                debugLog('favorite_remove_failed', { path, message: e.message });
+
             }
             occupied.delete(keyOf(Number(el.dataset.col), Number(el.dataset.row)));
             delete positions[el.dataset.fileId];
@@ -2935,7 +2943,7 @@
                     st.items.forEach((it) => it.el.classList.remove('is-dragging'));
                     layout();
                     if (files.length) {
-                        try { filesFrame.contentWindow.postMessage({ type: 'nextcloud-desktop:files-drop', paths: files.map((g) => g.dataset.path) }, window.location.origin); } catch (err) { debugLog('cross_drop_out_failed', { message: err.message }); }
+                        try { filesFrame.contentWindow.postMessage({ type: 'nextcloud-desktop:files-drop', paths: files.map((g) => g.dataset.path) }, window.location.origin); } catch (err) {  }
                     }
                 } else if (st.moved) {
                     st.items.forEach((it) => { occupied.delete(keyOf(Number(it.el.dataset.col), Number(it.el.dataset.row))); it.el.classList.remove('is-dragging'); });
@@ -2963,7 +2971,7 @@
                 const res = await fetch(davUrl(dir + '/' + raw), { method: 'MKCOL', headers: { requesttoken: OC.requestToken } });
                 if (!res.ok && res.status !== 405) throw new Error(`HTTP ${res.status}`); // 405 = already exists
                 favoritesReload();
-            } catch (e) { debugLog('create_folder_failed', { message: e.message }); }
+            } catch (e) {  }
         }
 
         stage.addEventListener('contextmenu', (e) => {
@@ -3051,7 +3059,7 @@
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
                 try { await putWithProgress(davUrl(`${targetDir}/${file.name}`), file, (pct) => overlay.update(i + 1, files.length, file.name, pct)); } // eslint-disable-line no-await-in-loop
-                catch (e) { debugLog('upload_failed', { name: file.name, message: e.message }); }
+                catch (e) {  }
             }
             overlay.remove();
             favoritesReload();
@@ -3101,7 +3109,7 @@
                 const parent = p.split('/').slice(0, -1).join('/').replace(/^\/+/, '');
                 if (parent === targetDir) continue; // already in the desktop folder
                 try { await davMove(p, `${targetDir}/${name}`); } // eslint-disable-line no-await-in-loop
-                catch (err) { debugLog('cross_drop_in_failed', { message: err.message }); }
+                catch (err) {  }
             }
             favoritesReload();
             broadcastFilesReload();
@@ -3205,7 +3213,7 @@
                 // Favorites that already appear as folder contents are not added twice.
                 let folderItems = [];
                 try { folderItems = await fetchDesktopFolder(desktopFolder); }
-                catch (e) { debugLog('desktop_folder_load_failed', { message: e.message }); }
+                catch (e) {  }
                 folderItems.forEach(add);
                 if (showFav) {
                     try {
@@ -3213,15 +3221,15 @@
                         (await fetchFavorites())
                             .filter((it) => !seen.has(it.fileId || it.path))
                             .forEach(add);
-                    } catch (e) { debugLog('favorites_load_failed', { message: e.message }); }
+                    } catch (e) {  }
                 }
             } else if (showFav) {
                 try { (await fetchFavorites()).forEach(add); }
-                catch (e) { debugLog('favorites_load_failed', { message: e.message }); }
+                catch (e) {  }
             }
             if (root.dataset.showTrash === 'true') add(trashItem()); // right after the favorites
             layout();
-            debugLog('desktop_icons_loaded', { count: icons.length });
+
         }
         favoritesReload = renderAll;
         refreshDesktopPinnedApps = () => {

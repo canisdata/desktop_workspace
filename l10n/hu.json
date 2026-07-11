@@ -216,7 +216,21 @@
         "Pinned apps": "Pinned apps",
         "Search": "Search",
         "All translations are machine translations.": "Minden fordítás gépi fordítás.",
-        "Opens in new tab": "Új lapon nyílik meg"
+        "Opens in new tab": "Új lapon nyílik meg",
+        "Allow users to choose a desktop decoration": "Lehetővé teszi a felhasználók számára az asztali dekoráció kiválasztását",
+        "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Válassza ki az asztali ablakok megjelenését, a tálcát, és kattintson a jobb gombbal a menükre. A világos és sötét színek továbbra is követik a Nextcloud megjelenési beállításait.",
+        "Decoration": "Dekoráció",
+        "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "A rendszergazda letiltotta a dekorációs lehetőségeket. Kérje meg a rendszergazdát, hogy engedélyezze őket.",
+        "Decorations": "Dekorációk",
+        "Desktop decoration": "Asztali dekoráció",
+        "Redmond": "Redmond",
+        "Standard": "Standard",
+        "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Ha le van tiltva, minden felhasználó a szokásos Nextcloud ablakot, tálcát és menüdíszítést használja.",
+        "Back": "Vissza",
+        "Browser": "Böngésző",
+        "Delete": "Töröl",
+        "No files": "Nincsenek fájlok",
+        "Open folder": "Nyissa meg a mappát"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }
