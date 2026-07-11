@@ -1964,6 +1964,7 @@
             if (!drag.moved) {
                 if (Math.abs(event.clientX - drag.startX) < 4 && Math.abs(event.clientY - drag.startY) < 4) return;
                 drag.moved = true;
+                win.classList.add('is-window-dragging');
                 if (drag.wasTiled) untileForDrag(win, event.clientX); // only leave the tile once actually dragged
                 drag.x = event.clientX; drag.y = event.clientY;
                 drag.left = win.offsetLeft; drag.top = win.offsetTop;
@@ -1982,8 +1983,14 @@
         titlebar.addEventListener('pointerup', () => {
             showSnapPreview(null);
             if (drag && drag.moved && drag.zone) applyTile(win, drag.zone);
+            win.classList.remove('is-window-dragging');
             drag = null;
             saveState();
+        });
+        titlebar.addEventListener('pointercancel', () => {
+            showSnapPreview(null);
+            win.classList.remove('is-window-dragging');
+            drag = null;
         });
         win.addEventListener('pointerdown', () => focusWindow(id));
         win.addEventListener('mouseup', () => setTimeout(saveState, 0));

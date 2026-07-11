@@ -28,6 +28,13 @@
     transform-origin: top left;
 }
 
+/* Pointer-driven movement must track the cursor directly. In particular Chromium
+ * visibly queues the normal 83ms left/top transitions while pointermove fires. */
+.desktop-window.is-window-dragging {
+    transition: none;
+    will-change: left, top;
+}
+
 @keyframes desktop-menu-enter {
     from {
         opacity: 0;

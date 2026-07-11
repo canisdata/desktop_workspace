@@ -3,6 +3,11 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.15.1 – 2026-07-11
+
+### Fixed
+- Window dragging now tracks the pointer directly in Chromium instead of applying overlapping geometry transitions that caused jagged, stuttery movement.
+
 ## 0.15.0 – 2026-07-10
 
 ### Added
