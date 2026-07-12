@@ -1048,6 +1048,16 @@
         return `${base || ''}/${leaf}` || '/';
     }
 
+    function desktopFileViewerHref(fileId, name, filePath, mime = '') {
+        if (!fileId) return '';
+        const normalizedPath = filePath.startsWith('/') ? filePath : `/${filePath}`;
+        const direct = mime.startsWith('image/') || mime.startsWith('video/') || mime.startsWith('audio/') || mime === 'application/pdf'
+            || /\.(?:avif|bmp|gif|heic|heif|jpe?g|png|svg|webp|m4v|mkv|mov|mp4|ogv|webm|avi|flac|m4a|mp3|oga|ogg|opus|wav|pdf)$/i.test(name);
+        if (!direct) return `${OC.getRootPath ? OC.getRootPath() : ''}/index.php/f/${encodeURIComponent(fileId)}`;
+        const query = new URLSearchParams({ fileId, name, mime, filePath: normalizedPath });
+        return `${OC.getRootPath ? OC.getRootPath() : ''}/index.php/apps/desktop_workspace/files/viewer?${query.toString()}`;
+    }
+
     function filesFolderHref(name, doc) {
         const url = new URL('/index.php/apps/files/files', window.location.origin);
         url.searchParams.set('dir', joinFilesPath(currentFilesDir(doc), name));
@@ -1077,7 +1087,9 @@
         const name = rowName(row, button) || t('File');
         const icon = iconForFileName(name) || sourceApp?.icon || '';
         const id = `file-${String(fileId).replace(/[^a-z0-9_-]/gi, '_')}`;
-        openWindow({ id, name, href: `/index.php/f/${encodeURIComponent(fileId)}`, icon, desktopMode: 'iframe' });
+        const path = joinFilesPath(currentFilesDir(row.ownerDocument), name);
+        const mime = row.dataset?.mime || row.dataset?.mimetype || row.dataset?.fileMimetype || row.getAttribute?.('data-mime') || row.getAttribute?.('data-mimetype') || '';
+        openWindow({ id, name, href: desktopFileViewerHref(fileId, name, path, mime), icon, desktopMode: 'iframe' });
         setWindowMeta(id, { title: name, icon });
 
         return true;
@@ -1644,9 +1656,8 @@
                     const currentDoc = iframe.contentDocument;
                     if (!currentDoc) return;
                     const url = iframe.contentWindow?.location?.href || '';
-                    const hasViewer = Boolean(currentDoc.querySelector('#viewer, .viewer__file, .modal-container, .modal-mask, [data-cy-files-preview-close]'));
+                    const hasViewer = Boolean(currentDoc.querySelector('#viewer, .viewer__file, .modal-container, .modal-mask, [data-cy-files-preview-close], [data-image-viewer]'));
                     const hasOfficeFrame = Boolean(currentDoc.querySelector('iframe[src*="richdocuments"], iframe[src*="onlyoffice"], iframe[id*="richdocuments"], iframe[name*="richdocuments"], #richdocumentsframe'));
-                    const hasClose = Boolean(currentDoc.querySelector(closeSelectors));
                     const hasViewerClose = Boolean(currentDoc.querySelector('.viewer__close, .viewer-close, .modal-header__close, [data-cy-files-preview-close]'));
                     const viewerTitle = readViewerFileName(currentDoc, iframe);
                     const looksLikeFileTitle = /\.[A-Za-z0-9]{1,8}(\s|$)/.test(viewerTitle);
@@ -1674,10 +1685,6 @@
                             setWindowMeta(app.id, { title, subtitle, icon: baseIcon });
                         }
                     }
-                    const createdAt = Number(iframe.dataset.desktopCreatedAt || 0);
-                    const loadedAt = Number(iframe.dataset.desktopLoadedAt || 0);
-                    const fileWindowReadyForAutoClose = Boolean(loadedAt) && Date.now() - Math.max(createdAt, loadedAt) > 15000;
-                    if (isFileWindow && fileWindowReadyForAutoClose && !url.includes('/index.php/f/') && !hasViewer && !hasClose) closeFileWindow();
                 } catch {
                     clearInterval(interval);
                 }
@@ -2611,12 +2618,8 @@
                 // Media opens in our fullscreen viewer page; everything Nextcloud opens in an editor
                 // (text/markdown/html/code via the Text editor, office docs, …) goes through the Files
                 // app deep link, where the native viewer/editor and its own header work correctly.
-                const direct = mime.startsWith('image/') || mime.startsWith('video/') || mime.startsWith('audio/') || mime === 'application/pdf';
                 const absPath = '/' + path.replace(/^\/+/, ''); // viewer needs an absolute path, like Desktop Files passes
-                const query = new URLSearchParams({ fileId, name, mime, filePath: absPath });
-                const href = (direct && fileId)
-                    ? `${OC.getRootPath ? OC.getRootPath() : ''}/index.php/apps/desktop_workspace/files/viewer?${query.toString()}`
-                    : (fileId ? `${OC.getRootPath ? OC.getRootPath() : ''}/index.php/f/${encodeURIComponent(fileId)}` : '');
+                const href = desktopFileViewerHref(fileId, name, absPath, mime);
                 if (!href) return;
                 const mimeIcon = (OC.MimeType && OC.MimeType.getIconUrl) ? OC.MimeType.getIconUrl(mime || 'application/octet-stream') : '/core/img/logo/logo.svg';
                 openExternalWindow({ appId: `file-fav-${fileId || Date.now()}-${Date.now()}`, title: name, subtitle: absPath, href, icon: mimeIcon });

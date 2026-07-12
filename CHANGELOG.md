@@ -3,6 +3,13 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.15.2 – 2026-07-12
+
+### Fixed
+- Files opened from the native Nextcloud Files window now use the same dedicated Desktop Workspace viewer iframe as desktop-folder and experimental Desktop Files entries.
+- The image viewer now provides alphabetical previous/next navigation within the folder, fullscreen, wheel zoom, 1:1 and fit shortcuts, panning, and theme-aware backgrounds without the hover checkerboard.
+- File windows remain open until the user explicitly closes them; the shell no longer guesses that a viewer was dismissed after 15 seconds.
+
 ## 0.15.1 – 2026-07-11
 
 ### Fixed
