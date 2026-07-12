@@ -215,7 +215,7 @@ class SettingsController extends Controller {
         $truthy = static fn (string $v): bool => $v === 'yes' || $v === 'true' || $v === '1';
         $result = ['status' => 'ok'];
         if ($decoration !== null) {
-            $selected = in_array($decoration, [DecorationService::STANDARD, DecorationService::REDMOND], true)
+            $selected = in_array($decoration, [DecorationService::STANDARD, DecorationService::REDMOND, DecorationService::RETRO], true)
                 ? $decoration
                 : DecorationService::STANDARD;
             if (!$this->decorationService->userSelectionEnabled()) {

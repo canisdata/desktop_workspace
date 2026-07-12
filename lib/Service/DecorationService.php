@@ -10,6 +10,7 @@ use OCP\IConfig;
 class DecorationService {
     public const STANDARD = 'standard';
     public const REDMOND = 'redmond';
+    public const RETRO = 'retro';
 
     public function __construct(private IConfig $config) {
     }
@@ -29,7 +30,7 @@ class DecorationService {
             SettingsController::DECORATION_KEY,
             self::STANDARD,
         );
-        return in_array($saved, [self::STANDARD, self::REDMOND], true) ? $saved : self::STANDARD;
+        return in_array($saved, [self::STANDARD, self::REDMOND, self::RETRO], true) ? $saved : self::STANDARD;
     }
 
     public function effectiveForUser(?string $uid): string {

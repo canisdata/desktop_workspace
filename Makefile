@@ -11,7 +11,7 @@
 #   ~/.nextcloud/certificates/desktop_workspace.crt   (cert returned by Nextcloud)
 
 app_name = desktop_workspace
-version  = 0.15.2
+version  = 0.15.3
 
 build_dir    = $(CURDIR)/build
 sign_dir     = $(build_dir)/sign
@@ -23,7 +23,7 @@ occ = ../../occ
 
 exclude = --exclude='build' --exclude='.git' --exclude='.github' \
           --exclude='node_modules' --exclude='.DS_Store' \
-          --exclude='*.swp' --exclude='Makefile' \
+          --exclude='*.swp' --exclude='Makefile' --exclude='references' \
           --exclude='screenshots' --exclude='.gitignore' --exclude='.gitattributes'
 
 .PHONY: all appstore clean

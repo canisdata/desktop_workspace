@@ -225,6 +225,7 @@ OC.L10N.register(
     "Decorations": "装飾品",
     "Desktop decoration": "デスクトップの装飾",
     "Redmond": "レドモンド",
+    "Retro": "Retro",
     "Standard": "標準",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "無効にすると、すべてのユーザーは標準の Nextcloud ウィンドウ、タスクバー、メニュー装飾を使用します。",
     "Back": "戻る",

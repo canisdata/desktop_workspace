@@ -225,6 +225,7 @@ OC.L10N.register(
     "Decorations": "đồ trang trí",
     "Desktop decoration": "Trang trí bàn làm việc",
     "Redmond": "Redmond",
+    "Retro": "Retro",
     "Standard": "Tiêu chuẩn",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Khi bị tắt, tất cả người dùng sẽ sử dụng trang trí cửa sổ, thanh tác vụ và menu Nextcloud tiêu chuẩn.",
     "Back": "Mặt sau",

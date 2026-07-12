@@ -227,6 +227,7 @@
         "Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.": "Wählen Sie das Erscheinungsbild von Desktop-Fenstern, der Taskleiste und Rechtsklick-Menüs. Helle und dunkle Farben folgen weiterhin Ihren Nextcloud-Darstellungseinstellungen.",
         "Decoration choices have been disabled by your administrator. Ask your administrator to enable them.": "Die Dekorationsoptionen wurden von Ihrem Administrator deaktiviert. Bitten Sie Ihren Administrator, sie zu aktivieren.",
         "Redmond": "Redmond",
+    "Retro": "Retro",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Wenn diese Option deaktiviert ist, verwenden alle Benutzer das standardmäßige Fenster, die Taskleiste und die Menüdekoration von Nextcloud.",
         "No files": "Keine Dateien",
         "Delete": "Löschen",

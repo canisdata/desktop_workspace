@@ -225,6 +225,7 @@ OC.L10N.register(
     "Decorations": "Maisiúcháin",
     "Desktop decoration": "Maisiú deasc",
     "Redmond": "Redmond",
+    "Retro": "Retro",
     "Standard": "Caighdeán",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Nuair atá sé díchumasaithe, úsáideann gach úsáideoir an fhuinneog caighdeánach Nextcloud, an tascbharra agus an maisiú roghchláir.",
     "Back": "Ar ais",

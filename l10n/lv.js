@@ -225,6 +225,7 @@ OC.L10N.register(
     "Decorations": "Dekorācijas",
     "Desktop decoration": "Darbvirsmas dekorēšana",
     "Redmond": "Redmonda",
+    "Retro": "Retro",
     "Standard": "Standarta",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Ja tas ir atspējots, visi lietotāji izmanto standarta Nextcloud logu, uzdevumjoslu un izvēlņu apdari.",
     "Back": "Atpakaļ",

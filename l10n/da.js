@@ -228,6 +228,7 @@ OC.L10N.register(
     "Browser": "Browser",
     "Back": "Tilbage",
     "Redmond": "Redmond",
+    "Retro": "Retro",
     "Desktop decoration": "Skrivebordsdekoration",
     "Delete": "Slet",
     "No files": "Ingen filer",

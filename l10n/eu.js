@@ -225,6 +225,7 @@ OC.L10N.register(
     "Decorations": "Apaingarriak",
     "Desktop decoration": "Mahaigaineko dekorazioa",
     "Redmond": "Redmond",
+    "Retro": "Retro",
     "Standard": "Estandarra",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Desgaituta dagoenean, erabiltzaile guztiek Nextcloud-eko leiho estandarra, ataza-barra eta menu-apainketa erabiltzen dituzte.",
     "Back": "Itzuli",

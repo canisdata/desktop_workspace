@@ -225,6 +225,7 @@ OC.L10N.register(
     "Decorations": "Διακοσμήσεις",
     "Desktop decoration": "Διακόσμηση επιφάνειας εργασίας",
     "Redmond": "Ρέντμοντ",
+    "Retro": "Retro",
     "Standard": "Πρότυπο",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Όταν είναι απενεργοποιημένο, όλοι οι χρήστες χρησιμοποιούν το τυπικό παράθυρο, τη γραμμή εργασιών και τη διακόσμηση μενού Nextcloud.",
     "Back": "Πίσω",

@@ -225,6 +225,7 @@ OC.L10N.register(
     "Decorations": "Decoraties",
     "Desktop decoration": "Bureaubladdecoratie",
     "Redmond": "Redmond",
+    "Retro": "Retro",
     "Standard": "Standaard",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Indien uitgeschakeld, gebruiken alle gebruikers het standaard Nextcloud-venster, de taakbalk en de menudecoratie.",
     "Back": "Rug",

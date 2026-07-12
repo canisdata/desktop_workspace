@@ -394,7 +394,7 @@
     }
 
     function applyDecoration(value) {
-        root.dataset.decoration = value === 'redmond' ? 'redmond' : 'standard';
+        root.dataset.decoration = ['redmond', 'retro'].includes(value) ? value : 'standard';
     }
 
     function applyDynamicAppData(data = {}) {

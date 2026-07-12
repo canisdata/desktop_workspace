@@ -17,7 +17,7 @@
             const s = {};
             Object.entries(fields).forEach(([k, v]) => { if (map[k]) s[map[k]] = (v === 'yes'); });
             if ('desktop_folder' in fields) s.desktopFolder = fields.desktop_folder;
-            if ('decoration' in fields) s.decoration = fields.decoration === 'redmond' ? 'redmond' : 'standard';
+            if ('decoration' in fields) s.decoration = ['redmond', 'retro'].includes(fields.decoration) ? fields.decoration : 'standard';
             if (Object.keys(s).length) window.parent.postMessage({ type: 'nextcloud-desktop:settings-changed', settings: s }, window.location.origin);
         } catch (e) { /* ignore */ }
     }

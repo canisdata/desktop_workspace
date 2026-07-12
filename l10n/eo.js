@@ -225,6 +225,7 @@ OC.L10N.register(
     "Decorations": "Dekoracioj",
     "Desktop decoration": "Surtabla ornamado",
     "Redmond": "Redmond",
+    "Retro": "Retro",
     "Standard": "Normo",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Kiam estas malebligita, ĉiuj uzantoj uzas la norman Nextcloud-fenestron, taskobreton kaj menuornamadon.",
     "Back": "Reen",

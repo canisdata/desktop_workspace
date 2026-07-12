@@ -222,6 +222,7 @@ OC.L10N.register(
     "Decorations": "Декорации",
     "Desktop decoration": "Украса за работен плот",
     "Redmond": "Редмънд",
+    "Retro": "Retro",
     "Standard": "Стандартен",
     "Back": "Назад",
     "Browser": "Браузър",

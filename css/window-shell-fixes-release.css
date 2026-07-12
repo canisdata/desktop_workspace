@@ -1,0 +1,12 @@
+/* Window resizing is handled by the eight explicit pointer-driven handles.
+ * Disable the browser-native bottom-right grip so it cannot compete with the
+ * custom south-east handle in Chromium. */
+.desktop-window {
+    resize: none;
+}
+
+/* Embedded apps own their scrolling. Letting the outer window body scroll as
+ * well can expose a second scrollbar when Firefox rounds the 100%-high iframe. */
+.desktop-window-body:has(> .desktop-window-iframe) {
+    overflow: hidden;
+}

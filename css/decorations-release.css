@@ -131,3 +131,33 @@ body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .de
 body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-fav-menu button:hover,
 body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-fav-menu button:focus-visible { background: #385887 !important; }
 
+/* Carry the Redmond decoration onto pinned apps and all desktop icon kinds. */
+#desktop-root[data-decoration="redmond"] .desktop-pinned-app {
+    border: 1px solid rgba(255,255,255,.72) !important;
+    border-radius: 4px !important;
+    background: linear-gradient(180deg, rgba(110,159,235,.96), rgba(38,91,180,.96)) !important;
+    box-shadow: inset 1px 1px rgba(255,255,255,.42), inset -1px -1px rgba(0,0,0,.3), 1px 2px 3px rgba(0,0,0,.36) !important;
+}
+#desktop-root[data-decoration="redmond"] .desktop-pinned-app:hover,
+#desktop-root[data-decoration="redmond"] .desktop-pinned-app:focus-visible { filter: brightness(1.16); outline: 1px solid #fff; outline-offset: 1px; }
+#desktop-root[data-decoration="redmond"] .desktop-pinned-app .desktop-app-menu-icon,
+#desktop-root[data-decoration="redmond"] .desktop-app-shortcut-circle,
+#desktop-root[data-decoration="redmond"] .desktop-fav-icon {
+    border: 1px solid rgba(255,255,255,.7) !important;
+    border-radius: 4px !important;
+    background: linear-gradient(135deg, var(--redmond-button-top), var(--redmond-button-bottom)) !important;
+    box-shadow: inset 1px 1px rgba(255,255,255,.48), inset -1px -1px rgba(0,0,0,.28), 1px 2px 3px rgba(0,0,0,.34) !important;
+}
+#desktop-root[data-decoration="redmond"] .desktop-fav {
+    border: 2px solid var(--redmond-blue-mid);
+    border-radius: 7px 7px 2px 2px;
+    color: #fff;
+    background: linear-gradient(180deg, var(--redmond-blue-top), var(--redmond-blue-mid) 48%, var(--redmond-blue-bottom));
+    box-shadow: inset 1px 1px rgba(255,255,255,.3), 2px 3px 7px rgba(0,0,0,.42);
+    text-shadow: 1px 1px 1px #10245e;
+}
+#desktop-root[data-decoration="redmond"] .desktop-fav:hover,
+#desktop-root[data-decoration="redmond"] .desktop-fav:focus-visible,
+#desktop-root[data-decoration="redmond"] .desktop-fav.is-selected { filter: brightness(1.16); outline: 2px solid #fff; outline-offset: 1px; }
+#desktop-root[data-decoration="redmond"] .desktop-fav-label { color: #fff; text-shadow: 1px 1px 1px #10245e; }
+

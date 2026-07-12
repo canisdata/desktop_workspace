@@ -1,0 +1,199 @@
+/* Retro: repurposed near-future hardware—scarred composite shells, oxidized metal,
+ * mismatched replacement parts and sharp telemetry accents. Light/dark follow Nextcloud. */
+#desktop-root[data-decoration="retro"] {
+    --cbp-bg: #71624d;
+    --cbp-panel: #b79a68;
+    --cbp-panel-2: #6d6049;
+    --cbp-ink: #161712;
+    --cbp-muted: #4a4030;
+    --cbp-yellow: #b9a900;
+    --cbp-yellow-hot: #e7d500;
+    --cbp-cyan: #087981;
+    --cbp-red: #bd293c;
+    --cbp-line: #263234;
+    --cbp-grime: rgba(25, 30, 29, .28);
+    --cbp-oil: rgba(54, 48, 38, .2);
+    --cbp-wear: rgba(218, 235, 226, .24);
+    --cbp-shadow: rgba(10, 18, 20, .4);
+    font-variant-numeric: tabular-nums;
+}
+#desktop-root[data-decoration="retro"]:not(.desktop-theme-light) {
+    --cbp-bg: #090e10;
+    --cbp-panel: #11191b;
+    --cbp-panel-2: #202a2b;
+    --cbp-ink: #c8ded9;
+    --cbp-muted: #718f8c;
+    --cbp-yellow: #b8a900;
+    --cbp-yellow-hot: #e8d400;
+    --cbp-cyan: #17aeb4;
+    --cbp-red: #e0344c;
+    --cbp-line: #3b6667;
+    --cbp-grime: rgba(0, 0, 0, .5);
+    --cbp-oil: rgba(70, 54, 35, .18);
+    --cbp-wear: rgba(126, 174, 168, .16);
+    --cbp-shadow: rgba(0, 0, 0, .78);
+}
+#desktop-root[data-decoration="retro"] .desktop-window {
+    border: 1px solid color-mix(in srgb, var(--cbp-line) 78%, #fff);
+    border-radius: 0;
+    background-color: var(--cbp-bg);
+    background-image:
+        linear-gradient(115deg, transparent 0 48%, var(--cbp-grime) 48.4%, transparent 53%),
+        linear-gradient(164deg, var(--cbp-wear), transparent 18%, transparent 78%, var(--cbp-oil)),
+        linear-gradient(180deg, color-mix(in srgb, var(--cbp-bg) 80%, #fff), var(--cbp-bg) 42%, color-mix(in srgb, var(--cbp-bg) 82%, #000));
+    box-shadow: inset 2px 2px 0 var(--cbp-wear), inset -3px -3px 0 var(--cbp-grime), 3px 4px 0 color-mix(in srgb, var(--cbp-line) 72%, transparent), 10px 13px 18px var(--cbp-shadow), 0 0 0 1px color-mix(in srgb, var(--cbp-cyan) 35%, transparent);
+    clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 13px, 100% 100%, 13px 100%, 0 calc(100% - 13px));
+}
+#desktop-root[data-decoration="retro"] .desktop-window.is-focused { outline: 2px solid var(--cbp-yellow); outline-offset: 2px; }
+#desktop-root[data-decoration="retro"] .desktop-window-titlebar {
+    height: 38px; min-height: 38px; padding: 0 6px 0 12px;
+    color: var(--cbp-ink); border-top: 1px solid var(--cbp-wear); border-bottom: 3px ridge var(--cbp-yellow);
+    border-radius: 0; text-transform: uppercase; letter-spacing: .075em;
+    background-color: var(--cbp-panel);
+    background-image:
+        linear-gradient(103deg, transparent 0 22%, var(--cbp-oil) 23%, transparent 31%),
+        linear-gradient(176deg, var(--cbp-wear) 0, transparent 25%, var(--cbp-grime) 100%),
+        linear-gradient(90deg, var(--cbp-yellow) 0 6px, transparent 6px),
+        linear-gradient(180deg, color-mix(in srgb, var(--cbp-panel) 68%, #fff) 0%, var(--cbp-panel) 42%, color-mix(in srgb, var(--cbp-panel) 74%, #000) 100%);
+    box-shadow: inset 0 2px 0 var(--cbp-wear), inset 0 -2px 0 var(--cbp-grime), 0 3px 5px var(--cbp-shadow);
+}
+#desktop-root[data-decoration="retro"] .desktop-window-body { height: calc(100% - 38px); }
+#desktop-root[data-decoration="retro"] .desktop-window-title-text small { color: var(--cbp-muted); letter-spacing: .04em; }
+#desktop-root[data-decoration="retro"] .desktop-window-icon { border-radius: 0; color: var(--cbp-cyan); }
+#desktop-root[data-decoration="retro"] .desktop-window-actions { gap: 4px; }
+#desktop-root[data-decoration="retro"] .desktop-window-actions button {
+    width: 26px; height: 24px; min-width: 26px; max-width: 26px; min-height: 24px; max-height: 24px; flex: 0 0 26px; padding: 0;
+    border: 1px solid var(--cbp-line); border-radius: 0 !important; color: var(--cbp-ink);
+    background-color: var(--cbp-panel-2);
+    background-image: linear-gradient(168deg, var(--cbp-wear), transparent 36%, var(--cbp-grime) 72%), linear-gradient(180deg, color-mix(in srgb, var(--cbp-panel-2) 75%, #fff), var(--cbp-panel-2));
+    box-shadow: inset 2px 2px 0 var(--cbp-wear), inset -2px -2px 0 var(--cbp-grime), 1px 2px 2px var(--cbp-shadow);
+    transform: translateY(-1px);
+}
+#desktop-root[data-decoration="retro"] .desktop-window-actions button:nth-last-child(2) { border-color: color-mix(in srgb, var(--cbp-yellow) 72%, var(--cbp-line)); background-color: color-mix(in srgb, var(--cbp-panel-2) 72%, var(--cbp-yellow)); }
+#desktop-root[data-decoration="retro"] .desktop-window-actions button:last-child { color: #fff; border-color: color-mix(in srgb, var(--cbp-red) 76%, #000); background: linear-gradient(180deg, color-mix(in srgb, var(--cbp-red) 70%, #fff), var(--cbp-red) 48%, color-mix(in srgb, var(--cbp-red) 70%, #000)); box-shadow: inset 2px 2px rgba(255,255,255,.28), inset -2px -2px rgba(0,0,0,.34), 1px 2px 2px var(--cbp-shadow); }
+#desktop-root[data-decoration="retro"] .desktop-window-actions button:hover,
+#desktop-root[data-decoration="retro"] .desktop-window-actions button:focus-visible { color: #101315; background: var(--cbp-yellow-hot); border-color: var(--cbp-yellow-hot); box-shadow: 3px 3px 0 var(--cbp-shadow); }
+#desktop-root[data-decoration="retro"] .desktop-taskbar {
+    height: 48px; min-height: 48px; max-height: 48px; padding: 5px 8px; gap: 5px;
+    border-top: 2px solid var(--cbp-yellow); color: var(--cbp-ink);
+    background-color: var(--cbp-panel) !important;
+    background-image:
+        linear-gradient(101deg, transparent 0 18%, var(--cbp-oil) 25%, transparent 37%),
+        linear-gradient(174deg, var(--cbp-wear), transparent 28%, var(--cbp-grime)),
+        linear-gradient(180deg, color-mix(in srgb, var(--cbp-panel) 78%, #fff), var(--cbp-panel)) !important;
+    backdrop-filter: none !important; box-shadow: inset 0 3px 0 var(--cbp-wear), inset 0 -3px 0 var(--cbp-grime), 0 -5px 0 color-mix(in srgb, var(--cbp-cyan) 20%, transparent), 0 -9px 16px var(--cbp-shadow);
+}
+#desktop-root[data-decoration="retro"] .taskbar-button,
+#desktop-root[data-decoration="retro"] .desktop-task-button {
+    height: 36px; border: 1px solid var(--cbp-line); border-radius: 0; color: var(--cbp-ink);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--cbp-panel-2) 68%, #fff), var(--cbp-panel-2) 45%, color-mix(in srgb, var(--cbp-panel-2) 72%, #000));
+    box-shadow: inset 2px 2px 0 var(--cbp-wear), inset -2px -2px 0 var(--cbp-grime), 1px 2px 3px var(--cbp-shadow);
+}
+#desktop-root[data-decoration="retro"] .taskbar-start {
+    min-width: 100px; padding-inline: 16px; color: #111517; font-weight: 800; text-transform: uppercase; letter-spacing: .1em;
+    border-color: #111517; background: var(--cbp-yellow-hot); box-shadow: inset -5px 0 #111517;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+#desktop-root[data-decoration="retro"] .desktop-task-button.is-active {
+    color: var(--cbp-ink);
+    border-color: color-mix(in srgb, var(--cbp-yellow) 68%, var(--cbp-line));
+    background: linear-gradient(180deg, color-mix(in srgb, var(--cbp-panel-2) 68%, #000), var(--cbp-panel-2));
+    box-shadow: inset 3px 4px 6px var(--cbp-grime), inset 0 -3px var(--cbp-yellow), 0 1px var(--cbp-wear);
+    transform: translateY(1px);
+}
+#desktop-root[data-decoration="retro"] .taskbar-start:hover,
+#desktop-root[data-decoration="retro"] .taskbar-start:focus-visible,
+#desktop-root[data-decoration="retro"] .desktop-task-button:hover,
+#desktop-root[data-decoration="retro"] .desktop-task-button:focus-visible { filter: brightness(1.08); outline: 2px solid var(--cbp-yellow-hot); outline-offset: 1px; }
+body:has(#desktop-root[data-decoration="retro"]) .desktop-start-menu,
+body:has(#desktop-root[data-decoration="retro"]) .desktop-task-context-menu,
+body:has(#desktop-root[data-decoration="retro"]) .desktop-fav-menu {
+    border: 1px solid #31575a !important; border-top: 4px ridge #b9a900 !important; border-radius: 0 !important; padding: 7px !important;
+    color: #161712 !important; background-color: #8d7650 !important;
+    background-image:
+        linear-gradient(112deg, transparent 0 31%, rgba(48,37,22,.28) 38%, transparent 48%),
+        linear-gradient(172deg, rgba(238,210,157,.28), transparent 26%, rgba(47,37,24,.32)),
+        linear-gradient(180deg, #b79a68, #776343) !important;
+    box-shadow: inset 2px 2px 0 rgba(244,218,169,.3), inset -3px -3px 0 rgba(39,31,21,.34), 4px 5px 0 rgba(38,48,47,.62), 11px 14px 20px rgba(10,18,20,.46) !important;
+    backdrop-filter: none !important;
+    clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 11px 100%, 0 calc(100% - 11px));
+}
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-start-menu,
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-task-context-menu,
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-fav-menu {
+    color: #c8ded9 !important; background-color: #11191b !important; border-color: #3b6667 !important; border-top-color: #b8a900 !important;
+    background-image: linear-gradient(108deg, transparent 0 27%, rgba(0,0,0,.48) 36%, transparent 47%), linear-gradient(173deg, rgba(126,174,168,.15), transparent 28%, rgba(0,0,0,.58)), linear-gradient(180deg, #202a2b, #0c1214) !important;
+    box-shadow: inset 2px 2px 0 rgba(126,174,168,.14), inset -3px -3px 0 rgba(0,0,0,.58), 4px 5px 0 rgba(59,102,103,.52), 11px 14px 22px rgba(0,0,0,.76) !important;
+}
+body:has(#desktop-root[data-decoration="retro"]) .desktop-start-menu .desktop-app-tile,
+body:has(#desktop-root[data-decoration="retro"]) .desktop-task-context-menu button,
+body:has(#desktop-root[data-decoration="retro"]) .desktop-fav-menu button {
+    border: 1px solid rgba(38,50,52,.72) !important; border-radius: 0 !important; color: inherit !important;
+    background: linear-gradient(180deg, rgba(238,210,157,.3), rgba(91,73,45,.18)) !important;
+    box-shadow: inset 1px 1px rgba(255,239,204,.25), inset -2px -2px rgba(38,30,20,.24), 1px 2px 3px rgba(10,18,20,.34) !important;
+}
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-start-menu .desktop-app-tile,
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-task-context-menu button,
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-fav-menu button {
+    background: linear-gradient(180deg, rgba(91,126,123,.28), rgba(4,9,11,.38)) !important;
+    box-shadow: inset 1px 1px rgba(126,174,168,.16), inset -2px -2px rgba(0,0,0,.48), 1px 2px 4px rgba(0,0,0,.6) !important;
+}
+body:has(#desktop-root[data-decoration="retro"]) .desktop-start-menu .desktop-app-tile:hover,
+body:has(#desktop-root[data-decoration="retro"]) .desktop-start-menu .desktop-app-tile:focus-visible,
+body:has(#desktop-root[data-decoration="retro"]) .desktop-task-context-menu button:hover,
+body:has(#desktop-root[data-decoration="retro"]) .desktop-task-context-menu button:focus-visible,
+body:has(#desktop-root[data-decoration="retro"]) .desktop-fav-menu button:hover,
+body:has(#desktop-root[data-decoration="retro"]) .desktop-fav-menu button:focus-visible { color: #111517 !important; background: #f4d800 !important; box-shadow: inset 4px 0 #d42d3d; }
+body:has(#desktop-root[data-decoration="retro"]) .desktop-start-menu .desktop-app-menu-icon {
+    border: 1px solid #263234 !important; border-radius: 0 !important;
+    background: linear-gradient(145deg, #1b9aa2, #07545a 58%, #032f33) !important;
+    box-shadow: inset 2px 2px rgba(113,232,232,.28), inset -2px -2px rgba(0,0,0,.38), 3px 4px 4px rgba(10,18,20,.42) !important;
+}
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-start-menu .desktop-app-menu-icon { background: linear-gradient(145deg, #27c4c8, #0b7177 58%, #042f33) !important; }
+
+/* Decoration coverage for pinned apps and every desktop icon kind. */
+#desktop-root[data-decoration="retro"] .desktop-pinned-app {
+    border: 1px solid var(--cbp-line) !important;
+    border-radius: 0 !important;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--cbp-panel-2) 68%, #fff), var(--cbp-panel-2) 45%, color-mix(in srgb, var(--cbp-panel-2) 72%, #000)) !important;
+    box-shadow: inset 2px 2px 0 var(--cbp-wear), inset -2px -2px 0 var(--cbp-grime), 1px 2px 3px var(--cbp-shadow) !important;
+    clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 0 100%);
+}
+#desktop-root[data-decoration="retro"] .desktop-pinned-app:hover,
+#desktop-root[data-decoration="retro"] .desktop-pinned-app:focus-visible {
+    border-color: var(--cbp-yellow-hot) !important;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--cbp-yellow-hot) 74%, #fff), var(--cbp-yellow-hot) 55%, color-mix(in srgb, var(--cbp-yellow-hot) 74%, #000)) !important;
+    outline: 1px solid var(--cbp-yellow-hot);
+    outline-offset: 1px;
+}
+#desktop-root[data-decoration="retro"] .desktop-pinned-app .desktop-app-menu-icon,
+#desktop-root[data-decoration="retro"] .desktop-app-shortcut-circle,
+#desktop-root[data-decoration="retro"] .desktop-fav-icon {
+    border: 1px solid var(--cbp-line) !important;
+    border-radius: 0 !important;
+    background: linear-gradient(145deg, color-mix(in srgb, var(--cbp-cyan) 70%, #fff), var(--cbp-cyan) 58%, color-mix(in srgb, var(--cbp-cyan) 70%, #000)) !important;
+    box-shadow: inset 2px 2px var(--cbp-wear), inset -2px -2px var(--cbp-grime), 3px 4px 4px var(--cbp-shadow) !important;
+    clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+}
+#desktop-root[data-decoration="retro"] .desktop-fav {
+    border: 1px solid color-mix(in srgb, var(--cbp-line) 76%, transparent);
+    border-radius: 0;
+    color: var(--cbp-ink);
+    text-shadow: none;
+    background: linear-gradient(164deg, var(--cbp-wear), transparent 24%, var(--cbp-grime)), linear-gradient(180deg, color-mix(in srgb, var(--cbp-panel) 72%, #fff), color-mix(in srgb, var(--cbp-panel) 82%, #000));
+    box-shadow: inset 2px 2px var(--cbp-wear), inset -2px -2px var(--cbp-grime), 3px 4px 7px var(--cbp-shadow);
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+#desktop-root[data-decoration="retro"] .desktop-fav:hover,
+#desktop-root[data-decoration="retro"] .desktop-fav:focus-visible,
+#desktop-root[data-decoration="retro"] .desktop-fav.is-selected {
+    border-color: var(--cbp-yellow-hot);
+    outline: 2px solid var(--cbp-yellow-hot);
+    outline-offset: 2px;
+    filter: brightness(1.08);
+}
+#desktop-root[data-decoration="retro"] .desktop-fav-label { color: var(--cbp-ink); text-shadow: 0 1px var(--cbp-wear); }
+
+@media (prefers-reduced-motion: no-preference) {
+    #desktop-root[data-decoration="retro"] .desktop-window.is-focused .desktop-window-titlebar { background-position: 0 0, 0 0; }
+}

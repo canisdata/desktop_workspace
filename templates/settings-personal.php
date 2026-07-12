@@ -18,6 +18,7 @@ $l = \OC::$server->getL10N('desktop_workspace');
             <select id="desktop-decoration" <?= $_['userDecorationsEnabled'] ? '' : 'disabled' ?>>
                 <option value="standard" <?= ($_['decoration'] ?? 'standard') === 'standard' ? 'selected' : '' ?>><?= p($l->t('Standard')) ?></option>
                 <option value="redmond" <?= ($_['decoration'] ?? 'standard') === 'redmond' ? 'selected' : '' ?>><?= p($l->t('Redmond')) ?></option>
+                <option value="retro" <?= ($_['decoration'] ?? 'standard') === 'retro' ? 'selected' : '' ?>><?= p($l->t('Retro')) ?></option>
             </select>
         </p>
     </div>

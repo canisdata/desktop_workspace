@@ -226,6 +226,7 @@ OC.L10N.register(
     "Back": "Enrere",
     "Browser": "Navegador",
     "Redmond": "Redmond",
+    "Retro": "Retro",
     "Desktop decoration": "Decoració d'escriptori",
     "Decorations": "Decoracions",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Quan està desactivat, tots els usuaris utilitzen la finestra estàndard de Nextcloud, la barra de tasques i la decoració del menú.",

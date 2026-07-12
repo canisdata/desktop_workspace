@@ -225,6 +225,7 @@ OC.L10N.register(
     "Decorations": "بېزەكلەر",
     "Desktop decoration": "ئۈستەل بېزەكچىلىكى",
     "Redmond": "Redmond",
+    "Retro": "Retro",
     "Standard": "Standard",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "چەكلەنگەندە ، بارلىق ئىشلەتكۈچىلەر ئۆلچەملىك Nextcloud كۆزنىكى ، ۋەزىپە بالدىقى ۋە تىزىملىك ​​بېزەكلىرىنى ئىشلىتىدۇ.",
     "Back": "قايتىش",

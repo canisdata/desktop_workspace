@@ -227,6 +227,7 @@ OC.L10N.register(
     "Back": "Zadní",
     "Browser": "Prohlížeč",
     "Redmond": "Redmond",
+    "Retro": "Retro",
     "Desktop decoration": "Stolní dekorace",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Je-li zakázáno, všichni uživatelé používají standardní okno Nextcloud, hlavní panel a dekoraci nabídky.",
     "Delete": "Vymazat",

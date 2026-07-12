@@ -225,6 +225,7 @@ OC.L10N.register(
     "Decorations": "Skreytingar",
     "Desktop decoration": "Skreyting á skrifborði",
     "Redmond": "Redmond",
+    "Retro": "Retro",
     "Standard": "Standard",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Þegar slökkt er á því nota allir notendur staðlaða Nextcloud gluggann, verkstikuna og valmyndarskreytinguna.",
     "Back": "Til baka",

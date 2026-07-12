@@ -227,6 +227,7 @@ OC.L10N.register(
         "Decorations": "Decorations",
         "Desktop decoration": "Desktop decoration",
         "Redmond": "Redmond",
+    "Retro": "Retro",
         "Standard": "Standard",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.",
         "Delete": "Delete",

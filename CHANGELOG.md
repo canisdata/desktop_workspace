@@ -3,12 +3,25 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.15.3 – 2026-07-12
+
+### Added
+- Added the Retro desktop decoration with light and dark variants inspired by weathered, repurposed near-future hardware.
+
+### Changed
+- Retro styles windows, title-bar controls, the taskbar, Apps button, Apps menu, app tiles, and desktop context menus with dimensional worn-material surfaces and clipped industrial geometry.
+- Redmond and Retro now carry their decoration onto pinned taskbar apps and every desktop icon type, including Home, Recycling Bin, pinned apps, favorites, folders, and files from the configured desktop folder.
+
+### Fixed
+- The image viewer now provides alphabetical previous/next navigation within the folder, fullscreen, wheel zoom, 1:1 and fit shortcuts, panning, and theme-aware backgrounds without the hover checkerboard.
+- File windows remain open until the user explicitly closes them; the shell no longer guesses that a viewer was dismissed after 15 seconds.
+- Bottom-right window resizing now uses only Desktop Workspace’s custom corner handle, avoiding Chromium’s overlapping native resize grip and the resulting jagged movement.
+- Embedded app windows now leave scrolling to the iframe content, preventing a second outer scrollbar caused by Firefox’s iframe-height rounding.
+
 ## 0.15.2 – 2026-07-12
 
 ### Fixed
 - Files opened from the native Nextcloud Files window now use the same dedicated Desktop Workspace viewer iframe as desktop-folder and experimental Desktop Files entries.
-- The image viewer now provides alphabetical previous/next navigation within the folder, fullscreen, wheel zoom, 1:1 and fit shortcuts, panning, and theme-aware backgrounds without the hover checkerboard.
-- File windows remain open until the user explicitly closes them; the shell no longer guesses that a viewer was dismissed after 15 seconds.
 
 ## 0.15.1 – 2026-07-11
 

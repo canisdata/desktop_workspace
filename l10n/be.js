@@ -229,6 +229,7 @@ OC.L10N.register(
     "Browser": "Браўзэр",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Калі адключана, усе карыстальнікі выкарыстоўваюць стандартнае акно Nextcloud, панэль задач і афармленне меню.",
     "Redmond": "Рэдманд",
+    "Retro": "Retro",
     "Delete": "Выдаліць",
     "No files": "Няма файлаў",
     "Open folder": "Адкрыць тэчку"

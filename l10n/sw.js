@@ -225,6 +225,7 @@ OC.L10N.register(
     "Decorations": "Mapambo",
     "Desktop decoration": "Mapambo ya Desktop",
     "Redmond": "Redmond",
+    "Retro": "Retro",
     "Standard": "Kawaida",
     "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Inapozimwa, watumiaji wote hutumia dirisha la kawaida la Nextcloud, upau wa kazi na mapambo ya menyu.",
     "Back": "Nyuma",
