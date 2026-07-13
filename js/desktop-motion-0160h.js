@@ -206,6 +206,7 @@
         const lum = parseLum(sourceDocument.defaultView.getComputedStyle(sourceDocument.body).getPropertyValue('--color-main-text'));
         // dark text (low luminance) => light theme
         root.classList.toggle('desktop-theme-light', lum !== null && lum < 0.5);
+        applyAppearance();
     }
 
     function syncAppearance(sourceDocument = document) {
@@ -393,13 +394,26 @@
         return apps.find((app) => app.id === id) || null;
     }
 
-    function applyDecoration(value) {
-        root.dataset.decoration = ['redmond', 'retro'].includes(value) ? value : 'standard';
+    function applyAppearance(settings = {}) {
+        if ('decoration' in settings) root.dataset.decoration = ['redmond', 'retro'].includes(settings.decoration) ? settings.decoration : 'standard';
+        if ('decorationColor' in settings) root.dataset.decorationColor = ['light', 'dark'].includes(settings.decorationColor) ? settings.decorationColor : 'nextcloud';
+        if ('iconDecoration' in settings) root.dataset.iconDecoration = ['redmond', 'retro'].includes(settings.iconDecoration) ? settings.iconDecoration : 'standard';
+        if ('iconDecorationLinked' in settings) root.dataset.iconDecorationLinked = settings.iconDecorationLinked ? 'true' : 'false';
+        if (root.dataset.iconDecorationLinked === 'true') root.dataset.iconDecoration = root.dataset.decoration;
+        if ('iconColor' in settings) root.dataset.iconColor = ['light', 'dark'].includes(settings.iconColor) ? settings.iconColor : 'nextcloud';
+        if (root.dataset.iconDecorationLinked === 'true') root.dataset.iconColor = root.dataset.decorationColor;
+        const nativeLight = root.classList.contains('desktop-theme-light');
+        const decorationLight = root.dataset.decorationColor === 'light' || (root.dataset.decorationColor === 'nextcloud' && nativeLight);
+        const iconLight = root.dataset.iconColor === 'light' || (root.dataset.iconColor === 'nextcloud' && nativeLight);
+        root.classList.toggle('desktop-decoration-light', decorationLight);
+        root.classList.toggle('desktop-icon-light', iconLight);
     }
+
+    function applyDecoration(value) { applyAppearance({ decoration: value }); }
 
     function applyDynamicAppData(data = {}) {
         const previousApps = getApps();
-        if (typeof data.decoration === 'string') applyDecoration(data.decoration);
+        applyAppearance(data);
         if (data.labels && typeof data.labels === 'object') dynamicLabels = data.labels;
         if (Array.isArray(data.apps)) root.dataset.apps = JSON.stringify(data.apps);
         const nextApps = getApps();
@@ -611,7 +625,7 @@
     function renderLauncher() {
         const apps = getApps();
         launcher.replaceChildren(...apps.map(createAppButton));
-        if (!apps.length) launcher.innerHTML = '<p class="desktop-empty">No apps found.</p>';
+        if (!apps.length) launcher.innerHTML = `<p class="desktop-empty">${escapeHtml(t('No apps found.'))}</p>`;
         alignAppsMenuIcons();
         return apps;
     }
@@ -1373,7 +1387,7 @@
             loadIframeFallback(app, target);
         } catch (error) {
             target.classList.remove('is-loading');
-            target.innerHTML = `<div class="desktop-window-error"><div><strong>${escapeHtml(app.name)} could not be opened natively.</strong><p>${escapeHtml(error.message)}</p><button class="desktop-window-open-full" type="button">Open as full page</button></div></div>`;
+            target.innerHTML = `<div class="desktop-window-error"><div><strong>${escapeHtml(t('{name} could not be opened natively.', { name: app.name }))}</strong><p>${escapeHtml(error.message)}</p><button class="desktop-window-open-full" type="button">${escapeHtml(t('Open as full page'))}</button></div></div>`;
             target.querySelector('button')?.addEventListener('click', () => { window.location.href = app.href; });
 
         }
@@ -1421,6 +1435,7 @@
         iframeUrl.searchParams.set('windowId', app.id);
         const absoluteHref = iframeUrl.toString();
         target.classList.remove('is-loading');
+        target.classList.add('has-iframe');
         target.innerHTML = '';
         const iframe = document.createElement('iframe');
         iframe.className = 'desktop-window-iframe';
@@ -1749,12 +1764,41 @@
             // meant to float as cards on the selected dashboard background, not be flattened
             // into a full-bleed app panel like regular apps.
             const isDashboard = app.id === 'dashboard' || app.sourceAppId === 'dashboard' || String(app.href || '').includes('/apps/dashboard');
+            const isSettings = String(iframeHref(iframe)).includes('/settings/');
+            const lockSettingsShell = () => {
+                if (!isSettings) return;
+                const settingsShell = doc.querySelector('#content-vue');
+                if (!settingsShell || settingsShell.dataset.desktopScrollLock === 'true') return;
+                settingsShell.dataset.desktopScrollLock = 'true';
+                const keepFixed = () => {
+                    if (settingsShell.scrollTop !== 0) settingsShell.scrollTop = 0;
+                    if (settingsShell.scrollLeft !== 0) settingsShell.scrollLeft = 0;
+                };
+                settingsShell.addEventListener('scroll', keepFixed, { passive: true });
+                keepFixed();
+            };
             const style = doc.createElement('style');
-            if (doc.head?.querySelector('style[data-desktop-chrome-patch="true"]')) return;
+            if (doc.head?.querySelector('style[data-desktop-chrome-patch="true"]')) {
+                lockSettingsShell();
+                return;
+            }
             style.dataset.desktopChromePatch = 'true';
             style.textContent = isDashboard ? `
                 body { padding-top: 0 !important; }
                 #content, #content-vue, .content { margin-top: 0 !important; }
+                .skip-navigation { display: none !important; }
+            ` : isSettings ? `
+                html, body, #body-user, #content, #content-vue, .content {
+                    background: var(--color-main-background, #fff) !important;
+                    background-image: none !important;
+                }
+                body { padding-top: 0 !important; }
+                #content, #content-vue, .content { margin-top: 0 !important; }
+                #content-vue { overflow: hidden !important; }
+                #app-navigation-vue, .app-navigation {
+                    background: var(--color-main-background, #fff) !important;
+                    background-image: none !important;
+                }
                 .skip-navigation { display: none !important; }
             ` : `
                 html, body {
@@ -1787,6 +1831,7 @@
                 .skip-navigation { display: none !important; }
             `;
             doc.head?.appendChild(style);
+            lockSettingsShell();
 
         } catch (error) {
 
@@ -2133,7 +2178,7 @@
             if (typeof favoritesReload === 'function') favoritesReload();
         } else if (event.data?.type === 'nextcloud-desktop:settings-changed') {
             if (typeof applyIconSettings === 'function') applyIconSettings(event.data.settings || {});
-            if (event.data.settings && 'decoration' in event.data.settings) applyDecoration(event.data.settings.decoration);
+            applyAppearance(event.data.settings || {});
         } else if (event.data?.type === 'nextcloud-desktop:close-window') {
             const id = String(event.data.appId || '').replace(/[^a-z0-9_-]/gi, '_');
             if (windows.has(id)) {

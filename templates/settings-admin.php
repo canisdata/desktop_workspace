@@ -1,7 +1,7 @@
 <?php
 \OCP\Util::addTranslations('desktop_workspace');
 script('desktop_workspace', 'admin-settings');
-style('desktop_workspace', 'admin');
+style('desktop_workspace', 'admin-0160c');
 /** @var array $_ */
 $l = \OC::$server->getL10N('desktop_workspace');
 ?>
@@ -9,12 +9,29 @@ $l = \OC::$server->getL10N('desktop_workspace');
     <h2><?= p($l->t('Desktop Workspace')) ?></h2>
     <p class="settings-hint"><?= p($l->t('Configure the browser-contained desktop shell.')) ?></p>
 
-    <h3><?= p($l->t('Decorations')) ?></h3>
+    <h3><?= p($l->t('Appearance choices')) ?></h3>
     <p>
         <input type="checkbox" id="desktop-user-decorations-enabled" class="checkbox" <?= $_['userDecorationsEnabled'] ? 'checked' : '' ?> />
-        <label for="desktop-user-decorations-enabled"><?= p($l->t('Allow users to choose a desktop decoration')) ?></label>
+        <label for="desktop-user-decorations-enabled"><?= p($l->t('Allow users to customize Desktop appearance')) ?></label>
     </p>
-    <p class="settings-hint"><?= p($l->t('When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.')) ?></p>
+    <p class="settings-hint"><?= p($l->t('When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.')) ?></p>
+
+    <h3><?= p($l->t('Window behavior')) ?></h3>
+    <p class="settings-hint"><?= p($l->t('Usually only one window per app can be opened from the Apps menu. Here you can allow your users to open several windows of the same app. (The file managers can always be opened in multiple windows.)')) ?></p>
+    <?php if (empty($_['apps'])): ?>
+        <p class="settings-hint"><?= p($l->t('No apps available.')) ?></p>
+    <?php else: ?>
+        <div class="desktop-multiwin-grid">
+            <?php foreach ($_['apps'] as $app): ?>
+                <label class="desktop-multiwin-card">
+                    <input type="checkbox" class="desktop-multiwin-app" value="<?= p($app['id']) ?>" <?= $app['selected'] ? 'checked' : '' ?> />
+                    <?php if (!empty($app['icon'])): ?><img class="desktop-multiwin-icon" src="<?= p($app['icon']) ?>" alt="" /><?php endif; ?>
+                    <span class="desktop-multiwin-name"><?= p($app['name']) ?></span>
+                </label>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
 
     <h3><?= p($l->t('Experimental Desktop File Manager')) ?></h3>
     <p>
@@ -34,27 +51,11 @@ $l = \OC::$server->getL10N('desktop_workspace');
     <p class="settings-hint"><?= p($l->t('When disabled for everyone, only these groups can still test it. When enabled for everyone, this list is ignored. Users still have to enable it in their personal settings.')) ?></p>
 
 
-    <h3><?= p($l->t('Multiple windows')) ?></h3>
-    <p class="settings-hint"><?= p($l->t('Usually only one window per app can be opened from the Apps menu. Here you can allow your users to open several windows of the same app. (The file managers can always be opened in multiple windows.)')) ?></p>
-    <?php if (empty($_['apps'])): ?>
-        <p class="settings-hint"><?= p($l->t('No apps available.')) ?></p>
-    <?php else: ?>
-        <div class="desktop-multiwin-grid">
-            <?php foreach ($_['apps'] as $app): ?>
-                <label class="desktop-multiwin-card">
-                    <input type="checkbox" class="desktop-multiwin-app" value="<?= p($app['id']) ?>" <?= $app['selected'] ? 'checked' : '' ?> />
-                    <?php if (!empty($app['icon'])): ?><img class="desktop-multiwin-icon" src="<?= p($app['icon']) ?>" alt="" /><?php endif; ?>
-                    <span class="desktop-multiwin-name"><?= p($app['name']) ?></span>
-                </label>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
-
-
     <button id="desktop-save-admin-settings" type="button" class="primary"><?= p($l->t('Save')) ?></button>
     <span id="desktop-admin-settings-status" class="desktop-admin-status" aria-live="polite"></span>
 
-    <h3 style="margin-top:24px;"><?= p($l->t('Reset a user')) ?></h3>
+    <h3 style="margin-top:24px;"><?= p($l->t('Maintenance')) ?></h3>
+    <h4><?= p($l->t('Reset a user')) ?></h4>
     <p class="settings-hint"><?= p($l->t('Completely clear one user’s desktop settings, as if they had never opened the desktop. Their next visit starts fresh and shows the desktop settings.')) ?></p>
     <p>
         <input type="text" id="desktop-reset-user-id" list="desktop-user-list" placeholder="<?= p($l->t('User ID')) ?>" style="min-width:240px;" />

@@ -101,7 +101,7 @@
     async function load(path = '/') {
         currentPath = cleanPath(path); selectedItem = null; selection.clear(); anchorIndex = null; hideContextMenu();
         if (pathLabel) pathLabel.textContent = currentPath; notifyPath(); updateClipboardBar();
-        rows.innerHTML = '<tr><td colspan="4">Loading…</td></tr>';
+        rows.innerHTML = `<tr><td colspan="4">${escapeHtml(t('Loading…'))}</td></tr>`;
         currentItems = await propfind(currentPath, '1');
         renderRows(currentItems); renderDetails(null); ensureTreePath(currentPath).catch(() => {});
     }
@@ -111,7 +111,7 @@
             <tr draggable="true" data-name="${escapeHtml(item.name)}" data-path="${escapeHtml(item.path)}" data-file-id="${escapeHtml(item.fileId)}" data-mime="${escapeHtml(item.mime)}" data-folder="${item.isFolder ? 'true' : 'false'}">
                 <td><button type="button" class="desktop-files-name" data-action="open-item">${fileVisual(item)} <span>${escapeHtml(item.name)}</span></button></td>
                 <td>${item.isFolder ? t('Folder') : t('File')}</td><td>${item.isFolder ? '—' : escapeHtml(humanSize(item.size))}</td><td class="desktop-files-modified-cell">${escapeHtml(item.modified)} <button type="button" class="desktop-files-info" data-action="info" title="${escapeHtml(t('Details'))}" aria-label="${escapeHtml(t('Details'))}">&#x24D8;</button></td>
-            </tr>`).join('') || '<tr><td colspan="4">No files</td></tr>';
+            `).join('') || `<tr><td colspan="4">${escapeHtml(t('No files'))}</td></tr>`;
     }
 
     function indexOfPath(path) { return currentItems.findIndex((i) => i.path === path); }
@@ -366,7 +366,7 @@
     }
 
     async function deleteItem(item) {
-        if (!window.confirm(`Delete ${item.name}?`)) return;
+        if (!window.confirm(t('Delete {name}?', { name: item.name }))) return;
         const response = await fetch(davUrl(item.path), { method: 'DELETE', credentials: 'same-origin', headers: requestHeaders() });
         if (!response.ok) throw new Error(`Delete failed: HTTP ${response.status}`);
         await load(currentPath); await refreshTree(); notifyDesktopChanged();
@@ -535,7 +535,7 @@
     rows.addEventListener('dragend', () => { dragged = null; rows.querySelectorAll('.is-drop-target').forEach((node) => node.classList.remove('is-drop-target')); });
 
     function treeNode(path, label = path === '/' ? t('Files') : path.split('/').pop()) { return `<li class="desktop-files-tree-node" data-path="${escapeHtml(path)}" data-loaded="false" data-expanded="false"><div class="desktop-files-tree-row" data-tree-row data-path="${escapeHtml(path)}"><button type="button" class="desktop-files-tree-toggle" data-action="toggle-tree" aria-label="${escapeHtml(t('Expand {name}', { name: label }))}">▸</button><button type="button" class="desktop-files-tree-folder" data-action="open-tree-folder">${folderVisual()} <span>${escapeHtml(label)}</span></button></div><ul class="desktop-files-tree-children" hidden></ul></li>`; }
-    async function loadTreeChildren(node) { const path = node.dataset.path; const children = node.querySelector(':scope > .desktop-files-tree-children'); children.innerHTML = '<li class="desktop-files-tree-loading">Loading…</li>'; const folders = (await propfind(path, '1')).filter((item) => item.isFolder); children.innerHTML = folders.map((folder) => treeNode(folder.path, folder.name)).join('') || '<li class="desktop-files-tree-empty">No folders</li>'; node.dataset.loaded = 'true'; }
+    async function loadTreeChildren(node) { const path = node.dataset.path; const children = node.querySelector(':scope > .desktop-files-tree-children'); children.innerHTML = `<li class="desktop-files-tree-loading">${escapeHtml(t('Loading…'))}</li>`; const folders = (await propfind(path, '1')).filter((item) => item.isFolder); children.innerHTML = folders.map((folder) => treeNode(folder.path, folder.name)).join('') || `<li class="desktop-files-tree-empty">${escapeHtml(t('No folders'))}</li>`; node.dataset.loaded = 'true'; }
     async function expandTreeNode(node) { if (!node || node.dataset.expanded === 'true') return; if (node.dataset.loaded !== 'true') await loadTreeChildren(node); node.dataset.expanded = 'true'; node.querySelector(':scope > .desktop-files-tree-children').hidden = false; node.querySelector(':scope > .desktop-files-tree-row .desktop-files-tree-toggle').textContent = '▾'; }
     function collapseTreeNode(node) { node.dataset.expanded = 'false'; node.querySelector(':scope > .desktop-files-tree-children').hidden = true; node.querySelector(':scope > .desktop-files-tree-row .desktop-files-tree-toggle').textContent = '▸'; }
     async function ensureTreePath(path) { const parts = cleanPath(path).split('/').filter(Boolean); let node = tree.querySelector('li[data-path="/"]'); if (!node) return; await expandTreeNode(node); let cursor = ''; for (const part of parts) { cursor = `${cursor}/${part}`; node = tree.querySelector(`li[data-path="${CSS.escape(cursor)}"]`); if (!node) return; await expandTreeNode(node); } tree.querySelectorAll('.is-current').forEach((element) => element.classList.remove('is-current')); tree.querySelector(`[data-tree-row][data-path="${CSS.escape(cleanPath(path))}"]`)?.classList.add('is-current'); }
@@ -545,7 +545,7 @@
     tree.addEventListener('dragleave', (event) => event.target.closest('[data-tree-row]')?.classList.remove('is-drop-target'));
     tree.addEventListener('drop', (event) => { if (!dragged || dragged.fromTree) return; const row = event.target.closest('[data-tree-row]'); if (!row) return; event.preventDefault(); tree.querySelectorAll('.is-drop-target').forEach((node) => node.classList.remove('is-drop-target')); moveItem(dragged.path, row.dataset.path).catch(showError); dragged = null; });
 
-    function showError(error) { rows.innerHTML = `<tr><td colspan="4"><strong>Could not complete file operation.</strong> ${escapeHtml(error.message)}</td></tr>`; }
+    function showError(error) { rows.innerHTML = `<tr><td colspan="4"><strong>${escapeHtml(t('Could not complete file operation.'))}</strong> ${escapeHtml(error.message)}</td></tr>`; }
     document.querySelector('[data-action="refresh"]')?.addEventListener('click', () => load(currentPath).catch(showError));
     document.querySelector('[data-action="up"]')?.addEventListener('click', () => load(parentPath(currentPath)).catch(showError));
     document.querySelector('[data-action="open-full"]')?.addEventListener('click', () => postToDesktop({ type: 'nextcloud-desktop:open-app', appId: 'files-full', title: t('Files'), subtitle: currentPath, href: filesUrl(currentPath), icon: FILES_ICON }));

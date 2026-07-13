@@ -1,0 +1,187 @@
+/* Independent icon decoration and color mode. Loaded after decoration styles so icon choices win. */
+#desktop-root[data-icon-decoration="standard"] .desktop-pinned-app {
+    border: 1px solid var(--desktop-panel-border) !important;
+    border-radius: 12px !important;
+    background: var(--desktop-control-background) !important;
+    box-shadow: none !important;
+    clip-path: none !important;
+}
+#desktop-root[data-icon-decoration="standard"] .desktop-pinned-app:hover,
+#desktop-root[data-icon-decoration="standard"] .desktop-pinned-app:focus-visible {
+    background: var(--desktop-control-hover) !important;
+    filter: none !important;
+    outline: none !important;
+}
+#desktop-root[data-icon-decoration="standard"] .desktop-pinned-app .desktop-app-menu-icon,
+#desktop-root[data-icon-decoration="standard"] .desktop-app-shortcut-circle,
+#desktop-root[data-icon-decoration="standard"] .desktop-fav-icon,
+body:has(#desktop-root[data-decoration][data-icon-decoration="standard"]) .desktop-start-menu .desktop-app-menu-icon {
+    border: 0 !important;
+    border-radius: 12px !important;
+    background: color-mix(in srgb, var(--color-primary-element, var(--color-primary, #00679e)) 72%, transparent) !important;
+    box-shadow: 0 1px 3px var(--color-box-shadow, rgba(0,0,0,.25)) !important;
+    clip-path: none !important;
+}
+#desktop-root[data-icon-decoration="standard"] .desktop-fav[data-special="home"] .desktop-fav-icon {
+    background: color-mix(in srgb, var(--color-primary-element-light, var(--color-primary-light, #e5f2fa)) 82%, var(--color-main-background, #fff)) !important;
+    color: var(--color-primary-element, var(--color-primary, #00679e)) !important;
+}
+#desktop-root[data-icon-decoration="standard"] .desktop-fav[data-special="trash"] .desktop-fav-icon {
+    background: color-mix(in srgb, var(--color-error, #e9322d) 14%, var(--color-main-background, #fff)) !important;
+    color: #2c2c2c !important;
+}
+#desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-fav[data-special="trash"] .desktop-fav-icon {
+    background: color-mix(in srgb, var(--color-error, #e9322d) 24%, var(--color-main-background, #111)) !important;
+    color: color-mix(in srgb, var(--color-error, #ff6b66) 42%, var(--color-main-text, #fff)) !important;
+}
+#desktop-root[data-icon-decoration="standard"] .desktop-fav[data-folder="true"]:not([data-special]) .desktop-fav-icon,
+#desktop-root[data-icon-decoration="standard"] .desktop-fav:not([data-kind="app"]):not([data-special]):not([data-folder="true"]) .desktop-fav-icon {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+#desktop-root[data-icon-decoration="standard"] .desktop-fav {
+    border: 0 !important;
+    border-radius: var(--border-radius-element, 8px) !important;
+    color: var(--color-main-text, #f5f5f5) !important;
+    background: rgba(127,127,127,.08) !important;
+    box-shadow: none !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,.45) !important;
+    clip-path: none !important;
+    filter: none !important;
+}
+#desktop-root[data-icon-decoration="standard"] .desktop-fav:hover,
+#desktop-root[data-icon-decoration="standard"] .desktop-fav:focus-visible { background: rgba(127,127,127,.18) !important; }
+#desktop-root[data-icon-decoration="standard"] .desktop-fav.is-selected {
+    background: var(--color-primary-element-light, rgba(10,124,255,.25)) !important;
+    outline: 1px solid var(--color-primary-element, #0a7cff) !important;
+}
+#desktop-root[data-icon-decoration="standard"] .desktop-fav-label {
+    color: inherit !important;
+    text-shadow: inherit !important;
+}
+
+#desktop-root[data-icon-decoration="redmond"] .desktop-pinned-app {
+    border: 1px solid rgba(255,255,255,.72) !important; border-radius: 4px !important;
+    background: linear-gradient(180deg, #6e9feb, #265bb4) !important;
+    box-shadow: inset 1px 1px rgba(255,255,255,.42), inset -1px -1px rgba(0,0,0,.3), 1px 2px 3px rgba(0,0,0,.36) !important;
+}
+#desktop-root[data-icon-decoration="redmond"] .desktop-pinned-app .desktop-app-menu-icon,
+#desktop-root[data-icon-decoration="redmond"] .desktop-app-shortcut-circle,
+#desktop-root[data-icon-decoration="redmond"] .desktop-fav-icon,
+body:has(#desktop-root[data-decoration][data-icon-decoration="redmond"]) .desktop-start-menu .desktop-app-menu-icon {
+    border: 1px solid rgba(255,255,255,.7) !important; border-radius: 4px !important;
+    background: linear-gradient(135deg, #77aaf3, #2453b8) !important;
+    box-shadow: inset 1px 1px rgba(255,255,255,.48), inset -1px -1px rgba(0,0,0,.28), 1px 2px 3px rgba(0,0,0,.34) !important;
+    clip-path: none !important;
+}
+#desktop-root[data-icon-decoration="redmond"] .desktop-fav {
+    border: 2px solid #1d5fd1 !important; border-radius: 7px 7px 2px 2px !important; color: #fff !important;
+    background: linear-gradient(180deg, #5f9df1, #1d5fd1 48%, #153d9c) !important;
+}
+#desktop-root[data-icon-decoration="redmond"] .desktop-fav-label { color: #fff !important; text-shadow: 1px 1px 1px #10245e !important; }
+#desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-pinned-app { background: linear-gradient(180deg, #68758f, #2b354c) !important; }
+#desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-pinned-app .desktop-app-menu-icon,
+#desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-app-shortcut-circle,
+#desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-fav-icon,
+body:has(#desktop-root[data-decoration][data-icon-decoration="redmond"]:not(.desktop-icon-light)) .desktop-start-menu .desktop-app-menu-icon { background: linear-gradient(135deg, #68758f, #2b354c) !important; }
+#desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-fav { background: linear-gradient(180deg, #3d475b, #202b45 48%, #10182b) !important; border-color: #202b45 !important; }
+
+#desktop-root[data-icon-decoration="retro"] .desktop-pinned-app {
+    border: 1px solid #263234 !important; border-radius: 0 !important;
+    background: linear-gradient(180deg, #9a845e, #6d6049 52%, #41392c) !important;
+    box-shadow: inset 2px 2px rgba(218,235,226,.24), inset -2px -2px rgba(25,30,29,.28), 2px 3px 4px rgba(10,18,20,.4) !important;
+    clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 0 100%) !important;
+}
+#desktop-root[data-icon-decoration="retro"] .desktop-pinned-app .desktop-app-menu-icon,
+#desktop-root[data-icon-decoration="retro"] .desktop-app-shortcut-circle,
+#desktop-root[data-icon-decoration="retro"] .desktop-fav-icon,
+body:has(#desktop-root[data-decoration][data-icon-decoration="retro"]) .desktop-start-menu .desktop-app-menu-icon {
+    border: 1px solid #263234 !important; border-radius: 0 !important;
+    background: linear-gradient(145deg, #1b9aa2, #07545a 58%, #032f33) !important;
+    box-shadow: inset 2px 2px rgba(113,232,232,.28), inset -2px -2px rgba(0,0,0,.38), 3px 4px 4px rgba(10,18,20,.42) !important;
+    clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px)) !important;
+}
+#desktop-root[data-icon-decoration="retro"] .desktop-fav {
+    border: 1px solid #263234 !important; border-radius: 0 !important; color: #161712 !important;
+    background: linear-gradient(164deg, rgba(218,235,226,.24), transparent 24%, rgba(25,30,29,.28)), linear-gradient(180deg, #c4a873, #5b4d35) !important;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)) !important;
+}
+#desktop-root[data-icon-decoration="retro"] .desktop-fav-label { color: #161712 !important; text-shadow: 0 1px rgba(218,235,226,.24) !important; }
+#desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-pinned-app { background: linear-gradient(180deg, #202a2b, #11191b) !important; border-color: #3b6667 !important; }
+#desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-pinned-app .desktop-app-menu-icon,
+#desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-app-shortcut-circle,
+#desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-fav-icon,
+body:has(#desktop-root[data-decoration][data-icon-decoration="retro"]:not(.desktop-icon-light)) .desktop-start-menu .desktop-app-menu-icon { background: linear-gradient(145deg, #27c4c8, #0b7177 58%, #042f33) !important; border-color: #3b6667 !important; }
+#desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-fav { color: #c8ded9 !important; background: linear-gradient(164deg, rgba(126,174,168,.16), transparent 24%, rgba(0,0,0,.5)), linear-gradient(180deg, #202a2b, #090e10) !important; border-color: #3b6667 !important; }
+#desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-fav-label { color: #c8ded9 !important; text-shadow: 0 1px #000 !important; }
+
+
+/* Standard chrome can also be pinned independently of the Nextcloud appearance. */
+#desktop-root[data-decoration="standard"][data-decoration-color="light"] {
+    --desktop-panel-background: rgba(255,255,255,.82); --desktop-panel-text: #1f2937; --desktop-panel-muted: #4b5563;
+    --desktop-panel-border: rgba(31,41,55,.2); --desktop-control-background: rgba(255,255,255,.7); --desktop-control-hover: rgba(31,41,55,.12);
+}
+#desktop-root[data-decoration="standard"][data-decoration-color="dark"] {
+    --desktop-panel-background: rgba(24,28,36,.86); --desktop-panel-text: #f3f4f6; --desktop-panel-muted: #c1c7d0;
+    --desktop-panel-border: rgba(255,255,255,.2); --desktop-control-background: rgba(255,255,255,.1); --desktop-control-hover: rgba(255,255,255,.18);
+}
+body:has(#desktop-root[data-decoration="standard"][data-decoration-color="light"]) .desktop-start-menu,
+body:has(#desktop-root[data-decoration="standard"][data-decoration-color="light"]) .desktop-task-context-menu,
+body:has(#desktop-root[data-decoration="standard"][data-decoration-color="light"]) .desktop-fav-menu { color: #1f2937 !important; background: rgba(255,255,255,.94) !important; }
+body:has(#desktop-root[data-decoration="standard"][data-decoration-color="dark"]) .desktop-start-menu,
+body:has(#desktop-root[data-decoration="standard"][data-decoration-color="dark"]) .desktop-task-context-menu,
+body:has(#desktop-root[data-decoration="standard"][data-decoration-color="dark"]) .desktop-fav-menu { color: #f3f4f6 !important; background: rgba(24,28,36,.95) !important; }
+
+
+#desktop-root[data-decoration="standard"][data-decoration-color="light"] .desktop-window,
+#desktop-root[data-decoration="standard"][data-decoration-color="light"] .desktop-window-titlebar,
+#desktop-root[data-decoration="standard"][data-decoration-color="light"] .desktop-taskbar {
+    color: #1f2937 !important; background: rgba(255,255,255,.88) !important; border-color: rgba(31,41,55,.2) !important;
+}
+#desktop-root[data-decoration="standard"][data-decoration-color="dark"] .desktop-window,
+#desktop-root[data-decoration="standard"][data-decoration-color="dark"] .desktop-window-titlebar,
+#desktop-root[data-decoration="standard"][data-decoration-color="dark"] .desktop-taskbar {
+    color: #f3f4f6 !important; background: rgba(24,28,36,.9) !important; border-color: rgba(255,255,255,.2) !important;
+}
+#desktop-root[data-decoration="standard"][data-decoration-color="light"] .desktop-window-actions button,
+#desktop-root[data-decoration="standard"][data-decoration-color="light"] .desktop-task-button,
+#desktop-root[data-decoration="standard"][data-decoration-color="light"] .taskbar-button:not(.taskbar-start) {
+    color: #1f2937 !important; background: rgba(255,255,255,.72) !important; border-color: rgba(31,41,55,.2) !important;
+}
+#desktop-root[data-decoration="standard"][data-decoration-color="dark"] .desktop-window-actions button,
+#desktop-root[data-decoration="standard"][data-decoration-color="dark"] .desktop-task-button,
+#desktop-root[data-decoration="standard"][data-decoration-color="dark"] .taskbar-button:not(.taskbar-start) {
+    color: #f3f4f6 !important; background: rgba(255,255,255,.1) !important; border-color: rgba(255,255,255,.2) !important;
+}
+
+
+/* Standard icon palettes resolve from the independent icon color mode, not Nextcloud variables. */
+#desktop-root[data-icon-decoration="standard"].desktop-icon-light .desktop-pinned-app .desktop-app-menu-icon,
+#desktop-root[data-icon-decoration="standard"].desktop-icon-light .desktop-app-shortcut-circle,
+body:has(#desktop-root[data-decoration][data-icon-decoration="standard"].desktop-icon-light) .desktop-start-menu .desktop-app-menu-icon {
+    color: #fff !important; background: color-mix(in srgb, var(--color-primary, #00679e) 78%, #fff) !important;
+}
+#desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-pinned-app .desktop-app-menu-icon,
+#desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-app-shortcut-circle,
+body:has(#desktop-root[data-decoration][data-icon-decoration="standard"]:not(.desktop-icon-light)) .desktop-start-menu .desktop-app-menu-icon {
+    color: #f3f4f6 !important; background: color-mix(in srgb, var(--color-primary, #00679e) 62%, #111827) !important;
+}
+#desktop-root[data-icon-decoration="standard"].desktop-icon-light .desktop-fav[data-special="home"] .desktop-fav-icon {
+    color: var(--color-primary, #00679e) !important; background: #edf5fa !important;
+}
+#desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-fav[data-special="home"] .desktop-fav-icon {
+    color: color-mix(in srgb, var(--color-primary, #39a5dc) 70%, #fff) !important; background: #182532 !important;
+}
+#desktop-root[data-icon-decoration="standard"].desktop-icon-light .desktop-fav[data-special="trash"] .desktop-fav-icon {
+    color: #6f1d1b !important; background: #fff1f0 !important;
+}
+#desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-fav[data-special="trash"] .desktop-fav-icon {
+    color: #ffaaa6 !important; background: #321b20 !important;
+}
+#desktop-root[data-icon-decoration="standard"].desktop-icon-light .desktop-fav-label,
+#desktop-root[data-icon-decoration="standard"].desktop-icon-light .desktop-app-shortcut { color: #1f2937 !important; text-shadow: 0 1px 3px rgba(255,255,255,.9) !important; }
+#desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-fav-label,
+#desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-app-shortcut { color: #f3f4f6 !important; text-shadow: 0 1px 2px rgba(0,0,0,.65) !important; }

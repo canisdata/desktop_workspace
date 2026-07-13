@@ -68,7 +68,7 @@ class PageController extends Controller {
                 'Desktop Admin Settings' => $l->t('Desktop Admin Settings'),
                 'Desktop Files' => $l->t('Desktop Files'),
             ],
-            'decoration' => $this->decorationService->effectiveForUser($user?->getUID()),
+            ...$this->decorationService->appearanceForUser($user?->getUID()),
         ]);
     }
 
@@ -111,7 +111,7 @@ class PageController extends Controller {
             'showHome' => $uid !== null && $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::SHOW_HOME_KEY, 'no') === 'yes',
             'desktopFolder' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::DESKTOP_FOLDER_KEY, '') : '',
             'trashNoConfirm' => $uid !== null && $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::TRASH_NO_CONFIRM_KEY, 'no') === 'yes',
-            'decoration' => $this->decorationService->effectiveForUser($uid),
+            ...$this->decorationService->appearanceForUser($uid),
         ]);
         $csp = new ContentSecurityPolicy();
         $csp->addAllowedFrameDomain("'self'");

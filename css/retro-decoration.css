@@ -17,7 +17,7 @@
     --cbp-shadow: rgba(10, 18, 20, .4);
     font-variant-numeric: tabular-nums;
 }
-#desktop-root[data-decoration="retro"]:not(.desktop-theme-light) {
+#desktop-root[data-decoration="retro"]:not(.desktop-decoration-light) {
     --cbp-bg: #090e10;
     --cbp-panel: #11191b;
     --cbp-panel-2: #202a2b;
@@ -118,9 +118,9 @@ body:has(#desktop-root[data-decoration="retro"]) .desktop-fav-menu {
     backdrop-filter: none !important;
     clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 11px 100%, 0 calc(100% - 11px));
 }
-body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-start-menu,
-body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-task-context-menu,
-body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-fav-menu {
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-decoration-light)) .desktop-start-menu,
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-decoration-light)) .desktop-task-context-menu,
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-decoration-light)) .desktop-fav-menu {
     color: #c8ded9 !important; background-color: #11191b !important; border-color: #3b6667 !important; border-top-color: #b8a900 !important;
     background-image: linear-gradient(108deg, transparent 0 27%, rgba(0,0,0,.48) 36%, transparent 47%), linear-gradient(173deg, rgba(126,174,168,.15), transparent 28%, rgba(0,0,0,.58)), linear-gradient(180deg, #202a2b, #0c1214) !important;
     box-shadow: inset 2px 2px 0 rgba(126,174,168,.14), inset -3px -3px 0 rgba(0,0,0,.58), 4px 5px 0 rgba(59,102,103,.52), 11px 14px 22px rgba(0,0,0,.76) !important;
@@ -132,9 +132,9 @@ body:has(#desktop-root[data-decoration="retro"]) .desktop-fav-menu button {
     background: linear-gradient(180deg, rgba(238,210,157,.3), rgba(91,73,45,.18)) !important;
     box-shadow: inset 1px 1px rgba(255,239,204,.25), inset -2px -2px rgba(38,30,20,.24), 1px 2px 3px rgba(10,18,20,.34) !important;
 }
-body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-start-menu .desktop-app-tile,
-body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-task-context-menu button,
-body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-fav-menu button {
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-decoration-light)) .desktop-start-menu .desktop-app-tile,
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-decoration-light)) .desktop-task-context-menu button,
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-decoration-light)) .desktop-fav-menu button {
     background: linear-gradient(180deg, rgba(91,126,123,.28), rgba(4,9,11,.38)) !important;
     box-shadow: inset 1px 1px rgba(126,174,168,.16), inset -2px -2px rgba(0,0,0,.48), 1px 2px 4px rgba(0,0,0,.6) !important;
 }
@@ -149,7 +149,7 @@ body:has(#desktop-root[data-decoration="retro"]) .desktop-start-menu .desktop-ap
     background: linear-gradient(145deg, #1b9aa2, #07545a 58%, #032f33) !important;
     box-shadow: inset 2px 2px rgba(113,232,232,.28), inset -2px -2px rgba(0,0,0,.38), 3px 4px 4px rgba(10,18,20,.42) !important;
 }
-body:has(#desktop-root[data-decoration="retro"]:not(.desktop-theme-light)) .desktop-start-menu .desktop-app-menu-icon { background: linear-gradient(145deg, #27c4c8, #0b7177 58%, #042f33) !important; }
+body:has(#desktop-root[data-decoration="retro"]:not(.desktop-decoration-light)) .desktop-start-menu .desktop-app-menu-icon { background: linear-gradient(145deg, #27c4c8, #0b7177 58%, #042f33) !important; }
 
 /* Decoration coverage for pinned apps and every desktop icon kind. */
 #desktop-root[data-decoration="retro"] .desktop-pinned-app {

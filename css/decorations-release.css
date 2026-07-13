@@ -10,7 +10,7 @@
     --redmond-close-top: #f49a7d;
     --redmond-close-bottom: #c82f1d;
 }
-#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light) {
+#desktop-root[data-decoration="redmond"]:not(.desktop-decoration-light) {
     --redmond-blue-top: #3d475b;
     --redmond-blue-mid: #202b45;
     --redmond-blue-bottom: #10182b;
@@ -118,18 +118,18 @@ body:has(#desktop-root[data-decoration="redmond"]) .desktop-fav-menu button:focu
     color: #fff !important;
     background: #316ac5 !important;
 }
-body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-start-menu,
-body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-task-context-menu,
-body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-fav-menu {
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-decoration-light)) .desktop-start-menu,
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-decoration-light)) .desktop-task-context-menu,
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-decoration-light)) .desktop-fav-menu {
     color: #f4f6fb !important;
     background: #202638 !important;
 }
-body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-task-context-menu button,
-body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-fav-menu button { color: #f4f6fb !important; }
-body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-task-context-menu button:hover,
-body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-task-context-menu button:focus-visible,
-body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-fav-menu button:hover,
-body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-theme-light)) .desktop-fav-menu button:focus-visible { background: #385887 !important; }
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-decoration-light)) .desktop-task-context-menu button,
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-decoration-light)) .desktop-fav-menu button { color: #f4f6fb !important; }
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-decoration-light)) .desktop-task-context-menu button:hover,
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-decoration-light)) .desktop-task-context-menu button:focus-visible,
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-decoration-light)) .desktop-fav-menu button:hover,
+body:has(#desktop-root[data-decoration="redmond"]:not(.desktop-decoration-light)) .desktop-fav-menu button:focus-visible { background: #385887 !important; }
 
 /* Carry the Redmond decoration onto pinned apps and all desktop icon kinds. */
 #desktop-root[data-decoration="redmond"] .desktop-pinned-app {

@@ -10,3 +10,14 @@
 .desktop-window-body:has(> .desktop-window-iframe) {
     overflow: hidden;
 }
+
+.desktop-window-body.has-iframe {
+    position: relative;
+    overflow: hidden;
+}
+.desktop-window-body.has-iframe > .desktop-window-iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}

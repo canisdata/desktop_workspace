@@ -1,10 +1,11 @@
 <?php
 \OCP\Util::addTranslations('desktop_workspace');
-script('desktop_workspace', 'desktop-motion-release');
+script('desktop_workspace', 'desktop-motion-0160h');
 style('desktop_workspace', 'desktop');
 style('desktop_workspace', 'decorations-release');
 style('desktop_workspace', 'retro-decoration');
-style('desktop_workspace', 'window-shell-fixes-release');
+style('desktop_workspace', 'icon-appearance-0160e');
+style('desktop_workspace', 'window-shell-fixes-0160b');
 style('desktop_workspace', 'motion-release');
 /** @var array $_ */
 $l = \OC::$server->getL10N('desktop_workspace');
@@ -17,7 +18,7 @@ try {
     $ncVersion = \OCP\Server::get(\OCP\IConfig::class)->getSystemValueString('version', '');
 }
 ?>
-<div id="desktop-root" data-desktop-app-root data-decoration="<?= p(in_array(($_['decoration'] ?? 'standard'), ['redmond', 'retro'], true) ? $_['decoration'] : 'standard') ?>" data-desktopfiles-enabled="<?= $desktopfilesEnabled ? 'true' : 'false' ?>" data-show-favorites="<?= !empty($_['showFavorites']) ? 'true' : 'false' ?>" data-favorites-no-confirm="<?= !empty($_['favoritesNoConfirm']) ? 'true' : 'false' ?>" data-show-trash="<?= !empty($_['showTrash']) ? 'true' : 'false' ?>" data-show-home="<?= !empty($_['showHome']) ? 'true' : 'false' ?>" data-desktop-folder="<?= p($_['desktopFolder'] ?? '') ?>" data-trash-no-confirm="<?= !empty($_['trashNoConfirm']) ? 'true' : 'false' ?>" data-personal-save-url="<?= p($_['personalSaveUrl'] ?? '') ?>" data-heartbeat-url="<?= p($_['heartbeatUrl'] ?? '') ?>" data-dynamic-data-url="<?= p($_['dynamicDataUrl'] ?? '') ?>" data-icon-positions="<?= p($_['iconPositions'] ?? '{}') ?>" data-icon-save-url="<?= p($_['iconSaveUrl'] ?? '') ?>" data-window-states="<?= p($_['windowStates'] ?? '{"windows":[]}') ?>" data-window-save-url="<?= p($_['windowSaveUrl'] ?? '') ?>" data-first-visit="<?= !empty($_['firstVisit']) ? 'true' : 'false' ?>" data-apps="<?= p(json_encode($apps, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT)) ?>">
+<div id="desktop-root" data-desktop-app-root data-decoration="<?= p(in_array(($_['decoration'] ?? 'standard'), ['redmond', 'retro'], true) ? $_['decoration'] : 'standard') ?>" data-decoration-color="<?= p($_['decorationColor'] ?? 'nextcloud') ?>" data-icon-decoration="<?= p($_['iconDecoration'] ?? 'standard') ?>" data-icon-decoration-linked="<?= !empty($_['iconDecorationLinked']) ? 'true' : 'false' ?>" data-icon-color="<?= p($_['iconColor'] ?? 'nextcloud') ?>" data-desktopfiles-enabled="<?= $desktopfilesEnabled ? 'true' : 'false' ?>" data-show-favorites="<?= !empty($_['showFavorites']) ? 'true' : 'false' ?>" data-favorites-no-confirm="<?= !empty($_['favoritesNoConfirm']) ? 'true' : 'false' ?>" data-show-trash="<?= !empty($_['showTrash']) ? 'true' : 'false' ?>" data-show-home="<?= !empty($_['showHome']) ? 'true' : 'false' ?>" data-desktop-folder="<?= p($_['desktopFolder'] ?? '') ?>" data-trash-no-confirm="<?= !empty($_['trashNoConfirm']) ? 'true' : 'false' ?>" data-personal-save-url="<?= p($_['personalSaveUrl'] ?? '') ?>" data-heartbeat-url="<?= p($_['heartbeatUrl'] ?? '') ?>" data-dynamic-data-url="<?= p($_['dynamicDataUrl'] ?? '') ?>" data-icon-positions="<?= p($_['iconPositions'] ?? '{}') ?>" data-icon-save-url="<?= p($_['iconSaveUrl'] ?? '') ?>" data-window-states="<?= p($_['windowStates'] ?? '{"windows":[]}') ?>" data-window-save-url="<?= p($_['windowSaveUrl'] ?? '') ?>" data-first-visit="<?= !empty($_['firstVisit']) ? 'true' : 'false' ?>" data-apps="<?= p(json_encode($apps, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT)) ?>">
     <main id="desktop-stage" class="desktop-stage" aria-label="<?= p($l->t('Desktop workspace')) ?>">
         <div id="desktop-favorites" class="desktop-favorites" aria-label="<?= p($l->t('Desktop favorites')) ?>" hidden></div>
         <div class="desktop-wallpaper-credit" aria-hidden="true">

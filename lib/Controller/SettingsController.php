@@ -27,6 +27,10 @@ class SettingsController extends Controller {
     public const TRASH_NO_CONFIRM_KEY = 'trash_no_confirm';
     public const USER_DECORATIONS_ENABLED_KEY = 'user_decorations_enabled';
     public const DECORATION_KEY = 'decoration';
+    public const DECORATION_COLOR_KEY = 'decoration_color';
+    public const ICON_DECORATION_LINKED_KEY = 'icon_decoration_linked';
+    public const ICON_DECORATION_KEY = 'icon_decoration';
+    public const ICON_COLOR_KEY = 'icon_color';
 
     public function __construct(
         string $appName,
@@ -179,7 +183,23 @@ class SettingsController extends Controller {
             return new JSONResponse(['status' => 'error', 'message' => 'no user'], 403);
         }
         $this->clearAllUserValues($user->getUID());
-        return new JSONResponse(['status' => 'ok']);
+        return new JSONResponse([
+            'status' => 'ok',
+            'settings' => [
+                'tryExperimentalFiles' => false,
+                'showFavorites' => false,
+                'favoritesNoConfirm' => false,
+                'showTrash' => false,
+                'showHome' => false,
+                'desktopFolder' => '',
+                'trashNoConfirm' => false,
+                'decoration' => DecorationService::STANDARD,
+                'decorationColor' => DecorationService::FOLLOW_NEXTCLOUD,
+                'iconDecorationLinked' => true,
+                'iconDecoration' => DecorationService::STANDARD,
+                'iconColor' => DecorationService::FOLLOW_NEXTCLOUD,
+            ],
+        ]);
     }
 
     /**
@@ -206,6 +226,10 @@ class SettingsController extends Controller {
         ?string $desktop_folder = null,
         ?string $trash_no_confirm = null,
         ?string $decoration = null,
+        ?string $decoration_color = null,
+        ?string $icon_decoration_linked = null,
+        ?string $icon_decoration = null,
+        ?string $icon_color = null,
     ): JSONResponse {
         $user = $this->userSession->getUser();
         if ($user === null) {
@@ -223,6 +247,26 @@ class SettingsController extends Controller {
             }
             $this->config->setUserValue($uid, self::APP_ID, self::DECORATION_KEY, $selected);
             $result['decoration'] = $selected;
+        }
+        if ($decoration_color !== null) {
+            $value = $this->decorationService->validatedColorMode($decoration_color, DecorationService::FOLLOW_NEXTCLOUD);
+            $this->config->setUserValue($uid, self::APP_ID, self::DECORATION_COLOR_KEY, $value);
+            $result['decorationColor'] = $value;
+        }
+        if ($icon_decoration_linked !== null) {
+            $value = $truthy($icon_decoration_linked);
+            $this->config->setUserValue($uid, self::APP_ID, self::ICON_DECORATION_LINKED_KEY, $value ? 'yes' : 'no');
+            $result['iconDecorationLinked'] = $value;
+        }
+        if ($icon_decoration !== null) {
+            $value = $this->decorationService->validatedDecoration($icon_decoration);
+            $this->config->setUserValue($uid, self::APP_ID, self::ICON_DECORATION_KEY, $value);
+            $result['iconDecoration'] = $value;
+        }
+        if ($icon_color !== null) {
+            $value = $this->decorationService->validatedIconColorMode($icon_color);
+            $this->config->setUserValue($uid, self::APP_ID, self::ICON_COLOR_KEY, $value);
+            $result['iconColor'] = $value;
         }
         if ($try_experimental_files !== null) {
             $b = $truthy($try_experimental_files);

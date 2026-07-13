@@ -29,12 +29,14 @@ class Personal implements ISettings {
         $optedIn = $user !== null
             && $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, FilesAvailability::USER_OPT_IN_KEY, 'no') === 'yes';
 
+        $appearance = $this->decorationService->appearanceForUser($user?->getUID());
+
         return new TemplateResponse('desktop_workspace', 'settings-personal', [
             'available' => $available,
             'globallyDisabled' => $this->filesAvailability->globallyDisabled(),
             'tryExperimentalFiles' => $optedIn,
             'userDecorationsEnabled' => $this->decorationService->userSelectionEnabled(),
-            'decoration' => $this->decorationService->effectiveForUser($user?->getUID()),
+            ...$appearance,
             'showFavorites' => $user !== null
                 && $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, SettingsController::SHOW_FAVORITES_KEY, 'no') === 'yes',
             'favoritesNoConfirm' => $user !== null

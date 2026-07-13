@@ -3,6 +3,24 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.16.0 – 2026-07-13
+
+### Added
+- Added independent automatic or manual light/dark color modes for desktop chrome and icon decorations.
+- Added independent icon decoration choices for desktop icons, Apps menu icons, and pinned taskbar apps.
+
+### Changed
+- Reworked appearance settings into concise window and icon groups, with automatic Nextcloud matching as the default and manual controls revealed only when needed.
+- When icons match the window decoration, both manual icon controls are disabled; manual icon color mode now offers only Nextcloud, light, or dark behavior.
+- Reordered personal and administrator settings into clearer appearance, desktop-item, window-behavior, experimental, and maintenance sections.
+
+### Fixed
+- Standard icons now apply explicit light and dark palettes independently of the active Nextcloud appearance.
+- Matched Firefox’s native Nextcloud settings scrolling model so embedded Desktop settings use only the app-content scroller, while keeping Firefox focus changes from shifting the hidden settings shell.
+- Applied a full personal-settings reset immediately to both the open settings form and running Desktop, without requiring a reload.
+- Made the embedded settings window use an opaque app-window background instead of exposing the full-page Nextcloud background.
+- Completed the 0.16.0 translation audit, including previously untranslated app-menu, fallback-window, file-manager loading/empty/error, folder-tree, and delete-confirmation text.
+
 ## 0.15.3 – 2026-07-12
 
 ### Added

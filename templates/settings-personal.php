@@ -1,7 +1,7 @@
 <?php
 \OCP\Util::addTranslations('desktop_workspace');
-script('desktop_workspace', 'personal');
-style('desktop_workspace', 'admin');
+script('desktop_workspace', 'personal-0160c');
+style('desktop_workspace', 'admin-0160c');
 /** @var array $_ */
 $l = \OC::$server->getL10N('desktop_workspace');
 ?>
@@ -10,23 +10,48 @@ $l = \OC::$server->getL10N('desktop_workspace');
      data-reset-all-url="<?= p($_['resetAllUrl']) ?>">
     <h2><?= p($l->t('Desktop')) ?></h2>
 
-    <h3><?= p($l->t('Decoration')) ?></h3>
+    <h3><?= p($l->t('Appearance')) ?></h3>
     <div class="<?= $_['userDecorationsEnabled'] ? '' : 'desktop-setting-disabled' ?>">
-        <p class="settings-hint"><?= p($l->t('Choose the appearance of desktop windows, the taskbar, and right-click menus. Light and dark colors continue to follow your Nextcloud appearance settings.')) ?></p>
-        <p>
-            <label for="desktop-decoration"><?= p($l->t('Desktop decoration')) ?></label>
-            <select id="desktop-decoration" <?= $_['userDecorationsEnabled'] ? '' : 'disabled' ?>>
-                <option value="standard" <?= ($_['decoration'] ?? 'standard') === 'standard' ? 'selected' : '' ?>><?= p($l->t('Standard')) ?></option>
-                <option value="redmond" <?= ($_['decoration'] ?? 'standard') === 'redmond' ? 'selected' : '' ?>><?= p($l->t('Redmond')) ?></option>
-                <option value="retro" <?= ($_['decoration'] ?? 'standard') === 'retro' ? 'selected' : '' ?>><?= p($l->t('Retro')) ?></option>
-            </select>
-        </p>
+        <p class="settings-hint"><?= p($l->t('Choose an automatic appearance or customize desktop chrome and icons separately.')) ?></p>
+        <div class="desktop-appearance-group">
+            <h4><?= p($l->t('Windows, taskbar and menus')) ?></h4>
+            <p><label for="desktop-decoration"><?= p($l->t('Decoration style')) ?></label>
+                <select id="desktop-decoration" <?= $_['userDecorationsEnabled'] ? '' : 'disabled' ?>>
+                    <option value="standard" <?= $_['decoration'] === 'standard' ? 'selected' : '' ?>><?= p($l->t('Standard')) ?></option>
+                    <option value="redmond" <?= $_['decoration'] === 'redmond' ? 'selected' : '' ?>><?= p($l->t('Redmond')) ?></option>
+                    <option value="retro" <?= $_['decoration'] === 'retro' ? 'selected' : '' ?>><?= p($l->t('Retro')) ?></option>
+                </select></p>
+            <p><label for="desktop-decoration-color"><?= p($l->t('Color mode')) ?></label>
+                <select id="desktop-decoration-color" <?= $_['userDecorationsEnabled'] ? '' : 'disabled' ?>>
+                    <option value="nextcloud" <?= $_['decorationColor'] === 'nextcloud' ? 'selected' : '' ?>><?= p($l->t('Follow Nextcloud appearance')) ?></option>
+                    <option value="light" <?= $_['decorationColor'] === 'light' ? 'selected' : '' ?>><?= p($l->t('Always light')) ?></option>
+                    <option value="dark" <?= $_['decorationColor'] === 'dark' ? 'selected' : '' ?>><?= p($l->t('Always dark')) ?></option>
+                </select></p>
+        </div>
+        <div class="desktop-appearance-group">
+            <h4><?= p($l->t('Desktop and app icons')) ?></h4>
+            <p><input type="checkbox" id="desktop-icon-decoration-linked" class="checkbox" <?= $_['iconDecorationLinked'] ? 'checked' : '' ?> <?= $_['userDecorationsEnabled'] ? '' : 'disabled' ?> />
+                <label for="desktop-icon-decoration-linked"><?= p($l->t('Match window decoration')) ?></label></p>
+            <p><label for="desktop-icon-decoration"><?= p($l->t('Icon style')) ?></label>
+                <select id="desktop-icon-decoration" <?= ($_['userDecorationsEnabled'] && !$_['iconDecorationLinked']) ? '' : 'disabled' ?>>
+                    <option value="standard" <?= $_['iconDecoration'] === 'standard' ? 'selected' : '' ?>><?= p($l->t('Standard')) ?></option>
+                    <option value="redmond" <?= $_['iconDecoration'] === 'redmond' ? 'selected' : '' ?>><?= p($l->t('Redmond')) ?></option>
+                    <option value="retro" <?= $_['iconDecoration'] === 'retro' ? 'selected' : '' ?>><?= p($l->t('Retro')) ?></option>
+                </select></p>
+            <p><label for="desktop-icon-color"><?= p($l->t('Icon color mode')) ?></label>
+                <select id="desktop-icon-color" <?= ($_['userDecorationsEnabled'] && !$_['iconDecorationLinked']) ? '' : 'disabled' ?>>
+                    <option value="nextcloud" <?= $_['iconColor'] === 'nextcloud' ? 'selected' : '' ?>><?= p($l->t('Follow Nextcloud appearance')) ?></option>
+                    <option value="light" <?= $_['iconColor'] === 'light' ? 'selected' : '' ?>><?= p($l->t('Always light')) ?></option>
+                    <option value="dark" <?= $_['iconColor'] === 'dark' ? 'selected' : '' ?>><?= p($l->t('Always dark')) ?></option>
+                </select></p>
+            <p class="settings-hint"><?= p($l->t('Icon appearance applies to desktop icons, the Apps menu and pinned taskbar apps.')) ?></p>
+        </div>
     </div>
     <?php if (!$_['userDecorationsEnabled']): ?>
-        <p class="settings-hint"><?= p($l->t('Decoration choices have been disabled by your administrator. Ask your administrator to enable them.')) ?></p>
+        <p class="settings-hint"><?= p($l->t('Appearance choices have been disabled by your administrator. Ask your administrator to enable them.')) ?></p>
     <?php endif; ?>
 
-    <h3><?= p($l->t('Desktop icons')) ?></h3>
+    <h3><?= p($l->t('Desktop items')) ?></h3>
     <p>
         <input type="checkbox" id="desktop-show-favorites" class="checkbox" <?= $_['showFavorites'] ? 'checked' : '' ?> />
         <label for="desktop-show-favorites"><?= p($l->t('Show Favorites on Desktop')) ?></label>
