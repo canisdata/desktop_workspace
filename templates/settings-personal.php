@@ -12,7 +12,7 @@ $l = \OC::$server->getL10N('desktop_workspace');
 
     <h3><?= p($l->t('Appearance')) ?></h3>
     <div class="<?= $_['userDecorationsEnabled'] ? '' : 'desktop-setting-disabled' ?>">
-        <p class="settings-hint"><?= p($l->t('Choose an automatic appearance or customize desktop chrome and icons separately.')) ?></p>
+        <p class="settings-hint"><?= p($l->t('Choose an automatic appearance or customize window decorations and icons separately.')) ?></p>
         <div class="desktop-appearance-group">
             <h4><?= p($l->t('Windows, taskbar and menus')) ?></h4>
             <p><label for="desktop-decoration"><?= p($l->t('Decoration style')) ?></label>

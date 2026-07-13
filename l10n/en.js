@@ -234,7 +234,7 @@ OC.L10N.register(
         "No files": "No files",
         "Open folder": "Open folder",
     "Appearance": "Appearance",
-    "Choose an automatic appearance or customize desktop chrome and icons separately.": "Choose an automatic appearance or customize desktop chrome and icons separately.",
+    "Choose an automatic appearance or customize window decorations and icons separately.": "Choose an automatic appearance or customize window decorations and icons separately.",
     "Windows, taskbar and menus": "Windows, taskbar and menus",
     "Decoration style": "Decoration style",
     "Color mode": "Color mode",

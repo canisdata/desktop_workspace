@@ -407,6 +407,8 @@
         const iconLight = root.dataset.iconColor === 'light' || (root.dataset.iconColor === 'nextcloud' && nativeLight);
         root.classList.toggle('desktop-decoration-light', decorationLight);
         root.classList.toggle('desktop-icon-light', iconLight);
+        document.body.dataset.desktopIconDecoration = root.dataset.iconDecoration;
+        document.body.classList.toggle('desktop-icon-light', iconLight);
     }
 
     function applyDecoration(value) { applyAppearance({ decoration: value }); }

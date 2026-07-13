@@ -1,10 +1,10 @@
 <?php
 \OCP\Util::addTranslations('desktop_workspace');
-script('desktop_workspace', 'desktop-motion-0160h');
+script('desktop_workspace', 'desktop-motion-0161');
 style('desktop_workspace', 'desktop');
 style('desktop_workspace', 'decorations-release');
 style('desktop_workspace', 'retro-decoration');
-style('desktop_workspace', 'icon-appearance-0160e');
+style('desktop_workspace', 'icon-appearance-0161');
 style('desktop_workspace', 'window-shell-fixes-0160b');
 style('desktop_workspace', 'motion-release');
 /** @var array $_ */

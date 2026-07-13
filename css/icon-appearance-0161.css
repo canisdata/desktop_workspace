@@ -15,7 +15,7 @@
 #desktop-root[data-icon-decoration="standard"] .desktop-pinned-app .desktop-app-menu-icon,
 #desktop-root[data-icon-decoration="standard"] .desktop-app-shortcut-circle,
 #desktop-root[data-icon-decoration="standard"] .desktop-fav-icon,
-body:has(#desktop-root[data-decoration][data-icon-decoration="standard"]) .desktop-start-menu .desktop-app-menu-icon {
+body[data-desktop-icon-decoration="standard"]:has(#desktop-root) .desktop-start-menu .desktop-app-menu-icon {
     border: 0 !important;
     border-radius: 12px !important;
     background: color-mix(in srgb, var(--color-primary-element, var(--color-primary, #00679e)) 72%, transparent) !important;
@@ -71,7 +71,7 @@ body:has(#desktop-root[data-decoration][data-icon-decoration="standard"]) .deskt
 #desktop-root[data-icon-decoration="redmond"] .desktop-pinned-app .desktop-app-menu-icon,
 #desktop-root[data-icon-decoration="redmond"] .desktop-app-shortcut-circle,
 #desktop-root[data-icon-decoration="redmond"] .desktop-fav-icon,
-body:has(#desktop-root[data-decoration][data-icon-decoration="redmond"]) .desktop-start-menu .desktop-app-menu-icon {
+body[data-desktop-icon-decoration="redmond"]:has(#desktop-root) .desktop-start-menu .desktop-app-menu-icon {
     border: 1px solid rgba(255,255,255,.7) !important; border-radius: 4px !important;
     background: linear-gradient(135deg, #77aaf3, #2453b8) !important;
     box-shadow: inset 1px 1px rgba(255,255,255,.48), inset -1px -1px rgba(0,0,0,.28), 1px 2px 3px rgba(0,0,0,.34) !important;
@@ -86,7 +86,7 @@ body:has(#desktop-root[data-decoration][data-icon-decoration="redmond"]) .deskto
 #desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-pinned-app .desktop-app-menu-icon,
 #desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-app-shortcut-circle,
 #desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-fav-icon,
-body:has(#desktop-root[data-decoration][data-icon-decoration="redmond"]:not(.desktop-icon-light)) .desktop-start-menu .desktop-app-menu-icon { background: linear-gradient(135deg, #68758f, #2b354c) !important; }
+body[data-desktop-icon-decoration="redmond"]:has(#desktop-root):not(.desktop-icon-light) .desktop-start-menu .desktop-app-menu-icon { background: linear-gradient(135deg, #68758f, #2b354c) !important; }
 #desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-fav { background: linear-gradient(180deg, #3d475b, #202b45 48%, #10182b) !important; border-color: #202b45 !important; }
 
 #desktop-root[data-icon-decoration="retro"] .desktop-pinned-app {
@@ -98,7 +98,7 @@ body:has(#desktop-root[data-decoration][data-icon-decoration="redmond"]:not(.des
 #desktop-root[data-icon-decoration="retro"] .desktop-pinned-app .desktop-app-menu-icon,
 #desktop-root[data-icon-decoration="retro"] .desktop-app-shortcut-circle,
 #desktop-root[data-icon-decoration="retro"] .desktop-fav-icon,
-body:has(#desktop-root[data-decoration][data-icon-decoration="retro"]) .desktop-start-menu .desktop-app-menu-icon {
+body[data-desktop-icon-decoration="retro"]:has(#desktop-root) .desktop-start-menu .desktop-app-menu-icon {
     border: 1px solid #263234 !important; border-radius: 0 !important;
     background: linear-gradient(145deg, #1b9aa2, #07545a 58%, #032f33) !important;
     box-shadow: inset 2px 2px rgba(113,232,232,.28), inset -2px -2px rgba(0,0,0,.38), 3px 4px 4px rgba(10,18,20,.42) !important;
@@ -114,7 +114,7 @@ body:has(#desktop-root[data-decoration][data-icon-decoration="retro"]) .desktop-
 #desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-pinned-app .desktop-app-menu-icon,
 #desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-app-shortcut-circle,
 #desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-fav-icon,
-body:has(#desktop-root[data-decoration][data-icon-decoration="retro"]:not(.desktop-icon-light)) .desktop-start-menu .desktop-app-menu-icon { background: linear-gradient(145deg, #27c4c8, #0b7177 58%, #042f33) !important; border-color: #3b6667 !important; }
+body[data-desktop-icon-decoration="retro"]:has(#desktop-root):not(.desktop-icon-light) .desktop-start-menu .desktop-app-menu-icon { background: linear-gradient(145deg, #27c4c8, #0b7177 58%, #042f33) !important; border-color: #3b6667 !important; }
 #desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-fav { color: #c8ded9 !important; background: linear-gradient(164deg, rgba(126,174,168,.16), transparent 24%, rgba(0,0,0,.5)), linear-gradient(180deg, #202a2b, #090e10) !important; border-color: #3b6667 !important; }
 #desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-fav-label { color: #c8ded9 !important; text-shadow: 0 1px #000 !important; }
 
@@ -161,13 +161,13 @@ body:has(#desktop-root[data-decoration="standard"][data-decoration-color="dark"]
 /* Standard icon palettes resolve from the independent icon color mode, not Nextcloud variables. */
 #desktop-root[data-icon-decoration="standard"].desktop-icon-light .desktop-pinned-app .desktop-app-menu-icon,
 #desktop-root[data-icon-decoration="standard"].desktop-icon-light .desktop-app-shortcut-circle,
-body:has(#desktop-root[data-decoration][data-icon-decoration="standard"].desktop-icon-light) .desktop-start-menu .desktop-app-menu-icon {
-    color: #fff !important; background: color-mix(in srgb, var(--color-primary, #00679e) 78%, #fff) !important;
+body[data-desktop-icon-decoration="standard"]:has(#desktop-root).desktop-icon-light .desktop-start-menu .desktop-app-menu-icon {
+    color: #fff !important; background: #2f8fbd !important;
 }
 #desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-pinned-app .desktop-app-menu-icon,
 #desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-app-shortcut-circle,
-body:has(#desktop-root[data-decoration][data-icon-decoration="standard"]:not(.desktop-icon-light)) .desktop-start-menu .desktop-app-menu-icon {
-    color: #f3f4f6 !important; background: color-mix(in srgb, var(--color-primary, #00679e) 62%, #111827) !important;
+body[data-desktop-icon-decoration="standard"]:has(#desktop-root):not(.desktop-icon-light) .desktop-start-menu .desktop-app-menu-icon {
+    color: #f3f4f6 !important; background: #12364b !important;
 }
 #desktop-root[data-icon-decoration="standard"].desktop-icon-light .desktop-fav[data-special="home"] .desktop-fav-icon {
     color: var(--color-primary, #00679e) !important; background: #edf5fa !important;
@@ -185,3 +185,14 @@ body:has(#desktop-root[data-decoration][data-icon-decoration="standard"]:not(.de
 #desktop-root[data-icon-decoration="standard"].desktop-icon-light .desktop-app-shortcut { color: #1f2937 !important; text-shadow: 0 1px 3px rgba(255,255,255,.9) !important; }
 #desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-fav-label,
 #desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-app-shortcut { color: #f3f4f6 !important; text-shadow: 0 1px 2px rgba(0,0,0,.65) !important; }
+
+
+/* Apps menu is mounted under body; mirror the live icon palette onto its labels too. */
+body[data-desktop-icon-decoration]:has(#desktop-root).desktop-icon-light .desktop-start-menu .desktop-app-menu-label {
+    color: #1f2937 !important;
+    text-shadow: 0 1px 2px rgba(255,255,255,.72) !important;
+}
+body[data-desktop-icon-decoration]:has(#desktop-root):not(.desktop-icon-light) .desktop-start-menu .desktop-app-menu-label {
+    color: #f3f4f6 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,.65) !important;
+}

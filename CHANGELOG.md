@@ -3,10 +3,16 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.16.1 – 2026-07-13
+
+### Fixed
+- Added real localized values for the appearance settings across the complete locale set instead of English fallback text.
+- Made Apps-menu icon palettes and label styling update immediately when the icon color mode changes.
+
 ## 0.16.0 – 2026-07-13
 
 ### Added
-- Added independent automatic or manual light/dark color modes for desktop chrome and icon decorations.
+- Added independent automatic or manual light/dark color modes for window and icon decorations.
 - Added independent icon decoration choices for desktop icons, Apps menu icons, and pinned taskbar apps.
 
 ### Changed
