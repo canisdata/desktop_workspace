@@ -3,6 +3,12 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.16.2 – 2026-07-13
+
+### Fixed
+- Corrected false friends and misleading literal translations across the complete locale set, especially light/dark color modes, window-decoration terminology, and appearance-setting explanations.
+- Replaced untranslated English fallbacks in the appearance, desktop-item, window-behavior, maintenance, app-launcher, fallback-window, and file-operation interfaces.
+
 ## 0.16.1 – 2026-07-13
 
 ### Fixed
