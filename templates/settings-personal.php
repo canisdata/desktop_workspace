@@ -1,7 +1,8 @@
 <?php
 \OCP\Util::addTranslations('desktop_workspace');
-script('desktop_workspace', 'personal-0160c');
+script('desktop_workspace', 'personal-0170');
 style('desktop_workspace', 'admin-0160c');
+style('desktop_workspace', 'personal-0170');
 /** @var array $_ */
 $l = \OC::$server->getL10N('desktop_workspace');
 ?>
@@ -50,6 +51,23 @@ $l = \OC::$server->getL10N('desktop_workspace');
     <?php if (!$_['userDecorationsEnabled']): ?>
         <p class="settings-hint"><?= p($l->t('Appearance choices have been disabled by your administrator. Ask your administrator to enable them.')) ?></p>
     <?php endif; ?>
+
+    <div class="desktop-appearance-group">
+        <h4><?= p($l->t('Window controls')) ?></h4>
+        <fieldset class="desktop-radio-group">
+            <legend><?= p($l->t('Window control position')) ?></legend>
+            <label><input type="radio" name="desktop-window-controls-side" value="left" <?= $_['windowControlsSide'] === 'left' ? 'checked' : '' ?> /> <?= p($l->t('Left side')) ?></label>
+            <label><input type="radio" name="desktop-window-controls-side" value="right" <?= $_['windowControlsSide'] !== 'left' ? 'checked' : '' ?> /> <?= p($l->t('Right side')) ?></label>
+        </fieldset>
+    </div>
+    <div class="desktop-appearance-group">
+        <h4><?= p($l->t('Desktop panel')) ?></h4>
+        <fieldset class="desktop-radio-group">
+            <legend><?= p($l->t('Choose how open apps and controls are shown')) ?></legend>
+            <label><input type="radio" name="desktop-shell-mode" value="taskbar" <?= $_['shellMode'] !== 'dock' ? 'checked' : '' ?> /> <?= p($l->t('Taskbar')) ?></label>
+            <label><input type="radio" name="desktop-shell-mode" value="dock" <?= $_['shellMode'] === 'dock' ? 'checked' : '' ?> /> <?= p($l->t('Dock')) ?></label>
+        </fieldset>
+    </div>
 
     <h3><?= p($l->t('Desktop items')) ?></h3>
     <p>

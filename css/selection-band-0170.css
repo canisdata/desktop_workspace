@@ -1,0 +1,11 @@
+/* Wallpaper-independent desktop rubber-band selection. */
+.desktop-band {
+    opacity: 1;
+    border: 1px solid rgba(255, 255, 255, .9);
+    background: color-mix(in srgb, var(--color-primary-element, #0a7cff) 16%, transparent);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, .72),
+        inset 0 0 0 1px color-mix(in srgb, var(--color-primary-element, #0a7cff) 72%, transparent);
+    -webkit-backdrop-filter: brightness(1.14) saturate(1.3) hue-rotate(7deg);
+    backdrop-filter: brightness(1.14) saturate(1.3) hue-rotate(7deg);
+}

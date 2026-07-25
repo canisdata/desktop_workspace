@@ -59,6 +59,7 @@ class PageController extends Controller {
     public function dynamicData(): JSONResponse {
         $l = \OC::$server->getL10N('desktop_workspace');
         $user = $this->userSession->getUser();
+        $uid = $user?->getUID();
         return new JSONResponse([
             'apps' => $this->navigationApps(),
             'labels' => [
@@ -69,6 +70,8 @@ class PageController extends Controller {
                 'Desktop Files' => $l->t('Desktop Files'),
             ],
             ...$this->decorationService->appearanceForUser($user?->getUID()),
+            'windowControlsSide' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::WINDOW_CONTROLS_SIDE_KEY, 'right') : 'right',
+            'shellMode' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::SHELL_MODE_KEY, 'taskbar') : 'taskbar',
         ]);
     }
 
@@ -100,6 +103,7 @@ class PageController extends Controller {
             'dynamicDataUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.page.dynamicData'),
             'desktopfilesEnabled' => $this->filesAvailability->enabledForUser($user),
             'settingsUrl' => $this->urlGenerator->getAbsoluteURL('/index.php/settings/user/desktop_workspace'),
+            'filesUrl' => $this->urlGenerator->linkToRoute('files.view.index'),
             'personalSaveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.savePersonalSettings'),
             'iconPositions' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::ICON_POSITIONS_KEY, '{}') : '{}',
             'iconSaveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveIconPositions'),
@@ -111,11 +115,20 @@ class PageController extends Controller {
             'showHome' => $uid !== null && $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::SHOW_HOME_KEY, 'no') === 'yes',
             'desktopFolder' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::DESKTOP_FOLDER_KEY, '') : '',
             'trashNoConfirm' => $uid !== null && $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::TRASH_NO_CONFIRM_KEY, 'no') === 'yes',
+            'windowControlsSide' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::WINDOW_CONTROLS_SIDE_KEY, 'right') : 'right',
+            'shellMode' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::SHELL_MODE_KEY, 'taskbar') : 'taskbar',
             ...$this->decorationService->appearanceForUser($uid),
         ]);
         $csp = new ContentSecurityPolicy();
         $csp->addAllowedFrameDomain("'self'");
+        $csp->addAllowedFrameDomain('https:');
+        $csp->addAllowedFrameDomain('http:');
         $response->setContentSecurityPolicy($csp);
+        // Chromium requires the top-level document to delegate fullscreen through every
+        // iframe in the chain (Desktop -> External Sites -> Jellyfin). Nextcloud still emits
+        // both the legacy and current policy headers, so both must permit that delegation.
+        $response->addHeader('Feature-Policy', "autoplay 'self';camera 'none';fullscreen *;geolocation 'none';microphone 'none';payment 'none'");
+        $response->addHeader('Permissions-Policy', 'fullscreen=*');
         return $response;
     }
 }

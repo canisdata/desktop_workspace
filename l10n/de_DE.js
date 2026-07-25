@@ -215,7 +215,7 @@ OC.L10N.register(
         "Add to desktop": "Zum Desktop hinzufügen",
         "Remove from desktop": "Vom Desktop entfernen",
         "Pinned apps": "Angeheftete Apps",
-        "Search": "Search",
+        "Search": "Suche",
     "Opens in new tab": "Öffnet in neuem Tab",
         "All translations are machine translations.": "Alle Übersetzungen sind maschinelle Übersetzungen.",
         "Back": "Zurück",
@@ -254,6 +254,17 @@ OC.L10N.register(
     "Appearance choices": "Aussehensmöglichkeiten",
     "Allow users to customize Desktop appearance": "Ermöglichen Sie Benutzern, das Erscheinungsbild des Desktops anzupassen",
     "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Wenn deaktiviert, verwendet Desktop den Standardstil und folgt dem Nextcloud-Erscheinungsbild jedes Benutzers."
-    ,"All desktop settings were reset and applied.": "Alle Desktop-Einstellungen wurden zurückgesetzt und angewendet.","No apps found.": "Keine Apps gefunden.","{name} could not be opened natively.": "{name} konnte nicht in einer nativen Anwendung geöffnet werden.","Open as full page": "Als ganze Seite öffnen","Delete {name}?": "{name} löschen?","No folders": "Keine Ordner","Could not complete file operation.": "Der Dateivorgang konnte nicht abgeschlossen werden."},
+    ,"All desktop settings were reset and applied.": "Alle Desktop-Einstellungen wurden zurückgesetzt und angewendet.","No apps found.": "Keine Apps gefunden.","{name} could not be opened natively.": "{name} konnte nicht in einer nativen Anwendung geöffnet werden.","Open as full page": "Als ganze Seite öffnen","Delete {name}?": "{name} löschen?","No folders": "Keine Ordner","Could not complete file operation.": "Der Dateivorgang konnte nicht abgeschlossen werden.",
+    "Window controls": "Fenstersteuerung",
+    "Window control position": "Position der Fenstersteuerung",
+    "Left side": "Linke Seite",
+    "Right side": "Rechte Seite",
+    "Desktop panel": "Desktop-Leiste",
+    "Choose how open apps and controls are shown": "Wähle, wie offene Apps und Steuerelemente angezeigt werden",
+    "Dock": "Dock",
+    "Open Apps menu": "Apps-Menü öffnen",
+    "Add to dock": "Zum Dock hinzufügen",
+    "Remove from dock": "Aus dem Dock entfernen"
+},
     "nplurals=2; plural=(n != 1);"
 );

@@ -30,7 +30,7 @@
         "Activity": "Attività",
         "Versions": "Versioni",
         "Location": "Posizione",
-        "File ID": "File ID",
+        "File ID": "ID file",
         "No shares yet.": "Nessuna condivisione ancora.",
         "Create public link": "Crea collegamento pubblico",
         "Open in Files for advanced sharing": "Apri in File per la condivisione avanzata",
@@ -253,6 +253,17 @@
         "Appearance choices": "Scelte estetiche",
         "Allow users to customize Desktop appearance": "Consenti agli utenti di personalizzare l'aspetto del desktop",
         "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Quando disabilitato, Desktop utilizza lo stile Standard e segue l'aspetto Nextcloud di ciascun utente."
-    ,"All desktop settings were reset and applied.": "Tutte le impostazioni del desktop sono state ripristinate e applicate.","No apps found.": "Nessuna app trovata.","{name} could not be opened natively.": "Impossibile aprire {name} in modo nativo.","Open as full page": "Apri a pagina intera","Delete {name}?": "Eliminare {name}?","No folders": "Nessuna cartella","Could not complete file operation.": "Impossibile completare l'operazione sul file."},
+    ,"All desktop settings were reset and applied.": "Tutte le impostazioni del desktop sono state ripristinate e applicate.","No apps found.": "Nessuna app trovata.","{name} could not be opened natively.": "Impossibile aprire {name} in modo nativo.","Open as full page": "Apri a pagina intera","Delete {name}?": "Eliminare {name}?","No folders": "Nessuna cartella","Could not complete file operation.": "Impossibile completare l'operazione sul file.",
+        "Window controls": "Controlli della finestra",
+        "Window control position": "Posizione dei controlli della finestra",
+        "Left side": "Lato sinistro",
+        "Right side": "Lato destro",
+        "Desktop panel": "Pannello del desktop",
+        "Choose how open apps and controls are shown": "Scegli come visualizzare le app aperte e i controlli",
+        "Dock": "Dock",
+        "Open Apps menu": "Apri il menu delle app",
+        "Add to dock": "Aggiungi al Dock",
+        "Remove from dock": "Rimuovi dal Dock"
+    },
     "pluralForm": "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

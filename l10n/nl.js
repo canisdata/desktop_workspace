@@ -208,7 +208,7 @@ OC.L10N.register(
     "Reset debug log": "Foutopsporingslog opnieuw instellen",
     "Clear the desktop debug log? This cannot be undone.": "Het foutopsporingslogboek op het bureaublad wissen? Dit kan niet ongedaan worden gemaakt.",
     "Debug log cleared.": "Foutopsporingslogboek gewist.",
-    "Open Desktop Workspace": "Open Desktop Workspace",
+    "Open Desktop Workspace": "Desktop Workspace openen",
     "Desktop Workspace": "Desktop Workspace",
     "Add to taskbar": "Aan taakbalk toevoegen",
     "Remove from taskbar": "Van taakbalk verwijderen",
@@ -261,6 +261,17 @@ OC.L10N.register(
     "Delete {name}?": "{name} verwijderen?",
     "No folders": "Geen mappen",
     "Could not complete file operation.": "Kon de bestandsbewerking niet voltooien."
+,
+    "Window controls": "Vensterknoppen",
+    "Window control position": "Positie van vensterknoppen",
+    "Left side": "Linkerkant",
+    "Right side": "Rechterkant",
+    "Desktop panel": "Bureaubladpaneel",
+    "Choose how open apps and controls are shown": "Kies hoe geopende apps en bedieningselementen worden weergegeven",
+    "Dock": "Dock",
+    "Open Apps menu": "Apps-menu openen",
+    "Add to dock": "Voeg toe aan Dock",
+    "Remove from dock": "Verwijder uit Dock"
 },
     "nplurals=2; plural=(n != 1);"
 );

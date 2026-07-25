@@ -253,6 +253,17 @@
         "Appearance choices": "Opções de aparência",
         "Allow users to customize Desktop appearance": "Permitir que os usuários personalizem a aparência da área de trabalho",
         "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Quando desativado, o Desktop usa o estilo Padrão e segue a aparência do Nextcloud de cada usuário."
-    ,"All desktop settings were reset and applied.": "Todas as definições do ambiente de trabalho foram repostas e aplicadas.","No apps found.": "Nenhuma aplicação encontrada.","{name} could not be opened natively.": "Não foi possível abrir {name} nativamente.","Open as full page": "Abrir como página inteira","Delete {name}?": "Eliminar {name}?","No folders": "Nenhuma pasta","Could not complete file operation.": "Não foi possível concluir a operação de ficheiro."},
+    ,"All desktop settings were reset and applied.": "Todas as definições do ambiente de trabalho foram repostas e aplicadas.","No apps found.": "Nenhuma aplicação encontrada.","{name} could not be opened natively.": "Não foi possível abrir {name} nativamente.","Open as full page": "Abrir como página inteira","Delete {name}?": "Eliminar {name}?","No folders": "Nenhuma pasta","Could not complete file operation.": "Não foi possível concluir a operação de ficheiro.",
+        "Window controls": "Botões da janela",
+        "Window control position": "Posição dos botões da janela",
+        "Left side": "Lado esquerdo",
+        "Right side": "Lado direito",
+        "Desktop panel": "Painel do ambiente de trabalho",
+        "Choose how open apps and controls are shown": "Escolha como são apresentadas as aplicações abertas e os controlos",
+        "Dock": "Dock",
+        "Open Apps menu": "Abrir menu Aplicações",
+        "Add to dock": "Afixar na dock",
+        "Remove from dock": "Remover da dock"
+    },
     "pluralForm": "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

@@ -1,0 +1,8 @@
+.desktop-radio-group {
+    min-width: 0;
+    margin: 8px 0 0;
+    padding: 0;
+    border: 0;
+}
+.desktop-radio-group legend { margin-bottom: 8px; font-weight: 600; }
+.desktop-radio-group label { display: inline-flex; align-items: center; gap: 6px; margin: 0 18px 6px 0; }

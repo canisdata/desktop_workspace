@@ -1443,6 +1443,10 @@
         iframe.className = 'desktop-window-iframe';
         iframe.title = app.name;
         iframe.src = absoluteHref;
+        // Chromium enforces iframe fullscreen through Permissions Policy. Firefox currently
+        // permits this without an explicit declaration, which hid the missing permission.
+        iframe.allow = 'fullscreen';
+        iframe.setAttribute('allowfullscreen', '');
         iframe.loading = 'eager';
         iframe.dataset.desktopCreatedAt = String(Date.now());
         const focusFromIntentionalPointer = () => {
@@ -1456,6 +1460,20 @@
         iframe.addEventListener('pointerdown', focusFromIntentionalPointer);
         iframe.addEventListener('load', () => {
             iframe.dataset.desktopLoadedAt = String(Date.now());
+            // Nextcloud External Sites adds another iframe layer whose response restricts
+            // fullscreen to itself in Chromium. Promote its configured site into the shell's
+            // already-permitted iframe so video players receive fullscreen directly.
+            if (!iframe.dataset.externalSitePromoted && /\/apps\/external\/\d+\/?/.test(iframeUrl.pathname)) {
+                try {
+                    const nested = iframe.contentDocument?.querySelector('iframe[src]');
+                    const nestedUrl = nested && new URL(nested.src, window.location.href);
+                    if (nestedUrl && ['http:', 'https:'].includes(nestedUrl.protocol) && nestedUrl.origin !== window.location.origin) {
+                        iframe.dataset.externalSitePromoted = 'true';
+                        iframe.src = nestedUrl.href;
+                        return;
+                    }
+                } catch (e) { /* cross-origin after promotion */ }
+            }
             refreshThemingIframeMonitor(iframe);
             hideIframeChrome(iframe, app);
             watchIframeFileViewer(iframe, app);
@@ -1870,6 +1888,7 @@
 
     // --- Window snapping / tiling (Windows-style aero snap) ---
     let snapPreview = null;
+    let snapTargets = null;
     function getSnapPreview() {
         if (!snapPreview) {
             snapPreview = document.createElement('div');
@@ -1878,6 +1897,21 @@
             stage.appendChild(snapPreview);
         }
         return snapPreview;
+    }
+    function showSnapTargets(zone, visible = true) {
+        if (!snapTargets) {
+            snapTargets = document.createElement('div');
+            snapTargets.className = 'desktop-snap-targets';
+            snapTargets.hidden = true;
+            snapTargets.setAttribute('aria-hidden', 'true');
+            snapTargets.innerHTML = ['tl', 'max', 'tr', 'left', 'right', 'bl', 'br']
+                .map((name) => `<span class="desktop-snap-target" data-zone="${name}"></span>`).join('');
+            stage.appendChild(snapTargets);
+        }
+        snapTargets.hidden = !visible;
+        snapTargets.querySelectorAll('.desktop-snap-target').forEach((target) => {
+            target.classList.toggle('is-active', visible && target.dataset.zone === zone);
+        });
     }
     const TILE = {
         left:  { left: '0%',  top: '0%',  width: '50%',  height: '100%' },
@@ -2019,6 +2053,7 @@
                 if (Math.abs(event.clientX - drag.startX) < 4 && Math.abs(event.clientY - drag.startY) < 4) return;
                 drag.moved = true;
                 win.classList.add('is-window-dragging');
+                showSnapTargets(null);
                 if (drag.wasTiled) untileForDrag(win, event.clientX); // only leave the tile once actually dragged
                 drag.x = event.clientX; drag.y = event.clientY;
                 drag.left = win.offsetLeft; drag.top = win.offsetTop;
@@ -2032,9 +2067,11 @@
             win.style.left = `${nl}px`;
             win.style.top = `${nt}px`;
             drag.zone = snapZoneAt(event.clientX, event.clientY);
+            showSnapTargets(drag.zone);
             showSnapPreview(drag.zone);
         });
         titlebar.addEventListener('pointerup', () => {
+            showSnapTargets(null, false);
             showSnapPreview(null);
             if (drag && drag.moved && drag.zone) applyTile(win, drag.zone);
             win.classList.remove('is-window-dragging');
@@ -2042,6 +2079,7 @@
             saveState();
         });
         titlebar.addEventListener('pointercancel', () => {
+            showSnapTargets(null, false);
             showSnapPreview(null);
             win.classList.remove('is-window-dragging');
             drag = null;
@@ -2227,6 +2265,9 @@
 
     function headerMenuTarget(link) {
         if (!link) return null;
+        // Unified-search links have their own desktop-window router. Letting the generic moved-
+        // header router handle them as well opens the same result under two different window ids.
+        if (isUnifiedSearchResultLink(link)) return null;
         if (link.closest('#desktop-nextcloud-logo, #desktop-start-menu, #desktop-launcher, #desktop-task-list')) return null; // shell chrome
         if (link.closest('.avatardiv, .contact__avatar')) return null;                  // avatar trigger
         if (isNativeAccountMenuAction(link)) return null;                                // account overlays/logout stay native
@@ -2519,6 +2560,7 @@
             el.dataset.kind = item.special ? 'special' : (item.kind || 'fav');
             if (item.kind === 'app') el.dataset.appKey = item.appKey || item.id || '';
             el.dataset.favorited = item.favorited ? 'true' : 'false';
+            el.dataset.desktopItemSignature = JSON.stringify(item);
             if (item.special) el.dataset.special = item.special;
             const visual = item.kind === 'app'
                 ? `<span class="desktop-app-shortcut-circle"><img src="${escapeHtml(item.icon || '')}" alt="" draggable="false"></span>`
@@ -3247,12 +3289,11 @@
         window.addEventListener('resize', relayout);
         document.addEventListener('fullscreenchange', relayout);
 
-        async function renderAll() {
-            layer.querySelectorAll('.desktop-fav').forEach((n) => n.remove());
-            occupied.clear();
-            clearSelection();
-            icons = [];
-            const add = (item) => { const el = makeIcon(item); layer.appendChild(el); wireIcon(el); icons.push(el); };
+        let iconsReloading = false;
+        let iconsReloadPending = false;
+        async function desktopItems() {
+            const items = [];
+            const add = (item) => items.push(item);
             const addDesktopPinnedApps = () => {
                 (readAppPins().desktop || []).map(appFromKey).filter(Boolean).forEach((app) => add({
                     id: `app-${appKey(app)}`,
@@ -3285,10 +3326,50 @@
                 catch (e) {  }
             }
             if (root.dataset.showTrash === 'true') add(trashItem()); // right after the favorites
-            layout();
+            return items;
+        }
 
+        async function renderAll() {
+            if (iconsReloading) { iconsReloadPending = true; return; }
+            iconsReloading = true;
+            try {
+                const items = await desktopItems();
+                const existing = new Map(Array.from(layer.querySelectorAll('.desktop-fav')).map((el) => [el.dataset.fileId, el]));
+                const nextIcons = [];
+                items.forEach((item) => {
+                    const key = String(item.id || item.fileId || '');
+                    const signature = JSON.stringify(item);
+                    let el = existing.get(key);
+                    existing.delete(key);
+                    if (!el || el.dataset.desktopItemSignature !== signature) {
+                        const wasSelected = Boolean(el?.classList.contains('is-selected'));
+                        if (el) { selection.delete(el); el.remove(); }
+                        el = makeIcon(item);
+                        wireIcon(el);
+                        if (wasSelected) selectIcon(el);
+                    }
+                    nextIcons.push(el);
+                });
+                existing.forEach((el) => { selection.delete(el); el.remove(); });
+                nextIcons.forEach((el, index) => {
+                    const current = layer.querySelectorAll(':scope > .desktop-fav')[index];
+                    if (current !== el) layer.insertBefore(el, current || null);
+                });
+                icons = nextIcons;
+                layout();
+            } finally {
+                iconsReloading = false;
+                if (iconsReloadPending) {
+                    iconsReloadPending = false;
+                    renderAll();
+                }
+            }
         }
         favoritesReload = renderAll;
+        // WebDAV does not push folder changes to this page. Poll only when a Desktop folder is
+        // configured and reconcile keyed icons in place, avoiding the visible clear/rebuild reload.
+        window.setInterval(() => { if (desktopFolder && !document.hidden) renderAll(); }, 5000);
+        document.addEventListener('visibilitychange', () => { if (desktopFolder && !document.hidden) renderAll(); });
         refreshDesktopPinnedApps = () => {
             layer.querySelectorAll('.desktop-fav[data-kind="app"][data-app-key]').forEach((el) => {
                 const app = appFromKey(el.dataset.appKey);

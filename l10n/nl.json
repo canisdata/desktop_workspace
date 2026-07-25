@@ -207,7 +207,7 @@
         "Reset debug log": "Foutopsporingslog opnieuw instellen",
         "Clear the desktop debug log? This cannot be undone.": "Het foutopsporingslogboek op het bureaublad wissen? Dit kan niet ongedaan worden gemaakt.",
         "Debug log cleared.": "Foutopsporingslogboek gewist.",
-        "Open Desktop Workspace": "Open Desktop Workspace",
+        "Open Desktop Workspace": "Desktop Workspace openen",
         "Desktop Workspace": "Desktop Workspace",
         "Add to taskbar": "Aan taakbalk toevoegen",
         "Remove from taskbar": "Van taakbalk verwijderen",
@@ -253,6 +253,17 @@
         "Appearance choices": "Uiterlijk keuzes",
         "Allow users to customize Desktop appearance": "Sta gebruikers toe het uiterlijk van het bureaublad aan te passen",
         "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Indien uitgeschakeld, gebruikt Desktop de standaardstijl en volgt het het Nextcloud-uiterlijk van elke gebruiker."
-    ,"All desktop settings were reset and applied.": "Alle bureaubladinstellingen zijn gereset en toegepast.","No apps found.": "Geen apps gevonden.","{name} could not be opened natively.": "{name} kon niet native worden geopend.","Open as full page": "Openen als volledige pagina","Delete {name}?": "{name} verwijderen?","No folders": "Geen mappen","Could not complete file operation.": "Kon de bestandsbewerking niet voltooien."},
+    ,"All desktop settings were reset and applied.": "Alle bureaubladinstellingen zijn gereset en toegepast.","No apps found.": "Geen apps gevonden.","{name} could not be opened natively.": "{name} kon niet native worden geopend.","Open as full page": "Openen als volledige pagina","Delete {name}?": "{name} verwijderen?","No folders": "Geen mappen","Could not complete file operation.": "Kon de bestandsbewerking niet voltooien.",
+        "Window controls": "Vensterknoppen",
+        "Window control position": "Positie van vensterknoppen",
+        "Left side": "Linkerkant",
+        "Right side": "Rechterkant",
+        "Desktop panel": "Bureaubladpaneel",
+        "Choose how open apps and controls are shown": "Kies hoe geopende apps en bedieningselementen worden weergegeven",
+        "Dock": "Dock",
+        "Open Apps menu": "Apps-menu openen",
+        "Add to dock": "Voeg toe aan Dock",
+        "Remove from dock": "Verwijder uit Dock"
+    },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

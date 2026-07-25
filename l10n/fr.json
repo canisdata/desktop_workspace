@@ -42,7 +42,7 @@
         "Desktop workspace": "Espace de travail du bureau",
         "Nextcloud Desktop": "Bureau Nextcloud",
         "Applications": "Applications",
-        "Apps": "Apps",
+        "Apps": "Applications",
         "Search apps": "Rechercher des apps",
         "Taskbar": "Barre des tâches",
         "Show desktop": "Afficher le bureau",
@@ -253,6 +253,17 @@
         "Appearance choices": "Choix d'apparence",
         "Allow users to customize Desktop appearance": "Autoriser les utilisateurs à personnaliser l'apparence du bureau",
         "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Lorsqu'il est désactivé, Desktop utilise le style Standard et suit l'apparence Nextcloud de chaque utilisateur."
-    ,"All desktop settings were reset and applied.": "Tous les paramètres du bureau ont été réinitialisés et appliqués.","No apps found.": "Aucune application trouvée.","{name} could not be opened natively.": "Impossible d’ouvrir {name} dans une application native.","Open as full page": "Ouvrir en pleine page","Delete {name}?": "Supprimer {name} ?","No folders": "Aucun dossier","Could not complete file operation.": "Impossible de terminer l’opération sur le fichier."},
+    ,"All desktop settings were reset and applied.": "Tous les paramètres du bureau ont été réinitialisés et appliqués.","No apps found.": "Aucune application trouvée.","{name} could not be opened natively.": "Impossible d’ouvrir {name} dans une application native.","Open as full page": "Ouvrir en pleine page","Delete {name}?": "Supprimer {name} ?","No folders": "Aucun dossier","Could not complete file operation.": "Impossible de terminer l’opération sur le fichier.",
+        "Window controls": "Boutons de fenêtre",
+        "Window control position": "Position des boutons de fenêtre",
+        "Left side": "Côté gauche",
+        "Right side": "Côté droit",
+        "Desktop panel": "Panneau du bureau",
+        "Choose how open apps and controls are shown": "Choisissez comment afficher les applications ouvertes et les commandes",
+        "Dock": "Dock",
+        "Open Apps menu": "Ouvrir le menu des applications",
+        "Add to dock": "Épingler au Dock",
+        "Remove from dock": "Détacher du Dock"
+    },
     "pluralForm": "nplurals=2; plural=(n > 1);"
 }

@@ -185,12 +185,19 @@ body:has(#desktop-root[data-decoration="retro"]:not(.desktop-decoration-light)) 
     clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
 }
 #desktop-root[data-decoration="retro"] .desktop-fav:hover,
-#desktop-root[data-decoration="retro"] .desktop-fav:focus-visible,
-#desktop-root[data-decoration="retro"] .desktop-fav.is-selected {
+#desktop-root[data-decoration="retro"] .desktop-fav:focus-visible {
     border-color: var(--cbp-yellow-hot);
     outline: 2px solid var(--cbp-yellow-hot);
     outline-offset: 2px;
     filter: brightness(1.08);
+}
+#desktop-root[data-decoration="retro"] .desktop-fav.is-selected {
+    border-color: var(--cbp-yellow-hot) !important;
+    outline: 3px solid var(--cbp-yellow-hot);
+    outline-offset: 2px;
+    background: linear-gradient(164deg, color-mix(in srgb, var(--cbp-yellow-hot) 34%, var(--cbp-wear)), color-mix(in srgb, var(--cbp-yellow) 24%, var(--cbp-panel)) 48%, color-mix(in srgb, var(--cbp-panel) 66%, #000)) !important;
+    box-shadow: inset 5px 0 var(--cbp-red), inset 2px 2px var(--cbp-wear), inset -2px -2px var(--cbp-grime), 0 0 0 2px color-mix(in srgb, var(--cbp-line) 82%, transparent), 5px 6px 9px var(--cbp-shadow);
+    filter: brightness(1.14) saturate(1.18);
 }
 #desktop-root[data-decoration="retro"] .desktop-fav-label { color: var(--cbp-ink); text-shadow: 0 1px var(--cbp-wear); }
 

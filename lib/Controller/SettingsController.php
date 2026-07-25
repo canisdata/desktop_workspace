@@ -31,6 +31,8 @@ class SettingsController extends Controller {
     public const ICON_DECORATION_LINKED_KEY = 'icon_decoration_linked';
     public const ICON_DECORATION_KEY = 'icon_decoration';
     public const ICON_COLOR_KEY = 'icon_color';
+    public const WINDOW_CONTROLS_SIDE_KEY = 'window_controls_side';
+    public const SHELL_MODE_KEY = 'shell_mode';
 
     public function __construct(
         string $appName,
@@ -198,6 +200,8 @@ class SettingsController extends Controller {
                 'iconDecorationLinked' => true,
                 'iconDecoration' => DecorationService::STANDARD,
                 'iconColor' => DecorationService::FOLLOW_NEXTCLOUD,
+                'windowControlsSide' => 'right',
+                'shellMode' => 'taskbar',
             ],
         ]);
     }
@@ -230,6 +234,8 @@ class SettingsController extends Controller {
         ?string $icon_decoration_linked = null,
         ?string $icon_decoration = null,
         ?string $icon_color = null,
+        ?string $window_controls_side = null,
+        ?string $shell_mode = null,
     ): JSONResponse {
         $user = $this->userSession->getUser();
         if ($user === null) {
@@ -238,6 +244,16 @@ class SettingsController extends Controller {
         $uid = $user->getUID();
         $truthy = static fn (string $v): bool => $v === 'yes' || $v === 'true' || $v === '1';
         $result = ['status' => 'ok'];
+        if ($window_controls_side !== null) {
+            $value = $window_controls_side === 'left' ? 'left' : 'right';
+            $this->config->setUserValue($uid, self::APP_ID, self::WINDOW_CONTROLS_SIDE_KEY, $value);
+            $result['windowControlsSide'] = $value;
+        }
+        if ($shell_mode !== null) {
+            $value = $shell_mode === 'dock' ? 'dock' : 'taskbar';
+            $this->config->setUserValue($uid, self::APP_ID, self::SHELL_MODE_KEY, $value);
+            $result['shellMode'] = $value;
+        }
         if ($decoration !== null) {
             $selected = in_array($decoration, [DecorationService::STANDARD, DecorationService::REDMOND, DecorationService::RETRO], true)
                 ? $decoration

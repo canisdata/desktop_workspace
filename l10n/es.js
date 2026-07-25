@@ -10,7 +10,7 @@ OC.L10N.register(
     "Skip": "Saltar",
     "Cancel": "Cancelar",
     "Rename": "Renombrar",
-    "Desktop Files": "Desktop Files",
+    "Desktop Files": "Archivos del escritorio",
     "This file manager is part of the desktop environment and is intended to be opened from the apps menu.": "Este administrador de archivos es parte del entorno de escritorio y está diseñado para abrirse desde el menú apps.",
     "Up": "arriba",
     "Refresh": "Actualizar",
@@ -209,7 +209,7 @@ OC.L10N.register(
     "Clear the desktop debug log? This cannot be undone.": "¿Borrar el registro de depuración del escritorio? Esto no se puede deshacer.",
     "Debug log cleared.": "Se borró el registro de depuración.",
     "Open Desktop Workspace": "Abierto Desktop Workspace",
-    "Desktop Workspace": "Desktop Workspace",
+    "Desktop Workspace": "Espacio de trabajo del escritorio",
     "Add to taskbar": "Añadir a la barra de tareas",
     "Remove from taskbar": "Quitar de la barra de tareas",
     "Add to desktop": "Añadir al escritorio",
@@ -261,6 +261,17 @@ OC.L10N.register(
     "Delete {name}?": "¿Eliminar {name}?",
     "No folders": "No hay carpetas",
     "Could not complete file operation.": "No se pudo completar la operación con el archivo."
+,
+    "Window controls": "Botones de la ventana",
+    "Window control position": "Posición de los botones de la ventana",
+    "Left side": "Lado izquierdo",
+    "Right side": "Lado derecho",
+    "Desktop panel": "Panel del escritorio",
+    "Choose how open apps and controls are shown": "Elige cómo se muestran las aplicaciones abiertas y los controles",
+    "Dock": "Dock",
+    "Open Apps menu": "Abrir el menú de aplicaciones",
+    "Add to dock": "Añadir al Dock",
+    "Remove from dock": "Quitar del Dock"
 },
     "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 );

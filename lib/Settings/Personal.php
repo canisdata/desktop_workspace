@@ -37,6 +37,12 @@ class Personal implements ISettings {
             'tryExperimentalFiles' => $optedIn,
             'userDecorationsEnabled' => $this->decorationService->userSelectionEnabled(),
             ...$appearance,
+            'windowControlsSide' => $user !== null
+                ? $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, SettingsController::WINDOW_CONTROLS_SIDE_KEY, 'right')
+                : 'right',
+            'shellMode' => $user !== null
+                ? $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, SettingsController::SHELL_MODE_KEY, 'taskbar')
+                : 'taskbar',
             'showFavorites' => $user !== null
                 && $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, SettingsController::SHOW_FAVORITES_KEY, 'no') === 'yes',
             'favoritesNoConfirm' => $user !== null

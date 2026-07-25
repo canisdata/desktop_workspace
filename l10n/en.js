@@ -254,6 +254,17 @@ OC.L10N.register(
     "Appearance choices": "Appearance choices",
     "Allow users to customize Desktop appearance": "Allow users to customize Desktop appearance",
     "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance."
-    ,"All desktop settings were reset and applied.":"All desktop settings were reset and applied.","No apps found.":"No apps found.","{name} could not be opened natively.":"{name} could not be opened natively.","Open as full page":"Open as full page","Delete {name}?":"Delete {name}?","No folders":"No folders","Could not complete file operation.":"Could not complete file operation."},
+    ,"All desktop settings were reset and applied.":"All desktop settings were reset and applied.","No apps found.":"No apps found.","{name} could not be opened natively.":"{name} could not be opened natively.","Open as full page":"Open as full page","Delete {name}?":"Delete {name}?","No folders":"No folders","Could not complete file operation.":"Could not complete file operation.",
+    "Window controls": "Window controls",
+    "Window control position": "Window control position",
+    "Left side": "Left side",
+    "Right side": "Right side",
+    "Desktop panel": "Desktop panel",
+    "Choose how open apps and controls are shown": "Choose how open apps and controls are shown",
+    "Dock": "Dock",
+    "Open Apps menu": "Open Apps menu",
+    "Add to dock": "Add to dock",
+    "Remove from dock": "Remove from dock"
+},
     "nplurals=2; plural=(n != 1);"
 );

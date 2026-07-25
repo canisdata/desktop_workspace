@@ -31,7 +31,7 @@ OC.L10N.register(
     "Activity": "Attività",
     "Versions": "Versioni",
     "Location": "Posizione",
-    "File ID": "File ID",
+    "File ID": "ID file",
     "No shares yet.": "Nessuna condivisione ancora.",
     "Create public link": "Crea collegamento pubblico",
     "Open in Files for advanced sharing": "Apri in File per la condivisione avanzata",
@@ -261,6 +261,17 @@ OC.L10N.register(
     "Delete {name}?": "Eliminare {name}?",
     "No folders": "Nessuna cartella",
     "Could not complete file operation.": "Impossibile completare l'operazione sul file."
+,
+    "Window controls": "Controlli della finestra",
+    "Window control position": "Posizione dei controlli della finestra",
+    "Left side": "Lato sinistro",
+    "Right side": "Lato destro",
+    "Desktop panel": "Pannello del desktop",
+    "Choose how open apps and controls are shown": "Scegli come visualizzare le app aperte e i controlli",
+    "Dock": "Dock",
+    "Open Apps menu": "Apri il menu delle app",
+    "Add to dock": "Aggiungi al Dock",
+    "Remove from dock": "Rimuovi dal Dock"
 },
     "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 );

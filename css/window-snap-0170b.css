@@ -1,0 +1,52 @@
+/* Snap affordances and true stage-filling maximized windows. */
+.desktop-window.is-maximized {
+    inset: 0 !important;
+    border-radius: 0 !important;
+}
+
+.desktop-snap-targets {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+}
+.desktop-snap-target {
+    --snap-enter-x: 0;
+    --snap-enter-y: 0;
+    position: absolute;
+    border: 1px solid color-mix(in srgb, var(--color-primary-element-text, #fff) 72%, transparent);
+    background: color-mix(in srgb, var(--color-primary-element, #0a7cff) 16%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-primary-element, #0a7cff) 48%, transparent), 0 2px 8px rgba(0, 0, 0, .16);
+    -webkit-backdrop-filter: brightness(1.08) saturate(1.16);
+    backdrop-filter: brightness(1.08) saturate(1.16);
+    opacity: .54;
+    animation: desktop-snap-target-in 220ms cubic-bezier(.2, .8, .2, 1) both;
+    transition: opacity 100ms ease, background 100ms ease, box-shadow 100ms ease;
+}
+.desktop-snap-target.is-active {
+    background: color-mix(in srgb, var(--color-primary-element, #0a7cff) 34%, transparent);
+    box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--color-primary-element-text, #fff) 80%, transparent), 0 3px 12px rgba(0, 0, 0, .24);
+    opacity: .94;
+}
+.desktop-snap-target[data-zone="left"],
+.desktop-snap-target[data-zone="right"] { top: 28%; width: 18px; height: 44%; }
+.desktop-snap-target[data-zone="left"] { --snap-enter-x: -24px; left: 5px; border-radius: 0 10px 10px 0; }
+.desktop-snap-target[data-zone="right"] { --snap-enter-x: 24px; right: 5px; border-radius: 10px 0 0 10px; }
+.desktop-snap-target[data-zone="max"] { --snap-enter-y: -24px; top: 5px; left: 28%; width: 44%; height: 18px; border-radius: 0 0 10px 10px; }
+.desktop-snap-target[data-zone="tl"],
+.desktop-snap-target[data-zone="tr"],
+.desktop-snap-target[data-zone="bl"],
+.desktop-snap-target[data-zone="br"] { width: 54px; height: 54px; }
+.desktop-snap-target[data-zone="tl"] { --snap-enter-x: -24px; --snap-enter-y: -24px; top: 5px; left: 5px; border-radius: 0 0 12px 0; }
+.desktop-snap-target[data-zone="tr"] { --snap-enter-x: 24px; --snap-enter-y: -24px; top: 5px; right: 5px; border-radius: 0 0 0 12px; }
+.desktop-snap-target[data-zone="bl"] { --snap-enter-x: -24px; --snap-enter-y: 24px; bottom: 5px; left: 5px; border-radius: 0 12px 0 0; }
+.desktop-snap-target[data-zone="br"] { --snap-enter-x: 24px; --snap-enter-y: 24px; right: 5px; bottom: 5px; border-radius: 12px 0 0 0; }
+
+@keyframes desktop-snap-target-in {
+    from { transform: translate(var(--snap-enter-x), var(--snap-enter-y)); }
+    to { transform: translate(0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .desktop-snap-target { animation: none; transition: none; }
+}

@@ -261,6 +261,17 @@ OC.L10N.register(
     "Delete {name}?": "Eliminar {name}?",
     "No folders": "Nenhuma pasta",
     "Could not complete file operation.": "Não foi possível concluir a operação de ficheiro."
+,
+    "Window controls": "Botões da janela",
+    "Window control position": "Posição dos botões da janela",
+    "Left side": "Lado esquerdo",
+    "Right side": "Lado direito",
+    "Desktop panel": "Painel do ambiente de trabalho",
+    "Choose how open apps and controls are shown": "Escolha como são apresentadas as aplicações abertas e os controlos",
+    "Dock": "Dock",
+    "Open Apps menu": "Abrir menu Aplicações",
+    "Add to dock": "Afixar na dock",
+    "Remove from dock": "Remover da dock"
 },
     "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 );

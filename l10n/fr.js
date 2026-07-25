@@ -43,7 +43,7 @@ OC.L10N.register(
     "Desktop workspace": "Espace de travail du bureau",
     "Nextcloud Desktop": "Bureau Nextcloud",
     "Applications": "Applications",
-    "Apps": "Apps",
+    "Apps": "Applications",
     "Search apps": "Rechercher des apps",
     "Taskbar": "Barre des tâches",
     "Show desktop": "Afficher le bureau",
@@ -261,6 +261,17 @@ OC.L10N.register(
     "Delete {name}?": "Supprimer {name} ?",
     "No folders": "Aucun dossier",
     "Could not complete file operation.": "Impossible de terminer l’opération sur le fichier."
+,
+    "Window controls": "Boutons de fenêtre",
+    "Window control position": "Position des boutons de fenêtre",
+    "Left side": "Côté gauche",
+    "Right side": "Côté droit",
+    "Desktop panel": "Panneau du bureau",
+    "Choose how open apps and controls are shown": "Choisissez comment afficher les applications ouvertes et les commandes",
+    "Dock": "Dock",
+    "Open Apps menu": "Ouvrir le menu des applications",
+    "Add to dock": "Épingler au Dock",
+    "Remove from dock": "Détacher du Dock"
 },
     "nplurals=2; plural=(n > 1);"
 );

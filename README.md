@@ -1,7 +1,7 @@
 # Desktop Workspace for Nextcloud
 
 A browser-contained **desktop workspace** for Nextcloud. Instead of juggling browser tabs, open
-Nextcloud apps as draggable, resizable windows on a familiar desktop — with a taskbar, a clock,
+Nextcloud apps as draggable, resizable windows on a familiar desktop — with a taskbar or dock, a clock,
 desktop icons, and an optional built-in file manager.
 
 ![Screenshot](screenshots/01-standard-light.png)
@@ -14,7 +14,7 @@ desktop icons, and an optional built-in file manager.
 
 - **App windows** — open Nextcloud apps (Files, Mail, Calendar, …) as draggable, resizable,
   minimizable, maximizable windows. Snap to screen edges for tiling.
-- **Taskbar & clock** — running windows appear in a taskbar; a clock/date sits in the panel. Apps can be pinned to the taskbar and reordered there with drag-and-drop.
+- **Taskbar or dock & clock** — choose a traditional taskbar or a centered bottom dock. Running windows and pinned apps follow the selected layout, and the clock/date stays in the shell controls.
 - **Desktop icons** — show your **Favorites**, pinned apps, and/or the contents of a chosen **desktop folder**
   as icons, with drag-to-arrange positions, a recycling bin, and a home shortcut. Icons stay within the visible grid when the desktop is resized.
 - **Drag-and-drop upload** — drop files from your computer onto the desktop to upload them into the
@@ -74,6 +74,8 @@ Place the resulting `desktop_workspace` folder in your Nextcloud apps directory 
 - **Desktop icons** — show favorites, recycling bin, home folder; confirmation prompts.
 - **Desktop folder** — pick a folder you own to show on the desktop.
 - **Wallpaper** — jump to Nextcloud's appearance settings.
+- **Window controls** — place title-bar controls on the left or right.
+- **Desktop panel** — switch between the taskbar and dock layouts.
 - **Experimental** — opt in to the *Desktop Files* manager (if enabled by the admin).
 - **Reset** — reset icon positions, reset open windows, or **reset all desktop settings** (as if
   the desktop had never been opened).
@@ -87,6 +89,12 @@ Place the resulting `desktop_workspace` folder in your Nextcloud apps directory 
 - **Debug logging** to a log file.
 - **Reset a single user's** desktop settings completely.
 - Basic **usage stats** (unique users per day/week).
+
+### Early planning: decoration and icon-theme access
+
+For the full release, the project is exploring whether the optional **decoration styles and icon themes only** might require an unlock on instances with more than 10 active users. Instances with 10 or fewer active users would keep those appearance choices unlocked, while larger instances could receive an unlock code by supporting the project.
+
+This is an early planning and exploration notice, not implemented behavior. There is currently no lock, unlock-code system, or supporter check. The taskbar/dock choice and the left/right window-control choice are not part of this plan.
 
 ---
 

@@ -3,6 +3,28 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.17.0 – 2026-07-25
+
+### Added
+- Added per-user radio choices for left- or right-side window controls; the left layout uses close, minimize, maximize order and right-aligned title text.
+- Added a per-user taskbar or dock choice. Dock mode uses a centered bottom icon dock, a waffle Apps button, dock-specific pin wording, and a top utility bar for Nextcloud controls, date/time, the Files new-tab shortcut, and Desktop fullscreen.
+
+### Changed
+- Dock mode now uses a true floating overlay without reserving a full-width bottom row, auto-hides behind covering windows, and exposes a persistent bottom-edge reveal indicator.
+- The dock Apps menu now opens centered above the waffle button, and the desktop icon grid uses the stage between the top utility bar and the bottom screen edge.
+- Desktop-folder icons now update live through a keyed, in-place WebDAV reconciliation instead of requiring a visible full desktop reload.
+- Window dragging now reveals subtle corner, side, and top snap targets, with the active target reinforced by the existing tile preview.
+- The desktop rubber-band selection now combines a translucent accent fill, a subtle wallpaper hue/brightness shift, and contrasting light/dark edges so it remains visible on varied backgrounds.
+- Retro desktop icons now use a stronger selected state while retaining the existing hover and keyboard-focus highlight.
+
+### Fixed
+- Completed a full semantic locale audit, replacing genuine English fallbacks while retaining established untranslated product, style, and technical terms per language.
+- Kept maximized and top-corner-snapped window title bars below the dock-mode top utility bar.
+- Maximize-button windows now fill the complete desktop stage, matching windows snapped to the top edge.
+- Allowed fullscreen presentation from embedded app and external-site iframes in Chromium, including nested External Sites players such as Jellyfin.
+- Restored distinct hover and selected highlights for independently configured Redmond and Retro desktop icons.
+- Unified-search results now open exactly one Desktop Workspace window instead of being handled by both search-specific and generic header-link routers.
+
 ## 0.16.2 – 2026-07-13
 
 ### Fixed
