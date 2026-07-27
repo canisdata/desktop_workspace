@@ -45,7 +45,7 @@ desktop icons, and an optional built-in file manager.
 ### From the Nextcloud app installer (recommended)
 
 Desktop Workspace is available directly from the Nextcloud App Store. In Nextcloud, open **Apps**,
-search for **Desktop Workspace**, and select **Download and enable**.
+select the **Customization** category, find **Desktop Workspace**, and select **Download and enable**.
 
 ### From a release tarball
 
