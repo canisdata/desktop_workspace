@@ -42,6 +42,11 @@ desktop icons, and an optional built-in file manager.
 
 ## Installation
 
+### From the Nextcloud app installer (recommended)
+
+Desktop Workspace is available directly from the Nextcloud App Store. In Nextcloud, open **Apps**,
+search for **Desktop Workspace**, and select **Download and enable**.
+
 ### From a release tarball
 
 1. Download the latest `desktop_workspace-<version>.tar.gz`.
@@ -95,6 +100,12 @@ Place the resulting `desktop_workspace` folder in your Nextcloud apps directory 
 For the full release, the project is exploring whether the optional **decoration styles and icon themes only** might require an unlock on instances with more than 10 active users. Instances with 10 or fewer active users would keep those appearance choices unlocked, while larger instances could receive an unlock code by supporting the project.
 
 This is an early planning and exploration notice, not implemented behavior. There is currently no lock, unlock-code system, or supporter check. The taskbar/dock choice and the left/right window-control choice are not part of this plan.
+
+---
+
+## Like Desktop Workspace?
+
+If you find the app useful, please [rate Desktop Workspace in the Nextcloud App Store](https://apps.nextcloud.com/apps/desktop_workspace).
 
 ---
 
