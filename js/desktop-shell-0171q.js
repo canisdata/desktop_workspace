@@ -578,19 +578,65 @@
         dynamicDataReloadTimer = window.setTimeout(reloadDynamicAppData, delay);
     }
 
-    const APP_PIN_KEY = 'desktop_workspace:app-pins:v1';
+    const LEGACY_APP_PIN_KEY = 'desktop_workspace:app-pins:v1';
     function appKey(app) { return String(app?.id || app?.href || app?.name || '').replace(/[^a-z0-9_-]/gi, '_'); }
-    function readAppPins() {
-        try { const parsed = JSON.parse(localStorage.getItem(APP_PIN_KEY) || '{}'); return { taskbar: [], desktop: [], ...parsed }; } catch (e) { return { taskbar: [], desktop: [] }; }
+    function normalizeAppPins(value) {
+        const normalized = { taskbar: [], desktop: [] };
+        for (const location of Object.keys(normalized)) {
+            const values = Array.isArray(value?.[location]) ? value[location] : [];
+            normalized[location] = [...new Set(values.filter((item) => typeof item === 'string' && /^[A-Za-z0-9_-]{1,255}$/.test(item)))].slice(0, 100);
+        }
+        return normalized;
     }
-    function writeAppPins(pins) { try { localStorage.setItem(APP_PIN_KEY, JSON.stringify(pins)); } catch (e) { /* ignore */ } }
+    let appPins = (() => { try { return normalizeAppPins(JSON.parse(root.dataset.appPins || '{}')); } catch (e) { return normalizeAppPins({}); } })();
+    let confirmedAppPins = normalizeAppPins(appPins);
+    const appPinsSaveChains = { taskbar: Promise.resolve(), desktop: Promise.resolve() };
+    const appPinsSaveVersions = { taskbar: 0, desktop: 0 };
+    function readAppPins() { return { taskbar: [...appPins.taskbar], desktop: [...appPins.desktop] }; }
+    function showShellSaveFailure(error) {
+        window.OC?.Notification?.showTemporary?.(dt('Save failed: {msg}', { msg: error?.message || 'Unknown error' }));
+    }
+    function writeAppPins(pins, location) {
+        appPins = normalizeAppPins(pins);
+        const url = root.dataset.appPinsSaveUrl;
+        if (!url || !window.OC || !['taskbar', 'desktop'].includes(location)) return Promise.resolve();
+        const values = [...appPins[location]];
+        const version = ++appPinsSaveVersions[location];
+        appPinsSaveChains[location] = appPinsSaveChains[location].then(async () => {
+            const body = new URLSearchParams({ location, pins: JSON.stringify(values), requesttoken: OC.requestToken });
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8', requesttoken: OC.requestToken },
+                body,
+            });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            confirmedAppPins[location] = [...values];
+            if (version === appPinsSaveVersions[location]) {
+                appPins[location] = [...values];
+                renderPinnedApps();
+                renderPinnedDesktopApps();
+                if (typeof favoritesReload === 'function') favoritesReload();
+            }
+        }).catch((error) => {
+            if (version === appPinsSaveVersions[location]) {
+                appPins[location] = [...confirmedAppPins[location]];
+                renderPinnedApps();
+                renderPinnedDesktopApps();
+                if (typeof favoritesReload === 'function') favoritesReload();
+                showShellSaveFailure(error);
+            }
+        });
+        return appPinsSaveChains[location];
+    }
+    let legacyAppPins = normalizeAppPins({});
+    try { legacyAppPins = normalizeAppPins(JSON.parse(localStorage.getItem(LEGACY_APP_PIN_KEY) || '{}')); } catch (e) { /* ignore invalid legacy browser state */ }
     function isAppPinned(app, where) { return readAppPins()[where]?.includes(appKey(app)); }
     function setAppPinned(app, where, pinned) {
         const pins = readAppPins();
         const key = appKey(app);
         pins[where] = (pins[where] || []).filter((id) => id !== key);
         if (pinned) pins[where].push(key);
-        writeAppPins(pins);
+        writeAppPins(pins, where);
         renderPinnedApps();
         if (where === 'desktop' && typeof favoritesReload === 'function') favoritesReload();
     }
@@ -729,7 +775,7 @@
         if (beforeIndex >= 0) list.splice(beforeIndex, 0, dragKey);
         else list.push(dragKey);
         pins.taskbar = list;
-        writeAppPins(pins);
+        writeAppPins(pins, 'taskbar');
         renderPinnedApps();
     }
     function initPinnedAppReordering() {
@@ -769,13 +815,85 @@
         return apps;
     }
 
-    const APPS_MENU_SIZE_KEY = 'desktop_workspace:apps-menu-size:v1';
-    function readAppsMenuSize() {
-        try { return JSON.parse(localStorage.getItem(APPS_MENU_SIZE_KEY) || 'null') || {}; } catch (e) { return {}; }
+    const LEGACY_APPS_MENU_SIZE_KEY = 'desktop_workspace:apps-menu-size:v1';
+    function normalizeAppsMenuSize(value) {
+        return {
+            width: Number.isFinite(Number(value?.width)) ? Math.max(0, Math.min(Math.round(Number(value.width)), 10000)) : 0,
+            height: Number.isFinite(Number(value?.height)) ? Math.max(0, Math.min(Math.round(Number(value.height)), 10000)) : 0,
+        };
     }
+    let appsMenuSize = (() => { try { return normalizeAppsMenuSize(JSON.parse(root.dataset.appsMenuSize || '{}')); } catch (e) { return normalizeAppsMenuSize({}); } })();
+    let confirmedAppsMenuSize = normalizeAppsMenuSize(appsMenuSize);
+    let appsMenuSizeSaveChain = Promise.resolve();
+    let appsMenuSizeSaveVersion = 0;
+    function readAppsMenuSize() { return { ...appsMenuSize }; }
     function writeAppsMenuSize(size) {
-        try { localStorage.setItem(APPS_MENU_SIZE_KEY, JSON.stringify(size)); } catch (e) { /* ignore */ }
+        appsMenuSize = normalizeAppsMenuSize(size);
+        if (appsMenuSize.width === confirmedAppsMenuSize.width && appsMenuSize.height === confirmedAppsMenuSize.height) return Promise.resolve();
+        const url = root.dataset.appsMenuSizeSaveUrl;
+        if (!url || !window.OC) return Promise.resolve();
+        const payload = { ...appsMenuSize };
+        const version = ++appsMenuSizeSaveVersion;
+        appsMenuSizeSaveChain = appsMenuSizeSaveChain.then(async () => {
+            const body = new URLSearchParams({ width: String(payload.width), height: String(payload.height), requesttoken: OC.requestToken });
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8', requesttoken: OC.requestToken },
+                body,
+            });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            confirmedAppsMenuSize = { ...payload };
+            if (version === appsMenuSizeSaveVersion) {
+                appsMenuSize = { ...payload };
+                applyAppsMenuSize();
+            }
+        }).catch((error) => {
+            if (version === appsMenuSizeSaveVersion) {
+                appsMenuSize = { ...confirmedAppsMenuSize };
+                applyAppsMenuSize();
+                showShellSaveFailure(error);
+            }
+        });
+        return appsMenuSizeSaveChain;
     }
+    let legacyAppsMenuSize = normalizeAppsMenuSize({});
+    try { legacyAppsMenuSize = normalizeAppsMenuSize(JSON.parse(localStorage.getItem(LEGACY_APPS_MENU_SIZE_KEY) || '{}')); } catch (e) { /* ignore invalid legacy browser state */ }
+    async function migrateLegacyBrowserState() {
+        if (root.dataset.browserStateMigrated === 'true') {
+            try { localStorage.removeItem(LEGACY_APP_PIN_KEY); localStorage.removeItem(LEGACY_APPS_MENU_SIZE_KEY); } catch (e) { /* ignore unavailable browser storage */ }
+            return;
+        }
+        const url = root.dataset.browserStateMigrationUrl;
+        if (!url || !window.OC) return;
+        try {
+            const body = new URLSearchParams({
+                pins: JSON.stringify(legacyAppPins),
+                width: String(legacyAppsMenuSize.width),
+                height: String(legacyAppsMenuSize.height),
+                requesttoken: OC.requestToken,
+            });
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8', requesttoken: OC.requestToken },
+                body,
+            });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const data = await response.json();
+            appPins = normalizeAppPins(data.pins);
+            confirmedAppPins = normalizeAppPins(data.pins);
+            appsMenuSize = normalizeAppsMenuSize(data.size);
+            confirmedAppsMenuSize = normalizeAppsMenuSize(data.size);
+            renderPinnedApps();
+            renderPinnedDesktopApps();
+            if (typeof favoritesReload === 'function') favoritesReload();
+            applyAppsMenuSize();
+            localStorage.removeItem(LEGACY_APP_PIN_KEY);
+            localStorage.removeItem(LEGACY_APPS_MENU_SIZE_KEY);
+        } catch (error) {
+            showShellSaveFailure(error);
+        }
+    }
+    migrateLegacyBrowserState();
     function appsMenuMetrics(width = startMenu?.clientWidth || 320) {
         const appCount = Math.max(1, launcherApps.length || getApps().length || launcher?.children?.length || 1);
         const minRows = 3;
@@ -856,16 +974,10 @@
 
     function observeAppsMenuSize() {
         if (!startMenu || !window.ResizeObserver) return;
-        let timer = null;
         const observer = new ResizeObserver(() => {
             alignAppsMenuIcons();
             positionAppsMenu();
             if (startMenu.hidden) return;
-            clearTimeout(timer);
-            timer = setTimeout(() => {
-                const rect = startMenu.getBoundingClientRect();
-                writeAppsMenuSize(clampAppsMenuSize(rect.width, rect.height));
-            }, 250);
         });
         observer.observe(startMenu);
         window.addEventListener('resize', () => { applyAppsMenuSize(); alignAppsMenuIcons(); positionAppsMenu(); scheduleDockOcclusion(); });

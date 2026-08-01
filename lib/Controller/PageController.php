@@ -97,6 +97,19 @@ class PageController extends Controller {
             }
         }
 
+        $appPins = '';
+        if ($uid !== null) {
+            $fallbackPins = json_decode($this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::APP_PINS_KEY, ''), true);
+            $taskbarPins = json_decode($this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::TASKBAR_PINS_KEY, 'null'), true);
+            $desktopPins = json_decode($this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::DESKTOP_PINS_KEY, 'null'), true);
+            if (is_array($taskbarPins) || is_array($desktopPins) || is_array($fallbackPins)) {
+                $appPins = json_encode([
+                    'taskbar' => is_array($taskbarPins) ? $taskbarPins : ($fallbackPins['taskbar'] ?? []),
+                    'desktop' => is_array($desktopPins) ? $desktopPins : ($fallbackPins['desktop'] ?? []),
+                ]);
+            }
+        }
+
         $response = new TemplateResponse('desktop_workspace', 'main', [
             'apps' => $apps,
             'firstVisit' => $firstVisit,
@@ -109,6 +122,12 @@ class PageController extends Controller {
             'personalSaveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.savePersonalSettings'),
             'iconPositions' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::ICON_POSITIONS_KEY, '{}') : '{}',
             'iconSaveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveIconPositions'),
+            'appPins' => $appPins,
+            'appPinsSaveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveAppPins'),
+            'appsMenuSize' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::APPS_MENU_SIZE_KEY, '') : '',
+            'appsMenuSizeSaveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveAppsMenuSize'),
+            'browserStateMigrated' => $uid !== null && $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::BROWSER_STATE_MIGRATION_KEY, '') === '1',
+            'browserStateMigrationUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.migrateBrowserState'),
             'windowStates' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::WINDOW_STATES_KEY, '{"windows":[]}') : '{"windows":[]}',
             'windowSaveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveWindowStates'),
             'showFavorites' => $uid !== null && $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::SHOW_FAVORITES_KEY, 'no') === 'yes',

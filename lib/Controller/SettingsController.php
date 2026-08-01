@@ -1,6 +1,7 @@
 <?php
 namespace OCA\DesktopWorkspace\Controller;
 
+use OC\DB\Exceptions\DbalException;
 use OCA\DesktopWorkspace\Service\DecorationService;
 use OCA\DesktopWorkspace\Service\FilesAvailability;
 use OCP\AppFramework\Controller;
@@ -9,6 +10,7 @@ use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
 use OCP\Files\NotFoundException;
 use OCP\IConfig;
+use OCP\IDBConnection;
 use OCP\IRequest;
 use OCP\IUserManager;
 use OCP\IUserSession;
@@ -22,6 +24,11 @@ class SettingsController extends Controller {
     public const MULTI_WINDOW_KEY = 'multi_window_apps';
     public const ICON_POSITIONS_KEY = 'icon_positions';
     public const WINDOW_STATES_KEY = 'window_states';
+    public const APP_PINS_KEY = 'app_pins';
+    public const TASKBAR_PINS_KEY = 'taskbar_pins';
+    public const DESKTOP_PINS_KEY = 'desktop_pins';
+    public const APPS_MENU_SIZE_KEY = 'apps_menu_size';
+    public const BROWSER_STATE_MIGRATION_KEY = 'browser_state_migration';
     public const VISITED_KEY = 'visited';
     public const DESKTOP_FOLDER_KEY = 'desktop_folder';
     public const TRASH_NO_CONFIRM_KEY = 'trash_no_confirm';
@@ -40,6 +47,7 @@ class SettingsController extends Controller {
         string $appName,
         IRequest $request,
         private IConfig $config,
+        private IDBConnection $db,
         private IUserSession $userSession,
         private \OCA\DesktopWorkspace\Service\StatsService $statsService,
         private IRootFolder $rootFolder,
@@ -132,6 +140,133 @@ class SettingsController extends Controller {
         return new JSONResponse(['status' => 'ok']);
     }
 
+    private function cleanPinList(mixed $values): ?array {
+        if (!is_array($values) || !array_is_list($values)) {
+            return null;
+        }
+        $clean = [];
+        foreach ($values as $value) {
+            if (!is_string($value) || $value === '' || strlen($value) > 255 || preg_match('/^[A-Za-z0-9_-]+$/', $value) !== 1) {
+                return null;
+            }
+            $clean[] = $value;
+        }
+        return array_slice(array_values(array_unique($clean)), 0, 100);
+    }
+
+    private function storedAppPins(string $uid): array {
+        $decoded = json_decode($this->config->getUserValue($uid, self::APP_ID, self::APP_PINS_KEY, ''), true);
+        $fallback = is_array($decoded) ? $decoded : [];
+        $taskbar = json_decode($this->config->getUserValue($uid, self::APP_ID, self::TASKBAR_PINS_KEY, 'null'), true);
+        $desktop = json_decode($this->config->getUserValue($uid, self::APP_ID, self::DESKTOP_PINS_KEY, 'null'), true);
+        return [
+            'taskbar' => $this->cleanPinList($taskbar) ?? $this->cleanPinList($fallback['taskbar'] ?? []) ?? [],
+            'desktop' => $this->cleanPinList($desktop) ?? $this->cleanPinList($fallback['desktop'] ?? []) ?? [],
+        ];
+    }
+
+    /**
+     * @NoAdminRequired
+     */
+    public function saveAppPins(string $location = '', string $pins = '[]'): JSONResponse {
+        $user = $this->userSession->getUser();
+        if ($user === null) {
+            return new JSONResponse(['status' => 'error', 'message' => 'no user'], 403);
+        }
+        if (!in_array($location, ['taskbar', 'desktop'], true)) {
+            return new JSONResponse(['status' => 'error', 'message' => 'invalid location'], 400);
+        }
+        $clean = $this->cleanPinList(json_decode($pins, true));
+        if ($clean === null || json_last_error() !== JSON_ERROR_NONE) {
+            return new JSONResponse(['status' => 'error', 'message' => 'invalid pins'], 400);
+        }
+        $key = $location === 'taskbar' ? self::TASKBAR_PINS_KEY : self::DESKTOP_PINS_KEY;
+        $this->config->setUserValue($user->getUID(), self::APP_ID, $key, json_encode($clean));
+        return new JSONResponse(['status' => 'ok', 'pins' => $this->storedAppPins($user->getUID())]);
+    }
+
+    private function claimBrowserStateMigration(string $uid): bool {
+        $query = $this->db->getQueryBuilder();
+        $query->insert('preferences')->values([
+            'userid' => $query->createNamedParameter($uid),
+            'appid' => $query->createNamedParameter(self::APP_ID),
+            'configkey' => $query->createNamedParameter(self::BROWSER_STATE_MIGRATION_KEY),
+            'configvalue' => $query->createNamedParameter('pending:' . time()),
+        ]);
+        try {
+            $query->executeStatement();
+            return true;
+        } catch (DbalException $e) {
+            if ((int)$e->getCode() === 1062) {
+                return false;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * @NoAdminRequired
+     */
+    public function migrateBrowserState(string $pins = '{"taskbar":[],"desktop":[]}', int $width = 0, int $height = 0): JSONResponse {
+        $user = $this->userSession->getUser();
+        if ($user === null) {
+            return new JSONResponse(['status' => 'error', 'message' => 'no user'], 403);
+        }
+        $uid = $user->getUID();
+        $decoded = json_decode($pins, true);
+        $taskbar = is_array($decoded) ? $this->cleanPinList($decoded['taskbar'] ?? null) : null;
+        $desktop = is_array($decoded) ? $this->cleanPinList($decoded['desktop'] ?? null) : null;
+        if (json_last_error() !== JSON_ERROR_NONE || $taskbar === null || $desktop === null) {
+            return new JSONResponse(['status' => 'error', 'message' => 'invalid migration state'], 400);
+        }
+        $migrationState = $this->config->getUserValue($uid, self::APP_ID, self::BROWSER_STATE_MIGRATION_KEY, '');
+        if ($migrationState !== '1') {
+            if (str_starts_with($migrationState, 'pending:') && (int)substr($migrationState, 8) < time() - 300) {
+                $this->config->deleteUserValue($uid, self::APP_ID, self::BROWSER_STATE_MIGRATION_KEY);
+                $migrationState = '';
+            }
+            if ($migrationState !== '' || !$this->claimBrowserStateMigration($uid)) {
+                return new JSONResponse(['status' => 'pending'], 409);
+            }
+            $hasLegacyServerPins = $this->config->getUserValue($uid, self::APP_ID, self::APP_PINS_KEY, '') !== '';
+            if (!$hasLegacyServerPins && $this->config->getUserValue($uid, self::APP_ID, self::TASKBAR_PINS_KEY, '') === '') {
+                $this->config->setUserValue($uid, self::APP_ID, self::TASKBAR_PINS_KEY, json_encode($taskbar));
+            }
+            if (!$hasLegacyServerPins && $this->config->getUserValue($uid, self::APP_ID, self::DESKTOP_PINS_KEY, '') === '') {
+                $this->config->setUserValue($uid, self::APP_ID, self::DESKTOP_PINS_KEY, json_encode($desktop));
+            }
+            if ($this->config->getUserValue($uid, self::APP_ID, self::APPS_MENU_SIZE_KEY, '') === '') {
+                $this->config->setUserValue($uid, self::APP_ID, self::APPS_MENU_SIZE_KEY, json_encode([
+                    'width' => max(0, min($width, 10000)),
+                    'height' => max(0, min($height, 10000)),
+                ]));
+            }
+            $this->config->setUserValue($uid, self::APP_ID, self::BROWSER_STATE_MIGRATION_KEY, '1');
+        }
+        $size = json_decode($this->config->getUserValue($uid, self::APP_ID, self::APPS_MENU_SIZE_KEY, '{}'), true);
+        return new JSONResponse([
+            'status' => 'ok',
+            'pins' => $this->storedAppPins($uid),
+            'size' => is_array($size) ? $size : [],
+        ]);
+    }
+
+    /**
+     * @NoAdminRequired
+     */
+    public function saveAppsMenuSize(int $width = 0, int $height = 0): JSONResponse {
+        $user = $this->userSession->getUser();
+        if ($user === null) {
+            return new JSONResponse(['status' => 'error', 'message' => 'no user'], 403);
+        }
+        if ($width < 1 || $height < 1 || $width > 10000 || $height > 10000) {
+            return new JSONResponse(['status' => 'error', 'message' => 'invalid size'], 400);
+        }
+        $clean = ['width' => $width, 'height' => $height];
+        $this->config->setUserValue($user->getUID(), self::APP_ID, self::APPS_MENU_SIZE_KEY, json_encode($clean));
+        return new JSONResponse(['status' => 'ok', 'size' => $clean]);
+    }
+
     /**
      * @NoAdminRequired
      */
@@ -194,6 +329,7 @@ class SettingsController extends Controller {
             return new JSONResponse(['status' => 'error', 'message' => 'no user'], 403);
         }
         $this->clearAllUserValues($user->getUID());
+        $this->config->setUserValue($user->getUID(), self::APP_ID, self::BROWSER_STATE_MIGRATION_KEY, '1');
         return new JSONResponse([
             'status' => 'ok',
             'settings' => [
@@ -225,6 +361,7 @@ class SettingsController extends Controller {
             return new JSONResponse(['status' => 'error', 'message' => 'unknown_user'], 404);
         }
         $this->clearAllUserValues($target);
+        $this->config->setUserValue($target, self::APP_ID, self::BROWSER_STATE_MIGRATION_KEY, '1');
         return new JSONResponse(['status' => 'ok']);
     }
 

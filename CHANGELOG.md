@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - Extended the Euro-Office editor and status bar to the bottom edge of its Desktop window in both same-tab and new-tab modes.
 - Made running pinned apps use the same task-button appearance as unpinned running apps, while keeping dock width and spacing correct.
 - Prevented native Nextcloud header controls moved into the dock from being dragged onto the desktop and triggering file uploads.
+- Stored taskbar/dock app pins and Apps-menu size in the user’s Nextcloud account instead of browser storage, including one-time migration of existing browser-local values.
 - Corrected Dock false friends, generic window terminology, light/dark color-scheme wording, and British English spelling across the locale set while retaining appropriate technical and product names.
 
 ## 0.17.0 – 2026-07-25
