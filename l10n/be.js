@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Адкрыць на поўнай старонцы",
     "Delete {name}?": "Выдаліць {name}?",
     "No folders": "Няма папак",
-    "Could not complete file operation.": "Не ўдалося завяршыць аперацыю з файлам."
-,
+    "Could not complete file operation.": "Не ўдалося завяршыць аперацыю з файлам.",
     "Window controls": "Кнопкі кіравання акном",
     "Window control position": "Размяшчэнне кнопак кіравання акном",
     "Left side": "Злева",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Док-панэль",
     "Open Apps menu": "Адкрыць меню праграм",
     "Add to dock": "Замацаваць на док-панэлі",
-    "Remove from dock": "Адмацаваць ад док-панэлі"
+    "Remove from dock": "Адмацаваць ад док-панэлі",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Калі адключана, док-панэль хаваецца, калі акно перакрывае яе, і зноў з'яўляецца, калі вы наводзіце курсор на ніжні край.",
+    "Show the button to open Nextcloud Files in a new tab": "Паказаць кнопку для адкрыцця файлаў Nextcloud у новай укладцы",
+    "Dock controls": "Элементы кіравання док-панэллю",
+    "Pin to dock": "Замацаваць на док-панэлі",
+    "Always show the dock": "Заўсёды паказваць док-панэль"
 },
     "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"
 );

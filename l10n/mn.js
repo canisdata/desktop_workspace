@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Бүтэн хуудас хэлбэрээр нээх",
     "Delete {name}?": "{name}-г устгах уу?",
     "No folders": "Фолдер байхгүй",
-    "Could not complete file operation.": "Файлын ажиллагааг дуусгаж чадсангүй."
-,
+    "Could not complete file operation.": "Файлын ажиллагааг дуусгаж чадсангүй.",
     "Window controls": "Цонхны удирдлагын товчлуурууд",
     "Window control position": "Цонхны удирдлагын товчлуурын байрлал",
     "Left side": "Зүүн тал",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Док",
     "Open Apps menu": "Аппуудын цэсийг нээх",
     "Add to dock": "Докт нэмэх",
-    "Remove from dock": "Докноос хасах"
+    "Remove from dock": "Докноос хасах",
+    "Always show the dock": "Докийг үргэлж харуул",
+    "Dock controls": "Докны удирдлага",
+    "Pin to dock": "Док руу бэхлэх",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Идэвхгүй болсон үед цонх давхцаж байхад док нуугдаж, доод ирмэг рүү чиглүүлэх үед дахин гарч ирнэ.",
+    "Show the button to open Nextcloud Files in a new tab": "Nextcloud файлуудыг шинэ таб дээр нээх товчийг харуул"
 },
     "nplurals=2; plural=(n != 1);"
 );

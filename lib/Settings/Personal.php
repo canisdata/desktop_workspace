@@ -43,6 +43,8 @@ class Personal implements ISettings {
             'shellMode' => $user !== null
                 ? $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, SettingsController::SHELL_MODE_KEY, 'taskbar')
                 : 'taskbar',
+            'dockAlwaysVisible' => $user === null
+                || $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, SettingsController::DOCK_ALWAYS_VISIBLE_KEY, 'yes') !== 'no',
             'showFavorites' => $user !== null
                 && $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, SettingsController::SHOW_FAVORITES_KEY, 'no') === 'yes',
             'favoritesNoConfirm' => $user !== null

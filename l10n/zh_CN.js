@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "以完整页面打开",
     "Delete {name}?": "删除 {name}？",
     "No folders": "没有文件夹",
-    "Could not complete file operation.": "无法完成文件操作。"
-,
+    "Could not complete file operation.": "无法完成文件操作。",
     "Window controls": "窗口控制按钮",
     "Window control position": "窗口控制按钮位置",
     "Left side": "左侧",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "程序坞",
     "Open Apps menu": "打开应用菜单",
     "Add to dock": "固定到程序坞",
-    "Remove from dock": "从程序坞取消固定"
+    "Remove from dock": "从程序坞取消固定",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "禁用后，当窗口与程序坞重叠时，程序坞会隐藏；将指针移至底部边缘时，它会再次出现。",
+    "Show the button to open Nextcloud Files in a new tab": "显示在新选项卡中打开 Nextcloud 文件的按钮",
+    "Dock controls": "程序坞控件",
+    "Pin to dock": "固定到程序坞",
+    "Always show the dock": "始终显示程序坞"
 },
     "nplurals=1; plural=0;"
 );

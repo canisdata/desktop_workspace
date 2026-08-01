@@ -224,7 +224,7 @@
         "Decorations": "Dekorasyonlar",
         "Desktop decoration": "Masaüstü dekorasyonu",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Standart",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Devre dışı bırakıldığında tüm kullanıcılar standart Nextcloud penceresini, görev çubuğunu ve menü dekorasyonunu kullanır.",
         "Back": "Geri",
@@ -252,8 +252,14 @@
         "Maintenance": "Bakım",
         "Appearance choices": "Görünüm seçenekleri",
         "Allow users to customize Desktop appearance": "Kullanıcıların Masaüstü görünümünü özelleştirmesine izin ver",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Devre dışı bırakıldığında Masaüstü Standart stili kullanır ve her kullanıcının Nextcloud görünümünü takip eder."
-    ,"All desktop settings were reset and applied.": "Tüm masaüstü ayarları sıfırlandı ve uygulandı.","No apps found.": "Uygulama bulunamadı.","{name} could not be opened natively.": "{name} yerel bir uygulamada açılamadı.","Open as full page": "Tam sayfa olarak aç","Delete {name}?": "{name} silinsin mi?","No folders": "Klasör yok","Could not complete file operation.": "Dosya işlemi tamamlanamadı.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Devre dışı bırakıldığında Masaüstü Standart stili kullanır ve her kullanıcının Nextcloud görünümünü takip eder.",
+        "All desktop settings were reset and applied.": "Tüm masaüstü ayarları sıfırlandı ve uygulandı.",
+        "No apps found.": "Uygulama bulunamadı.",
+        "{name} could not be opened natively.": "{name} yerel bir uygulamada açılamadı.",
+        "Open as full page": "Tam sayfa olarak aç",
+        "Delete {name}?": "{name} silinsin mi?",
+        "No folders": "Klasör yok",
+        "Could not complete file operation.": "Dosya işlemi tamamlanamadı.",
         "Window controls": "Pencere düğmeleri",
         "Window control position": "Pencere düğmelerinin konumu",
         "Left side": "Sol taraf",
@@ -263,7 +269,12 @@
         "Dock": "Dock",
         "Open Apps menu": "Uygulamalar menüsünü aç",
         "Add to dock": "Dock'a sabitle",
-        "Remove from dock": "Dock'tan kaldır"
+        "Remove from dock": "Dock'tan kaldır",
+        "Always show the dock": "Her zaman dock'u göster",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Devre dışı bırakıldığında, bir pencere onunla örtüştüğünde dock gizlenir ve alt kenarı işaret ettiğinizde yeniden görünür.",
+        "Dock controls": "Dock denetimleri",
+        "Pin to dock": "Dock'a sabitle",
+        "Show the button to open Nextcloud Files in a new tab": "Nextcloud Dosyalarını yeni bir sekmede açma düğmesini göster"
     },
     "pluralForm": "nplurals=2; plural=(n > 1);"
 }

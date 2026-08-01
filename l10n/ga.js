@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Oscail mar leathanach iomlán",
     "Delete {name}?": "An bhfuil fonn ort {name} a scriosadh?",
     "No folders": "Uimh fillteáin",
-    "Could not complete file operation.": "Níorbh fhéidir an oibríocht comhaid a chríochnú."
-,
+    "Could not complete file operation.": "Níorbh fhéidir an oibríocht comhaid a chríochnú.",
     "Window controls": "Rialuithe fuinneoige",
     "Window control position": "Suíomh rialuithe na fuinneoige",
     "Left side": "Taobh clé",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Duga",
     "Open Apps menu": "Oscail roghchlár na n-aipeanna",
     "Add to dock": "Cuir leis an duga",
-    "Remove from dock": "Bain den duga"
+    "Remove from dock": "Bain den duga",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Nuair a bhíonn sé díchumasaithe, folaíonn an duga fad is a fhorluíonn fuinneog é agus feictear arís é nuair a dhíríonn tú ar an imeall bun.",
+    "Show the button to open Nextcloud Files in a new tab": "Taispeáin an cnaipe chun Comhaid Nextcloud a oscailt i gcluaisín nua",
+    "Dock controls": "Rialuithe duga",
+    "Pin to dock": "Bioráin chuig an duga",
+    "Always show the dock": "Taispeáin an duga i gcónaí"
 },
     "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);"
 );

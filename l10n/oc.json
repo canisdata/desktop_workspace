@@ -224,7 +224,7 @@
         "Decorations": "Decoracions",
         "Desktop decoration": "Decoracion de burèu",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Estandard",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Quand es desactivat, totes los utilizaires utilizan la fenèstra, la barra de prètzfaches e la decoracion del menú estandard Nextcloud.",
         "Back": "Arrièr",
@@ -252,8 +252,14 @@
         "Maintenance": "Mantenença",
         "Appearance choices": "Opcions d’aparéncia",
         "Allow users to customize Desktop appearance": "Permetre als utilizaires de personalizar l’aparéncia del Burèu",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Quand es desactivat, lo Burèu utiliza l’estil estandard e seguís l’aparéncia Nextcloud de cada utilizaire."
-    ,"All desktop settings were reset and applied.": "Totes los paramètres del burèu foguèron reïnicializats e aplicats.","No apps found.": "Cap d'aplicacion pas trobada.","{name} could not be opened natively.": "{name} a pas pogut èsser dobèrt nativament.","Open as full page": "Dobrir coma la pagina completa","Delete {name}?": "Suprimir {name} ?","No folders": "Pas de dorsièrs","Could not complete file operation.": "Impossible de completar l'operacion del fichièr.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Quand es desactivat, lo Burèu utiliza l’estil estandard e seguís l’aparéncia Nextcloud de cada utilizaire.",
+        "All desktop settings were reset and applied.": "Totes los paramètres del burèu foguèron reïnicializats e aplicats.",
+        "No apps found.": "Cap d'aplicacion pas trobada.",
+        "{name} could not be opened natively.": "{name} a pas pogut èsser dobèrt nativament.",
+        "Open as full page": "Dobrir coma la pagina completa",
+        "Delete {name}?": "Suprimir {name} ?",
+        "No folders": "Pas de dorsièrs",
+        "Could not complete file operation.": "Impossible de completar l'operacion del fichièr.",
         "Window controls": "Botons de fenèstra",
         "Window control position": "Posicion dels botons de fenèstra",
         "Left side": "Costat esquèrre",
@@ -263,7 +269,12 @@
         "Dock": "Dock",
         "Open Apps menu": "Dobrir lo menú de las aplicacions",
         "Add to dock": "Apondre al Dock",
-        "Remove from dock": "Levar del Dock"
+        "Remove from dock": "Levar del Dock",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Quand es desactivat, lo dock s'amaga del temps qu'una fenèstra lo superpausa e apareis tornarmai quand puntatz cap al bòrd inferior.",
+        "Show the button to open Nextcloud Files in a new tab": "Afichar lo boton per dobrir los fichièrs Nextcloud dins un onglet novèl",
+        "Always show the dock": "Mostratz totjorn lo dock",
+        "Pin to dock": "Fixar al dock",
+        "Dock controls": "Los contraròtles de dock"
     },
     "pluralForm": "nplurals=2; plural=(n > 1);"
 }

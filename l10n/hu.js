@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Megnyitás teljes oldalként",
     "Delete {name}?": "Törli a következőt: {name}?",
     "No folders": "Nincsenek mappák",
-    "Could not complete file operation.": "Nem sikerült befejezni a fájlműveletet."
-,
+    "Could not complete file operation.": "Nem sikerült befejezni a fájlműveletet.",
     "Window controls": "Ablakvezérlők",
     "Window control position": "Ablakvezérlők helye",
     "Left side": "Bal oldal",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dokk",
     "Open Apps menu": "Alkalmazások menü megnyitása",
     "Add to dock": "Rögzítés a dokkhoz",
-    "Remove from dock": "Eltávolítás a dokkból"
+    "Remove from dock": "Eltávolítás a dokkból",
+    "Always show the dock": "A dokk mindig legyen látható",
+    "Dock controls": "Dokkvezérlők",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Ha ki van kapcsolva, a dokk elrejtőzik, amikor egy ablak átfedi, és újra megjelenik, amikor az alsó szélre mutat.",
+    "Show the button to open Nextcloud Files in a new tab": "Mutassa meg a gombot a Nextcloud Files új lapon való megnyitásához",
+    "Pin to dock": "Rögzítés a dokkhoz"
 },
     "nplurals=2; plural=(n != 1);"
 );

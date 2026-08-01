@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Malfermi kiel plenan paĝon",
     "Delete {name}?": "Ĉu forigi {name}?",
     "No folders": "Neniuj dosierujoj",
-    "Could not complete file operation.": "Ne eblis plenumi la dosieran operacion."
-,
+    "Could not complete file operation.": "Ne eblis plenumi la dosieran operacion.",
     "Window controls": "Fenestraj regbutonoj",
     "Window control position": "Loko de la fenestraj regbutonoj",
     "Left side": "Maldekstra flanko",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Doko",
     "Open Apps menu": "Malfermi la menuon de aplikaĵoj",
     "Add to dock": "Fiksi al la doko",
-    "Remove from dock": "Malfiksi de la doko"
+    "Remove from dock": "Malfiksi de la doko",
+    "Pin to dock": "Fiksi al la doko",
+    "Always show the dock": "Ĉiam montru la dokon",
+    "Dock controls": "Dokaj kontroloj",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Kiam estas malŝaltita, la doko kaŝiĝas dum fenestro interkovras ĝin kaj denove aperas kiam vi montras al la malsupra rando.",
+    "Show the button to open Nextcloud Files in a new tab": "Montru la butonon por malfermi Nextcloud Files en nova langeto"
 },
     "nplurals=2; plural=(n != 1);"
 );

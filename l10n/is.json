@@ -224,7 +224,7 @@
         "Decorations": "Skreytingar",
         "Desktop decoration": "Skreyting á skrifborði",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Standard",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Þegar slökkt er á því nota allir notendur staðlaða Nextcloud gluggann, verkstikuna og valmyndarskreytinguna.",
         "Back": "Til baka",
@@ -252,8 +252,14 @@
         "Maintenance": "Viðhald",
         "Appearance choices": "Val á útliti",
         "Allow users to customize Desktop appearance": "Leyfa notendum að sérsníða útlit skjáborðsins",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Þegar slökkt er á því notar Desktop Standard stíl og fylgir Nextcloud útliti hvers notanda."
-    ,"All desktop settings were reset and applied.": "Allar skjáborðsstillingar voru endurstilltar og notaðar.","No apps found.": "Engin forrit fundust.","{name} could not be opened natively.": "Ekki var hægt að opna {name} innbyggt.","Open as full page": "Opna sem heil síða","Delete {name}?": "Eyða {name}?","No folders": "Engar möppur","Could not complete file operation.": "Ekki tókst að ljúka skráaraðgerð.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Þegar slökkt er á því notar Desktop Standard stíl og fylgir Nextcloud útliti hvers notanda.",
+        "All desktop settings were reset and applied.": "Allar skjáborðsstillingar voru endurstilltar og notaðar.",
+        "No apps found.": "Engin forrit fundust.",
+        "{name} could not be opened natively.": "Ekki var hægt að opna {name} innbyggt.",
+        "Open as full page": "Opna sem heil síða",
+        "Delete {name}?": "Eyða {name}?",
+        "No folders": "Engar möppur",
+        "Could not complete file operation.": "Ekki tókst að ljúka skráaraðgerð.",
         "Window controls": "Gluggastýringar",
         "Window control position": "Staðsetning gluggastýringa",
         "Left side": "Vinstri hlið",
@@ -263,7 +269,12 @@
         "Dock": "Forritakví",
         "Open Apps menu": "Opna forritavalmynd",
         "Add to dock": "Festa á forritakví",
-        "Remove from dock": "Fjarlægja af forritakví"
+        "Remove from dock": "Fjarlægja af forritakví",
+        "Always show the dock": "Sýna forritakvína alltaf",
+        "Dock controls": "Stýringar forritakvía",
+        "Pin to dock": "Festa á forritakví",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Þegar slökkt er á þessu felst forritakvíin þegar gluggi hylur hana og birtist aftur þegar bent er á neðri brúnina.",
+        "Show the button to open Nextcloud Files in a new tab": "Sýndu hnappinn til að opna Nextcloud Files í nýjum flipa"
     },
     "pluralForm": "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);"
 }

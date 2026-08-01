@@ -235,7 +235,7 @@ OC.L10N.register(
     "No files": "Нема датотека",
     "Appearance": "Изглед",
     "Choose an automatic appearance or customize window decorations and icons separately.": "Одаберите аутоматски изглед или посебно прилагодите украсе и иконе прозора.",
-    "Windows, taskbar and menus": "Виндовс, трака задатака и менији",
+    "Windows, taskbar and menus": "Прозори, трака задатака и менији",
     "Decoration style": "Стил декорације",
     "Color mode": "Режим боје",
     "Follow Nextcloud appearance": "Према изгледу Nextcloud-а",
@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Отвори као целу страницу",
     "Delete {name}?": "Обрисати {name}?",
     "No folders": "Нема фасцикли",
-    "Could not complete file operation.": "Операција над датотеком није могла да се заврши."
-,
+    "Could not complete file operation.": "Операција над датотеком није могла да се заврши.",
     "Window controls": "Дугмад прозора",
     "Window control position": "Положај дугмади прозора",
     "Left side": "С леве стране",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Док",
     "Open Apps menu": "Отвори мени Апликације",
     "Add to dock": "Закачи на док",
-    "Remove from dock": "Откачи са дока"
+    "Remove from dock": "Откачи са дока",
+    "Always show the dock": "Увек покажи док",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Када је онемогућено, док се сакрива док га прозор преклапа и поново се појављује када покажете на доњу ивицу.",
+    "Show the button to open Nextcloud Files in a new tab": "Прикажите дугме да бисте отворили Нектцлоуд датотеке на новој картици",
+    "Pin to dock": "Закачи на док",
+    "Dock controls": "Контроле дока"
 },
     "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
 );

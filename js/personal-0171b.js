@@ -13,7 +13,7 @@
     function notifyDesktop(fields) {
         try {
             if (window.parent === window) return;
-            const map = { show_favorites: 'showFavorites', show_trash: 'showTrash', show_home: 'showHome', favorites_no_confirm: 'favoritesNoConfirm', trash_no_confirm: 'trashNoConfirm', try_experimental_files: 'desktopfilesEnabled' };
+            const map = { show_favorites: 'showFavorites', show_trash: 'showTrash', show_home: 'showHome', favorites_no_confirm: 'favoritesNoConfirm', trash_no_confirm: 'trashNoConfirm', try_experimental_files: 'desktopfilesEnabled', dock_always_visible: 'dockAlwaysVisible' };
             const s = {};
             Object.entries(fields).forEach(([k, v]) => { if (map[k]) s[map[k]] = (v === 'yes'); });
             if ('desktop_folder' in fields) s.desktopFolder = fields.desktop_folder;
@@ -66,6 +66,7 @@
     wireToggle('desktop-favorites-no-confirm', 'favorites_no_confirm');
     wireToggle('desktop-trash-no-confirm', 'trash_no_confirm');
     wireToggle('desktop-try-experimental', 'try_experimental_files');
+    wireToggle('desktop-dock-always-visible', 'dock_always_visible');
 
     function wireAppearanceSelect(id, field) {
         const select = el(id);
@@ -117,6 +118,14 @@
     }
     wireRadioGroup('desktop-window-controls-side', 'window_controls_side');
     wireRadioGroup('desktop-shell-mode', 'shell_mode');
+
+    function syncDockSettingsVisibility() {
+        const dockSettings = el('desktop-dock-always-visible-setting');
+        const dockSelected = root.querySelector('input[name="desktop-shell-mode"][value="dock"]')?.checked === true;
+        if (dockSettings) dockSettings.hidden = !dockSelected;
+    }
+    root.querySelectorAll('input[name="desktop-shell-mode"]').forEach((radio) => radio.addEventListener('change', syncDockSettingsVisibility));
+    syncDockSettingsVisibility();
 
     const iconLinked = el('desktop-icon-decoration-linked');
     const iconDecoration = el('desktop-icon-decoration');
@@ -186,6 +195,7 @@
         checked('desktop-favorites-no-confirm', settings.favoritesNoConfirm);
         checked('desktop-trash-no-confirm', settings.trashNoConfirm);
         checked('desktop-try-experimental', settings.tryExperimentalFiles);
+        checked('desktop-dock-always-visible', settings.dockAlwaysVisible);
         checked('desktop-icon-decoration-linked', settings.iconDecorationLinked);
         selected('desktop-decoration', settings.decoration);
         selected('desktop-decoration-color', settings.decorationColor);
@@ -215,6 +225,7 @@
             icon_color: settings.iconColor,
             window_controls_side: settings.windowControlsSide,
             shell_mode: settings.shellMode,
+            dock_always_visible: settings.dockAlwaysVisible ? 'yes' : 'no',
         });
     }
 

@@ -224,7 +224,7 @@
         "Decorations": "Các kiểu trang trí",
         "Desktop decoration": "Kiểu trang trí màn hình",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Tiêu chuẩn",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Khi bị tắt, tất cả người dùng sẽ sử dụng trang trí cửa sổ, thanh tác vụ và menu Nextcloud tiêu chuẩn.",
         "Back": "Mặt sau",
@@ -252,8 +252,14 @@
         "Maintenance": "Bảo trì",
         "Appearance choices": "Lựa chọn ngoại hình",
         "Allow users to customize Desktop appearance": "Cho phép người dùng tùy chỉnh giao diện Desktop",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Khi bị tắt, Máy tính để bàn sẽ sử dụng kiểu Tiêu chuẩn và tuân theo giao diện Nextcloud của mỗi người dùng."
-    ,"All desktop settings were reset and applied.": "Tất cả cài đặt màn hình đã được đặt lại và áp dụng.","No apps found.": "Không tìm thấy ứng dụng.","{name} could not be opened natively.": "Không thể mở {name} bằng ứng dụng gốc.","Open as full page": "Mở dưới dạng toàn trang","Delete {name}?": "Xóa {name}?","No folders": "Không có thư mục","Could not complete file operation.": "Không thể hoàn tất thao tác với tệp.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Khi bị tắt, Máy tính để bàn sẽ sử dụng kiểu Tiêu chuẩn và tuân theo giao diện Nextcloud của mỗi người dùng.",
+        "All desktop settings were reset and applied.": "Tất cả cài đặt màn hình đã được đặt lại và áp dụng.",
+        "No apps found.": "Không tìm thấy ứng dụng.",
+        "{name} could not be opened natively.": "Không thể mở {name} bằng ứng dụng gốc.",
+        "Open as full page": "Mở dưới dạng toàn trang",
+        "Delete {name}?": "Xóa {name}?",
+        "No folders": "Không có thư mục",
+        "Could not complete file operation.": "Không thể hoàn tất thao tác với tệp.",
         "Window controls": "Nút điều khiển cửa sổ",
         "Window control position": "Vị trí nút điều khiển cửa sổ",
         "Left side": "Bên trái",
@@ -263,7 +269,12 @@
         "Dock": "Dock",
         "Open Apps menu": "Mở trình đơn Ứng dụng",
         "Add to dock": "Ghim vào Dock",
-        "Remove from dock": "Bỏ ghim khỏi Dock"
+        "Remove from dock": "Bỏ ghim khỏi Dock",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Khi bị tắt, thanh dock sẽ ẩn trong khi một cửa sổ chồng lên nó và xuất hiện lại khi bạn trỏ tới cạnh dưới cùng.",
+        "Pin to dock": "Ghim vào Dock",
+        "Dock controls": "Điều khiển Dock",
+        "Always show the dock": "Luôn hiển thị Dock",
+        "Show the button to open Nextcloud Files in a new tab": "Hiển thị nút để mở Tệp Nextcloud trong tab mới"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

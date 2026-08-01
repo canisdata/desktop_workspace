@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "فتح كصفحة كاملة",
     "Delete {name}?": "حذف {name}؟",
     "No folders": "لا توجد مجلدات",
-    "Could not complete file operation.": "تعذّر إكمال عملية الملف."
-,
+    "Could not complete file operation.": "تعذّر إكمال عملية الملف.",
     "Window controls": "أزرار التحكم بالنافذة",
     "Window control position": "موضع أزرار التحكم بالنافذة",
     "Left side": "الجانب الأيسر",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "شريط التطبيقات",
     "Open Apps menu": "فتح قائمة التطبيقات",
     "Add to dock": "تثبيت على شريط التطبيقات",
-    "Remove from dock": "إلغاء التثبيت من شريط التطبيقات"
+    "Remove from dock": "إلغاء التثبيت من شريط التطبيقات",
+    "Dock controls": "عناصر التحكم في شريط التطبيقات",
+    "Always show the dock": "إظهار شريط التطبيقات دائمًا",
+    "Pin to dock": "تثبيت على شريط التطبيقات",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "عند تعطيل هذا الخيار، يختفي شريط التطبيقات عندما تتداخل معه نافذة، ويظهر مجددًا عند الإشارة إلى الحافة السفلية.",
+    "Show the button to open Nextcloud Files in a new tab": "أظهر الزر لفتح Nextcloud Files في علامة تبويب جديدة"
 },
     "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;"
 );

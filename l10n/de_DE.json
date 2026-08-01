@@ -226,7 +226,7 @@
         "Decorations": "Dekorationen",
         "Desktop decoration": "Desktop-Dekoration",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Standard",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Wenn diese Option deaktiviert ist, verwenden alle Benutzer das standardmäßige Fenster, die Taskleiste und die Menüdekoration von Nextcloud.",
         "Delete": "Löschen",
@@ -234,7 +234,7 @@
         "Open folder": "Ordner öffnen",
         "Appearance": "Aussehen",
         "Choose an automatic appearance or customize window decorations and icons separately.": "Wählen Sie ein automatisches Erscheinungsbild oder passen Sie Fensterdekorationen und Symbole separat an.",
-        "Windows, taskbar and menus": "Windows, Taskleiste und Menüs",
+        "Windows, taskbar and menus": "Fenster, Taskleiste und Menüs",
         "Decoration style": "Dekorationsstil",
         "Color mode": "Farbmodus",
         "Follow Nextcloud appearance": "Folgen Sie dem Erscheinungsbild von Nextcloud",
@@ -252,8 +252,14 @@
         "Maintenance": "Wartung",
         "Appearance choices": "Aussehensmöglichkeiten",
         "Allow users to customize Desktop appearance": "Ermöglichen Sie Benutzern, das Erscheinungsbild des Desktops anzupassen",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Wenn deaktiviert, verwendet Desktop den Standardstil und folgt dem Nextcloud-Erscheinungsbild jedes Benutzers."
-    ,"All desktop settings were reset and applied.": "Alle Desktop-Einstellungen wurden zurückgesetzt und angewendet.","No apps found.": "Keine Apps gefunden.","{name} could not be opened natively.": "{name} konnte nicht in einer nativen Anwendung geöffnet werden.","Open as full page": "Als ganze Seite öffnen","Delete {name}?": "{name} löschen?","No folders": "Keine Ordner","Could not complete file operation.": "Der Dateivorgang konnte nicht abgeschlossen werden.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Wenn deaktiviert, verwendet Desktop den Standardstil und folgt dem Nextcloud-Erscheinungsbild jedes Benutzers.",
+        "All desktop settings were reset and applied.": "Alle Desktop-Einstellungen wurden zurückgesetzt und angewendet.",
+        "No apps found.": "Keine Apps gefunden.",
+        "{name} could not be opened natively.": "{name} konnte nicht in einer nativen Anwendung geöffnet werden.",
+        "Open as full page": "Als ganze Seite öffnen",
+        "Delete {name}?": "{name} löschen?",
+        "No folders": "Keine Ordner",
+        "Could not complete file operation.": "Der Dateivorgang konnte nicht abgeschlossen werden.",
         "Window controls": "Fenstersteuerung",
         "Window control position": "Position der Fenstersteuerung",
         "Left side": "Linke Seite",
@@ -263,7 +269,12 @@
         "Dock": "Dock",
         "Open Apps menu": "Apps-Menü öffnen",
         "Add to dock": "Zum Dock hinzufügen",
-        "Remove from dock": "Aus dem Dock entfernen"
+        "Remove from dock": "Aus dem Dock entfernen",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Wenn es deaktiviert ist, wird das Dock ausgeblendet, während ein Fenster es überlappt, und wird wieder angezeigt, wenn Sie auf den unteren Rand zeigen.",
+        "Always show the dock": "Dock immer anzeigen",
+        "Dock controls": "Dock-Steuerelemente",
+        "Show the button to open Nextcloud Files in a new tab": "Zeigen Sie die Schaltfläche zum Öffnen von Nextcloud-Dateien in einem neuen Tab an",
+        "Pin to dock": "An das Dock anheften"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

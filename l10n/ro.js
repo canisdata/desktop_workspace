@@ -239,8 +239,8 @@ OC.L10N.register(
     "Decoration style": "Stilul de decor",
     "Color mode": "Modul culoare",
     "Follow Nextcloud appearance": "Urmăriți aspectul Nextcloud",
-    "Always light": "Întotdeauna luminos",
-    "Always dark": "Întotdeauna întunecat",
+    "Always light": "Întotdeauna deschis",
+    "Always dark": "Întotdeauna închis",
     "Desktop and app icons": "Pictograme pentru desktop și aplicații",
     "Match window decoration": "Se potrivește decorarea ferestrei",
     "Icon style": "Stilul pictogramei",
@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Deschide ca pagină completă",
     "Delete {name}?": "Ștergeți {name}?",
     "No folders": "Niciun folder",
-    "Could not complete file operation.": "Operațiunea asupra fișierului nu a putut fi finalizată."
-,
+    "Could not complete file operation.": "Operațiunea asupra fișierului nu a putut fi finalizată.",
     "Window controls": "Butoanele ferestrei",
     "Window control position": "Poziția butoanelor ferestrei",
     "Left side": "În stânga",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "Deschide meniul Aplicații",
     "Add to dock": "Fixează în dock",
-    "Remove from dock": "Elimină din dock"
+    "Remove from dock": "Elimină din dock",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Când este dezactivat, dockul se ascunde cât timp este acoperit de o fereastră și reapare când indicați spre marginea de jos.",
+    "Always show the dock": "Afișează întotdeauna dockul",
+    "Pin to dock": "Fixează în dock",
+    "Dock controls": "Comenzile dockului",
+    "Show the button to open Nextcloud Files in a new tab": "Afișați butonul pentru a deschide Nextcloud Files într-o filă nouă"
 },
     "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));"
 );

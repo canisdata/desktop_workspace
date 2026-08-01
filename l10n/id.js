@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Buka sebagai halaman penuh",
     "Delete {name}?": "Hapus {name}?",
     "No folders": "Tidak ada folder",
-    "Could not complete file operation.": "Tidak dapat menyelesaikan operasi file."
-,
+    "Could not complete file operation.": "Tidak dapat menyelesaikan operasi file.",
     "Window controls": "Kontrol jendela",
     "Window control position": "Posisi kontrol jendela",
     "Left side": "Sisi kiri",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dok",
     "Open Apps menu": "Buka menu aplikasi",
     "Add to dock": "Tambahkan ke dok",
-    "Remove from dock": "Hapus dari dok"
+    "Remove from dock": "Hapus dari dok",
+    "Pin to dock": "Sematkan ke dok",
+    "Dock controls": "Kontrol dok",
+    "Always show the dock": "Selalu tunjukkan dok",
+    "Show the button to open Nextcloud Files in a new tab": "Tampilkan tombol untuk membuka File Nextcloud di tab baru",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Saat dinonaktifkan, dok akan tersembunyi ketika tertindih jendela dan muncul kembali saat Anda menunjuk ke tepi bawah."
 },
     "nplurals=1; plural=0;"
 );

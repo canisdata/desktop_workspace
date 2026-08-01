@@ -235,12 +235,12 @@ OC.L10N.register(
     "No files": "Δεν υπάρχουν αρχεία",
     "Appearance": "Εμφάνιση",
     "Choose an automatic appearance or customize window decorations and icons separately.": "Επιλέξτε μια αυτόματη εμφάνιση ή προσαρμόστε τις διακοσμήσεις παραθύρων και τα εικονίδια ξεχωριστά.",
-    "Windows, taskbar and menus": "Windows, γραμμή εργασιών και μενού",
+    "Windows, taskbar and menus": "Παράθυρα, γραμμή εργασιών και μενού",
     "Decoration style": "Στυλ εμφάνισης",
     "Color mode": "Λειτουργία χρώματος",
     "Follow Nextcloud appearance": "Ακολουθήστε την εμφάνιση του Nextcloud",
-    "Always light": "Πάντα φωτεινό",
-    "Always dark": "Πάντα σκοτεινό",
+    "Always light": "Πάντα ανοιχτόχρωμο",
+    "Always dark": "Πάντα σκουρόχρωμο",
     "Desktop and app icons": "Εικονίδια επιφάνειας εργασίας και εφαρμογών",
     "Match window decoration": "Αντιστοίχιση με την εμφάνιση παραθύρων",
     "Icon style": "Στυλ εικονιδίων",
@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Άνοιγμα ως πλήρης σελίδα",
     "Delete {name}?": "Διαγραφή του {name};",
     "No folders": "Δεν υπάρχουν φάκελοι",
-    "Could not complete file operation.": "Δεν ήταν δυνατή η ολοκλήρωση της λειτουργίας αρχείου."
-,
+    "Could not complete file operation.": "Δεν ήταν δυνατή η ολοκλήρωση της λειτουργίας αρχείου.",
     "Window controls": "Κουμπιά ελέγχου παραθύρου",
     "Window control position": "Θέση κουμπιών ελέγχου παραθύρου",
     "Left side": "Αριστερή πλευρά",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "Άνοιγμα μενού εφαρμογών",
     "Add to dock": "Καρφίτσωμα στο Dock",
-    "Remove from dock": "Ξεκαρφίτσωμα από το Dock"
+    "Remove from dock": "Ξεκαρφίτσωμα από το Dock",
+    "Always show the dock": "Να εμφανίζεται πάντα το Dock",
+    "Pin to dock": "Καρφίτσωμα στο Dock",
+    "Dock controls": "Στοιχεία ελέγχου του Dock",
+    "Show the button to open Nextcloud Files in a new tab": "Εμφανίστε το κουμπί για να ανοίξετε το Nextcloud Files σε μια νέα καρτέλα",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Όταν είναι απενεργοποιημένο, το Dock κρύβεται όταν επικαλύπτεται από ένα παράθυρο και εμφανίζεται ξανά όταν δείχνετε στο κάτω άκρο."
 },
     "nplurals=2; plural=(n != 1);"
 );

@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Åpne som helside",
     "Delete {name}?": "Vil du slette {name}?",
     "No folders": "Ingen mapper",
-    "Could not complete file operation.": "Kunne ikke fullføre filoperasjonen."
-,
+    "Could not complete file operation.": "Kunne ikke fullføre filoperasjonen.",
     "Window controls": "Vindusknapper",
     "Window control position": "Plassering av vindusknapper",
     "Left side": "Venstre side",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "Åpne appmenyen",
     "Add to dock": "Legg til i Dock",
-    "Remove from dock": "Fjern fra Dock"
+    "Remove from dock": "Fjern fra Dock",
+    "Always show the dock": "Vis alltid dokken",
+    "Dock controls": "Dokkkontroller",
+    "Pin to dock": "Fest til Dock",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Når den er deaktivert, skjuler dokken seg mens et vindu overlapper den og vises igjen når du peker på den nederste kanten.",
+    "Show the button to open Nextcloud Files in a new tab": "Vis knappen for å åpne Nextcloud Files i en ny fane"
 },
     "nplurals=2; plural=(n != 1);"
 );

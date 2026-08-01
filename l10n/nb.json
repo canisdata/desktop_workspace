@@ -224,7 +224,7 @@
         "Decorations": "Dekorasjoner",
         "Desktop decoration": "Skrivebordsdekorasjon",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Standard",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Når deaktivert, bruker alle brukere standard Nextcloud-vindu, oppgavelinje og menydekorasjon.",
         "Back": "Tilbake",
@@ -252,8 +252,14 @@
         "Maintenance": "Vedlikehold",
         "Appearance choices": "Utseendevalg",
         "Allow users to customize Desktop appearance": "Tillat brukere å tilpasse skrivebordets utseende",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Når den er deaktivert, bruker Desktop Standard-stilen og følger hver brukers Nextcloud-utseende."
-    ,"All desktop settings were reset and applied.": "Alle skrivebordsinnstillinger ble tilbakestilt og brukt.","No apps found.": "Ingen apper funnet.","{name} could not be opened natively.": "{name} kunne ikke åpnes naturlig.","Open as full page": "Åpne som helside","Delete {name}?": "Vil du slette {name}?","No folders": "Ingen mapper","Could not complete file operation.": "Kunne ikke fullføre filoperasjonen.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Når den er deaktivert, bruker Desktop Standard-stilen og følger hver brukers Nextcloud-utseende.",
+        "All desktop settings were reset and applied.": "Alle skrivebordsinnstillinger ble tilbakestilt og brukt.",
+        "No apps found.": "Ingen apper funnet.",
+        "{name} could not be opened natively.": "{name} kunne ikke åpnes naturlig.",
+        "Open as full page": "Åpne som helside",
+        "Delete {name}?": "Vil du slette {name}?",
+        "No folders": "Ingen mapper",
+        "Could not complete file operation.": "Kunne ikke fullføre filoperasjonen.",
         "Window controls": "Vindusknapper",
         "Window control position": "Plassering av vindusknapper",
         "Left side": "Venstre side",
@@ -263,7 +269,12 @@
         "Dock": "Dock",
         "Open Apps menu": "Åpne appmenyen",
         "Add to dock": "Legg til i Dock",
-        "Remove from dock": "Fjern fra Dock"
+        "Remove from dock": "Fjern fra Dock",
+        "Always show the dock": "Vis alltid dokken",
+        "Dock controls": "Dokkkontroller",
+        "Pin to dock": "Fest til Dock",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Når den er deaktivert, skjuler dokken seg mens et vindu overlapper den og vises igjen når du peker på den nederste kanten.",
+        "Show the button to open Nextcloud Files in a new tab": "Vis knappen for å åpne Nextcloud Files i en ny fane"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

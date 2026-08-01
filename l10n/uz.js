@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "To‘liq sahifa sifatida ochish",
     "Delete {name}?": "{name} o‘chirilsinmi?",
     "No folders": "Jildlar yo‘q",
-    "Could not complete file operation.": "Fayl amalini tugatib bo‘lmadi."
-,
+    "Could not complete file operation.": "Fayl amalini tugatib bo‘lmadi.",
     "Window controls": "Oyna tugmalari",
     "Window control position": "Oyna tugmalari joylashuvi",
     "Left side": "Chap tomonda",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dok-panel",
     "Open Apps menu": "Ilovalar menyusini ochish",
     "Add to dock": "Dok-panelga mahkamlash",
-    "Remove from dock": "Dok-paneldan olib tashlash"
+    "Remove from dock": "Dok-paneldan olib tashlash",
+    "Dock controls": "Dok-panel boshqaruvlari",
+    "Always show the dock": "Dok-panelni doimo ko‘rsatish",
+    "Pin to dock": "Dok-panelga mahkamlash",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "O‘chirib qo‘yilganda, dok-panelni oyna qoplagan paytda u yashirinadi va ko‘rsatkichni pastki chetga olib borganingizda yana paydo bo‘ladi.",
+    "Show the button to open Nextcloud Files in a new tab": "Nextcloud Files-ni yangi tabda ochish tugmachasini ko'rsating"
 },
     "nplurals=1; plural=0;"
 );

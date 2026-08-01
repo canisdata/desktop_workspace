@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "გახსენით როგორც სრული გვერდი",
     "Delete {name}?": "წაშალოთ {name}?",
     "No folders": "საქაღალდეები არ არის",
-    "Could not complete file operation.": "ფაილის ოპერაციის დასრულება ვერ მოხერხდა."
-,
+    "Could not complete file operation.": "ფაილის ოპერაციის დასრულება ვერ მოხერხდა.",
     "Window controls": "ფანჯრის მართვის ღილაკები",
     "Window control position": "ფანჯრის მართვის ღილაკების მდებარეობა",
     "Left side": "მარცხენა მხარე",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "დოკი",
     "Open Apps menu": "აპების მენიუს გახსნა",
     "Add to dock": "დოკზე დამატება",
-    "Remove from dock": "დოკიდან მოცილება"
+    "Remove from dock": "დოკიდან მოცილება",
+    "Always show the dock": "ყოველთვის აჩვენე დოკი",
+    "Pin to dock": "ჩამაგრება დოკზე",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "როდესაც გამორთულია, დოკი იმალება, როცა ფანჯარა მას ფარავს, და კვლავ ჩნდება, როცა მაჩვენებელს ქვედა კიდესთან მიიტანთ.",
+    "Dock controls": "დოკის კონტროლი",
+    "Show the button to open Nextcloud Files in a new tab": "აჩვენეთ ღილაკი Nextcloud Files-ის გასახსნელად ახალ ჩანართში"
 },
     "nplurals=2; plural=(n!=1);"
 );

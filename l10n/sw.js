@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Fungua kama ukurasa kamili",
     "Delete {name}?": "Ungependa kufuta {name}?",
     "No folders": "Hakuna folda",
-    "Could not complete file operation.": "Haikuweza kukamilisha operesheni ya faili."
-,
+    "Could not complete file operation.": "Haikuweza kukamilisha operesheni ya faili.",
     "Window controls": "Vitufe vya dirisha",
     "Window control position": "Nafasi ya vitufe vya dirisha",
     "Left side": "Upande wa kushoto",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "Fungua menyu ya Programu",
     "Add to dock": "Bandika kwenye Dock",
-    "Remove from dock": "Bandua kutoka kwenye Dock"
+    "Remove from dock": "Bandua kutoka kwenye Dock",
+    "Always show the dock": "Onyesha Dock kila wakati",
+    "Dock controls": "Vidhibiti vya Dock",
+    "Pin to dock": "Bandika kwenye Dock",
+    "Show the button to open Nextcloud Files in a new tab": "Onyesha kitufe ili kufungua Faili za Nextcloud kwenye kichupo kipya",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Inapozimwa, Dock hujificha dirisha linapoifunika na kuonekana tena unapoelekeza ukingo wa chini."
 },
     "nplurals=2; plural=(n != 1);"
 );

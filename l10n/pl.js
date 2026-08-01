@@ -235,7 +235,7 @@ OC.L10N.register(
     "No files": "Brak plików",
     "Appearance": "Wygląd",
     "Choose an automatic appearance or customize window decorations and icons separately.": "Wybierz automatyczny wygląd lub osobno dostosuj dekoracje okien i ikony.",
-    "Windows, taskbar and menus": "Windows, pasek zadań i menu",
+    "Windows, taskbar and menus": "Okna, pasek zadań i menu",
     "Decoration style": "Styl dekoracji",
     "Color mode": "Tryb koloru",
     "Follow Nextcloud appearance": "Śledź wygląd Nextcloud",
@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Otwórz jako pełną stronę",
     "Delete {name}?": "Usunąć {name}?",
     "No folders": "Brak folderów",
-    "Could not complete file operation.": "Nie udało się ukończyć operacji na pliku."
-,
+    "Could not complete file operation.": "Nie udało się ukończyć operacji na pliku.",
     "Window controls": "Przyciski okna",
     "Window control position": "Położenie przycisków okna",
     "Left side": "Po lewej stronie",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dok",
     "Open Apps menu": "Otwórz menu Aplikacje",
     "Add to dock": "Przypnij do doku",
-    "Remove from dock": "Odepnij od doku"
+    "Remove from dock": "Odepnij od doku",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Po wyłączeniu dok jest ukrywany, gdy okno na niego zachodzi, i pojawia się ponownie po wskazaniu dolnej krawędzi.",
+    "Always show the dock": "Zawsze pokazuj dok",
+    "Show the button to open Nextcloud Files in a new tab": "Pokaż przycisk, aby otworzyć pliki Nextcloud w nowej karcie",
+    "Pin to dock": "Przypnij do doku",
+    "Dock controls": "Sterowanie dokiem"
 },
     "nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);"
 );

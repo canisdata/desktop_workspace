@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Mở dưới dạng toàn trang",
     "Delete {name}?": "Xóa {name}?",
     "No folders": "Không có thư mục",
-    "Could not complete file operation.": "Không thể hoàn tất thao tác với tệp."
-,
+    "Could not complete file operation.": "Không thể hoàn tất thao tác với tệp.",
     "Window controls": "Nút điều khiển cửa sổ",
     "Window control position": "Vị trí nút điều khiển cửa sổ",
     "Left side": "Bên trái",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "Mở trình đơn Ứng dụng",
     "Add to dock": "Ghim vào Dock",
-    "Remove from dock": "Bỏ ghim khỏi Dock"
+    "Remove from dock": "Bỏ ghim khỏi Dock",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Khi bị tắt, thanh dock sẽ ẩn trong khi một cửa sổ chồng lên nó và xuất hiện lại khi bạn trỏ tới cạnh dưới cùng.",
+    "Pin to dock": "Ghim vào Dock",
+    "Dock controls": "Điều khiển Dock",
+    "Always show the dock": "Luôn hiển thị Dock",
+    "Show the button to open Nextcloud Files in a new tab": "Hiển thị nút để mở Tệp Nextcloud trong tab mới"
 },
     "nplurals=1; plural=0;"
 );

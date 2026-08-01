@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Otvoriť ako celú stránku",
     "Delete {name}?": "Odstrániť {name}?",
     "No folders": "Žiadne priečinky",
-    "Could not complete file operation.": "Operáciu so súborom nebolo možné dokončiť."
-,
+    "Could not complete file operation.": "Operáciu so súborom nebolo možné dokončiť.",
     "Window controls": "Tlačidlá okna",
     "Window control position": "Umiestnenie tlačidiel okna",
     "Left side": "Vľavo",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dok",
     "Open Apps menu": "Otvoriť ponuku Aplikácie",
     "Add to dock": "Pripnúť do doku",
-    "Remove from dock": "Odopnúť z doku"
+    "Remove from dock": "Odopnúť z doku",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Keď je zakázaný, dok sa skryje, kým ho prekryje okno, a znova sa zobrazí, keď ukážete na spodný okraj.",
+    "Always show the dock": "Vždy ukážte dok",
+    "Dock controls": "Ovládacie prvky doku",
+    "Pin to dock": "Pripnúť do doku",
+    "Show the button to open Nextcloud Files in a new tab": "Zobrazte tlačidlo na otvorenie súborov Nextcloud na novej karte"
 },
     "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);"
 );

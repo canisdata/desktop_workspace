@@ -1,11 +1,11 @@
 <?php
 \OCP\Util::addTranslations('desktop_workspace');
-script('desktop_workspace', 'admin-settings');
+script('desktop_workspace', 'admin-settings-0171c');
 style('desktop_workspace', 'admin-0160c');
 /** @var array $_ */
 $l = \OC::$server->getL10N('desktop_workspace');
 ?>
-<div id="desktop-admin-settings" class="section" data-save-url="<?= p($_['saveUrl']) ?>" data-decoration-policy-url="<?= p($_['decorationPolicyUrl']) ?>">
+<div id="desktop-admin-settings" class="section" data-save-url="<?= p($_['saveUrl']) ?>" data-decoration-policy-url="<?= p($_['decorationPolicyUrl']) ?>" data-files-button-policy-url="<?= p($_['filesButtonPolicyUrl']) ?>">
     <h2><?= p($l->t('Desktop Workspace')) ?></h2>
     <p class="settings-hint"><?= p($l->t('Configure the browser-contained desktop shell.')) ?></p>
 
@@ -15,6 +15,12 @@ $l = \OC::$server->getL10N('desktop_workspace');
         <label for="desktop-user-decorations-enabled"><?= p($l->t('Allow users to customize Desktop appearance')) ?></label>
     </p>
     <p class="settings-hint"><?= p($l->t('When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.')) ?></p>
+
+    <h3><?= p($l->t('Dock controls')) ?></h3>
+    <p>
+        <input type="checkbox" id="desktop-show-files-new-tab" class="checkbox" <?= $_['showFilesNewTab'] ? 'checked' : '' ?> />
+        <label for="desktop-show-files-new-tab"><?= p($l->t('Show the button to open Nextcloud Files in a new tab')) ?></label>
+    </p>
 
     <h3><?= p($l->t('Window behavior')) ?></h3>
     <p class="settings-hint"><?= p($l->t('Usually only one window per app can be opened from the Apps menu. Here you can allow your users to open several windows of the same app. (The file managers can always be opened in multiple windows.)')) ?></p>

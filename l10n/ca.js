@@ -235,7 +235,7 @@ OC.L10N.register(
     "No files": "No hi ha fitxers",
     "Appearance": "Aparença",
     "Choose an automatic appearance or customize window decorations and icons separately.": "Trieu un aspecte automàtic o personalitzeu les decoracions i les icones de les finestres per separat.",
-    "Windows, taskbar and menus": "Windows, barra de tasques i menús",
+    "Windows, taskbar and menus": "Finestres, barra de tasques i menús",
     "Decoration style": "Estil de l’aparença",
     "Color mode": "Mode de color",
     "Follow Nextcloud appearance": "Seguiu l'aparença de Nextcloud",
@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Obre com a pàgina completa",
     "Delete {name}?": "Voleu suprimir {name}?",
     "No folders": "No hi ha carpetes",
-    "Could not complete file operation.": "No s’ha pogut completar l’operació amb el fitxer."
-,
+    "Could not complete file operation.": "No s’ha pogut completar l’operació amb el fitxer.",
     "Window controls": "Botons de control de la finestra",
     "Window control position": "Posició dels botons de control de la finestra",
     "Left side": "Costat esquerre",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "Obre el menú d’aplicacions",
     "Add to dock": "Afegeix al Dock",
-    "Remove from dock": "Treu del Dock"
+    "Remove from dock": "Treu del Dock",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Quan està desactivat, el Dock s'amaga mentre una finestra se li superposa i torna a aparèixer quan assenyaleu la vora inferior.",
+    "Show the button to open Nextcloud Files in a new tab": "Mostra el botó per obrir els fitxers Nextcloud en una pestanya nova",
+    "Always show the dock": "Mostra sempre el Dock",
+    "Pin to dock": "Fixa al Dock",
+    "Dock controls": "Controls del Dock"
 },
     "nplurals=2; plural=(n != 1);"
 );

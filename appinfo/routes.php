@@ -6,6 +6,7 @@ return [
         ['name' => 'page#dynamicData', 'url' => '/dynamic', 'verb' => 'GET'],
         ['name' => 'settings#saveAdminSettings', 'url' => '/settings/admin', 'verb' => 'POST'],
         ['name' => 'settings#saveDecorationPolicy', 'url' => '/settings/admin/decorations', 'verb' => 'POST'],
+        ['name' => 'settings#saveFilesButtonPolicy', 'url' => '/settings/admin/files-button', 'verb' => 'POST'],
         ['name' => 'settings#savePersonalSettings', 'url' => '/settings/personal', 'verb' => 'POST'],
         ['name' => 'settings#heartbeat', 'url' => '/settings/heartbeat', 'verb' => 'POST'],
         ['name' => 'settings#saveIconPositions', 'url' => '/settings/iconpositions', 'verb' => 'POST'],

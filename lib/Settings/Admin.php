@@ -62,6 +62,7 @@ class Admin implements ISettings {
 
         return new TemplateResponse('desktop_workspace', 'settings-admin', [
             'userDecorationsEnabled' => $this->config->getAppValue(SettingsController::APP_ID, SettingsController::USER_DECORATIONS_ENABLED_KEY, 'yes') !== 'no',
+            'showFilesNewTab' => $this->config->getAppValue(SettingsController::APP_ID, SettingsController::SHOW_FILES_NEW_TAB_KEY, 'yes') !== 'no',
             'experimentalDisabled' => $this->filesAvailability->globallyDisabled(),
             'groups' => $groups,
             'apps' => $apps,
@@ -71,6 +72,7 @@ class Admin implements ISettings {
             'weeklyStats' => $this->statsService->weeklyCounts(4),
             'saveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveAdminSettings'),
             'decorationPolicyUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveDecorationPolicy'),
+            'filesButtonPolicyUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveFilesButtonPolicy'),
             'resetUserUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.resetUserSettings'),
         ]);
     }

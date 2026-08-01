@@ -235,12 +235,12 @@ OC.L10N.register(
     "Open folder": "Otevřete složku",
     "Appearance": "Vzhled",
     "Choose an automatic appearance or customize window decorations and icons separately.": "Vyberte si automatický vzhled nebo si samostatně upravte dekorace oken a ikony.",
-    "Windows, taskbar and menus": "Windows, hlavní panel a nabídky",
+    "Windows, taskbar and menus": "Okna, hlavní panel a nabídky",
     "Decoration style": "Styl vzhledu",
     "Color mode": "Barevný režim",
     "Follow Nextcloud appearance": "Sledujte vzhled Nextcloud",
     "Always light": "Vždy světlý",
-    "Always dark": "Vždy tma",
+    "Always dark": "Vždy tmavý",
     "Desktop and app icons": "Ikony na ploše a aplikací",
     "Match window decoration": "Shodný se vzhledem oken",
     "Icon style": "Styl ikony",
@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Otevřít jako celou stránku",
     "Delete {name}?": "Smazat {name}?",
     "No folders": "Žádné složky",
-    "Could not complete file operation.": "Operaci se souborem se nepodařilo dokončit."
-,
+    "Could not complete file operation.": "Operaci se souborem se nepodařilo dokončit.",
     "Window controls": "Ovládací tlačítka okna",
     "Window control position": "Umístění ovládacích tlačítek okna",
     "Left side": "Vlevo",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dok",
     "Open Apps menu": "Otevřít nabídku aplikací",
     "Add to dock": "Připnout do doku",
-    "Remove from dock": "Odepnout z doku"
+    "Remove from dock": "Odepnout z doku",
+    "Always show the dock": "Vždy ukažte dok",
+    "Dock controls": "Ovládací prvky doku",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Když je zakázán, dok se skryje, když jej překrývá okno, a znovu se zobrazí, když ukážete na spodní okraj.",
+    "Show the button to open Nextcloud Files in a new tab": "Zobrazit tlačítko pro otevření souborů Nextcloud na nové kartě",
+    "Pin to dock": "Připnout do doku"
 },
     "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
 );

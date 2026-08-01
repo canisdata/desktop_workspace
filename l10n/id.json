@@ -224,7 +224,7 @@
         "Decorations": "Dekorasi",
         "Desktop decoration": "Dekorasi desktop",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Standar",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Saat dinonaktifkan, semua pengguna menggunakan jendela Nextcloud standar, bilah tugas, dan dekorasi menu.",
         "Back": "Kembali",
@@ -252,8 +252,14 @@
         "Maintenance": "Pemeliharaan",
         "Appearance choices": "Pilihan penampilan",
         "Allow users to customize Desktop appearance": "Izinkan pengguna untuk menyesuaikan tampilan Desktop",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Saat dinonaktifkan, Desktop menggunakan gaya Standar dan mengikuti tampilan Nextcloud setiap pengguna."
-    ,"All desktop settings were reset and applied.": "Semua pengaturan desktop telah diatur ulang dan diterapkan.","No apps found.": "Tidak ada aplikasi yang ditemukan.","{name} could not be opened natively.": "{name} tidak dapat dibuka secara asli.","Open as full page": "Buka sebagai halaman penuh","Delete {name}?": "Hapus {name}?","No folders": "Tidak ada folder","Could not complete file operation.": "Tidak dapat menyelesaikan operasi file.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Saat dinonaktifkan, Desktop menggunakan gaya Standar dan mengikuti tampilan Nextcloud setiap pengguna.",
+        "All desktop settings were reset and applied.": "Semua pengaturan desktop telah diatur ulang dan diterapkan.",
+        "No apps found.": "Tidak ada aplikasi yang ditemukan.",
+        "{name} could not be opened natively.": "{name} tidak dapat dibuka secara asli.",
+        "Open as full page": "Buka sebagai halaman penuh",
+        "Delete {name}?": "Hapus {name}?",
+        "No folders": "Tidak ada folder",
+        "Could not complete file operation.": "Tidak dapat menyelesaikan operasi file.",
         "Window controls": "Kontrol jendela",
         "Window control position": "Posisi kontrol jendela",
         "Left side": "Sisi kiri",
@@ -263,7 +269,12 @@
         "Dock": "Dok",
         "Open Apps menu": "Buka menu aplikasi",
         "Add to dock": "Tambahkan ke dok",
-        "Remove from dock": "Hapus dari dok"
+        "Remove from dock": "Hapus dari dok",
+        "Pin to dock": "Sematkan ke dok",
+        "Dock controls": "Kontrol dok",
+        "Always show the dock": "Selalu tunjukkan dok",
+        "Show the button to open Nextcloud Files in a new tab": "Tampilkan tombol untuk membuka File Nextcloud di tab baru",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Saat dinonaktifkan, dok akan tersembunyi ketika tertindih jendela dan muncul kembali saat Anda menunjuk ke tepi bawah."
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

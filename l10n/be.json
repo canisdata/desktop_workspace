@@ -252,8 +252,14 @@
         "Maintenance": "Абслугоўванне",
         "Appearance choices": "Выбар знешняга выгляду",
         "Allow users to customize Desktop appearance": "Дазволіць карыстальнікам наладжваць знешні выгляд працоўнага стала",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Калі адключана, Desktop выкарыстоўвае стандартны стыль і прытрымліваецца выгляду Nextcloud кожнага карыстальніка."
-    ,"All desktop settings were reset and applied.": "Усе налады працоўнага стала былі скінуты і прыменены.","No apps found.": "Праграмы не знойдзены.","{name} could not be opened natively.": "Не ўдалося адкрыць {name} ва ўласнай праграме.","Open as full page": "Адкрыць на поўнай старонцы","Delete {name}?": "Выдаліць {name}?","No folders": "Няма папак","Could not complete file operation.": "Не ўдалося завяршыць аперацыю з файлам.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Калі адключана, Desktop выкарыстоўвае стандартны стыль і прытрымліваецца выгляду Nextcloud кожнага карыстальніка.",
+        "All desktop settings were reset and applied.": "Усе налады працоўнага стала былі скінуты і прыменены.",
+        "No apps found.": "Праграмы не знойдзены.",
+        "{name} could not be opened natively.": "Не ўдалося адкрыць {name} ва ўласнай праграме.",
+        "Open as full page": "Адкрыць на поўнай старонцы",
+        "Delete {name}?": "Выдаліць {name}?",
+        "No folders": "Няма папак",
+        "Could not complete file operation.": "Не ўдалося завяршыць аперацыю з файлам.",
         "Window controls": "Кнопкі кіравання акном",
         "Window control position": "Размяшчэнне кнопак кіравання акном",
         "Left side": "Злева",
@@ -263,7 +269,12 @@
         "Dock": "Док-панэль",
         "Open Apps menu": "Адкрыць меню праграм",
         "Add to dock": "Замацаваць на док-панэлі",
-        "Remove from dock": "Адмацаваць ад док-панэлі"
+        "Remove from dock": "Адмацаваць ад док-панэлі",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Калі адключана, док-панэль хаваецца, калі акно перакрывае яе, і зноў з'яўляецца, калі вы наводзіце курсор на ніжні край.",
+        "Show the button to open Nextcloud Files in a new tab": "Паказаць кнопку для адкрыцця файлаў Nextcloud у новай укладцы",
+        "Dock controls": "Элементы кіравання док-панэллю",
+        "Pin to dock": "Замацаваць на док-панэлі",
+        "Always show the dock": "Заўсёды паказваць док-панэль"
     },
     "pluralForm": "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"
 }

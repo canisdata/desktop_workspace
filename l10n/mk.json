@@ -252,8 +252,14 @@
         "Maintenance": "Одржување",
         "Appearance choices": "Избори за изглед",
         "Allow users to customize Desktop appearance": "Дозволете им на корисниците да го приспособат изгледот на работната површина",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Кога е оневозможено, Desktop го користи стандардниот стил и го следи изгледот Nextcloud на секој корисник."
-    ,"All desktop settings were reset and applied.": "Сите поставки на работната површина беа ресетирани и применети.","No apps found.": "Не се пронајдени апликации.","{name} could not be opened natively.": "{name} не можеше да се отвори природно.","Open as full page": "Отвори како целосна страница","Delete {name}?": "Да се ​​избрише {name}?","No folders": "Нема папки","Could not complete file operation.": "Не може да се заврши операцијата со датотеката.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Кога е оневозможено, Desktop го користи стандардниот стил и го следи изгледот Nextcloud на секој корисник.",
+        "All desktop settings were reset and applied.": "Сите поставки на работната површина беа ресетирани и применети.",
+        "No apps found.": "Не се пронајдени апликации.",
+        "{name} could not be opened natively.": "{name} не можеше да се отвори природно.",
+        "Open as full page": "Отвори како целосна страница",
+        "Delete {name}?": "Да се ​​избрише {name}?",
+        "No folders": "Нема папки",
+        "Could not complete file operation.": "Не може да се заврши операцијата со датотеката.",
         "Window controls": "Контроли на прозорецот",
         "Window control position": "Положба на контролите на прозорецот",
         "Left side": "Лева страна",
@@ -263,7 +269,12 @@
         "Dock": "Док",
         "Open Apps menu": "Отвори го менито со апликации",
         "Add to dock": "Додај во докот",
-        "Remove from dock": "Отстрани од докот"
+        "Remove from dock": "Отстрани од докот",
+        "Pin to dock": "Закачи на докот",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Кога е оневозможено, докот се крие додека прозорец го преклопува и повторно се појавува кога ќе покажете на долниот раб.",
+        "Always show the dock": "Секогаш прикажувај го докот",
+        "Dock controls": "Контроли на докот",
+        "Show the button to open Nextcloud Files in a new tab": "Покажете го копчето за отворање на Nextcloud Files во нова картичка"
     },
     "pluralForm": "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"
 }

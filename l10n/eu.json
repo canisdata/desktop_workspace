@@ -224,7 +224,7 @@
         "Decorations": "Leihoen itxurak",
         "Desktop decoration": "Mahaigainaren itxura",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Estandarra",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Desgaituta dagoenean, erabiltzaile guztiek Nextcloud-eko leiho estandarra, ataza-barra eta menu-apainketa erabiltzen dituzte.",
         "Back": "Itzuli",
@@ -234,7 +234,7 @@
         "Open folder": "Ireki karpeta",
         "Appearance": "Itxura",
         "Choose an automatic appearance or customize window decorations and icons separately.": "Aukeratu itxura automatikoa edo pertsonalizatu leihoen apaingarriak eta ikonoak bereizita.",
-        "Windows, taskbar and menus": "Windows, ataza-barra eta menuak",
+        "Windows, taskbar and menus": "Leihoak, ataza-barra eta menuak",
         "Decoration style": "Itxura-estiloa",
         "Color mode": "Kolore modua",
         "Follow Nextcloud appearance": "Jarraitu Nextcloud-en itxura",
@@ -252,8 +252,14 @@
         "Maintenance": "Mantentze-lanak",
         "Appearance choices": "Itxura aukerak",
         "Allow users to customize Desktop appearance": "Eman erabiltzaileei mahaigainaren itxura pertsonalizatzeko",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Desgaituta dagoenean, mahaigainak estilo estandarra erabiltzen du eta erabiltzaile bakoitzaren Nextcloud itxura jarraitzen du."
-    ,"All desktop settings were reset and applied.": "Mahaigaineko ezarpen guztiak berrezarri eta aplikatu dira.","No apps found.": "Ez da aplikaziorik aurkitu.","{name} could not be opened natively.": "Ezin izan da {name} jatorrizko aplikazio batean ireki.","Open as full page": "Ireki orri oso gisa","Delete {name}?": "{name} ezabatu?","No folders": "Ez dago karpetarik","Could not complete file operation.": "Ezin izan da fitxategi-eragiketa osatu.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Desgaituta dagoenean, mahaigainak estilo estandarra erabiltzen du eta erabiltzaile bakoitzaren Nextcloud itxura jarraitzen du.",
+        "All desktop settings were reset and applied.": "Mahaigaineko ezarpen guztiak berrezarri eta aplikatu dira.",
+        "No apps found.": "Ez da aplikaziorik aurkitu.",
+        "{name} could not be opened natively.": "Ezin izan da {name} jatorrizko aplikazio batean ireki.",
+        "Open as full page": "Ireki orri oso gisa",
+        "Delete {name}?": "{name} ezabatu?",
+        "No folders": "Ez dago karpetarik",
+        "Could not complete file operation.": "Ezin izan da fitxategi-eragiketa osatu.",
         "Window controls": "Leihoaren kontrol-botoiak",
         "Window control position": "Leihoaren kontrol-botoien kokalekua",
         "Left side": "Ezkerreko aldea",
@@ -263,7 +269,12 @@
         "Dock": "Dokea",
         "Open Apps menu": "Ireki aplikazioen menua",
         "Add to dock": "Ainguratu dokean",
-        "Remove from dock": "Kendu doketik"
+        "Remove from dock": "Kendu doketik",
+        "Show the button to open Nextcloud Files in a new tab": "Erakutsi Nextcloud Fitxategiak fitxa berri batean irekitzeko botoia",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Desgaituta dagoenean, dokea ezkutatu egiten da leiho batek estaltzen duen bitartean, eta berriro agertzen da beheko ertza seinalatzen duzunean.",
+        "Always show the dock": "Erakutsi beti dokea",
+        "Pin to dock": "Ainguratu dokean",
+        "Dock controls": "Dokearen kontrolak"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

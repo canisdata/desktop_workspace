@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Отвори како целосна страница",
     "Delete {name}?": "Да се ​​избрише {name}?",
     "No folders": "Нема папки",
-    "Could not complete file operation.": "Не може да се заврши операцијата со датотеката."
-,
+    "Could not complete file operation.": "Не може да се заврши операцијата со датотеката.",
     "Window controls": "Контроли на прозорецот",
     "Window control position": "Положба на контролите на прозорецот",
     "Left side": "Лева страна",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Док",
     "Open Apps menu": "Отвори го менито со апликации",
     "Add to dock": "Додај во докот",
-    "Remove from dock": "Отстрани од докот"
+    "Remove from dock": "Отстрани од докот",
+    "Pin to dock": "Закачи на докот",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Кога е оневозможено, докот се крие додека прозорец го преклопува и повторно се појавува кога ќе покажете на долниот раб.",
+    "Always show the dock": "Секогаш прикажувај го докот",
+    "Dock controls": "Контроли на докот",
+    "Show the button to open Nextcloud Files in a new tab": "Покажете го копчето за отворање на Nextcloud Files во нова картичка"
 },
     "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"
 );

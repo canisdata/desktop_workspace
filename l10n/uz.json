@@ -224,7 +224,7 @@
         "Decorations": "Dekoratsiyalar",
         "Desktop decoration": "Ish stolini bezash",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Standart",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "O'chirilganda, barcha foydalanuvchilar standart Nextcloud oynasi, vazifalar paneli va menyu bezaklaridan foydalanadilar.",
         "Back": "Orqaga",
@@ -252,8 +252,14 @@
         "Maintenance": "Texnik xizmat",
         "Appearance choices": "Tashqi ko'rinish tanlovlari",
         "Allow users to customize Desktop appearance": "Foydalanuvchilarga Ish stoli koʻrinishini sozlash imkonini bering",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "O'chirilganida, Ish stoli standart uslubdan foydalanadi va har bir foydalanuvchining Nextcloud ko'rinishini kuzatib boradi."
-    ,"All desktop settings were reset and applied.": "Barcha ish stoli sozlamalari tiklandi va qo‘llandi.","No apps found.": "Hech qanday ilova topilmadi.","{name} could not be opened natively.": "{name} mahalliy ilovada ochilmadi.","Open as full page": "To‘liq sahifa sifatida ochish","Delete {name}?": "{name} o‘chirilsinmi?","No folders": "Jildlar yo‘q","Could not complete file operation.": "Fayl amalini tugatib bo‘lmadi.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "O'chirilganida, Ish stoli standart uslubdan foydalanadi va har bir foydalanuvchining Nextcloud ko'rinishini kuzatib boradi.",
+        "All desktop settings were reset and applied.": "Barcha ish stoli sozlamalari tiklandi va qo‘llandi.",
+        "No apps found.": "Hech qanday ilova topilmadi.",
+        "{name} could not be opened natively.": "{name} mahalliy ilovada ochilmadi.",
+        "Open as full page": "To‘liq sahifa sifatida ochish",
+        "Delete {name}?": "{name} o‘chirilsinmi?",
+        "No folders": "Jildlar yo‘q",
+        "Could not complete file operation.": "Fayl amalini tugatib bo‘lmadi.",
         "Window controls": "Oyna tugmalari",
         "Window control position": "Oyna tugmalari joylashuvi",
         "Left side": "Chap tomonda",
@@ -263,7 +269,12 @@
         "Dock": "Dok-panel",
         "Open Apps menu": "Ilovalar menyusini ochish",
         "Add to dock": "Dok-panelga mahkamlash",
-        "Remove from dock": "Dok-paneldan olib tashlash"
+        "Remove from dock": "Dok-paneldan olib tashlash",
+        "Dock controls": "Dok-panel boshqaruvlari",
+        "Always show the dock": "Dok-panelni doimo ko‘rsatish",
+        "Pin to dock": "Dok-panelga mahkamlash",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "O‘chirib qo‘yilganda, dok-panelni oyna qoplagan paytda u yashirinadi va ko‘rsatkichni pastki chetga olib borganingizda yana paydo bo‘ladi.",
+        "Show the button to open Nextcloud Files in a new tab": "Nextcloud Files-ni yangi tabda ochish tugmachasini ko'rsating"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

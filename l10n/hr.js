@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Otvori kao cijelu stranicu",
     "Delete {name}?": "Izbrisati {name}?",
     "No folders": "Nema mapa",
-    "Could not complete file operation.": "Nije moguće dovršiti operaciju datoteke."
-,
+    "Could not complete file operation.": "Nije moguće dovršiti operaciju datoteke.",
     "Window controls": "Kontrole prozora",
     "Window control position": "Položaj kontrola prozora",
     "Left side": "Lijeva strana",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dok",
     "Open Apps menu": "Otvori izbornik aplikacija",
     "Add to dock": "Dodaj na dok",
-    "Remove from dock": "Ukloni s doka"
+    "Remove from dock": "Ukloni s doka",
+    "Always show the dock": "Uvijek pokažite dok",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Kada je onemogućen, dok se skriva dok ga prozor prekriva i ponovno se pojavljuje kada pokažete na donji rub.",
+    "Show the button to open Nextcloud Files in a new tab": "Prikaži gumb za otvaranje datoteka Nextcloud u novoj kartici",
+    "Pin to dock": "Prikvači na dok",
+    "Dock controls": "Kontrole doka"
 },
     "nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;"
 );

@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Avaa koko sivuna",
     "Delete {name}?": "Poistetaanko {name}?",
     "No folders": "Ei kansioita",
-    "Could not complete file operation.": "Tiedostotoimintoa ei voitu suorittaa loppuun."
-,
+    "Could not complete file operation.": "Tiedostotoimintoa ei voitu suorittaa loppuun.",
     "Window controls": "Ikkunapainikkeet",
     "Window control position": "Ikkunapainikkeiden sijainti",
     "Left side": "Vasen puoli",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Telakka",
     "Open Apps menu": "Avaa sovellusvalikko",
     "Add to dock": "Kiinnitä telakkaan",
-    "Remove from dock": "Irrota telakasta"
+    "Remove from dock": "Irrota telakasta",
+    "Dock controls": "Telakan säätimet",
+    "Always show the dock": "Näytä aina telakka",
+    "Show the button to open Nextcloud Files in a new tab": "Näytä painike avataksesi Nextcloud-tiedostot uudessa välilehdessä",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Kun telakka ei ole käytössä, telakka piiloutuu ikkunan ollessa sen päällä ja tulee uudelleen näkyviin, kun osoitat alareunaa.",
+    "Pin to dock": "Kiinnitä telakkaan"
 },
     "nplurals=2; plural=(n != 1);"
 );

@@ -235,7 +235,7 @@ OC.L10N.register(
     "Open folder": "Отворете папката",
     "Appearance": "Външен вид",
     "Choose an automatic appearance or customize window decorations and icons separately.": "Изберете автоматичен външен вид или отделно персонализирайте декорациите и иконите на прозорците.",
-    "Windows, taskbar and menus": "Windows, лента на задачите и менюта",
+    "Windows, taskbar and menus": "Прозорци, лента на задачите и менюта",
     "Decoration style": "Стил на оформлението",
     "Color mode": "Цветен режим",
     "Follow Nextcloud appearance": "Следвайте външния вид на Nextcloud",
@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Отваряне като цяла страница",
     "Delete {name}?": "Изтриване на {name}?",
     "No folders": "Няма папки",
-    "Could not complete file operation.": "Файловата операция не можа да бъде завършена."
-,
+    "Could not complete file operation.": "Файловата операция не можа да бъде завършена.",
     "Window controls": "Бутони за управление на прозореца",
     "Window control position": "Позиция на бутоните за управление на прозореца",
     "Left side": "Отляво",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Док",
     "Open Apps menu": "Отваряне на менюто с приложения",
     "Add to dock": "Закачане към дока",
-    "Remove from dock": "Откачане от дока"
+    "Remove from dock": "Откачане от дока",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Когато е деактивиран, докът се скрива, докато прозорец го припокрива, и се появява отново, когато посочите долния край.",
+    "Always show the dock": "Винаги показвайте дока",
+    "Dock controls": "Контроли на дока",
+    "Show the button to open Nextcloud Files in a new tab": "Показване на бутона за отваряне на Nextcloud Files в нов раздел",
+    "Pin to dock": "Закачане към дока"
 },
     "nplurals=2; plural=(n != 1);"
 );

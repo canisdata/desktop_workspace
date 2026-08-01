@@ -224,7 +224,7 @@
         "Decorations": "Mapambo",
         "Desktop decoration": "Mapambo ya Desktop",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Kawaida",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Inapozimwa, watumiaji wote hutumia dirisha la kawaida la Nextcloud, upau wa kazi na mapambo ya menyu.",
         "Back": "Nyuma",
@@ -252,8 +252,14 @@
         "Maintenance": "Matengenezo",
         "Appearance choices": "Chaguzi za kuonekana",
         "Allow users to customize Desktop appearance": "Ruhusu watumiaji kubinafsisha mwonekano wa Eneo-kazi",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Inapozimwa, Eneo-kazi hutumia mtindo wa Kawaida na hufuata mwonekano wa Nextcloud wa kila mtumiaji."
-    ,"All desktop settings were reset and applied.": "Mipangilio yote ya eneo-kazi iliwekwa upya na kutumika.","No apps found.": "Hakuna programu zilizopatikana.","{name} could not be opened natively.": "{name} haikuweza kufunguliwa katika programu asilia.","Open as full page": "Fungua kama ukurasa kamili","Delete {name}?": "Ungependa kufuta {name}?","No folders": "Hakuna folda","Could not complete file operation.": "Haikuweza kukamilisha operesheni ya faili.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Inapozimwa, Eneo-kazi hutumia mtindo wa Kawaida na hufuata mwonekano wa Nextcloud wa kila mtumiaji.",
+        "All desktop settings were reset and applied.": "Mipangilio yote ya eneo-kazi iliwekwa upya na kutumika.",
+        "No apps found.": "Hakuna programu zilizopatikana.",
+        "{name} could not be opened natively.": "{name} haikuweza kufunguliwa katika programu asilia.",
+        "Open as full page": "Fungua kama ukurasa kamili",
+        "Delete {name}?": "Ungependa kufuta {name}?",
+        "No folders": "Hakuna folda",
+        "Could not complete file operation.": "Haikuweza kukamilisha operesheni ya faili.",
         "Window controls": "Vitufe vya dirisha",
         "Window control position": "Nafasi ya vitufe vya dirisha",
         "Left side": "Upande wa kushoto",
@@ -263,7 +269,12 @@
         "Dock": "Dock",
         "Open Apps menu": "Fungua menyu ya Programu",
         "Add to dock": "Bandika kwenye Dock",
-        "Remove from dock": "Bandua kutoka kwenye Dock"
+        "Remove from dock": "Bandua kutoka kwenye Dock",
+        "Always show the dock": "Onyesha Dock kila wakati",
+        "Dock controls": "Vidhibiti vya Dock",
+        "Pin to dock": "Bandika kwenye Dock",
+        "Show the button to open Nextcloud Files in a new tab": "Onyesha kitufe ili kufungua Faili za Nextcloud kwenye kichupo kipya",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Inapozimwa, Dock hujificha dirisha linapoifunika na kuonekana tena unapoelekeza ukingo wa chini."
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

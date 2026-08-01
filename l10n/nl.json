@@ -224,7 +224,7 @@
         "Decorations": "Decoraties",
         "Desktop decoration": "Bureaubladdecoratie",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Standaard",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Indien uitgeschakeld, gebruiken alle gebruikers het standaard Nextcloud-venster, de taakbalk en de menudecoratie.",
         "Back": "Rug",
@@ -252,8 +252,14 @@
         "Maintenance": "Onderhoud",
         "Appearance choices": "Uiterlijk keuzes",
         "Allow users to customize Desktop appearance": "Sta gebruikers toe het uiterlijk van het bureaublad aan te passen",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Indien uitgeschakeld, gebruikt Desktop de standaardstijl en volgt het het Nextcloud-uiterlijk van elke gebruiker."
-    ,"All desktop settings were reset and applied.": "Alle bureaubladinstellingen zijn gereset en toegepast.","No apps found.": "Geen apps gevonden.","{name} could not be opened natively.": "{name} kon niet native worden geopend.","Open as full page": "Openen als volledige pagina","Delete {name}?": "{name} verwijderen?","No folders": "Geen mappen","Could not complete file operation.": "Kon de bestandsbewerking niet voltooien.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Indien uitgeschakeld, gebruikt Desktop de standaardstijl en volgt het het Nextcloud-uiterlijk van elke gebruiker.",
+        "All desktop settings were reset and applied.": "Alle bureaubladinstellingen zijn gereset en toegepast.",
+        "No apps found.": "Geen apps gevonden.",
+        "{name} could not be opened natively.": "{name} kon niet native worden geopend.",
+        "Open as full page": "Openen als volledige pagina",
+        "Delete {name}?": "{name} verwijderen?",
+        "No folders": "Geen mappen",
+        "Could not complete file operation.": "Kon de bestandsbewerking niet voltooien.",
         "Window controls": "Vensterknoppen",
         "Window control position": "Positie van vensterknoppen",
         "Left side": "Linkerkant",
@@ -263,7 +269,12 @@
         "Dock": "Dock",
         "Open Apps menu": "Apps-menu openen",
         "Add to dock": "Voeg toe aan Dock",
-        "Remove from dock": "Verwijder uit Dock"
+        "Remove from dock": "Verwijder uit Dock",
+        "Always show the dock": "Dock altijd weergeven",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Indien uitgeschakeld, verbergt het dock zich terwijl een venster het overlapt en verschijnt het opnieuw wanneer u naar de onderrand wijst.",
+        "Show the button to open Nextcloud Files in a new tab": "Toon de knop om Nextcloud Files in een nieuw tabblad te openen",
+        "Dock controls": "Dockbediening",
+        "Pin to dock": "Vastmaken aan dock"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

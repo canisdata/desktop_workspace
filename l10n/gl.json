@@ -224,7 +224,7 @@
         "Decorations": "Decoracións",
         "Desktop decoration": "Decoración de escritorio",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Estándar",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Cando está desactivado, todos os usuarios usan a xanela, a barra de tarefas e a decoración do menú estándar de Nextcloud.",
         "Back": "De volta",
@@ -252,8 +252,14 @@
         "Maintenance": "Mantemento",
         "Appearance choices": "Opcións de aparencia",
         "Allow users to customize Desktop appearance": "Permitir aos usuarios personalizar o aspecto do escritorio",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Cando está desactivado, Desktop usa o estilo Estándar e segue a aparencia de Nextcloud de cada usuario."
-    ,"All desktop settings were reset and applied.": "Restablecéronse e aplicáronse todas as configuracións do escritorio.","No apps found.": "Non se atopou ningunha aplicación.","{name} could not be opened natively.": "{name} non se puido abrir de forma nativa.","Open as full page": "Abrir como páxina completa","Delete {name}?": "Queres eliminar {name}?","No folders": "Non hai cartafoles","Could not complete file operation.": "Non se puido completar a operación do ficheiro.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Cando está desactivado, Desktop usa o estilo Estándar e segue a aparencia de Nextcloud de cada usuario.",
+        "All desktop settings were reset and applied.": "Restablecéronse e aplicáronse todas as configuracións do escritorio.",
+        "No apps found.": "Non se atopou ningunha aplicación.",
+        "{name} could not be opened natively.": "{name} non se puido abrir de forma nativa.",
+        "Open as full page": "Abrir como páxina completa",
+        "Delete {name}?": "Queres eliminar {name}?",
+        "No folders": "Non hai cartafoles",
+        "Could not complete file operation.": "Non se puido completar a operación do ficheiro.",
         "Window controls": "Controis da xanela",
         "Window control position": "Posición dos controis da xanela",
         "Left side": "Lado esquerdo",
@@ -263,7 +269,12 @@
         "Dock": "Dock",
         "Open Apps menu": "Abrir o menú de aplicacións",
         "Add to dock": "Engadir ao Dock",
-        "Remove from dock": "Retirar do Dock"
+        "Remove from dock": "Retirar do Dock",
+        "Always show the dock": "Mostrar sempre o Dock",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Cando está desactivado, o dock escóndese mentres se solapa unha xanela e aparece de novo cando apuntas ao bordo inferior.",
+        "Dock controls": "Controis do Dock",
+        "Pin to dock": "Fixar no Dock",
+        "Show the button to open Nextcloud Files in a new tab": "Mostra o botón para abrir ficheiros de Nextcloud nunha nova pestana"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Tam sayfa olarak aç",
     "Delete {name}?": "{name} silinsin mi?",
     "No folders": "Klasör yok",
-    "Could not complete file operation.": "Dosya işlemi tamamlanamadı."
-,
+    "Could not complete file operation.": "Dosya işlemi tamamlanamadı.",
     "Window controls": "Pencere düğmeleri",
     "Window control position": "Pencere düğmelerinin konumu",
     "Left side": "Sol taraf",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "Uygulamalar menüsünü aç",
     "Add to dock": "Dock'a sabitle",
-    "Remove from dock": "Dock'tan kaldır"
+    "Remove from dock": "Dock'tan kaldır",
+    "Always show the dock": "Her zaman dock'u göster",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Devre dışı bırakıldığında, bir pencere onunla örtüştüğünde dock gizlenir ve alt kenarı işaret ettiğinizde yeniden görünür.",
+    "Dock controls": "Dock denetimleri",
+    "Pin to dock": "Dock'a sabitle",
+    "Show the button to open Nextcloud Files in a new tab": "Nextcloud Dosyalarını yeni bir sekmede açma düğmesini göster"
 },
     "nplurals=2; plural=(n > 1);"
 );

@@ -1,6 +1,6 @@
 <?php
 \OCP\Util::addTranslations('desktop_workspace');
-script('desktop_workspace', 'personal-0170');
+script('desktop_workspace', 'personal-0171b');
 style('desktop_workspace', 'admin-0160c');
 style('desktop_workspace', 'personal-0170');
 /** @var array $_ */
@@ -67,6 +67,13 @@ $l = \OC::$server->getL10N('desktop_workspace');
             <label><input type="radio" name="desktop-shell-mode" value="taskbar" <?= $_['shellMode'] !== 'dock' ? 'checked' : '' ?> /> <?= p($l->t('Taskbar')) ?></label>
             <label><input type="radio" name="desktop-shell-mode" value="dock" <?= $_['shellMode'] === 'dock' ? 'checked' : '' ?> /> <?= p($l->t('Dock')) ?></label>
         </fieldset>
+        <div id="desktop-dock-always-visible-setting" <?= $_['shellMode'] === 'dock' ? '' : 'hidden' ?>>
+            <p>
+                <input type="checkbox" id="desktop-dock-always-visible" class="checkbox" <?= $_['dockAlwaysVisible'] ? 'checked' : '' ?> />
+                <label for="desktop-dock-always-visible"><?= p($l->t('Always show the dock')) ?></label>
+            </p>
+            <p class="settings-hint"><?= p($l->t('When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.')) ?></p>
+        </div>
     </div>
 
     <h3><?= p($l->t('Desktop items')) ?></h3>

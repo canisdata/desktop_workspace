@@ -9,6 +9,7 @@
 
 
     const userDecorationsCb = document.getElementById('desktop-user-decorations-enabled');
+    const showFilesNewTabCb = document.getElementById('desktop-show-files-new-tab');
     const expDisabledCb = document.getElementById('desktop-exp-disabled');
     const groupsSelect = document.getElementById('desktop-exp-groups');
     const button = document.getElementById('desktop-save-admin-settings');
@@ -98,6 +99,32 @@
                 status.textContent = tr('Save failed: {msg}', { msg: error.message });
             } finally {
                 userDecorationsCb.disabled = false;
+            }
+        });
+    }
+    if (showFilesNewTabCb) {
+        showFilesNewTabCb.addEventListener('change', async () => {
+            const previous = !showFilesNewTabCb.checked;
+            showFilesNewTabCb.disabled = true;
+            status.textContent = tr('Saving…');
+            try {
+                const body = new URLSearchParams({ enabled: showFilesNewTabCb.checked ? 'yes' : 'no', requesttoken: OC.requestToken });
+                const response = await fetch(root.dataset.filesButtonPolicyUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8', requesttoken: OC.requestToken },
+                    body,
+                });
+                const data = await response.json().catch(() => ({}));
+                if (!response.ok || data.status !== 'ok' || typeof data.showFilesNewTab !== 'boolean') {
+                    throw new Error(data.message || `HTTP ${response.status}: invalid response`);
+                }
+                showFilesNewTabCb.checked = data.showFilesNewTab;
+                status.textContent = tr('Saved.');
+            } catch (error) {
+                showFilesNewTabCb.checked = previous;
+                status.textContent = tr('Save failed: {msg}', { msg: error.message });
+            } finally {
+                showFilesNewTabCb.disabled = false;
             }
         });
     }

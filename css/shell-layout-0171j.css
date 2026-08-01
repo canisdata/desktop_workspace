@@ -35,8 +35,8 @@
 #desktop-root[data-shell-mode="taskbar"] .desktop-topbar { height: 0; }
 
 /* Dock: a compact, centered bottom launcher with icon-only running windows. */
-#desktop-root[data-shell-mode="dock"] { grid-template-rows: 50px minmax(0, 1fr); }
-#desktop-root[data-shell-mode="dock"] .desktop-stage { grid-row: 2; }
+#desktop-root[data-shell-mode="dock"] { grid-template-rows: minmax(0, 1fr); }
+#desktop-root[data-shell-mode="dock"] .desktop-stage { grid-row: 1; }
 #desktop-root[data-shell-mode="dock"] .desktop-taskbar {
     position: fixed;
     left: 50%;
@@ -90,7 +90,7 @@
 #desktop-root[data-shell-mode="dock"] .desktop-task-list {
     flex: 0 1 auto;
     width: auto;
-    max-width: min(45vw, 640px);
+    max-width: min(34vw, 640px);
     height: 46px;
     max-height: 46px;
     gap: 5px;
@@ -126,7 +126,7 @@
 
 /* A covered dock yields the stage instead of reserving a full-width bottom row. */
 .desktop-dock-reveal { display: none; }
-#desktop-root[data-shell-mode="dock"].is-dock-occluded .desktop-dock-reveal {
+#desktop-root[data-shell-mode="dock"][data-dock-always-visible="false"].is-dock-occluded .desktop-dock-reveal {
     position: fixed;
     left: 50%;
     bottom: 0;
@@ -142,7 +142,7 @@
     transform: translateX(-50%);
     background: transparent;
 }
-#desktop-root[data-shell-mode="dock"].is-dock-occluded .desktop-dock-reveal span {
+#desktop-root[data-shell-mode="dock"][data-dock-always-visible="false"].is-dock-occluded .desktop-dock-reveal span {
     position: absolute;
     left: 50%;
     bottom: 3px;
@@ -153,40 +153,65 @@
     background: color-mix(in srgb, var(--desktop-panel-text) 72%, transparent);
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--desktop-panel-background) 76%, transparent), 0 1px 5px rgba(0,0,0,.35);
 }
-#desktop-root[data-shell-mode="dock"].is-dock-occluded .desktop-dock-reveal:focus-visible span {
+#desktop-root[data-shell-mode="dock"][data-dock-always-visible="false"].is-dock-occluded .desktop-dock-reveal:focus-visible span {
     box-shadow: 0 0 0 2px var(--color-primary-element), 0 1px 5px rgba(0,0,0,.35);
 }
-#desktop-root[data-shell-mode="dock"].is-dock-occluded:not(.is-apps-menu-open) .desktop-taskbar {
+#desktop-root[data-shell-mode="dock"][data-dock-always-visible="false"].is-dock-occluded:not(.is-apps-menu-open) .desktop-taskbar {
     opacity: 0;
     transform: translate(-50%, calc(100% + 20px));
 }
-#desktop-root[data-shell-mode="dock"].is-dock-occluded .desktop-dock-reveal:hover ~ .desktop-taskbar,
-#desktop-root[data-shell-mode="dock"].is-dock-occluded.is-dock-hovered .desktop-taskbar,
-#desktop-root[data-shell-mode="dock"].is-dock-occluded .desktop-taskbar:hover,
-#desktop-root[data-shell-mode="dock"].is-dock-occluded .desktop-taskbar:focus-within {
+#desktop-root[data-shell-mode="dock"][data-dock-always-visible="false"].is-dock-occluded .desktop-dock-reveal:hover ~ .desktop-taskbar,
+#desktop-root[data-shell-mode="dock"][data-dock-always-visible="false"].is-dock-occluded.is-dock-hovered .desktop-taskbar,
+#desktop-root[data-shell-mode="dock"][data-dock-always-visible="false"].is-dock-occluded .desktop-taskbar:hover,
+#desktop-root[data-shell-mode="dock"][data-dock-always-visible="false"].is-dock-occluded .desktop-taskbar:focus-within {
     opacity: 1 !important;
     transform: translateX(-50%) !important;
 }
 
-/* Dock utilities mirror the native Nextcloud header position and reading order. */
-#desktop-root[data-shell-mode="dock"] .desktop-topbar {
-    height: 50px;
-    padding: 4px 8px;
-    box-sizing: border-box;
-    pointer-events: auto;
-    color: var(--desktop-panel-text);
-    background: var(--desktop-panel-background);
-    border-bottom: 1px solid var(--desktop-panel-border);
-    backdrop-filter: blur(18px);
-}
-#desktop-root[data-shell-mode="dock"] .desktop-shell-utilities { width: 100%; height: 42px; }
-#desktop-root[data-shell-mode="dock"] .desktop-shell-utility-spacer { display: block; flex: 1 1 auto; }
-#desktop-root[data-shell-mode="dock"] .taskbar-fullscreen { order: -2; width: 38px; padding: 0; }
-#desktop-root[data-shell-mode="dock"] .desktop-header-end-slot { order: 0; min-height: 40px; padding: 2px 5px; }
-#desktop-root[data-shell-mode="dock"] .desktop-header-end-slot .header-end { transform: translateY(7px); }
-#desktop-root[data-shell-mode="dock"] .desktop-clock { order: 1; }
-#desktop-root[data-shell-mode="dock"] .desktop-nextcloud-logo { order: 2; }
+/* Dock mode has no desktop toolbar: shared controls become right-hand dock utilities. */
+#desktop-root[data-shell-mode="dock"] .desktop-topbar { display: none; }
+#desktop-root[data-shell-mode="dock"] .taskbar-fullscreen { order: -2; width: 46px; min-width: 46px; height: 46px; padding: 0; }
+#desktop-root[data-shell-mode="dock"] .desktop-header-end-slot { min-height: 46px; padding: 2px 5px; }
+#desktop-root[data-shell-mode="dock"] .desktop-header-end-slot .header-end { transform: translateY(4px); }
+#desktop-root[data-shell-mode="dock"] .desktop-clock { width: 46px; height: 46px; justify-content: center; }
+#desktop-root .desktop-nextcloud-logo[hidden],
+.desktop-task-context-menu button[hidden] { display: none !important; }
+#desktop-root[data-shell-mode="dock"] .desktop-nextcloud-logo { width: 46px; height: 46px; flex-basis: 46px; }
 #desktop-root[data-shell-mode="dock"] .desktop-wallpaper-credit { bottom: 16px; }
+#desktop-root[data-shell-mode="dock"] .desktop-task-button.is-represented-by-pin { display: none; }
+#desktop-root[data-shell-mode="dock"] .desktop-pinned-app.is-open { position: relative; }
+#desktop-root[data-shell-mode="dock"] .desktop-pinned-app.is-open::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    width: 5px;
+    height: 5px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: currentColor;
+}
+#desktop-root[data-shell-mode="dock"] .desktop-pinned-app.is-active {
+    background: var(--color-primary, rgba(57,165,220,.56));
+    border-color: var(--color-primary, rgba(125,211,252,.85));
+}
+#desktop-root[data-shell-mode="dock"] .desktop-pinned-app.is-minimized { opacity: .68; }
+
+.desktop-clock-face {
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background: radial-gradient(circle at center, var(--desktop-panel-background) 0 42%, transparent 44%), repeating-conic-gradient(from -1deg, currentColor 0 2deg, transparent 2deg 30deg);
+}
+.desktop-clock-face i { position: absolute; left: 50%; bottom: 50%; transform-origin: 50% 100%; border-radius: 999px; background: currentColor; }
+.desktop-clock-hour { width: 2px; height: 8px; transform: translateX(-50%) rotate(var(--clock-hour-angle, 0deg)); }
+.desktop-clock-minute { width: 2px; height: 11px; transform: translateX(-50%) rotate(var(--clock-minute-angle, 0deg)); }
+.desktop-clock-second { width: 1px; height: 12px; transform: translateX(-50%) rotate(var(--clock-second-angle, 0deg)); color: var(--color-primary-element, #0082c9); }
+.desktop-clock-pin { left: 50% !important; bottom: 50% !important; width: 4px; height: 4px; transform: translate(-50%, 50%); }
 
 /* Keep the three decoration families visually coherent in both new shell surfaces. */
 #desktop-root[data-decoration="redmond"][data-shell-mode="dock"] .desktop-taskbar,

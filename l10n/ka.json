@@ -252,8 +252,14 @@
         "Maintenance": "მომსახურება",
         "Appearance choices": "გარეგნობის არჩევანი",
         "Allow users to customize Desktop appearance": "ნება მიეცით მომხმარებლებს დააკონფიგურიროთ დესკტოპის გარეგნობა",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "როდესაც გამორთულია, Desktop იყენებს სტანდარტულ სტილს და მიჰყვება თითოეული მომხმარებლის Nextcloud გარეგნობას."
-    ,"All desktop settings were reset and applied.": "დესკტოპის ყველა პარამეტრი გადაყენებულია და გამოყენებულია.","No apps found.": "აპები ვერ მოიძებნა.","{name} could not be opened natively.": "{name} ვერ გაიხსნა მშობლიური.","Open as full page": "გახსენით როგორც სრული გვერდი","Delete {name}?": "წაშალოთ {name}?","No folders": "საქაღალდეები არ არის","Could not complete file operation.": "ფაილის ოპერაციის დასრულება ვერ მოხერხდა.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "როდესაც გამორთულია, Desktop იყენებს სტანდარტულ სტილს და მიჰყვება თითოეული მომხმარებლის Nextcloud გარეგნობას.",
+        "All desktop settings were reset and applied.": "დესკტოპის ყველა პარამეტრი გადაყენებულია და გამოყენებულია.",
+        "No apps found.": "აპები ვერ მოიძებნა.",
+        "{name} could not be opened natively.": "{name} ვერ გაიხსნა მშობლიური.",
+        "Open as full page": "გახსენით როგორც სრული გვერდი",
+        "Delete {name}?": "წაშალოთ {name}?",
+        "No folders": "საქაღალდეები არ არის",
+        "Could not complete file operation.": "ფაილის ოპერაციის დასრულება ვერ მოხერხდა.",
         "Window controls": "ფანჯრის მართვის ღილაკები",
         "Window control position": "ფანჯრის მართვის ღილაკების მდებარეობა",
         "Left side": "მარცხენა მხარე",
@@ -263,7 +269,12 @@
         "Dock": "დოკი",
         "Open Apps menu": "აპების მენიუს გახსნა",
         "Add to dock": "დოკზე დამატება",
-        "Remove from dock": "დოკიდან მოცილება"
+        "Remove from dock": "დოკიდან მოცილება",
+        "Always show the dock": "ყოველთვის აჩვენე დოკი",
+        "Pin to dock": "ჩამაგრება დოკზე",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "როდესაც გამორთულია, დოკი იმალება, როცა ფანჯარა მას ფარავს, და კვლავ ჩნდება, როცა მაჩვენებელს ქვედა კიდესთან მიიტანთ.",
+        "Dock controls": "დოკის კონტროლი",
+        "Show the button to open Nextcloud Files in a new tab": "აჩვენეთ ღილაკი Nextcloud Files-ის გასახსნელად ახალ ჩანართში"
     },
     "pluralForm": "nplurals=2; plural=(n!=1);"
 }

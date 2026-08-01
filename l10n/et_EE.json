@@ -224,7 +224,7 @@
         "Decorations": "Akende kujundused",
         "Desktop decoration": "Töölaua kujundus",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Standardne",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Kui see on keelatud, kasutavad kõik kasutajad standardset Nextcloudi akent, tegumiriba ja menüüde kaunistamist.",
         "Back": "Tagasi",
@@ -234,7 +234,7 @@
         "No files": "Faile pole",
         "Appearance": "Välimus",
         "Choose an automatic appearance or customize window decorations and icons separately.": "Valige automaatne välimus või kohandage aknakaunistusi ja ikoone eraldi.",
-        "Windows, taskbar and menus": "Windows, tegumiriba ja menüüd",
+        "Windows, taskbar and menus": "Aknad, tegumiriba ja menüüd",
         "Decoration style": "Kujundusstiil",
         "Color mode": "Värvirežiim",
         "Follow Nextcloud appearance": "Jälgige Nextcloudi välimust",
@@ -252,8 +252,14 @@
         "Maintenance": "Hooldus",
         "Appearance choices": "Välimuse valikud",
         "Allow users to customize Desktop appearance": "Lubage kasutajatel kohandada töölaua välimust",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Kui see on keelatud, kasutab töölaud standardstiili ja järgib iga kasutaja Nextcloudi välimust."
-    ,"All desktop settings were reset and applied.": "Kõik töölaua seaded lähtestati ja rakendati.","No apps found.": "Rakendusi ei leitud.","{name} could not be opened natively.": "Üksust {name} ei saanud omarakenduses avada.","Open as full page": "Ava täislehena","Delete {name}?": "Kas kustutada {name}?","No folders": "Kaustu pole","Could not complete file operation.": "Failitoimingut ei saanud lõpule viia.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Kui see on keelatud, kasutab töölaud standardstiili ja järgib iga kasutaja Nextcloudi välimust.",
+        "All desktop settings were reset and applied.": "Kõik töölaua seaded lähtestati ja rakendati.",
+        "No apps found.": "Rakendusi ei leitud.",
+        "{name} could not be opened natively.": "Üksust {name} ei saanud omarakenduses avada.",
+        "Open as full page": "Ava täislehena",
+        "Delete {name}?": "Kas kustutada {name}?",
+        "No folders": "Kaustu pole",
+        "Could not complete file operation.": "Failitoimingut ei saanud lõpule viia.",
         "Window controls": "Akna juhtnupud",
         "Window control position": "Akna juhtnuppude asukoht",
         "Left side": "Vasakul",
@@ -263,7 +269,12 @@
         "Dock": "Dokk",
         "Open Apps menu": "Ava rakenduste menüü",
         "Add to dock": "Kinnita dokile",
-        "Remove from dock": "Eemalda dokilt"
+        "Remove from dock": "Eemalda dokilt",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Kui see on keelatud, peidetakse dokk, kui aken sellega kattub, ja ilmub uuesti, kui osutate alumisele servale.",
+        "Show the button to open Nextcloud Files in a new tab": "Kuvage nupp, et avada Nextcloudi failid uuel vahekaardil",
+        "Dock controls": "Doki juhtnupud",
+        "Pin to dock": "Kinnitage dokki",
+        "Always show the dock": "Näidake alati dokki"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Ouvrir en pleine page",
     "Delete {name}?": "Supprimer {name} ?",
     "No folders": "Aucun dossier",
-    "Could not complete file operation.": "Impossible de terminer l’opération sur le fichier."
-,
+    "Could not complete file operation.": "Impossible de terminer l’opération sur le fichier.",
     "Window controls": "Boutons de fenêtre",
     "Window control position": "Position des boutons de fenêtre",
     "Left side": "Côté gauche",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "Ouvrir le menu des applications",
     "Add to dock": "Épingler au Dock",
-    "Remove from dock": "Détacher du Dock"
+    "Remove from dock": "Détacher du Dock",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Lorsqu'il est désactivé, le dock se cache lorsqu'une fenêtre le chevauche et réapparaît lorsque vous pointez vers le bord inférieur.",
+    "Show the button to open Nextcloud Files in a new tab": "Afficher le bouton pour ouvrir les fichiers Nextcloud dans un nouvel onglet",
+    "Dock controls": "Contrôles du Dock",
+    "Always show the dock": "Toujours afficher le Dock",
+    "Pin to dock": "Épingler au Dock"
 },
     "nplurals=2; plural=(n > 1);"
 );

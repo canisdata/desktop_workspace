@@ -224,7 +224,7 @@
         "Decorations": "Maisiúcháin",
         "Desktop decoration": "Maisiú deasc",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Caighdeán",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Nuair atá sé díchumasaithe, úsáideann gach úsáideoir an fhuinneog caighdeánach Nextcloud, an tascbharra agus an maisiú roghchláir.",
         "Back": "Ar ais",
@@ -252,8 +252,14 @@
         "Maintenance": "Cothabháil",
         "Appearance choices": "Roghanna cuma",
         "Allow users to customize Desktop appearance": "Lig d'úsáideoirí cuma Deisce a shaincheapadh",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Nuair a bhíonn sé díchumasaithe, úsáideann Desktop an stíl Chaighdeánach agus leanann sé cuma Nextcloud gach úsáideoir."
-    ,"All desktop settings were reset and applied.": "Athshocraíodh na socruithe deisce go léir agus cuireadh i bhfeidhm iad.","No apps found.": "Níor aimsíodh aon aipeanna.","{name} could not be opened natively.": "Níorbh fhéidir {name} a oscailt ó dhúchas.","Open as full page": "Oscail mar leathanach iomlán","Delete {name}?": "An bhfuil fonn ort {name} a scriosadh?","No folders": "Uimh fillteáin","Could not complete file operation.": "Níorbh fhéidir an oibríocht comhaid a chríochnú.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Nuair a bhíonn sé díchumasaithe, úsáideann Desktop an stíl Chaighdeánach agus leanann sé cuma Nextcloud gach úsáideoir.",
+        "All desktop settings were reset and applied.": "Athshocraíodh na socruithe deisce go léir agus cuireadh i bhfeidhm iad.",
+        "No apps found.": "Níor aimsíodh aon aipeanna.",
+        "{name} could not be opened natively.": "Níorbh fhéidir {name} a oscailt ó dhúchas.",
+        "Open as full page": "Oscail mar leathanach iomlán",
+        "Delete {name}?": "An bhfuil fonn ort {name} a scriosadh?",
+        "No folders": "Uimh fillteáin",
+        "Could not complete file operation.": "Níorbh fhéidir an oibríocht comhaid a chríochnú.",
         "Window controls": "Rialuithe fuinneoige",
         "Window control position": "Suíomh rialuithe na fuinneoige",
         "Left side": "Taobh clé",
@@ -263,7 +269,12 @@
         "Dock": "Duga",
         "Open Apps menu": "Oscail roghchlár na n-aipeanna",
         "Add to dock": "Cuir leis an duga",
-        "Remove from dock": "Bain den duga"
+        "Remove from dock": "Bain den duga",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Nuair a bhíonn sé díchumasaithe, folaíonn an duga fad is a fhorluíonn fuinneog é agus feictear arís é nuair a dhíríonn tú ar an imeall bun.",
+        "Show the button to open Nextcloud Files in a new tab": "Taispeáin an cnaipe chun Comhaid Nextcloud a oscailt i gcluaisín nua",
+        "Dock controls": "Rialuithe duga",
+        "Pin to dock": "Bioráin chuig an duga",
+        "Always show the dock": "Taispeáin an duga i gcónaí"
     },
     "pluralForm": "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);"
 }

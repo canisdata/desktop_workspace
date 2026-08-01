@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Odpri kot celo stran",
     "Delete {name}?": "Ali želite izbrisati {name}?",
     "No folders": "Ni map",
-    "Could not complete file operation.": "Datotečnega opravila ni bilo mogoče dokončati."
-,
+    "Could not complete file operation.": "Datotečnega opravila ni bilo mogoče dokončati.",
     "Window controls": "Gumbi okna",
     "Window control position": "Položaj gumbov okna",
     "Left side": "Na levi strani",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Sidrišče",
     "Open Apps menu": "Odpri meni Programi",
     "Add to dock": "Pripni v sidrišče",
-    "Remove from dock": "Odpni iz sidrišča"
+    "Remove from dock": "Odpni iz sidrišča",
+    "Always show the dock": "Vedno pokaži sidrišče",
+    "Dock controls": "Kontrole sidrišča",
+    "Pin to dock": "Pripni v sidrišče",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Ko je onemogočeno, se sidrišče skrije, kadar ga prekriva okno, in se znova prikaže, ko pokažete na spodnji rob.",
+    "Show the button to open Nextcloud Files in a new tab": "Pokažite gumb za odpiranje datotek Nextcloud v novem zavihku"
 },
     "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"
 );

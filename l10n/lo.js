@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "ເປີດເປັນໜ້າເຕັມ",
     "Delete {name}?": "ລຶບ {name} ບໍ?",
     "No folders": "ບໍ່ມີໂຟນເດີ",
-    "Could not complete file operation.": "ບໍ່ສາມາດເຮັດສໍາເລັດການດໍາເນີນການໄຟລ໌."
-,
+    "Could not complete file operation.": "ບໍ່ສາມາດເຮັດສໍາເລັດການດໍາເນີນການໄຟລ໌.",
     "Window controls": "ປຸ່ມຄວບຄຸມໜ້າຕ່າງ",
     "Window control position": "ຕຳແໜ່ງປຸ່ມຄວບຄຸມໜ້າຕ່າງ",
     "Left side": "ດ້ານຊ້າຍ",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "ດັອກ",
     "Open Apps menu": "ເປີດເມນູແອັບ",
     "Add to dock": "ເພີ່ມໃສ່ດັອກ",
-    "Remove from dock": "ເອົາອອກຈາກດັອກ"
+    "Remove from dock": "ເອົາອອກຈາກດັອກ",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "ເມື່ອປິດໃຊ້ງານ, ດັອກຈະເຊື່ອງເມື່ອມີປ່ອງຢ້ຽມທັບມັນ ແລະຈະປາກົດຂຶ້ນອີກເມື່ອທ່ານຊີ້ໄປທີ່ຂອບລຸ່ມ.",
+    "Show the button to open Nextcloud Files in a new tab": "ສະແດງປຸ່ມເພື່ອເປີດ Nextcloud Files ໃນແຖບໃໝ່",
+    "Pin to dock": "ປັກໝຸດໃສ່ດັອກ",
+    "Dock controls": "ປຸ່ມຄວບຄຸມດັອກ",
+    "Always show the dock": "ສະແດງດັອກສະເໝີ"
 },
     "nplurals=1; plural=0;"
 );

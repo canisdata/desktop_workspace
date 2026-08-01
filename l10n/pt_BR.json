@@ -224,7 +224,7 @@
         "Decorations": "Decorações",
         "Desktop decoration": "Aparência da área de trabalho",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Padrão",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Quando desativado, todos os usuários usam a janela padrão do Nextcloud, a barra de tarefas e a decoração do menu.",
         "Back": "Voltar",
@@ -252,8 +252,14 @@
         "Maintenance": "Manutenção",
         "Appearance choices": "Opções de aparência",
         "Allow users to customize Desktop appearance": "Permitir que os usuários personalizem a aparência da área de trabalho",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Quando desativado, o Desktop usa o estilo Padrão e segue a aparência do Nextcloud de cada usuário."
-    ,"All desktop settings were reset and applied.": "Todas as configurações da área de trabalho foram redefinidas e aplicadas.","No apps found.": "Nenhum aplicativo encontrado.","{name} could not be opened natively.": "Não foi possível abrir {name} nativamente.","Open as full page": "Abrir como página inteira","Delete {name}?": "Excluir {name}?","No folders": "Nenhuma pasta","Could not complete file operation.": "Não foi possível concluir a operação de arquivo.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Quando desativado, o Desktop usa o estilo Padrão e segue a aparência do Nextcloud de cada usuário.",
+        "All desktop settings were reset and applied.": "Todas as configurações da área de trabalho foram redefinidas e aplicadas.",
+        "No apps found.": "Nenhum aplicativo encontrado.",
+        "{name} could not be opened natively.": "Não foi possível abrir {name} nativamente.",
+        "Open as full page": "Abrir como página inteira",
+        "Delete {name}?": "Excluir {name}?",
+        "No folders": "Nenhuma pasta",
+        "Could not complete file operation.": "Não foi possível concluir a operação de arquivo.",
         "Window controls": "Botões da janela",
         "Window control position": "Posição dos botões da janela",
         "Left side": "Lado esquerdo",
@@ -263,7 +269,12 @@
         "Dock": "Dock",
         "Open Apps menu": "Abrir menu Aplicativos",
         "Add to dock": "Fixar no dock",
-        "Remove from dock": "Desafixar do dock"
+        "Remove from dock": "Desafixar do dock",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Quando desativado, o dock fica oculto enquanto uma janela o sobrepõe e reaparece quando você aponta para a borda inferior.",
+        "Show the button to open Nextcloud Files in a new tab": "Mostre o botão para abrir arquivos Nextcloud em uma nova guia",
+        "Always show the dock": "Sempre mostre o dock",
+        "Dock controls": "Controles do dock",
+        "Pin to dock": "Fixar no dock"
     },
     "pluralForm": "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

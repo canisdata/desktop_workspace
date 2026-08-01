@@ -235,7 +235,7 @@ OC.L10N.register(
     "Open folder": "Åbn mappe",
     "Appearance": "Udseende",
     "Choose an automatic appearance or customize window decorations and icons separately.": "Vælg et automatisk udseende eller tilpas vinduesdekorationer og ikoner separat.",
-    "Windows, taskbar and menus": "Windows, proceslinje og menuer",
+    "Windows, taskbar and menus": "Vinduer, proceslinje og menuer",
     "Decoration style": "Udseendestil",
     "Color mode": "Farvetilstand",
     "Follow Nextcloud appearance": "Følg Nextcloud-optræden",
@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Åbn som hel side",
     "Delete {name}?": "Slet {name}?",
     "No folders": "Ingen mapper",
-    "Could not complete file operation.": "Filhandlingen kunne ikke fuldføres."
-,
+    "Could not complete file operation.": "Filhandlingen kunne ikke fuldføres.",
     "Window controls": "Vinduesknapper",
     "Window control position": "Placering af vinduesknapper",
     "Left side": "Venstre side",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "Åbn appmenuen",
     "Add to dock": "Fastgør til Dock",
-    "Remove from dock": "Fjern fra Dock"
+    "Remove from dock": "Fjern fra Dock",
+    "Pin to dock": "Fastgør til dock",
+    "Always show the dock": "Vis altid docken",
+    "Dock controls": "Dockkontrolelementer",
+    "Show the button to open Nextcloud Files in a new tab": "Vis knappen for at åbne Nextcloud Files i en ny fane",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Når den er deaktiveret, skjuler docken sig, mens et vindue overlapper den og vises igen, når du peger på den nederste kant."
 },
     "nplurals=2; plural=(n != 1);"
 );

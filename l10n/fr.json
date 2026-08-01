@@ -224,7 +224,7 @@
         "Decorations": "Habillages des fenêtres",
         "Desktop decoration": "Habillage du bureau",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Standard",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Lorsque cette option est désactivée, tous les utilisateurs emploient l’habillage standard de Nextcloud pour les fenêtres, la barre des tâches et les menus.",
         "Back": "Dos",
@@ -252,8 +252,14 @@
         "Maintenance": "Maintenance",
         "Appearance choices": "Choix d'apparence",
         "Allow users to customize Desktop appearance": "Autoriser les utilisateurs à personnaliser l'apparence du bureau",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Lorsqu'il est désactivé, Desktop utilise le style Standard et suit l'apparence Nextcloud de chaque utilisateur."
-    ,"All desktop settings were reset and applied.": "Tous les paramètres du bureau ont été réinitialisés et appliqués.","No apps found.": "Aucune application trouvée.","{name} could not be opened natively.": "Impossible d’ouvrir {name} dans une application native.","Open as full page": "Ouvrir en pleine page","Delete {name}?": "Supprimer {name} ?","No folders": "Aucun dossier","Could not complete file operation.": "Impossible de terminer l’opération sur le fichier.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Lorsqu'il est désactivé, Desktop utilise le style Standard et suit l'apparence Nextcloud de chaque utilisateur.",
+        "All desktop settings were reset and applied.": "Tous les paramètres du bureau ont été réinitialisés et appliqués.",
+        "No apps found.": "Aucune application trouvée.",
+        "{name} could not be opened natively.": "Impossible d’ouvrir {name} dans une application native.",
+        "Open as full page": "Ouvrir en pleine page",
+        "Delete {name}?": "Supprimer {name} ?",
+        "No folders": "Aucun dossier",
+        "Could not complete file operation.": "Impossible de terminer l’opération sur le fichier.",
         "Window controls": "Boutons de fenêtre",
         "Window control position": "Position des boutons de fenêtre",
         "Left side": "Côté gauche",
@@ -263,7 +269,12 @@
         "Dock": "Dock",
         "Open Apps menu": "Ouvrir le menu des applications",
         "Add to dock": "Épingler au Dock",
-        "Remove from dock": "Détacher du Dock"
+        "Remove from dock": "Détacher du Dock",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Lorsqu'il est désactivé, le dock se cache lorsqu'une fenêtre le chevauche et réapparaît lorsque vous pointez vers le bord inférieur.",
+        "Show the button to open Nextcloud Files in a new tab": "Afficher le bouton pour ouvrir les fichiers Nextcloud dans un nouvel onglet",
+        "Dock controls": "Contrôles du Dock",
+        "Always show the dock": "Toujours afficher le Dock",
+        "Pin to dock": "Épingler au Dock"
     },
     "pluralForm": "nplurals=2; plural=(n > 1);"
 }

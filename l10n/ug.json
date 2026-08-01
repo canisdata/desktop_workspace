@@ -224,7 +224,7 @@
         "Decorations": "بېزەكلەر",
         "Desktop decoration": "ئۈستەل بېزەكچىلىكى",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Standard",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "چەكلەنگەندە ، بارلىق ئىشلەتكۈچىلەر ئۆلچەملىك Nextcloud كۆزنىكى ، ۋەزىپە بالدىقى ۋە تىزىملىك ​​بېزەكلىرىنى ئىشلىتىدۇ.",
         "Back": "قايتىش",
@@ -252,8 +252,14 @@
         "Maintenance": "ئاسراش",
         "Appearance choices": "كۆرۈنۈش تاللاشلىرى",
         "Allow users to customize Desktop appearance": "ئىشلەتكۈچىلەرنىڭ ئۈستەل يۈزى كۆرۈنۈشىنى ئىختىيارىي قىلىشىغا يول قويۇڭ",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "چەكلەنگەندە ، ئۈستەل يۈزى ئۆلچەملىك ئۇسلۇبنى ئىشلىتىپ ، ھەر بىر ئىشلەتكۈچىنىڭ Nextcloud كۆرۈنۈشىگە ئەگىشىدۇ."
-    ,"All desktop settings were reset and applied.": "بارلىق ئۈستەل يۈزى تەڭشەكلىرى ئەسلىگە قايتۇرۇلۇپ قوللىنىلدى.","No apps found.": "ھېچقانداق ئەپ تېپىلمىدى.","{name} could not be opened natively.": "{name} نى يەرلىك ئەپتە ئاچقىلى بولمىدى.","Open as full page": "پۈتۈن بەت قىلىپ ئېچىش","Delete {name}?": "{name} نى ئۆچۈرەمسىز؟","No folders": "ھۆججەت قىسقۇچ يوق","Could not complete file operation.": "ھۆججەت مەشغۇلاتىنى تاماملىغىلى بولمىدى.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "چەكلەنگەندە ، ئۈستەل يۈزى ئۆلچەملىك ئۇسلۇبنى ئىشلىتىپ ، ھەر بىر ئىشلەتكۈچىنىڭ Nextcloud كۆرۈنۈشىگە ئەگىشىدۇ.",
+        "All desktop settings were reset and applied.": "بارلىق ئۈستەل يۈزى تەڭشەكلىرى ئەسلىگە قايتۇرۇلۇپ قوللىنىلدى.",
+        "No apps found.": "ھېچقانداق ئەپ تېپىلمىدى.",
+        "{name} could not be opened natively.": "{name} نى يەرلىك ئەپتە ئاچقىلى بولمىدى.",
+        "Open as full page": "پۈتۈن بەت قىلىپ ئېچىش",
+        "Delete {name}?": "{name} نى ئۆچۈرەمسىز؟",
+        "No folders": "ھۆججەت قىسقۇچ يوق",
+        "Could not complete file operation.": "ھۆججەت مەشغۇلاتىنى تاماملىغىلى بولمىدى.",
         "Window controls": "كۆزنەك كونترول كۇنۇپكىلىرى",
         "Window control position": "كۆزنەك كونترول كۇنۇپكىلىرىنىڭ ئورنى",
         "Left side": "سول تەرەپ",
@@ -263,7 +269,12 @@
         "Dock": "ئەپلەر بالدىقى",
         "Open Apps menu": "ئەپلەر تىزىملىكىنى ئېچىش",
         "Add to dock": "ئەپلەر بالدىقىغا مىخلا",
-        "Remove from dock": "ئەپلەر بالدىقىدىن ئاجرات"
+        "Remove from dock": "ئەپلەر بالدىقىدىن ئاجرات",
+        "Pin to dock": "ئەپلەر بالدىقىغا مىخلاش",
+        "Always show the dock": "ئەپلەر بالدىقىنى ھەمىشە كۆرسىتىش",
+        "Dock controls": "ئەپلەر بالدىقى كونتروللىرى",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "چەكلەنگەندە، كۆزنەك ئەپلەر بالدىقىنى قاپلىسا ئۇ يوشۇرۇنىدۇ، نۇر بەلگىسىنى ئاستى قىرغا يۆتكىگەندە يەنە كۆرۈنىدۇ.",
+        "Show the button to open Nextcloud Files in a new tab": "يېڭى بەتكۈچتە Nextcloud ھۆججەتلىرىنى ئېچىش كۇنۇپكىسىنى كۆرسىتىڭ"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

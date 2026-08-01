@@ -235,7 +235,7 @@ OC.L10N.register(
     "Open folder": "Abrir carpeta",
     "Appearance": "Apariencia",
     "Choose an automatic appearance or customize window decorations and icons separately.": "Elija una apariencia automática o personalice las decoraciones y los íconos de las ventanas por separado.",
-    "Windows, taskbar and menus": "Windows, barra de tareas y menús",
+    "Windows, taskbar and menus": "Ventanas, barra de tareas y menús",
     "Decoration style": "Estilo de decoración",
     "Color mode": "Modo de color",
     "Follow Nextcloud appearance": "Siga la apariencia de Nextcloud",
@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Abrir como página completa",
     "Delete {name}?": "¿Eliminar {name}?",
     "No folders": "No hay carpetas",
-    "Could not complete file operation.": "No se pudo completar la operación con el archivo."
-,
+    "Could not complete file operation.": "No se pudo completar la operación con el archivo.",
     "Window controls": "Botones de la ventana",
     "Window control position": "Posición de los botones de la ventana",
     "Left side": "Lado izquierdo",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "Abrir el menú de aplicaciones",
     "Add to dock": "Agregar al Dock",
-    "Remove from dock": "Quitar del Dock"
+    "Remove from dock": "Quitar del Dock",
+    "Always show the dock": "Mostrar siempre el Dock",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Cuando está deshabilitado, el Dock se oculta mientras una ventana lo cubre y vuelve a aparecer cuando se apunta al borde inferior.",
+    "Dock controls": "Controles del Dock",
+    "Show the button to open Nextcloud Files in a new tab": "Mostrar el botón para abrir Nextcloud Files en una nueva pestaña",
+    "Pin to dock": "Anclar al Dock"
 },
     "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 );

@@ -252,8 +252,14 @@
         "Maintenance": "نگهداری",
         "Appearance choices": "انتخاب های ظاهری",
         "Allow users to customize Desktop appearance": "به کاربران اجازه دهید ظاهر دسکتاپ را سفارشی کنند",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "هنگامی که غیرفعال است، دسکتاپ از سبک استاندارد استفاده می کند و از ظاهر Nextcloud هر کاربر پیروی می کند."
-    ,"All desktop settings were reset and applied.": "همه تنظیمات دسکتاپ بازنشانی و اعمال شدند.","No apps found.": "هیچ برنامه‌ای پیدا نشد.","{name} could not be opened natively.": "باز کردن بومی {name} ممکن نبود.","Open as full page": "باز کردن به‌صورت صفحه کامل","Delete {name}?": "{name} حذف شود؟","No folders": "هیچ پوشه‌ای وجود ندارد","Could not complete file operation.": "عملیات فایل کامل نشد.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "هنگامی که غیرفعال است، دسکتاپ از سبک استاندارد استفاده می کند و از ظاهر Nextcloud هر کاربر پیروی می کند.",
+        "All desktop settings were reset and applied.": "همه تنظیمات دسکتاپ بازنشانی و اعمال شدند.",
+        "No apps found.": "هیچ برنامه‌ای پیدا نشد.",
+        "{name} could not be opened natively.": "باز کردن بومی {name} ممکن نبود.",
+        "Open as full page": "باز کردن به‌صورت صفحه کامل",
+        "Delete {name}?": "{name} حذف شود؟",
+        "No folders": "هیچ پوشه‌ای وجود ندارد",
+        "Could not complete file operation.": "عملیات فایل کامل نشد.",
         "Window controls": "دکمه‌های کنترل پنجره",
         "Window control position": "جایگاه دکمه‌های کنترل پنجره",
         "Left side": "سمت چپ",
@@ -263,7 +269,12 @@
         "Dock": "داک",
         "Open Apps menu": "باز کردن منوی برنامه‌ها",
         "Add to dock": "سنجاق کردن به داک",
-        "Remove from dock": "برداشتن از داک"
+        "Remove from dock": "برداشتن از داک",
+        "Always show the dock": "همیشه داک را نشان دهید",
+        "Dock controls": "کنترل‌های داک",
+        "Pin to dock": "سنجاق کردن به داک",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "هنگامی که غیرفعال است، داک با قرار گرفتن پنجره‌ای روی آن پنهان می‌شود و با بردن نشانگر به لبهٔ پایین دوباره ظاهر می‌شود.",
+        "Show the button to open Nextcloud Files in a new tab": "دکمه باز کردن Nextcloud Files را در یک تب جدید نشان دهید"
     },
     "pluralForm": "nplurals=2; plural=(n > 1);"
 }

@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "เปิดแบบเต็มหน้า",
     "Delete {name}?": "ลบ {name} หรือไม่",
     "No folders": "ไม่มีโฟลเดอร์",
-    "Could not complete file operation.": "ไม่สามารถดำเนินการกับไฟล์ให้เสร็จสิ้นได้"
-,
+    "Could not complete file operation.": "ไม่สามารถดำเนินการกับไฟล์ให้เสร็จสิ้นได้",
     "Window controls": "ปุ่มควบคุมหน้าต่าง",
     "Window control position": "ตำแหน่งปุ่มควบคุมหน้าต่าง",
     "Left side": "ด้านซ้าย",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "เปิดเมนูแอป",
     "Add to dock": "ปักหมุดไว้ที่ Dock",
-    "Remove from dock": "เลิกปักหมุดจาก Dock"
+    "Remove from dock": "เลิกปักหมุดจาก Dock",
+    "Always show the dock": "แสดง Dock เสมอ",
+    "Dock controls": "การควบคุม Dock",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "เมื่อปิดใช้งาน Dock จะซ่อนเมื่อมีหน้าต่างซ้อนทับ และจะปรากฏขึ้นอีกครั้งเมื่อคุณชี้ไปที่ขอบด้านล่าง",
+    "Show the button to open Nextcloud Files in a new tab": "แสดงปุ่มเพื่อเปิดไฟล์ Nextcloud ในแท็บใหม่",
+    "Pin to dock": "ปักหมุดไว้ที่ Dock"
 },
     "nplurals=1; plural=0;"
 );

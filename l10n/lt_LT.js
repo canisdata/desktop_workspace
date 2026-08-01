@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Atidaryti kaip visą puslapį",
     "Delete {name}?": "Ištrinti {name}?",
     "No folders": "Nėra aplankų",
-    "Could not complete file operation.": "Nepavyko užbaigti failo operacijos."
-,
+    "Could not complete file operation.": "Nepavyko užbaigti failo operacijos.",
     "Window controls": "Lango valdikliai",
     "Window control position": "Lango valdiklių vieta",
     "Left side": "Kairė pusė",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dokas",
     "Open Apps menu": "Atverti programų meniu",
     "Add to dock": "Pridėti prie doko",
-    "Remove from dock": "Pašalinti iš doko"
+    "Remove from dock": "Pašalinti iš doko",
+    "Dock controls": "Dokų valdikliai",
+    "Always show the dock": "Visada parodykite doką",
+    "Show the button to open Nextcloud Files in a new tab": "Rodyti mygtuką, kad atidarytumėte Nextcloud failus naujame skirtuke",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Kai išjungta, dokas pasislepia, o langas perdengia jį, ir vėl pasirodo, kai nukreipiate į apatinį kraštą.",
+    "Pin to dock": "Prisegti prie doko"
 },
     "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);"
 );

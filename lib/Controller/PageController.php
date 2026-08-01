@@ -72,6 +72,7 @@ class PageController extends Controller {
             ...$this->decorationService->appearanceForUser($user?->getUID()),
             'windowControlsSide' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::WINDOW_CONTROLS_SIDE_KEY, 'right') : 'right',
             'shellMode' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::SHELL_MODE_KEY, 'taskbar') : 'taskbar',
+            'dockAlwaysVisible' => $uid === null || $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::DOCK_ALWAYS_VISIBLE_KEY, 'yes') !== 'no',
         ]);
     }
 
@@ -104,6 +105,7 @@ class PageController extends Controller {
             'desktopfilesEnabled' => $this->filesAvailability->enabledForUser($user),
             'settingsUrl' => $this->urlGenerator->getAbsoluteURL('/index.php/settings/user/desktop_workspace'),
             'filesUrl' => $this->urlGenerator->linkToRoute('files.view.index'),
+            'showFilesNewTab' => $this->config->getAppValue(SettingsController::APP_ID, SettingsController::SHOW_FILES_NEW_TAB_KEY, 'yes') !== 'no',
             'personalSaveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.savePersonalSettings'),
             'iconPositions' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::ICON_POSITIONS_KEY, '{}') : '{}',
             'iconSaveUrl' => $this->urlGenerator->linkToRoute('desktop_workspace.settings.saveIconPositions'),
@@ -117,6 +119,7 @@ class PageController extends Controller {
             'trashNoConfirm' => $uid !== null && $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::TRASH_NO_CONFIRM_KEY, 'no') === 'yes',
             'windowControlsSide' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::WINDOW_CONTROLS_SIDE_KEY, 'right') : 'right',
             'shellMode' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::SHELL_MODE_KEY, 'taskbar') : 'taskbar',
+            'dockAlwaysVisible' => $uid === null || $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::DOCK_ALWAYS_VISIBLE_KEY, 'yes') !== 'no',
             ...$this->decorationService->appearanceForUser($uid),
         ]);
         $csp = new ContentSecurityPolicy();

@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "以完整頁面開啟",
     "Delete {name}?": "刪除 {name}？",
     "No folders": "沒有資料夾",
-    "Could not complete file operation.": "無法完成檔案操作。"
-,
+    "Could not complete file operation.": "無法完成檔案操作。",
     "Window controls": "視窗控制按鈕",
     "Window control position": "視窗控制按鈕位置",
     "Left side": "左側",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "開啟應用程式選單",
     "Add to dock": "釘選至 Dock",
-    "Remove from dock": "從 Dock 取消釘選"
+    "Remove from dock": "從 Dock 取消釘選",
+    "Always show the dock": "一律顯示 Dock",
+    "Dock controls": "Dock 控制項",
+    "Pin to dock": "釘選至 Dock",
+    "Show the button to open Nextcloud Files in a new tab": "顯示在新分頁中開啟 Nextcloud 檔案的按鈕",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "停用後，當視窗與 Dock 重疊時，Dock 會隱藏；將游標移至底部邊緣時，Dock 會再次出現。"
 },
     "nplurals=1; plural=0;"
 );

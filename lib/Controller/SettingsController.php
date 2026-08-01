@@ -33,6 +33,8 @@ class SettingsController extends Controller {
     public const ICON_COLOR_KEY = 'icon_color';
     public const WINDOW_CONTROLS_SIDE_KEY = 'window_controls_side';
     public const SHELL_MODE_KEY = 'shell_mode';
+    public const DOCK_ALWAYS_VISIBLE_KEY = 'dock_always_visible';
+    public const SHOW_FILES_NEW_TAB_KEY = 'show_files_new_tab';
 
     public function __construct(
         string $appName,
@@ -92,6 +94,13 @@ class SettingsController extends Controller {
         $value = $enabled === 'yes' || $enabled === 'true' || $enabled === '1';
         $this->config->setAppValue(self::APP_ID, self::USER_DECORATIONS_ENABLED_KEY, $value ? 'yes' : 'no');
         return new JSONResponse(['status' => 'ok', 'userDecorationsEnabled' => $value]);
+    }
+
+    /** @AdminRequired */
+    public function saveFilesButtonPolicy(string $enabled = 'no'): JSONResponse {
+        $value = $enabled === 'yes' || $enabled === 'true' || $enabled === '1';
+        $this->config->setAppValue(self::APP_ID, self::SHOW_FILES_NEW_TAB_KEY, $value ? 'yes' : 'no');
+        return new JSONResponse(['status' => 'ok', 'showFilesNewTab' => $value]);
     }
 
     /**
@@ -202,6 +211,7 @@ class SettingsController extends Controller {
                 'iconColor' => DecorationService::FOLLOW_NEXTCLOUD,
                 'windowControlsSide' => 'right',
                 'shellMode' => 'taskbar',
+                'dockAlwaysVisible' => true,
             ],
         ]);
     }
@@ -236,6 +246,7 @@ class SettingsController extends Controller {
         ?string $icon_color = null,
         ?string $window_controls_side = null,
         ?string $shell_mode = null,
+        ?string $dock_always_visible = null,
     ): JSONResponse {
         $user = $this->userSession->getUser();
         if ($user === null) {
@@ -253,6 +264,11 @@ class SettingsController extends Controller {
             $value = $shell_mode === 'dock' ? 'dock' : 'taskbar';
             $this->config->setUserValue($uid, self::APP_ID, self::SHELL_MODE_KEY, $value);
             $result['shellMode'] = $value;
+        }
+        if ($dock_always_visible !== null) {
+            $value = $truthy($dock_always_visible);
+            $this->config->setUserValue($uid, self::APP_ID, self::DOCK_ALWAYS_VISIBLE_KEY, $value ? 'yes' : 'no');
+            $result['dockAlwaysVisible'] = $value;
         }
         if ($decoration !== null) {
             $selected = in_array($decoration, [DecorationService::STANDARD, DecorationService::REDMOND, DecorationService::RETRO], true)

@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "전체 페이지로 열기",
     "Delete {name}?": "{name}을(를) 삭제하시겠습니까?",
     "No folders": "폴더 없음",
-    "Could not complete file operation.": "파일 작업을 완료할 수 없습니다."
-,
+    "Could not complete file operation.": "파일 작업을 완료할 수 없습니다.",
     "Window controls": "창 제어 버튼",
     "Window control position": "창 제어 버튼 위치",
     "Left side": "왼쪽",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "앱 메뉴 열기",
     "Add to dock": "Dock에 추가",
-    "Remove from dock": "Dock에서 제거"
+    "Remove from dock": "Dock에서 제거",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "비활성화되면 창이 겹쳐지는 동안 도크가 숨겨지고 아래쪽 가장자리를 가리키면 다시 나타납니다.",
+    "Show the button to open Nextcloud Files in a new tab": "새 탭에서 Nextcloud Files를 여는 버튼 표시",
+    "Pin to dock": "Dock에 고정",
+    "Always show the dock": "항상 도크 표시",
+    "Dock controls": "도크 컨트롤"
 },
     "nplurals=1; plural=0;"
 );

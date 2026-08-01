@@ -224,7 +224,7 @@
         "Decorations": "Dekorationer",
         "Desktop decoration": "Skrivbordsdekoration",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Standard",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "När det är inaktiverat använder alla användare standardfönstret Nextcloud, aktivitetsfältet och menydekoration.",
         "Back": "Tillbaka",
@@ -252,8 +252,14 @@
         "Maintenance": "Underhåll",
         "Appearance choices": "Utseendeval",
         "Allow users to customize Desktop appearance": "Tillåt användare att anpassa skrivbordets utseende",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "När det är inaktiverat använder Desktop standardstilen och följer varje användares Nextcloud-utseende."
-    ,"All desktop settings were reset and applied.": "Alla skrivbordsinställningar återställdes och tillämpades.","No apps found.": "Inga appar hittades.","{name} could not be opened natively.": "{name} kunde inte öppnas direkt i en app.","Open as full page": "Öppna som helsida","Delete {name}?": "Ta bort {name}?","No folders": "Inga mappar","Could not complete file operation.": "Det gick inte att slutföra filåtgärden.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "När det är inaktiverat använder Desktop standardstilen och följer varje användares Nextcloud-utseende.",
+        "All desktop settings were reset and applied.": "Alla skrivbordsinställningar återställdes och tillämpades.",
+        "No apps found.": "Inga appar hittades.",
+        "{name} could not be opened natively.": "{name} kunde inte öppnas direkt i en app.",
+        "Open as full page": "Öppna som helsida",
+        "Delete {name}?": "Ta bort {name}?",
+        "No folders": "Inga mappar",
+        "Could not complete file operation.": "Det gick inte att slutföra filåtgärden.",
         "Window controls": "Fönsterknappar",
         "Window control position": "Placering av fönsterknappar",
         "Left side": "Vänster sida",
@@ -263,7 +269,12 @@
         "Dock": "Dock",
         "Open Apps menu": "Öppna appmenyn",
         "Add to dock": "Lägg till i Dock",
-        "Remove from dock": "Ta bort från Dock"
+        "Remove from dock": "Ta bort från Dock",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "När den är inaktiverad döljs dockan medan ett fönster överlappar den och visas igen när du pekar på den nedre kanten.",
+        "Show the button to open Nextcloud Files in a new tab": "Visa knappen för att öppna Nextcloud Files på en ny flik",
+        "Always show the dock": "Visa alltid dockan",
+        "Pin to dock": "Fäst i Dock",
+        "Dock controls": "Dockningskontroller"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

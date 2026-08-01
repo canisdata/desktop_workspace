@@ -252,8 +252,14 @@
         "Maintenance": "Засвар үйлчилгээ",
         "Appearance choices": "Гадаад үзэмжийн сонголтууд",
         "Allow users to customize Desktop appearance": "Хэрэглэгчдэд ширээний харагдах байдлыг өөрчлөх боломжийг олгоно",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Идэвхгүй болсон үед Desktop нь Стандарт хэв маягийг ашигладаг бөгөөд хэрэглэгч бүрийн Nextcloud харагдах байдлыг дагадаг."
-    ,"All desktop settings were reset and applied.": "Бүх ширээний тохиргоог шинэчилж, ашигласан.","No apps found.": "Ямар ч програм олдсонгүй.","{name} could not be opened natively.": "{name}-г үндсэн байдлаар нээж чадсангүй.","Open as full page": "Бүтэн хуудас хэлбэрээр нээх","Delete {name}?": "{name}-г устгах уу?","No folders": "Фолдер байхгүй","Could not complete file operation.": "Файлын ажиллагааг дуусгаж чадсангүй.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Идэвхгүй болсон үед Desktop нь Стандарт хэв маягийг ашигладаг бөгөөд хэрэглэгч бүрийн Nextcloud харагдах байдлыг дагадаг.",
+        "All desktop settings were reset and applied.": "Бүх ширээний тохиргоог шинэчилж, ашигласан.",
+        "No apps found.": "Ямар ч програм олдсонгүй.",
+        "{name} could not be opened natively.": "{name}-г үндсэн байдлаар нээж чадсангүй.",
+        "Open as full page": "Бүтэн хуудас хэлбэрээр нээх",
+        "Delete {name}?": "{name}-г устгах уу?",
+        "No folders": "Фолдер байхгүй",
+        "Could not complete file operation.": "Файлын ажиллагааг дуусгаж чадсангүй.",
         "Window controls": "Цонхны удирдлагын товчлуурууд",
         "Window control position": "Цонхны удирдлагын товчлуурын байрлал",
         "Left side": "Зүүн тал",
@@ -263,7 +269,12 @@
         "Dock": "Док",
         "Open Apps menu": "Аппуудын цэсийг нээх",
         "Add to dock": "Докт нэмэх",
-        "Remove from dock": "Докноос хасах"
+        "Remove from dock": "Докноос хасах",
+        "Always show the dock": "Докийг үргэлж харуул",
+        "Dock controls": "Докны удирдлага",
+        "Pin to dock": "Док руу бэхлэх",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Идэвхгүй болсон үед цонх давхцаж байхад док нуугдаж, доод ирмэг рүү чиглүүлэх үед дахин гарч ирнэ.",
+        "Show the button to open Nextcloud Files in a new tab": "Nextcloud файлуудыг шинэ таб дээр нээх товчийг харуул"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

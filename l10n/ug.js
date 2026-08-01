@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "پۈتۈن بەت قىلىپ ئېچىش",
     "Delete {name}?": "{name} نى ئۆچۈرەمسىز؟",
     "No folders": "ھۆججەت قىسقۇچ يوق",
-    "Could not complete file operation.": "ھۆججەت مەشغۇلاتىنى تاماملىغىلى بولمىدى."
-,
+    "Could not complete file operation.": "ھۆججەت مەشغۇلاتىنى تاماملىغىلى بولمىدى.",
     "Window controls": "كۆزنەك كونترول كۇنۇپكىلىرى",
     "Window control position": "كۆزنەك كونترول كۇنۇپكىلىرىنىڭ ئورنى",
     "Left side": "سول تەرەپ",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "ئەپلەر بالدىقى",
     "Open Apps menu": "ئەپلەر تىزىملىكىنى ئېچىش",
     "Add to dock": "ئەپلەر بالدىقىغا مىخلا",
-    "Remove from dock": "ئەپلەر بالدىقىدىن ئاجرات"
+    "Remove from dock": "ئەپلەر بالدىقىدىن ئاجرات",
+    "Pin to dock": "ئەپلەر بالدىقىغا مىخلاش",
+    "Always show the dock": "ئەپلەر بالدىقىنى ھەمىشە كۆرسىتىش",
+    "Dock controls": "ئەپلەر بالدىقى كونتروللىرى",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "چەكلەنگەندە، كۆزنەك ئەپلەر بالدىقىنى قاپلىسا ئۇ يوشۇرۇنىدۇ، نۇر بەلگىسىنى ئاستى قىرغا يۆتكىگەندە يەنە كۆرۈنىدۇ.",
+    "Show the button to open Nextcloud Files in a new tab": "يېڭى بەتكۈچتە Nextcloud ھۆججەتلىرىنى ئېچىش كۇنۇپكىسىنى كۆرسىتىڭ"
 },
     "nplurals=2; plural=(n != 1);"
 );

@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "全ページとして開く",
     "Delete {name}?": "{name}を削除しますか?",
     "No folders": "フォルダがありません",
-    "Could not complete file operation.": "ファイル操作を完了できませんでした。"
-,
+    "Could not complete file operation.": "ファイル操作を完了できませんでした。",
     "Window controls": "ウィンドウコントロール",
     "Window control position": "ウィンドウコントロールの位置",
     "Left side": "左側",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dock",
     "Open Apps menu": "アプリメニューを開く",
     "Add to dock": "Dockに追加",
-    "Remove from dock": "Dockから削除"
+    "Remove from dock": "Dockから削除",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "無効にすると、ウィンドウが重なっている間はドックが非表示になり、下端をポイントすると再び表示されます。",
+    "Dock controls": "ドックコントロール",
+    "Pin to dock": "ドックにピン留めする",
+    "Always show the dock": "常にドックを表示する",
+    "Show the button to open Nextcloud Files in a new tab": "Nextcloud ファイルを新しいタブで開くボタンを表示します"
 },
     "nplurals=1; plural=0;"
 );

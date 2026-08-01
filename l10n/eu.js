@@ -235,7 +235,7 @@ OC.L10N.register(
     "Open folder": "Ireki karpeta",
     "Appearance": "Itxura",
     "Choose an automatic appearance or customize window decorations and icons separately.": "Aukeratu itxura automatikoa edo pertsonalizatu leihoen apaingarriak eta ikonoak bereizita.",
-    "Windows, taskbar and menus": "Windows, ataza-barra eta menuak",
+    "Windows, taskbar and menus": "Leihoak, ataza-barra eta menuak",
     "Decoration style": "Itxura-estiloa",
     "Color mode": "Kolore modua",
     "Follow Nextcloud appearance": "Jarraitu Nextcloud-en itxura",
@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Ireki orri oso gisa",
     "Delete {name}?": "{name} ezabatu?",
     "No folders": "Ez dago karpetarik",
-    "Could not complete file operation.": "Ezin izan da fitxategi-eragiketa osatu."
-,
+    "Could not complete file operation.": "Ezin izan da fitxategi-eragiketa osatu.",
     "Window controls": "Leihoaren kontrol-botoiak",
     "Window control position": "Leihoaren kontrol-botoien kokalekua",
     "Left side": "Ezkerreko aldea",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dokea",
     "Open Apps menu": "Ireki aplikazioen menua",
     "Add to dock": "Ainguratu dokean",
-    "Remove from dock": "Kendu doketik"
+    "Remove from dock": "Kendu doketik",
+    "Show the button to open Nextcloud Files in a new tab": "Erakutsi Nextcloud Fitxategiak fitxa berri batean irekitzeko botoia",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Desgaituta dagoenean, dokea ezkutatu egiten da leiho batek estaltzen duen bitartean, eta berriro agertzen da beheko ertza seinalatzen duzunean.",
+    "Always show the dock": "Erakutsi beti dokea",
+    "Pin to dock": "Ainguratu dokean",
+    "Dock controls": "Dokearen kontrolak"
 },
     "nplurals=2; plural=(n != 1);"
 );

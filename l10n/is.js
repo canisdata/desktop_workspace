@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Opna sem heil síða",
     "Delete {name}?": "Eyða {name}?",
     "No folders": "Engar möppur",
-    "Could not complete file operation.": "Ekki tókst að ljúka skráaraðgerð."
-,
+    "Could not complete file operation.": "Ekki tókst að ljúka skráaraðgerð.",
     "Window controls": "Gluggastýringar",
     "Window control position": "Staðsetning gluggastýringa",
     "Left side": "Vinstri hlið",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Forritakví",
     "Open Apps menu": "Opna forritavalmynd",
     "Add to dock": "Festa á forritakví",
-    "Remove from dock": "Fjarlægja af forritakví"
+    "Remove from dock": "Fjarlægja af forritakví",
+    "Always show the dock": "Sýna forritakvína alltaf",
+    "Dock controls": "Stýringar forritakvía",
+    "Pin to dock": "Festa á forritakví",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Þegar slökkt er á þessu felst forritakvíin þegar gluggi hylur hana og birtist aftur þegar bent er á neðri brúnina.",
+    "Show the button to open Nextcloud Files in a new tab": "Sýndu hnappinn til að opna Nextcloud Files í nýjum flipa"
 },
     "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);"
 );

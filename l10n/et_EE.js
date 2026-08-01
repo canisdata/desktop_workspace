@@ -235,7 +235,7 @@ OC.L10N.register(
     "No files": "Faile pole",
     "Appearance": "Välimus",
     "Choose an automatic appearance or customize window decorations and icons separately.": "Valige automaatne välimus või kohandage aknakaunistusi ja ikoone eraldi.",
-    "Windows, taskbar and menus": "Windows, tegumiriba ja menüüd",
+    "Windows, taskbar and menus": "Aknad, tegumiriba ja menüüd",
     "Decoration style": "Kujundusstiil",
     "Color mode": "Värvirežiim",
     "Follow Nextcloud appearance": "Jälgige Nextcloudi välimust",
@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Ava täislehena",
     "Delete {name}?": "Kas kustutada {name}?",
     "No folders": "Kaustu pole",
-    "Could not complete file operation.": "Failitoimingut ei saanud lõpule viia."
-,
+    "Could not complete file operation.": "Failitoimingut ei saanud lõpule viia.",
     "Window controls": "Akna juhtnupud",
     "Window control position": "Akna juhtnuppude asukoht",
     "Left side": "Vasakul",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Dokk",
     "Open Apps menu": "Ava rakenduste menüü",
     "Add to dock": "Kinnita dokile",
-    "Remove from dock": "Eemalda dokilt"
+    "Remove from dock": "Eemalda dokilt",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Kui see on keelatud, peidetakse dokk, kui aken sellega kattub, ja ilmub uuesti, kui osutate alumisele servale.",
+    "Show the button to open Nextcloud Files in a new tab": "Kuvage nupp, et avada Nextcloudi failid uuel vahekaardil",
+    "Dock controls": "Doki juhtnupud",
+    "Pin to dock": "Kinnitage dokki",
+    "Always show the dock": "Näidake alati dokki"
 },
     "nplurals=2; plural=(n != 1);"
 );

@@ -224,7 +224,7 @@
         "Decorations": "Ikkunoiden ulkoasut",
         "Desktop decoration": "Työpöydän ulkoasu",
         "Redmond": "Redmond",
-    "Retro": "Retro",
+        "Retro": "Retro",
         "Standard": "Vakio",
         "When disabled, all users use the standard Nextcloud window, taskbar, and menu decoration.": "Kun tämä on poistettu käytöstä, kaikki käyttäjät käyttävät Nextcloudin ikkunoiden, tehtäväpalkin ja valikoiden vakioulkoasua.",
         "Back": "Takaisin",
@@ -252,8 +252,14 @@
         "Maintenance": "Ylläpito",
         "Appearance choices": "Ulkonäkö valinnat",
         "Allow users to customize Desktop appearance": "Salli käyttäjien muokata työpöydän ulkoasua",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Kun se ei ole käytössä, Desktop käyttää vakiotyyliä ja seuraa kunkin käyttäjän Nextcloud-ulkonäköä."
-    ,"All desktop settings were reset and applied.": "Kaikki työpöydän asetukset nollattiin ja otettiin käyttöön.","No apps found.": "Sovelluksia ei löytynyt.","{name} could not be opened natively.": "Kohdetta {name} ei voitu avata paikallisessa sovelluksessa.","Open as full page": "Avaa koko sivuna","Delete {name}?": "Poistetaanko {name}?","No folders": "Ei kansioita","Could not complete file operation.": "Tiedostotoimintoa ei voitu suorittaa loppuun.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Kun se ei ole käytössä, Desktop käyttää vakiotyyliä ja seuraa kunkin käyttäjän Nextcloud-ulkonäköä.",
+        "All desktop settings were reset and applied.": "Kaikki työpöydän asetukset nollattiin ja otettiin käyttöön.",
+        "No apps found.": "Sovelluksia ei löytynyt.",
+        "{name} could not be opened natively.": "Kohdetta {name} ei voitu avata paikallisessa sovelluksessa.",
+        "Open as full page": "Avaa koko sivuna",
+        "Delete {name}?": "Poistetaanko {name}?",
+        "No folders": "Ei kansioita",
+        "Could not complete file operation.": "Tiedostotoimintoa ei voitu suorittaa loppuun.",
         "Window controls": "Ikkunapainikkeet",
         "Window control position": "Ikkunapainikkeiden sijainti",
         "Left side": "Vasen puoli",
@@ -263,7 +269,12 @@
         "Dock": "Telakka",
         "Open Apps menu": "Avaa sovellusvalikko",
         "Add to dock": "Kiinnitä telakkaan",
-        "Remove from dock": "Irrota telakasta"
+        "Remove from dock": "Irrota telakasta",
+        "Dock controls": "Telakan säätimet",
+        "Always show the dock": "Näytä aina telakka",
+        "Show the button to open Nextcloud Files in a new tab": "Näytä painike avataksesi Nextcloud-tiedostot uudessa välilehdessä",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Kun telakka ei ole käytössä, telakka piiloutuu ikkunan ollessa sen päällä ja tulee uudelleen näkyviin, kun osoitat alareunaa.",
+        "Pin to dock": "Kiinnitä telakkaan"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

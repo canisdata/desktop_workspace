@@ -38,6 +38,13 @@
     }[char]));
 
 
+    function preventHeaderEndDragging() {
+        if (!headerEndSlot) return;
+        headerEndSlot.querySelectorAll('a, img, [draggable]').forEach((element) => { element.draggable = false; });
+    }
+
+    headerEndSlot?.addEventListener('dragstart', (event) => event.preventDefault(), true);
+
     function pruneHeaderEnd() {
         const headerEnd = headerEndSlot && headerEndSlot.querySelector('.header-end');
         if (!headerEnd) return;
@@ -46,6 +53,7 @@
         // Keep unified search alive in the moved header-end; the Apps menu search trigger clicks it.
         // Reload-desktop button was removed for now.
         headerEnd.querySelectorAll('#desktop-reload-button').forEach((el) => el.remove());
+        preventHeaderEndDragging();
     }
 
     function moveHeaderEndToTaskbar() {
@@ -64,9 +72,8 @@
     function positionHeaderEndMenus() {
         if (!headerEndSlot) return;
         pruneHeaderEnd();
-        const dockMode = root.dataset.shellMode === 'dock';
         const taskbarTop = taskbar?.getBoundingClientRect().top ?? window.innerHeight - 54;
-        const bottom = dockMode ? 'auto' : `${Math.max(8, window.innerHeight - taskbarTop + 8)}px`;
+        const bottom = `${Math.max(8, window.innerHeight - taskbarTop + 8)}px`;
         const menus = document.querySelectorAll('.header-menu__wrapper, .popovermenu:not(.account-menu__avatar):not(.contact__avatar):not(.avatardiv), .popovermenu-wrapper:not(.account-menu__avatar):not(.contact__avatar):not(.avatardiv)');
         menus.forEach((menu) => {
             const rect = menu.getBoundingClientRect();
@@ -85,7 +92,7 @@
             const desiredRenderedLeft = Math.max(8, Math.min(slotRect.right - width, window.innerWidth - width - 8));
             const left = desiredRenderedLeft - coordinateOffset;
             menu.style.setProperty('position', 'fixed', 'important');
-            menu.style.setProperty('top', dockMode ? '52px' : 'auto', 'important');
+            menu.style.setProperty('top', 'auto', 'important');
             menu.style.setProperty('bottom', bottom, 'important');
             menu.style.setProperty('left', `${left}px`, 'important');
             menu.style.setProperty('right', 'auto', 'important');
@@ -415,6 +422,7 @@
         document.body.classList.toggle('desktop-icon-light', iconLight);
         if ('windowControlsSide' in settings) root.dataset.windowControlsSide = settings.windowControlsSide === 'left' ? 'left' : 'right';
         if ('shellMode' in settings) root.dataset.shellMode = settings.shellMode === 'dock' ? 'dock' : 'taskbar';
+        if ('dockAlwaysVisible' in settings) root.dataset.dockAlwaysVisible = settings.dockAlwaysVisible ? 'true' : 'false';
         applyShellLayout();
     }
 
@@ -428,11 +436,15 @@
         if (!shellUtilities || !taskbar || !topbar) return;
         const dockMode = root.dataset.shellMode === 'dock';
         const fullscreen = document.getElementById('desktop-fullscreen');
-        const spacer = shellUtilities.querySelector('.desktop-shell-utility-spacer');
         if (dockMode) {
-            if (shellUtilities.parentElement !== topbar) topbar.appendChild(shellUtilities);
-            if (fullscreen && fullscreen.parentElement !== shellUtilities) shellUtilities.insertBefore(fullscreen, spacer || shellUtilities.firstChild);
+            if (fullscreen && fullscreen.parentElement !== taskbar) taskbar.insertBefore(fullscreen, startButton);
+            if (headerEndSlot && headerEndSlot.parentElement !== taskbar) taskbar.appendChild(headerEndSlot);
+            if (clock && clock.parentElement !== taskbar) taskbar.appendChild(clock);
+            if (desktopLogo && desktopLogo.parentElement !== taskbar) taskbar.appendChild(desktopLogo);
         } else {
+            if (headerEndSlot && headerEndSlot.parentElement !== shellUtilities) shellUtilities.appendChild(headerEndSlot);
+            if (clock && clock.parentElement !== shellUtilities) shellUtilities.appendChild(clock);
+            if (desktopLogo && desktopLogo.parentElement !== shellUtilities) shellUtilities.appendChild(desktopLogo);
             if (shellUtilities.parentElement !== taskbar) taskbar.appendChild(shellUtilities);
             if (fullscreen && fullscreen.parentElement !== taskbar) taskbar.insertBefore(fullscreen, startButton);
         }
@@ -454,7 +466,7 @@
     }
 
     function updateDockOcclusion() {
-        if (root.dataset.shellMode !== 'dock' || !taskbar) {
+        if (root.dataset.shellMode !== 'dock' || root.dataset.dockAlwaysVisible === 'true' || !taskbar) {
             root.classList.remove('is-dock-occluded', 'is-dock-hovered', 'is-apps-menu-open');
             return;
         }
@@ -582,6 +594,9 @@
         renderPinnedApps();
         if (where === 'desktop' && typeof favoritesReload === 'function') favoritesReload();
     }
+    function appAllowsMultiple(app) {
+        return app?.fileApp === true || app?.id === 'files' || Boolean(app?.href && app.href.includes('/apps/files')) || app?.multiInstance === true;
+    }
     function launchApp(app) {
         if (app.target) {
             closeStartMenu();
@@ -589,8 +604,7 @@
 
             return;
         }
-        const isFileApp = app.fileApp === true || app.id === 'files' || (app.href && app.href.includes('/apps/files'));
-        const allowMulti = isFileApp || app.multiInstance === true;
+        const allowMulti = appAllowsMultiple(app);
         closeStartMenu();
         openWindow(allowMulti ? { ...app, multiInstance: true } : app);
     }
@@ -676,7 +690,37 @@
             return node;
         });
         pinnedApps.replaceChildren(...nodes);
+        syncDockAppRepresentation();
         scheduleDockOcclusion();
+    }
+
+    function syncDockAppRepresentation() {
+        const dockMode = root.dataset.shellMode === 'dock';
+        const pinnedKeys = new Set(readAppPins().taskbar || []);
+        windows.forEach((entry) => {
+            const sourceApp = launcherApps.find((candidate) => candidate.id === (entry.app.sourceAppId || entry.app.id));
+            const represented = dockMode && sourceApp && !appAllowsMultiple(sourceApp) && pinnedKeys.has(appKey(sourceApp));
+            entry.task.classList.toggle('is-represented-by-pin', Boolean(represented));
+        });
+        Array.from(pinnedApps?.children || []).forEach((button) => {
+            const app = appFromKey(button.dataset.appKey);
+            const entry = app && !appAllowsMultiple(app)
+                ? Array.from(windows.values()).find((item) => (item.app.sourceAppId || item.app.id) === app.id)
+                : null;
+            const represented = dockMode && Boolean(entry);
+            const minimized = Boolean(entry?.window.classList.contains('is-minimized'));
+            button.classList.toggle('desktop-app-symbol', !represented);
+            button.classList.toggle('desktop-pinned-app', !represented);
+            button.classList.toggle('desktop-running-pinned-app', represented);
+            button.classList.toggle('desktop-task-button', represented);
+            const icon = button.querySelector('.desktop-app-menu-icon, .desktop-task-icon');
+            icon?.classList.toggle('desktop-app-menu-icon', !represented);
+            icon?.classList.toggle('desktop-task-icon', represented);
+            button.classList.toggle('is-open', Boolean(entry));
+            button.classList.toggle('is-active', Boolean(entry) && !minimized && entry.window.classList.contains('is-focused'));
+            button.classList.toggle('is-minimized', minimized);
+            button.setAttribute('aria-pressed', entry && !minimized ? 'true' : 'false');
+        });
     }
     function reorderPinnedApps(dragKey, beforeKey = '') {
         const pins = readAppPins();
@@ -700,7 +744,7 @@
             const dragKey = event.dataTransfer.getData('text/x-desktop-app-key');
             if (!dragKey) return;
             event.preventDefault();
-            const target = event.target.closest('.desktop-pinned-app');
+            const target = event.target.closest('.desktop-pinned-app, .desktop-running-pinned-app');
             const beforeKey = target && target.dataset.appKey !== dragKey ? target.dataset.appKey : '';
             reorderPinnedApps(dragKey, beforeKey);
         });
@@ -932,6 +976,7 @@
             restoreWindowGeometry(entry);
 
         }
+        syncDockAppRepresentation();
         scheduleDockOcclusion();
         saveState();
     }
@@ -949,6 +994,7 @@
             other.task.classList.toggle('is-minimized', isMinimized);
             other.task.setAttribute('aria-pressed', isFocused && !isMinimized ? 'true' : 'false');
         });
+        syncDockAppRepresentation();
         entry.task.scrollIntoView({ block: 'nearest', inline: 'nearest' });
         saveState();
     }
@@ -1035,6 +1081,7 @@
         menu.innerHTML = `
             <button type="button" role="menuitem" data-action="minimize">${escapeHtml(t('Minimize'))}</button>
             <button type="button" role="menuitem" data-action="maximize">${escapeHtml(t('Maximize'))}</button>
+            <button type="button" role="menuitem" data-action="pin-dock">${escapeHtml(t('Pin to dock'))}</button>
             <button type="button" role="menuitem" data-action="close">${escapeHtml(t('Close'))}</button>`;
         document.body.appendChild(menu);
         menu.addEventListener('click', (event) => {
@@ -1047,6 +1094,10 @@
             if (action === 'minimize') minimizeWindow(id);
             if (action === 'maximize') {
                 toggleWindowMaximized(id);
+            }
+            if (action === 'pin-dock') {
+                const app = launcherApps.find((candidate) => candidate.id === (entry.app.sourceAppId || entry.app.id));
+                if (app) setAppPinned(app, 'taskbar', true);
             }
             if (action === 'close') closeWindow(id);
             closeTaskContextMenu();
@@ -1077,6 +1128,9 @@
         menu.style.top = `${Math.max(8, y)}px`;
         menu.querySelector('[data-action="minimize"]').textContent = entry.window.classList.contains('is-minimized') ? t('Restore') : t('Minimize');
         menu.querySelector('[data-action="maximize"]').textContent = entry.window.classList.contains('is-maximized') ? t('Restore size') : t('Maximize');
+        const sourceApp = launcherApps.find((candidate) => candidate.id === (entry.app.sourceAppId || entry.app.id));
+        const pinButton = menu.querySelector('[data-action="pin-dock"]');
+        if (pinButton) pinButton.hidden = root.dataset.shellMode !== 'dock' || !sourceApp || isAppPinned(sourceApp, 'taskbar');
         menu.querySelector('button')?.blur();
     }
 
@@ -1088,6 +1142,7 @@
         entry.window.remove();
         entry.task.remove();
         windows.delete(id);
+        syncDockAppRepresentation();
         scheduleDockOcclusion();
         saveState();
 
@@ -1142,7 +1197,7 @@
     ].map((label) => String(label).toLocaleLowerCase()));
 
     function normaliseActionLabel(value = '') {
-        return String(value || '').trim().replace(/\s+/g, ' ').toLocaleLowerCase();
+        return String(value || '').trim().replace(/\s+/g, ' ').replace(/\s*[:：]\s*.*$/, '').toLocaleLowerCase();
     }
 
     function isDownloadLikeLink(anchor) {
@@ -1251,10 +1306,37 @@
         return true;
     }
 
+    function keepEuroOfficePopupInDesktopWindow(doc) {
+        const iframeWindow = doc?.defaultView;
+        if (!iframeWindow || iframeWindow.__desktopEuroOfficePopupIntercept === true) return;
+        const nativeOpen = iframeWindow.open;
+        if (typeof nativeOpen !== 'function') return;
+        iframeWindow.__desktopEuroOfficePopupIntercept = true;
+        iframeWindow.open = function (href, target, features) {
+            const absolute = sameOriginHref(href);
+            if (absolute) {
+                try {
+                    const url = new URL(absolute);
+                    if (/\/apps\/eurooffice(?:\/|$)/.test(url.pathname)) {
+                        // Euro-Office opens this route with window.open() when its "same tab"
+                        // option is disabled. This Files page already lives in a newly created
+                        // Desktop window, so keep the editor in that window instead of leaking
+                        // it into a real browser tab. The provider-specific route deliberately
+                        // leaves Collabora and every other office integration untouched.
+                        iframeWindow.location.href = absolute;
+                        return iframeWindow;
+                    }
+                } catch (e) { /* Fall through to the browser's native window.open. */ }
+            }
+            return nativeOpen.call(iframeWindow, href, target, features);
+        };
+    }
+
     function wireIframeNavigationInterception(doc, app) {
         if (!doc || doc.__desktopNavigationIntercept === true) return;
         doc.__desktopNavigationIntercept = true;
         if (doc.documentElement?.dataset) doc.documentElement.dataset.desktopNavigationIntercept = 'true';
+        keepEuroOfficePopupInDesktopWindow(doc);
         const shouldOpenNewDesktopWindow = (event, anchor) => {
             if (!anchor || isDownloadLikeLink(anchor)) return false;
             return event.button === 1 || event.ctrlKey || event.metaKey || anchor.target === '_blank';
@@ -1263,6 +1345,8 @@
             const button = event.target?.closest?.('.files-list__row-name-link');
             if (button) {
                 const label = normaliseActionLabel(button.getAttribute('title') || button.getAttribute('aria-label') || '');
+                const euroOfficeOwnsFiles = Boolean(doc.defaultView?.OCA?.Eurooffice?.setting)
+                    && !doc.defaultView?._oc_appswebroots?.richdocuments;
                 const row = button.closest('.files-list__row');
                 const isFolderRow = row?.classList.contains('files-list__row--folder') || /^open folder\b/i.test(button.getAttribute('title') || button.getAttribute('aria-label') || '');
                 if (isFolderRow && isNewWindowGesture(event)) {
@@ -1272,7 +1356,7 @@
                         return;
                     }
                 }
-                if (NATIVE_FILES_VIEW_LABELS.has(label) && row && !row.classList.contains('files-list__row--folder')) {
+                if (!isFolderRow && row && (NATIVE_FILES_VIEW_LABELS.has(label) || euroOfficeOwnsFiles)) {
                     if (openNativeFilesViewerWindow(row, button, app)) {
                         event.preventDefault();
                         event.stopImmediatePropagation();
@@ -1506,6 +1590,7 @@
         stage.appendChild(win);
         taskList.appendChild(task);
         windows.set(app.id, { window: win, task, app });
+        syncDockAppRepresentation();
         scheduleDockOcclusion();
         if (!win.classList.contains('is-minimized')) focusWindow(app.id);
         saveState();
@@ -1872,6 +1957,44 @@
         }, 50);
     }
 
+    function fitEuroOfficeEditor(doc) {
+        if (!doc || doc.documentElement?.dataset.desktopEuroOfficeFit === 'true') return;
+        doc.documentElement.dataset.desktopEuroOfficeFit = 'true';
+        const fit = (editorDoc) => {
+            if (!editorDoc?.head || editorDoc.head.querySelector('style[data-desktop-eurooffice-fit="true"]')) return;
+            const editor = editorDoc.querySelector('iframe[src*="/web-apps/apps/documenteditor/"]');
+            if (!editor) return;
+            const style = editorDoc.createElement('style');
+            style.dataset.desktopEuroofficeFit = 'true';
+            style.textContent = `
+                iframe[src*="/web-apps/apps/documenteditor/"] {
+                    inset: 0 !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                    margin: 0 !important;
+                }
+            `;
+            editorDoc.head.appendChild(style);
+        };
+        const refresh = () => {
+            fit(doc);
+            doc.querySelectorAll('#euroofficeFrame, iframe[src*="/apps/eurooffice/"]').forEach((frame) => {
+                const fitNested = () => {
+                    try { fit(frame.contentDocument); } catch (e) { /* Same-origin route may still be loading. */ }
+                };
+                if (frame.dataset.desktopEuroOfficeFit !== 'true') {
+                    frame.dataset.desktopEuroOfficeFit = 'true';
+                    frame.addEventListener('load', fitNested);
+                }
+                fitNested();
+            });
+        };
+        refresh();
+        const observer = new MutationObserver(refresh);
+        observer.observe(doc.documentElement, { childList: true, subtree: true });
+        setTimeout(() => observer.disconnect(), 15000);
+    }
+
     function hideIframeChrome(iframe, app) {
         try {
             const doc = iframe.contentDocument;
@@ -1894,6 +2017,7 @@
             };
             doc.addEventListener('pointerdown', focusSelf, true);
             wireIframeNavigationInterception(doc, app);
+            fitEuroOfficeEditor(doc);
 
             // Remove the Nextcloud top header outright. Hiding it with display:none left layout/scroll
             // artefacts for some apps (notably the Text editor); removing the element renders cleanly.
@@ -2336,8 +2460,14 @@
         clock.dateTime = now.toISOString();
         const locale = (desktopLocale || desktopLanguage || navigator.language || undefined)?.replace(/_/g, '-');
         const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-        try { clock.textContent = new Intl.DateTimeFormat(locale, options).format(now); }
-        catch (e) { clock.textContent = new Intl.DateTimeFormat(undefined, options).format(now); }
+        let label;
+        try { label = new Intl.DateTimeFormat(locale, options).format(now); }
+        catch (e) { label = new Intl.DateTimeFormat(undefined, options).format(now); }
+        clock.title = label;
+        clock.setAttribute('aria-label', label);
+        clock.style.setProperty('--clock-hour-angle', `${(now.getHours() % 12) * 30 + now.getMinutes() / 2}deg`);
+        clock.style.setProperty('--clock-minute-angle', `${now.getMinutes() * 6 + now.getSeconds() / 10}deg`);
+        clock.style.setProperty('--clock-second-angle', `${now.getSeconds() * 6}deg`);
     }
 
     startButton.addEventListener('click', toggleStartMenu);

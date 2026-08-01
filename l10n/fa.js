@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "باز کردن به‌صورت صفحه کامل",
     "Delete {name}?": "{name} حذف شود؟",
     "No folders": "هیچ پوشه‌ای وجود ندارد",
-    "Could not complete file operation.": "عملیات فایل کامل نشد."
-,
+    "Could not complete file operation.": "عملیات فایل کامل نشد.",
     "Window controls": "دکمه‌های کنترل پنجره",
     "Window control position": "جایگاه دکمه‌های کنترل پنجره",
     "Left side": "سمت چپ",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "داک",
     "Open Apps menu": "باز کردن منوی برنامه‌ها",
     "Add to dock": "سنجاق کردن به داک",
-    "Remove from dock": "برداشتن از داک"
+    "Remove from dock": "برداشتن از داک",
+    "Always show the dock": "همیشه داک را نشان دهید",
+    "Dock controls": "کنترل‌های داک",
+    "Pin to dock": "سنجاق کردن به داک",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "هنگامی که غیرفعال است، داک با قرار گرفتن پنجره‌ای روی آن پنهان می‌شود و با بردن نشانگر به لبهٔ پایین دوباره ظاهر می‌شود.",
+    "Show the button to open Nextcloud Files in a new tab": "دکمه باز کردن Nextcloud Files را در یک تب جدید نشان دهید"
 },
     "nplurals=2; plural=(n > 1);"
 );

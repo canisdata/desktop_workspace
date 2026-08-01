@@ -260,8 +260,7 @@ OC.L10N.register(
     "Open as full page": "Atvērt kā pilnu lapu",
     "Delete {name}?": "Vai dzēst {name}?",
     "No folders": "Nav mapju",
-    "Could not complete file operation.": "Nevarēja pabeigt faila darbību."
-,
+    "Could not complete file operation.": "Nevarēja pabeigt faila darbību.",
     "Window controls": "Loga vadīklas",
     "Window control position": "Loga vadīklu novietojums",
     "Left side": "Kreisā puse",
@@ -271,7 +270,12 @@ OC.L10N.register(
     "Dock": "Doks",
     "Open Apps menu": "Atvērt lietotņu izvēlni",
     "Add to dock": "Pievienot dokam",
-    "Remove from dock": "Noņemt no doka"
+    "Remove from dock": "Noņemt no doka",
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Ja tas ir atspējots, doks tiek paslēpts, kamēr logs to pārklāj, un atkal parādās, kad norādāt uz apakšējo malu.",
+    "Show the button to open Nextcloud Files in a new tab": "Parādiet pogu, lai jaunā cilnē atvērtu Nextcloud failus",
+    "Always show the dock": "Vienmēr parādiet doku",
+    "Dock controls": "Doka vadības ierīces",
+    "Pin to dock": "Piespraust dokam"
 },
     "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);"
 );

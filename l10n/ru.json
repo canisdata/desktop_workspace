@@ -252,8 +252,14 @@
         "Maintenance": "Обслуживание",
         "Appearance choices": "Выбор внешнего вида",
         "Allow users to customize Desktop appearance": "Разрешить пользователям настраивать внешний вид рабочего стола",
-        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Если этот параметр отключен, Desktop использует стандартный стиль и повторяет внешний вид каждого пользователя Nextcloud."
-    ,"All desktop settings were reset and applied.": "Все настройки рабочего стола сброшены и применены.","No apps found.": "Приложения не найдены.","{name} could not be opened natively.": "Не удалось открыть {name} в собственном приложении.","Open as full page": "Открыть на всю страницу","Delete {name}?": "Удалить {name}?","No folders": "Нет папок","Could not complete file operation.": "Не удалось завершить операцию с файлом.",
+        "When disabled, Desktop uses the Standard style and follows each user’s Nextcloud appearance.": "Если этот параметр отключен, Desktop использует стандартный стиль и повторяет внешний вид каждого пользователя Nextcloud.",
+        "All desktop settings were reset and applied.": "Все настройки рабочего стола сброшены и применены.",
+        "No apps found.": "Приложения не найдены.",
+        "{name} could not be opened natively.": "Не удалось открыть {name} в собственном приложении.",
+        "Open as full page": "Открыть на всю страницу",
+        "Delete {name}?": "Удалить {name}?",
+        "No folders": "Нет папок",
+        "Could not complete file operation.": "Не удалось завершить операцию с файлом.",
         "Window controls": "Кнопки управления окном",
         "Window control position": "Расположение кнопок окна",
         "Left side": "Слева",
@@ -263,7 +269,12 @@
         "Dock": "Док-панель",
         "Open Apps menu": "Открыть меню приложений",
         "Add to dock": "Закрепить на док-панели",
-        "Remove from dock": "Открепить от док-панели"
+        "Remove from dock": "Открепить от док-панели",
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Если этот параметр отключён, док-панель скрывается, когда её перекрывает окно, и появляется снова при наведении указателя на нижний край.",
+        "Always show the dock": "Всегда показывать док-панель",
+        "Dock controls": "Элементы управления док-панелью",
+        "Pin to dock": "Закрепить на док-панели",
+        "Show the button to open Nextcloud Files in a new tab": "Показывать кнопку для открытия файлов Nextcloud на новой вкладке."
     },
     "pluralForm": "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"
 }

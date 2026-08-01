@@ -3,6 +3,26 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.17.1 – 2026-08-01
+
+### Added
+- Added per-user dock visibility control so the dock can remain visible instead of hiding behind overlapping windows.
+- Added a “Pin to dock” action to running app windows.
+- Added an administrator control for showing the Nextcloud Files new-tab shortcut.
+
+### Changed
+- Moved Nextcloud controls, the clock, Files shortcut, and fullscreen control into the dock itself, with native menus positioned above it.
+- Replaced the dock’s textual date and time with a compact analog clock while retaining localized date and time details in its accessible label and tooltip.
+- Applied the independently selected Standard, Redmond, or Retro icon style and light/dark palette to running app icons and every dock glyph without changing the selected window, taskbar, and menu decoration.
+- Applied the Files-shortcut administrator policy immediately when its control changes, and showed the dock visibility setting only while dock mode is selected.
+
+### Fixed
+- Kept Euro-Office documents opened from embedded Nextcloud Files in Desktop windows, including when Euro-Office is configured to open files in a new tab, without changing Collabora handling.
+- Extended the Euro-Office editor and status bar to the bottom edge of its Desktop window in both same-tab and new-tab modes.
+- Made running pinned apps use the same task-button appearance as unpinned running apps, while keeping dock width and spacing correct.
+- Prevented native Nextcloud header controls moved into the dock from being dragged onto the desktop and triggering file uploads.
+- Corrected Dock false friends, generic window terminology, light/dark color-scheme wording, and British English spelling across the locale set while retaining appropriate technical and product names.
+
 ## 0.17.0 – 2026-07-25
 
 ### Added
