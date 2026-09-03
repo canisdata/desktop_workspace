@@ -235,13 +235,11 @@ body[data-desktop-icon-decoration]:has(#desktop-root):not(.desktop-icon-light) .
 }
 #desktop-root[data-icon-decoration="standard"] .desktop-task-icon img { width: 100% !important; height: 100% !important; object-fit: contain; }
 #desktop-root[data-icon-decoration="standard"] .desktop-waffle i { background: #00679e !important; }
-#desktop-root[data-icon-decoration="standard"] .desktop-header-end-slot button [role="img"],
-#desktop-root[data-icon-decoration="standard"] .desktop-clock-face { color: #00679e !important; }
+#desktop-root[data-icon-decoration="standard"] .desktop-header-end-slot button [role="img"] { color: #00679e !important; }
 #desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-task-icon,
 #desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-nextcloud-logo .logo { background-color: #12364b; border-color: #4d91b5 !important; }
 #desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-waffle i { background: #8fd0f0 !important; }
-#desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-header-end-slot button [role="img"],
-#desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-clock-face { color: #8fd0f0 !important; }
+#desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .desktop-header-end-slot button [role="img"] { color: #8fd0f0 !important; }
 
 #desktop-root[data-icon-decoration="redmond"] .desktop-task-icon,
 #desktop-root[data-icon-decoration="redmond"] .desktop-nextcloud-logo .logo {
@@ -260,7 +258,6 @@ body[data-desktop-icon-decoration]:has(#desktop-root):not(.desktop-icon-light) .
 #desktop-root[data-icon-decoration="standard"] .taskbar-fullscreen::after { color: #00679e; }
 #desktop-root[data-icon-decoration="standard"]:not(.desktop-icon-light) .taskbar-fullscreen::after { color: #8fd0f0; }
 #desktop-root[data-icon-decoration="redmond"] .taskbar-fullscreen::after { color: #245ba6; font-family: "Segoe UI", sans-serif; text-shadow: 1px 1px rgba(255,255,255,.72); }
-#desktop-root[data-icon-decoration="redmond"] .desktop-clock-face { color: #245ba6 !important; border-color: #193b73 !important; box-shadow: inset 1px 1px #fff, 1px 1px rgba(0,0,0,.28) !important; }
 
 #desktop-root[data-icon-decoration="retro"] .desktop-task-icon,
 #desktop-root[data-icon-decoration="retro"] .desktop-nextcloud-logo .logo {
@@ -272,21 +269,14 @@ body[data-desktop-icon-decoration]:has(#desktop-root):not(.desktop-icon-light) .
 #desktop-root[data-icon-decoration="retro"] .desktop-waffle i { border-radius: 0 !important; background: #087b82 !important; box-shadow: 1px 1px #263234 !important; }
 #desktop-root[data-icon-decoration="retro"] .taskbar-fullscreen::after { color: #087b82; font-family: ui-monospace, "Cascadia Mono", monospace; text-shadow: 1px 1px #263234; }
 #desktop-root[data-icon-decoration="retro"] .desktop-header-end-slot button [role="img"] { color: #087b82 !important; filter: drop-shadow(1px 1px #263234) !important; }
-#desktop-root[data-icon-decoration="retro"] .desktop-clock-face {
-    color: #087b82 !important; border-color: #263234 !important; border-radius: 0 !important;
-    box-shadow: inset 2px 2px rgba(113,232,232,.28), inset -2px -2px rgba(0,0,0,.38), 2px 2px rgba(10,18,20,.35) !important;
-    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px)) !important;
-}
 
 #desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-task-icon,
 #desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-nextcloud-logo .logo { background-color: #243754; border-color: #6b87b6 !important; }
 #desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-waffle i,
-#desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-header-end-slot button [role="img"],
-#desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-clock-face { color: #9dbcf2 !important; }
+#desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .desktop-header-end-slot button [role="img"] { color: #9dbcf2 !important; }
 #desktop-root[data-icon-decoration="redmond"]:not(.desktop-icon-light) .taskbar-fullscreen::after { color: #9dbcf2; }
 #desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-task-icon,
 #desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-nextcloud-logo .logo { background-color: #042f33; border-color: #3b6667 !important; }
 #desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-waffle i,
-#desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-header-end-slot button [role="img"],
-#desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-clock-face { color: #27c4c8 !important; }
+#desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .desktop-header-end-slot button [role="img"] { color: #27c4c8 !important; }
 #desktop-root[data-icon-decoration="retro"]:not(.desktop-icon-light) .taskbar-fullscreen::after { color: #27c4c8; }

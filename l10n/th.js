@@ -275,7 +275,10 @@ OC.L10N.register(
     "Dock controls": "การควบคุม Dock",
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "เมื่อปิดใช้งาน Dock จะซ่อนเมื่อมีหน้าต่างซ้อนทับ และจะปรากฏขึ้นอีกครั้งเมื่อคุณชี้ไปที่ขอบด้านล่าง",
     "Show the button to open Nextcloud Files in a new tab": "แสดงปุ่มเพื่อเปิดไฟล์ Nextcloud ในแท็บใหม่",
-    "Pin to dock": "ปักหมุดไว้ที่ Dock"
+    "Pin to dock": "ปักหมุดไว้ที่ Dock",
+"Time format": "รูปแบบเวลา",
+"24-hour clock": "นาฬิกาแบบ 24 ชั่วโมง",
+"12-hour clock": "นาฬิกาแบบ 12 ชั่วโมง"
 },
     "nplurals=1; plural=0;"
 );

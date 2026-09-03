@@ -45,6 +45,9 @@ class Personal implements ISettings {
                 : 'taskbar',
             'dockAlwaysVisible' => $user === null
                 || $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, SettingsController::DOCK_ALWAYS_VISIBLE_KEY, 'yes') !== 'no',
+            'clockHourCycle' => $user !== null
+                ? $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, SettingsController::CLOCK_HOUR_CYCLE_KEY, '24')
+                : '24',
             'showFavorites' => $user !== null
                 && $this->config->getUserValue($user->getUID(), SettingsController::APP_ID, SettingsController::SHOW_FAVORITES_KEY, 'no') === 'yes',
             'favoritesNoConfirm' => $user !== null

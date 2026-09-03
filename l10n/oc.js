@@ -275,7 +275,10 @@ OC.L10N.register(
     "Show the button to open Nextcloud Files in a new tab": "Afichar lo boton per dobrir los fichièrs Nextcloud dins un onglet novèl",
     "Always show the dock": "Mostratz totjorn lo dock",
     "Pin to dock": "Fixar al dock",
-    "Dock controls": "Los contraròtles de dock"
+    "Dock controls": "Los contraròtles de dock",
+"Time format": "Format de l’ora",
+"24-hour clock": "Relòtge de 24 oras",
+"12-hour clock": "Relòtge de 12 oras"
 },
     "nplurals=2; plural=(n > 1);"
 );

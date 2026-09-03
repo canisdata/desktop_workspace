@@ -274,7 +274,10 @@
         "Show the button to open Nextcloud Files in a new tab": "새 탭에서 Nextcloud Files를 여는 버튼 표시",
         "Pin to dock": "Dock에 고정",
         "Always show the dock": "항상 도크 표시",
-        "Dock controls": "도크 컨트롤"
+        "Dock controls": "도크 컨트롤",
+        "Time format": "시간 형식",
+        "24-hour clock": "24시간제",
+        "12-hour clock": "12시간제"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

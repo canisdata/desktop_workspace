@@ -274,7 +274,10 @@
         "Dock controls": "Vidhibiti vya Dock",
         "Pin to dock": "Bandika kwenye Dock",
         "Show the button to open Nextcloud Files in a new tab": "Onyesha kitufe ili kufungua Faili za Nextcloud kwenye kichupo kipya",
-        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Inapozimwa, Dock hujificha dirisha linapoifunika na kuonekana tena unapoelekeza ukingo wa chini."
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Inapozimwa, Dock hujificha dirisha linapoifunika na kuonekana tena unapoelekeza ukingo wa chini.",
+        "Time format": "Muundo wa saa",
+        "24-hour clock": "Saa ya mfumo wa saa 24",
+        "12-hour clock": "Saa ya mfumo wa saa 12"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

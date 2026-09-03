@@ -275,7 +275,10 @@ OC.L10N.register(
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Kada je onemogućen, dok se skriva dok ga prozor prekriva i ponovno se pojavljuje kada pokažete na donji rub.",
     "Show the button to open Nextcloud Files in a new tab": "Prikaži gumb za otvaranje datoteka Nextcloud u novoj kartici",
     "Pin to dock": "Prikvači na dok",
-    "Dock controls": "Kontrole doka"
+    "Dock controls": "Kontrole doka",
+"Time format": "Format vremena",
+"24-hour clock": "24-satni format",
+"12-hour clock": "12-satni format"
 },
     "nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;"
 );

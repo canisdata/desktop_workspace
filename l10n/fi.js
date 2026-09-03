@@ -275,7 +275,10 @@ OC.L10N.register(
     "Always show the dock": "Näytä aina telakka",
     "Show the button to open Nextcloud Files in a new tab": "Näytä painike avataksesi Nextcloud-tiedostot uudessa välilehdessä",
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Kun telakka ei ole käytössä, telakka piiloutuu ikkunan ollessa sen päällä ja tulee uudelleen näkyviin, kun osoitat alareunaa.",
-    "Pin to dock": "Kiinnitä telakkaan"
+    "Pin to dock": "Kiinnitä telakkaan",
+"Time format": "Ajan muoto",
+"24-hour clock": "24 tunnin kello",
+"12-hour clock": "12 tunnin kello"
 },
     "nplurals=2; plural=(n != 1);"
 );

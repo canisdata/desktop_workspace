@@ -4,6 +4,8 @@ namespace OCA\DesktopWorkspace\Controller;
 use OCA\DesktopWorkspace\Service\DecorationService;
 use OCA\DesktopWorkspace\Service\FilesAvailability;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\TemplateResponse;
@@ -52,10 +54,8 @@ class PageController extends Controller {
         return $apps;
     }
 
-    /**
-     * @NoAdminRequired
-     * @NoCSRFRequired
-     */
+    #[NoAdminRequired]
+    #[NoCSRFRequired]
     public function dynamicData(): JSONResponse {
         $l = \OC::$server->getL10N('desktop_workspace');
         $user = $this->userSession->getUser();
@@ -73,13 +73,12 @@ class PageController extends Controller {
             'windowControlsSide' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::WINDOW_CONTROLS_SIDE_KEY, 'right') : 'right',
             'shellMode' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::SHELL_MODE_KEY, 'taskbar') : 'taskbar',
             'dockAlwaysVisible' => $uid === null || $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::DOCK_ALWAYS_VISIBLE_KEY, 'yes') !== 'no',
+            'clockHourCycle' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::CLOCK_HOUR_CYCLE_KEY, '24') : '24',
         ]);
     }
 
-    /**
-     * @NoAdminRequired
-     * @NoCSRFRequired
-     */
+    #[NoAdminRequired]
+    #[NoCSRFRequired]
     public function index(): TemplateResponse {
         $apps = $this->navigationApps();
 
@@ -139,6 +138,7 @@ class PageController extends Controller {
             'windowControlsSide' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::WINDOW_CONTROLS_SIDE_KEY, 'right') : 'right',
             'shellMode' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::SHELL_MODE_KEY, 'taskbar') : 'taskbar',
             'dockAlwaysVisible' => $uid === null || $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::DOCK_ALWAYS_VISIBLE_KEY, 'yes') !== 'no',
+            'clockHourCycle' => $uid !== null ? $this->config->getUserValue($uid, SettingsController::APP_ID, SettingsController::CLOCK_HOUR_CYCLE_KEY, '24') : '24',
             ...$this->decorationService->appearanceForUser($uid),
         ]);
         $csp = new ContentSecurityPolicy();

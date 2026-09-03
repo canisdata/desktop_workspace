@@ -3,6 +3,21 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.18.1 – 2026-09-03
+
+### Added
+- Added a per-user 24-hour or 12-hour time-format preference that applies immediately.
+
+### Changed
+- Restored the digital clock, with the region-formatted date displayed beneath the time.
+
+## 0.18.0 – 2026-09-03
+
+### Changed
+- Added compatibility with Nextcloud 35 while retaining support for Nextcloud 33 and 34.
+- Replaced deprecated `NoAdminRequired` and `NoCSRFRequired` controller annotations with the supported PHP attributes used by current Nextcloud releases.
+- Added a disposable Nextcloud 33–35 smoke matrix covering normal-user routes, CSRF-protected personal settings, and administrator-route authorization.
+
 ## 0.17.1 – 2026-08-01
 
 ### Added
@@ -12,7 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ### Changed
 - Moved Nextcloud controls, the clock, Files shortcut, and fullscreen control into the dock itself, with native menus positioned above it.
-- Replaced the dock’s textual date and time with a compact analog clock while retaining localized date and time details in its accessible label and tooltip.
+- Kept the localized date and time available in the shell controls.
 - Applied the independently selected Standard, Redmond, or Retro icon style and light/dark palette to running app icons and every dock glyph without changing the selected window, taskbar, and menu decoration.
 - Applied the Files-shortcut administrator policy immediately when its control changes, and showed the dock visibility setting only while dock mode is selected.
 

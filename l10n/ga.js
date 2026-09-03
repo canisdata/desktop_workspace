@@ -275,7 +275,10 @@ OC.L10N.register(
     "Show the button to open Nextcloud Files in a new tab": "Taispeáin an cnaipe chun Comhaid Nextcloud a oscailt i gcluaisín nua",
     "Dock controls": "Rialuithe duga",
     "Pin to dock": "Bioráin chuig an duga",
-    "Always show the dock": "Taispeáin an duga i gcónaí"
+    "Always show the dock": "Taispeáin an duga i gcónaí",
+"Time format": "Formáid ama",
+"24-hour clock": "Clog 24 uair",
+"12-hour clock": "Clog 12 uair"
 },
     "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);"
 );

@@ -6,7 +6,7 @@ desktop icons, and an optional built-in file manager.
 
 ![Screenshot](screenshots/01-standard-light.png)
 
-> **Status:** early development (0.x). Targets **Nextcloud 33, 34**.
+> **Status:** early development (0.x). Targets **Nextcloud 33–35**.
 
 ---
 
@@ -35,8 +35,18 @@ desktop icons, and an optional built-in file manager.
 
 ## Requirements
 
-- Nextcloud **33** or **34**
+- Nextcloud **33**, **34**, or **35**
 - A standard Nextcloud app environment (PHP per the Nextcloud 33 requirements)
+
+### Compatibility smoke matrix
+
+Run the app against disposable, isolated Nextcloud 33, 34, and 35 containers:
+
+```bash
+./scripts/test-desktop-workspace-matrix
+```
+
+The matrix uses pinned Nextcloud 33.0.8 and 34.0.2 images plus the local checksum-pinned NC35 development image. For each major version it installs Desktop Workspace, creates a normal test user, verifies the shell and dynamic-data routes, confirms that a personal-settings request without a CSRF token is rejected, saves the setting with a valid token, confirms that the normal user is denied access to an administrator route, and confirms that the administrator can use that route. Run-specific container names make concurrent runs safe, and containers plus their anonymous volumes are removed automatically; set `KEEP_CONTAINERS=1` to retain them for debugging or `MATRIX_MAJORS="34 35"` to run a subset. Image environment variables can override the pinned defaults.
 
 ---
 

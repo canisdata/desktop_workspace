@@ -275,7 +275,10 @@ OC.L10N.register(
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Desgaituta dagoenean, dokea ezkutatu egiten da leiho batek estaltzen duen bitartean, eta berriro agertzen da beheko ertza seinalatzen duzunean.",
     "Always show the dock": "Erakutsi beti dokea",
     "Pin to dock": "Ainguratu dokean",
-    "Dock controls": "Dokearen kontrolak"
+    "Dock controls": "Dokearen kontrolak",
+"Time format": "Ordu-formatua",
+"24-hour clock": "24 orduko erlojua",
+"12-hour clock": "12 orduko erlojua"
 },
     "nplurals=2; plural=(n != 1);"
 );

@@ -274,7 +274,10 @@
         "Show the button to open Nextcloud Files in a new tab": "显示在新选项卡中打开 Nextcloud 文件的按钮",
         "Dock controls": "程序坞控件",
         "Pin to dock": "固定到程序坞",
-        "Always show the dock": "始终显示程序坞"
+        "Always show the dock": "始终显示程序坞",
+        "Time format": "时间格式",
+        "24-hour clock": "24 小时制",
+        "12-hour clock": "12 小时制"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

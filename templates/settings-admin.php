@@ -1,7 +1,7 @@
 <?php
 \OCP\Util::addTranslations('desktop_workspace');
-script('desktop_workspace', 'admin-settings-0171c');
-style('desktop_workspace', 'admin-0160c');
+script('desktop_workspace', 'admin-settings');
+style('desktop_workspace', 'admin');
 /** @var array $_ */
 $l = \OC::$server->getL10N('desktop_workspace');
 ?>

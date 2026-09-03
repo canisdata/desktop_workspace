@@ -274,7 +274,10 @@
         "Pin to dock": "Καρφίτσωμα στο Dock",
         "Dock controls": "Στοιχεία ελέγχου του Dock",
         "Show the button to open Nextcloud Files in a new tab": "Εμφανίστε το κουμπί για να ανοίξετε το Nextcloud Files σε μια νέα καρτέλα",
-        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Όταν είναι απενεργοποιημένο, το Dock κρύβεται όταν επικαλύπτεται από ένα παράθυρο και εμφανίζεται ξανά όταν δείχνετε στο κάτω άκρο."
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Όταν είναι απενεργοποιημένο, το Dock κρύβεται όταν επικαλύπτεται από ένα παράθυρο και εμφανίζεται ξανά όταν δείχνετε στο κάτω άκρο.",
+        "Time format": "Μορφή ώρας",
+        "24-hour clock": "24ωρη μορφή ώρας",
+        "12-hour clock": "12ωρη μορφή ώρας"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

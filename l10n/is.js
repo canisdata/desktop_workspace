@@ -275,7 +275,10 @@ OC.L10N.register(
     "Dock controls": "Stýringar forritakvía",
     "Pin to dock": "Festa á forritakví",
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Þegar slökkt er á þessu felst forritakvíin þegar gluggi hylur hana og birtist aftur þegar bent er á neðri brúnina.",
-    "Show the button to open Nextcloud Files in a new tab": "Sýndu hnappinn til að opna Nextcloud Files í nýjum flipa"
+    "Show the button to open Nextcloud Files in a new tab": "Sýndu hnappinn til að opna Nextcloud Files í nýjum flipa",
+"Time format": "Tímasnið",
+"24-hour clock": "24 tíma klukka",
+"12-hour clock": "12 tíma klukka"
 },
     "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);"
 );

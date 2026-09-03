@@ -275,7 +275,10 @@ OC.L10N.register(
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.",
     "Dock controls": "Dock controls",
     "Show the button to open Nextcloud Files in a new tab": "Show the button to open Nextcloud Files in a new tab",
-    "Pin to dock": "Pin to dock"
+    "Pin to dock": "Pin to dock",
+"Time format": "Time format",
+"24-hour clock": "24-hour clock",
+"12-hour clock": "12-hour clock"
 },
     "nplurals=2; plural=(n != 1);"
 );

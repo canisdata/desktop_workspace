@@ -1,6 +1,6 @@
 <?php
 \OCP\Util::addTranslations('desktop_workspace');
-script('desktop_workspace', 'files/files-0160');
+script('desktop_workspace', 'files/files');
 style('desktop_workspace', 'files/files');
 /** @var array $_ */
 $l = \OC::$server->getL10N('desktop_workspace');

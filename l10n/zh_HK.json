@@ -274,7 +274,10 @@
         "Pin to dock": "固定至 Dock",
         "Always show the dock": "永遠顯示 Dock",
         "Show the button to open Nextcloud Files in a new tab": "顯示在新分頁中開啟 Nextcloud 檔案的按鈕",
-        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "停用後，當視窗與 Dock 重疊時，Dock 會隱藏；將游標移至底部邊緣時，Dock 會再次出現。"
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "停用後，當視窗與 Dock 重疊時，Dock 會隱藏；將游標移至底部邊緣時，Dock 會再次出現。",
+        "Time format": "時間格式",
+        "24-hour clock": "24 小時制",
+        "12-hour clock": "12 小時制"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

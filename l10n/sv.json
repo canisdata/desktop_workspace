@@ -274,7 +274,10 @@
         "Show the button to open Nextcloud Files in a new tab": "Visa knappen för att öppna Nextcloud Files på en ny flik",
         "Always show the dock": "Visa alltid dockan",
         "Pin to dock": "Fäst i Dock",
-        "Dock controls": "Dockningskontroller"
+        "Dock controls": "Dockningskontroller",
+        "Time format": "Tidsformat",
+        "24-hour clock": "24-timmarsklocka",
+        "12-hour clock": "12-timmarsklocka"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

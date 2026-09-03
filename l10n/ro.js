@@ -275,7 +275,10 @@ OC.L10N.register(
     "Always show the dock": "Afișează întotdeauna dockul",
     "Pin to dock": "Fixează în dock",
     "Dock controls": "Comenzile dockului",
-    "Show the button to open Nextcloud Files in a new tab": "Afișați butonul pentru a deschide Nextcloud Files într-o filă nouă"
+    "Show the button to open Nextcloud Files in a new tab": "Afișați butonul pentru a deschide Nextcloud Files într-o filă nouă",
+"Time format": "Formatul orei",
+"24-hour clock": "Ceas cu 24 de ore",
+"12-hour clock": "Ceas cu 12 ore"
 },
     "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));"
 );

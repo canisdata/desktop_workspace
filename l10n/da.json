@@ -274,7 +274,10 @@
         "Always show the dock": "Vis altid docken",
         "Dock controls": "Dockkontrolelementer",
         "Show the button to open Nextcloud Files in a new tab": "Vis knappen for at åbne Nextcloud Files i en ny fane",
-        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Når den er deaktiveret, skjuler docken sig, mens et vindue overlapper den og vises igen, når du peger på den nederste kant."
+        "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Når den er deaktiveret, skjuler docken sig, mens et vindue overlapper den og vises igen, når du peger på den nederste kant.",
+        "Time format": "Tidsformat",
+        "24-hour clock": "24-timers ur",
+        "12-hour clock": "12-timers ur"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

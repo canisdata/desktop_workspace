@@ -274,7 +274,10 @@
         "Show the button to open Nextcloud Files in a new tab": "Паказаць кнопку для адкрыцця файлаў Nextcloud у новай укладцы",
         "Dock controls": "Элементы кіравання док-панэллю",
         "Pin to dock": "Замацаваць на док-панэлі",
-        "Always show the dock": "Заўсёды паказваць док-панэль"
+        "Always show the dock": "Заўсёды паказваць док-панэль",
+        "Time format": "Фармат часу",
+        "24-hour clock": "24-гадзінны фармат",
+        "12-hour clock": "12-гадзінны фармат"
     },
     "pluralForm": "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"
 }

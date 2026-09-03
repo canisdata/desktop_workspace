@@ -275,7 +275,10 @@ OC.L10N.register(
     "Always show the dock": "ئەپلەر بالدىقىنى ھەمىشە كۆرسىتىش",
     "Dock controls": "ئەپلەر بالدىقى كونتروللىرى",
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "چەكلەنگەندە، كۆزنەك ئەپلەر بالدىقىنى قاپلىسا ئۇ يوشۇرۇنىدۇ، نۇر بەلگىسىنى ئاستى قىرغا يۆتكىگەندە يەنە كۆرۈنىدۇ.",
-    "Show the button to open Nextcloud Files in a new tab": "يېڭى بەتكۈچتە Nextcloud ھۆججەتلىرىنى ئېچىش كۇنۇپكىسىنى كۆرسىتىڭ"
+    "Show the button to open Nextcloud Files in a new tab": "يېڭى بەتكۈچتە Nextcloud ھۆججەتلىرىنى ئېچىش كۇنۇپكىسىنى كۆرسىتىڭ",
+"Time format": "ۋاقىت فورماتى",
+"24-hour clock": "24 سائەتلىك ۋاقىت",
+"12-hour clock": "12 سائەتلىك ۋاقىت"
 },
     "nplurals=2; plural=(n != 1);"
 );

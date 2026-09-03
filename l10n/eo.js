@@ -275,7 +275,10 @@ OC.L10N.register(
     "Always show the dock": "Ĉiam montru la dokon",
     "Dock controls": "Dokaj kontroloj",
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Kiam estas malŝaltita, la doko kaŝiĝas dum fenestro interkovras ĝin kaj denove aperas kiam vi montras al la malsupra rando.",
-    "Show the button to open Nextcloud Files in a new tab": "Montru la butonon por malfermi Nextcloud Files en nova langeto"
+    "Show the button to open Nextcloud Files in a new tab": "Montru la butonon por malfermi Nextcloud Files en nova langeto",
+"Time format": "Tempoformato",
+"24-hour clock": "24-hora horloĝo",
+"12-hour clock": "12-hora horloĝo"
 },
     "nplurals=2; plural=(n != 1);"
 );

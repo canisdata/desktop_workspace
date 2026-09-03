@@ -274,7 +274,10 @@
         "Pin to dock": "ჩამაგრება დოკზე",
         "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "როდესაც გამორთულია, დოკი იმალება, როცა ფანჯარა მას ფარავს, და კვლავ ჩნდება, როცა მაჩვენებელს ქვედა კიდესთან მიიტანთ.",
         "Dock controls": "დოკის კონტროლი",
-        "Show the button to open Nextcloud Files in a new tab": "აჩვენეთ ღილაკი Nextcloud Files-ის გასახსნელად ახალ ჩანართში"
+        "Show the button to open Nextcloud Files in a new tab": "აჩვენეთ ღილაკი Nextcloud Files-ის გასახსნელად ახალ ჩანართში",
+        "Time format": "დროის ფორმატი",
+        "24-hour clock": "24-საათიანი საათი",
+        "12-hour clock": "12-საათიანი საათი"
     },
     "pluralForm": "nplurals=2; plural=(n!=1);"
 }

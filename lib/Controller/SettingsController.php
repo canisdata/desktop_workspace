@@ -5,6 +5,7 @@ use OC\DB\Exceptions\DbalException;
 use OCA\DesktopWorkspace\Service\DecorationService;
 use OCA\DesktopWorkspace\Service\FilesAvailability;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
@@ -41,6 +42,7 @@ class SettingsController extends Controller {
     public const WINDOW_CONTROLS_SIDE_KEY = 'window_controls_side';
     public const SHELL_MODE_KEY = 'shell_mode';
     public const DOCK_ALWAYS_VISIBLE_KEY = 'dock_always_visible';
+    public const CLOCK_HOUR_CYCLE_KEY = 'clock_hour_cycle';
     public const SHOW_FILES_NEW_TAB_KEY = 'show_files_new_tab';
 
     public function __construct(
@@ -111,17 +113,13 @@ class SettingsController extends Controller {
         return new JSONResponse(['status' => 'ok', 'showFilesNewTab' => $value]);
     }
 
-    /**
-     * @NoAdminRequired
-     */
+    #[NoAdminRequired]
     public function heartbeat(string $instanceId = ''): JSONResponse {
         $this->statsService->heartbeat($instanceId);
         return new JSONResponse(['status' => 'ok']);
     }
 
-    /**
-     * @NoAdminRequired
-     */
+    #[NoAdminRequired]
     public function saveIconPositions(string $positions = '{}'): JSONResponse {
         $user = $this->userSession->getUser();
         if ($user === null) {
@@ -165,9 +163,7 @@ class SettingsController extends Controller {
         ];
     }
 
-    /**
-     * @NoAdminRequired
-     */
+    #[NoAdminRequired]
     public function saveAppPins(string $location = '', string $pins = '[]'): JSONResponse {
         $user = $this->userSession->getUser();
         if ($user === null) {
@@ -204,9 +200,7 @@ class SettingsController extends Controller {
         }
     }
 
-    /**
-     * @NoAdminRequired
-     */
+    #[NoAdminRequired]
     public function migrateBrowserState(string $pins = '{"taskbar":[],"desktop":[]}', int $width = 0, int $height = 0): JSONResponse {
         $user = $this->userSession->getUser();
         if ($user === null) {
@@ -251,9 +245,7 @@ class SettingsController extends Controller {
         ]);
     }
 
-    /**
-     * @NoAdminRequired
-     */
+    #[NoAdminRequired]
     public function saveAppsMenuSize(int $width = 0, int $height = 0): JSONResponse {
         $user = $this->userSession->getUser();
         if ($user === null) {
@@ -267,9 +259,7 @@ class SettingsController extends Controller {
         return new JSONResponse(['status' => 'ok', 'size' => $clean]);
     }
 
-    /**
-     * @NoAdminRequired
-     */
+    #[NoAdminRequired]
     public function resetIconPositions(): JSONResponse {
         $user = $this->userSession->getUser();
         if ($user === null) {
@@ -279,9 +269,7 @@ class SettingsController extends Controller {
         return new JSONResponse(['status' => 'ok']);
     }
 
-    /**
-     * @NoAdminRequired
-     */
+    #[NoAdminRequired]
     public function saveWindowStates(string $windows = '{"windows":[]}'): JSONResponse {
         $user = $this->userSession->getUser();
         if ($user === null) {
@@ -299,9 +287,7 @@ class SettingsController extends Controller {
         return new JSONResponse(['status' => 'ok']);
     }
 
-    /**
-     * @NoAdminRequired
-     */
+    #[NoAdminRequired]
     public function resetWindowStates(): JSONResponse {
         $user = $this->userSession->getUser();
         if ($user === null) {
@@ -320,9 +306,7 @@ class SettingsController extends Controller {
         }
     }
 
-    /**
-     * @NoAdminRequired
-     */
+    #[NoAdminRequired]
     public function resetAllPersonal(): JSONResponse {
         $user = $this->userSession->getUser();
         if ($user === null) {
@@ -348,6 +332,7 @@ class SettingsController extends Controller {
                 'windowControlsSide' => 'right',
                 'shellMode' => 'taskbar',
                 'dockAlwaysVisible' => true,
+                'clockHourCycle' => '24',
             ],
         ]);
     }
@@ -365,9 +350,7 @@ class SettingsController extends Controller {
         return new JSONResponse(['status' => 'ok']);
     }
 
-    /**
-     * @NoAdminRequired
-     */
+    #[NoAdminRequired]
     public function savePersonalSettings(
         ?string $try_experimental_files = null,
         ?string $show_favorites = null,
@@ -384,6 +367,7 @@ class SettingsController extends Controller {
         ?string $window_controls_side = null,
         ?string $shell_mode = null,
         ?string $dock_always_visible = null,
+        ?string $clock_hour_cycle = null,
     ): JSONResponse {
         $user = $this->userSession->getUser();
         if ($user === null) {
@@ -406,6 +390,11 @@ class SettingsController extends Controller {
             $value = $truthy($dock_always_visible);
             $this->config->setUserValue($uid, self::APP_ID, self::DOCK_ALWAYS_VISIBLE_KEY, $value ? 'yes' : 'no');
             $result['dockAlwaysVisible'] = $value;
+        }
+        if ($clock_hour_cycle !== null) {
+            $value = $clock_hour_cycle === '12' ? '12' : '24';
+            $this->config->setUserValue($uid, self::APP_ID, self::CLOCK_HOUR_CYCLE_KEY, $value);
+            $result['clockHourCycle'] = $value;
         }
         if ($decoration !== null) {
             $selected = in_array($decoration, [DecorationService::STANDARD, DecorationService::REDMOND, DecorationService::RETRO], true)

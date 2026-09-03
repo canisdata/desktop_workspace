@@ -275,7 +275,10 @@ OC.L10N.register(
     "Show the button to open Nextcloud Files in a new tab": "Kuvage nupp, et avada Nextcloudi failid uuel vahekaardil",
     "Dock controls": "Doki juhtnupud",
     "Pin to dock": "Kinnitage dokki",
-    "Always show the dock": "Näidake alati dokki"
+    "Always show the dock": "Näidake alati dokki",
+"Time format": "Ajavorming",
+"24-hour clock": "24-tunnine kell",
+"12-hour clock": "12-tunnine kell"
 },
     "nplurals=2; plural=(n != 1);"
 );

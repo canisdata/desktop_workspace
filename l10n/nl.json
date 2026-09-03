@@ -274,7 +274,10 @@
         "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Indien uitgeschakeld, verbergt het dock zich terwijl een venster het overlapt en verschijnt het opnieuw wanneer u naar de onderrand wijst.",
         "Show the button to open Nextcloud Files in a new tab": "Toon de knop om Nextcloud Files in een nieuw tabblad te openen",
         "Dock controls": "Dockbediening",
-        "Pin to dock": "Vastmaken aan dock"
+        "Pin to dock": "Vastmaken aan dock",
+        "Time format": "Tijdnotatie",
+        "24-hour clock": "24-uursklok",
+        "12-hour clock": "12-uursklok"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

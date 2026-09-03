@@ -457,8 +457,31 @@ body:has(#desktop-root) .content {
     align-items: center;
     gap: 4px;
     height: 34px;
-    transform: translateY(8px);
+    transform: none;
     color: var(--desktop-panel-text);
+}
+
+#desktop-root .desktop-header-end-slot .header-end > #notifications > .header-menu,
+#desktop-root .desktop-header-end-slot .header-end > .header-menu {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+#desktop-root .desktop-header-end-slot .header-end > #notifications {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+}
+
+#desktop-root .desktop-header-end-slot .header-end > #notifications > .header-menu {
+    width: 44px;
+    height: 44px;
+}
+
+#desktop-root .desktop-header-end-slot .header-end > #notifications > .header-menu > button,
+#desktop-root .desktop-header-end-slot .header-end > .header-menu > button {
+    margin: auto !important;
 }
 
 .desktop-header-end-slot .header-menu,
@@ -581,8 +604,23 @@ body:has(#desktop-root) .header-menu__wrapper {
     font-size: var(--default-font-size, 15px);
     line-height: 1.15;
     display: inline-flex;
-    align-items: center;
-    align-self: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1px;
+    padding: 2px 8px;
+    box-sizing: border-box;
+}
+
+.desktop-clock-time {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.05;
+}
+
+.desktop-clock-date {
+    font-size: 11px;
+    line-height: 1.05;
+    opacity: .85;
 }
 
 .desktop-nextcloud-logo {

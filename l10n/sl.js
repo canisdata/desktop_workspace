@@ -275,7 +275,10 @@ OC.L10N.register(
     "Dock controls": "Kontrole sidrišča",
     "Pin to dock": "Pripni v sidrišče",
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Ko je onemogočeno, se sidrišče skrije, kadar ga prekriva okno, in se znova prikaže, ko pokažete na spodnji rob.",
-    "Show the button to open Nextcloud Files in a new tab": "Pokažite gumb za odpiranje datotek Nextcloud v novem zavihku"
+    "Show the button to open Nextcloud Files in a new tab": "Pokažite gumb za odpiranje datotek Nextcloud v novem zavihku",
+"Time format": "Oblika zapisa časa",
+"24-hour clock": "24-urna oblika",
+"12-hour clock": "12-urna oblika"
 },
     "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"
 );

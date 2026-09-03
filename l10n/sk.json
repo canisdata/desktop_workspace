@@ -274,7 +274,10 @@
         "Always show the dock": "Vždy ukážte dok",
         "Dock controls": "Ovládacie prvky doku",
         "Pin to dock": "Pripnúť do doku",
-        "Show the button to open Nextcloud Files in a new tab": "Zobrazte tlačidlo na otvorenie súborov Nextcloud na novej karte"
+        "Show the button to open Nextcloud Files in a new tab": "Zobrazte tlačidlo na otvorenie súborov Nextcloud na novej karte",
+        "Time format": "Formát času",
+        "24-hour clock": "24-hodinový formát",
+        "12-hour clock": "12-hodinový formát"
     },
     "pluralForm": "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);"
 }

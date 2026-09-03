@@ -275,7 +275,10 @@ OC.L10N.register(
     "Show the button to open Nextcloud Files in a new tab": "Afficher le bouton pour ouvrir les fichiers Nextcloud dans un nouvel onglet",
     "Dock controls": "Contrôles du Dock",
     "Always show the dock": "Toujours afficher le Dock",
-    "Pin to dock": "Épingler au Dock"
+    "Pin to dock": "Épingler au Dock",
+"Time format": "Format de l’heure",
+"24-hour clock": "Horloge 24 heures",
+"12-hour clock": "Horloge 12 heures"
 },
     "nplurals=2; plural=(n > 1);"
 );

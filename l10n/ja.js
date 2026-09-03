@@ -275,7 +275,10 @@ OC.L10N.register(
     "Dock controls": "ドックコントロール",
     "Pin to dock": "ドックにピン留めする",
     "Always show the dock": "常にドックを表示する",
-    "Show the button to open Nextcloud Files in a new tab": "Nextcloud ファイルを新しいタブで開くボタンを表示します"
+    "Show the button to open Nextcloud Files in a new tab": "Nextcloud ファイルを新しいタブで開くボタンを表示します",
+"Time format": "時刻の表示形式",
+"24-hour clock": "24時間制",
+"12-hour clock": "12時間制"
 },
     "nplurals=1; plural=0;"
 );

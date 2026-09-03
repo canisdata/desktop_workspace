@@ -274,7 +274,10 @@
         "Dock controls": "Ovládací prvky doku",
         "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Když je zakázán, dok se skryje, když jej překrývá okno, a znovu se zobrazí, když ukážete na spodní okraj.",
         "Show the button to open Nextcloud Files in a new tab": "Zobrazit tlačítko pro otevření souborů Nextcloud na nové kartě",
-        "Pin to dock": "Připnout do doku"
+        "Pin to dock": "Připnout do doku",
+        "Time format": "Formát času",
+        "24-hour clock": "24hodinový formát",
+        "12-hour clock": "12hodinový formát"
     },
     "pluralForm": "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
 }

@@ -275,7 +275,10 @@ OC.L10N.register(
     "Dock controls": "Докны удирдлага",
     "Pin to dock": "Док руу бэхлэх",
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Идэвхгүй болсон үед цонх давхцаж байхад док нуугдаж, доод ирмэг рүү чиглүүлэх үед дахин гарч ирнэ.",
-    "Show the button to open Nextcloud Files in a new tab": "Nextcloud файлуудыг шинэ таб дээр нээх товчийг харуул"
+    "Show the button to open Nextcloud Files in a new tab": "Nextcloud файлуудыг шинэ таб дээр нээх товчийг харуул",
+"Time format": "Цагийн формат",
+"24-hour clock": "24 цагийн формат",
+"12-hour clock": "12 цагийн формат"
 },
     "nplurals=2; plural=(n != 1);"
 );

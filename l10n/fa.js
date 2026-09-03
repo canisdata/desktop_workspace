@@ -275,7 +275,10 @@ OC.L10N.register(
     "Dock controls": "کنترل‌های داک",
     "Pin to dock": "سنجاق کردن به داک",
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "هنگامی که غیرفعال است، داک با قرار گرفتن پنجره‌ای روی آن پنهان می‌شود و با بردن نشانگر به لبهٔ پایین دوباره ظاهر می‌شود.",
-    "Show the button to open Nextcloud Files in a new tab": "دکمه باز کردن Nextcloud Files را در یک تب جدید نشان دهید"
+    "Show the button to open Nextcloud Files in a new tab": "دکمه باز کردن Nextcloud Files را در یک تب جدید نشان دهید",
+"Time format": "قالب زمان",
+"24-hour clock": "ساعت 24 ساعته",
+"12-hour clock": "ساعت 12 ساعته"
 },
     "nplurals=2; plural=(n > 1);"
 );

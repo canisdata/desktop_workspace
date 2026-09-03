@@ -275,7 +275,10 @@ OC.L10N.register(
     "Show the button to open Nextcloud Files in a new tab": "ສະແດງປຸ່ມເພື່ອເປີດ Nextcloud Files ໃນແຖບໃໝ່",
     "Pin to dock": "ປັກໝຸດໃສ່ດັອກ",
     "Dock controls": "ປຸ່ມຄວບຄຸມດັອກ",
-    "Always show the dock": "ສະແດງດັອກສະເໝີ"
+    "Always show the dock": "ສະແດງດັອກສະເໝີ",
+"Time format": "ຮູບແບບເວລາ",
+"24-hour clock": "ໂມງແບບ 24 ຊົ່ວໂມງ",
+"12-hour clock": "ໂມງແບບ 12 ຊົ່ວໂມງ"
 },
     "nplurals=1; plural=0;"
 );

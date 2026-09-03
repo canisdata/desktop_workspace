@@ -275,7 +275,10 @@ OC.L10N.register(
     "Show the button to open Nextcloud Files in a new tab": "Parādiet pogu, lai jaunā cilnē atvērtu Nextcloud failus",
     "Always show the dock": "Vienmēr parādiet doku",
     "Dock controls": "Doka vadības ierīces",
-    "Pin to dock": "Piespraust dokam"
+    "Pin to dock": "Piespraust dokam",
+"Time format": "Laika formāts",
+"24-hour clock": "24 stundu pulkstenis",
+"12-hour clock": "12 stundu pulkstenis"
 },
     "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);"
 );

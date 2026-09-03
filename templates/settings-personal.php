@@ -1,8 +1,8 @@
 <?php
 \OCP\Util::addTranslations('desktop_workspace');
-script('desktop_workspace', 'personal-0171b');
-style('desktop_workspace', 'admin-0160c');
-style('desktop_workspace', 'personal-0170');
+script('desktop_workspace', 'personal');
+style('desktop_workspace', 'admin');
+style('desktop_workspace', 'personal');
 /** @var array $_ */
 $l = \OC::$server->getL10N('desktop_workspace');
 ?>
@@ -74,6 +74,11 @@ $l = \OC::$server->getL10N('desktop_workspace');
             </p>
             <p class="settings-hint"><?= p($l->t('When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.')) ?></p>
         </div>
+        <fieldset class="desktop-radio-group">
+            <legend><?= p($l->t('Time format')) ?></legend>
+            <label><input type="radio" name="desktop-clock-hour-cycle" value="24" <?= $_['clockHourCycle'] !== '12' ? 'checked' : '' ?> /> <?= p($l->t('24-hour clock')) ?></label>
+            <label><input type="radio" name="desktop-clock-hour-cycle" value="12" <?= $_['clockHourCycle'] === '12' ? 'checked' : '' ?> /> <?= p($l->t('12-hour clock')) ?></label>
+        </fieldset>
     </div>
 
     <h3><?= p($l->t('Desktop items')) ?></h3>

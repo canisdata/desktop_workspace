@@ -274,7 +274,10 @@
         "Always show the dock": "إظهار شريط التطبيقات دائمًا",
         "Pin to dock": "تثبيت على شريط التطبيقات",
         "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "عند تعطيل هذا الخيار، يختفي شريط التطبيقات عندما تتداخل معه نافذة، ويظهر مجددًا عند الإشارة إلى الحافة السفلية.",
-        "Show the button to open Nextcloud Files in a new tab": "أظهر الزر لفتح Nextcloud Files في علامة تبويب جديدة"
+        "Show the button to open Nextcloud Files in a new tab": "أظهر الزر لفتح Nextcloud Files في علامة تبويب جديدة",
+        "Time format": "تنسيق الوقت",
+        "24-hour clock": "نظام 24 ساعة",
+        "12-hour clock": "نظام 12 ساعة"
     },
     "pluralForm": "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;"
 }

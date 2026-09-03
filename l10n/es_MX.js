@@ -275,7 +275,10 @@ OC.L10N.register(
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Cuando está deshabilitado, el Dock se oculta mientras una ventana lo cubre y vuelve a aparecer cuando se apunta al borde inferior.",
     "Dock controls": "Controles del Dock",
     "Show the button to open Nextcloud Files in a new tab": "Mostrar el botón para abrir Nextcloud Files en una nueva pestaña",
-    "Pin to dock": "Anclar al Dock"
+    "Pin to dock": "Anclar al Dock",
+"Time format": "Formato de hora",
+"24-hour clock": "Reloj de 24 horas",
+"12-hour clock": "Reloj de 12 horas"
 },
     "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 );

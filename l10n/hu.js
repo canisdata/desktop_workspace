@@ -275,7 +275,10 @@ OC.L10N.register(
     "Dock controls": "Dokkvezérlők",
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Ha ki van kapcsolva, a dokk elrejtőzik, amikor egy ablak átfedi, és újra megjelenik, amikor az alsó szélre mutat.",
     "Show the button to open Nextcloud Files in a new tab": "Mutassa meg a gombot a Nextcloud Files új lapon való megnyitásához",
-    "Pin to dock": "Rögzítés a dokkhoz"
+    "Pin to dock": "Rögzítés a dokkhoz",
+"Time format": "Időformátum",
+"24-hour clock": "24 órás formátum",
+"12-hour clock": "12 órás formátum"
 },
     "nplurals=2; plural=(n != 1);"
 );

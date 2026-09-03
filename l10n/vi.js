@@ -275,7 +275,10 @@ OC.L10N.register(
     "Pin to dock": "Ghim vào Dock",
     "Dock controls": "Điều khiển Dock",
     "Always show the dock": "Luôn hiển thị Dock",
-    "Show the button to open Nextcloud Files in a new tab": "Hiển thị nút để mở Tệp Nextcloud trong tab mới"
+    "Show the button to open Nextcloud Files in a new tab": "Hiển thị nút để mở Tệp Nextcloud trong tab mới",
+"Time format": "Định dạng thời gian",
+"24-hour clock": "Đồng hồ 24 giờ",
+"12-hour clock": "Đồng hồ 12 giờ"
 },
     "nplurals=1; plural=0;"
 );

@@ -275,7 +275,10 @@ OC.L10N.register(
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Devre dışı bırakıldığında, bir pencere onunla örtüştüğünde dock gizlenir ve alt kenarı işaret ettiğinizde yeniden görünür.",
     "Dock controls": "Dock denetimleri",
     "Pin to dock": "Dock'a sabitle",
-    "Show the button to open Nextcloud Files in a new tab": "Nextcloud Dosyalarını yeni bir sekmede açma düğmesini göster"
+    "Show the button to open Nextcloud Files in a new tab": "Nextcloud Dosyalarını yeni bir sekmede açma düğmesini göster",
+"Time format": "Saat biçimi",
+"24-hour clock": "24 saatlik biçim",
+"12-hour clock": "12 saatlik biçim"
 },
     "nplurals=2; plural=(n > 1);"
 );

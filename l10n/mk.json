@@ -274,7 +274,10 @@
         "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Кога е оневозможено, докот се крие додека прозорец го преклопува и повторно се појавува кога ќе покажете на долниот раб.",
         "Always show the dock": "Секогаш прикажувај го докот",
         "Dock controls": "Контроли на докот",
-        "Show the button to open Nextcloud Files in a new tab": "Покажете го копчето за отворање на Nextcloud Files во нова картичка"
+        "Show the button to open Nextcloud Files in a new tab": "Покажете го копчето за отворање на Nextcloud Files во нова картичка",
+        "Time format": "Формат на времето",
+        "24-hour clock": "24-часовен часовник",
+        "12-hour clock": "12-часовен часовник"
     },
     "pluralForm": "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"
 }

@@ -274,7 +274,10 @@
         "Always show the dock": "Винаги показвайте дока",
         "Dock controls": "Контроли на дока",
         "Show the button to open Nextcloud Files in a new tab": "Показване на бутона за отваряне на Nextcloud Files в нов раздел",
-        "Pin to dock": "Закачане към дока"
+        "Pin to dock": "Закачане към дока",
+        "Time format": "Формат на часа",
+        "24-hour clock": "24-часов формат",
+        "12-hour clock": "12-часов формат"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

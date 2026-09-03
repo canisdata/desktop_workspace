@@ -13,15 +13,20 @@
     function notifyDesktop(fields) {
         try {
             if (window.parent === window) return;
-            const map = { show_favorites: 'showFavorites', show_trash: 'showTrash', show_home: 'showHome', favorites_no_confirm: 'favoritesNoConfirm', trash_no_confirm: 'trashNoConfirm', try_experimental_files: 'desktopfilesEnabled' };
+            const map = { show_favorites: 'showFavorites', show_trash: 'showTrash', show_home: 'showHome', favorites_no_confirm: 'favoritesNoConfirm', trash_no_confirm: 'trashNoConfirm', try_experimental_files: 'desktopfilesEnabled', dock_always_visible: 'dockAlwaysVisible', clock_hour_cycle: 'clockHourCycle' };
             const s = {};
-            Object.entries(fields).forEach(([k, v]) => { if (map[k]) s[map[k]] = (v === 'yes'); });
+            Object.entries(fields).forEach(([k, v]) => {
+                if (!map[k]) return;
+                s[map[k]] = k === 'clock_hour_cycle' ? (v === '12' ? '12' : '24') : (v === 'yes');
+            });
             if ('desktop_folder' in fields) s.desktopFolder = fields.desktop_folder;
             if ('decoration' in fields) s.decoration = ['redmond', 'retro'].includes(fields.decoration) ? fields.decoration : 'standard';
             if ('decoration_color' in fields) s.decorationColor = ['light', 'dark'].includes(fields.decoration_color) ? fields.decoration_color : 'nextcloud';
             if ('icon_decoration_linked' in fields) s.iconDecorationLinked = fields.icon_decoration_linked === 'yes';
             if ('icon_decoration' in fields) s.iconDecoration = ['redmond', 'retro'].includes(fields.icon_decoration) ? fields.icon_decoration : 'standard';
             if ('icon_color' in fields) s.iconColor = ['light', 'dark'].includes(fields.icon_color) ? fields.icon_color : 'nextcloud';
+            if ('window_controls_side' in fields) s.windowControlsSide = fields.window_controls_side === 'left' ? 'left' : 'right';
+            if ('shell_mode' in fields) s.shellMode = fields.shell_mode === 'dock' ? 'dock' : 'taskbar';
             if (Object.keys(s).length) window.parent.postMessage({ type: 'nextcloud-desktop:settings-changed', settings: s }, window.location.origin);
         } catch (e) { /* ignore */ }
     }
@@ -64,6 +69,7 @@
     wireToggle('desktop-favorites-no-confirm', 'favorites_no_confirm');
     wireToggle('desktop-trash-no-confirm', 'trash_no_confirm');
     wireToggle('desktop-try-experimental', 'try_experimental_files');
+    wireToggle('desktop-dock-always-visible', 'dock_always_visible');
 
     function wireAppearanceSelect(id, field) {
         const select = el(id);
@@ -88,6 +94,42 @@
     wireAppearanceSelect('desktop-decoration-color', 'decoration_color');
     wireAppearanceSelect('desktop-icon-decoration', 'icon_decoration');
     wireAppearanceSelect('desktop-icon-color', 'icon_color');
+
+    function wireRadioGroup(name, field) {
+        const radios = Array.from(root.querySelectorAll(`input[type="radio"][name="${name}"]`));
+        if (!radios.length) return;
+        const initiallyChecked = radios.find((item) => item.checked);
+        radios.forEach((item) => { item.dataset.savedValue = initiallyChecked?.value || ''; });
+        radios.forEach((radio) => {
+            radio.addEventListener('change', async () => {
+                if (!radio.checked) return;
+                const previousValue = radio.dataset.savedValue;
+                radios.forEach((item) => { item.disabled = true; });
+                try {
+                    await applyField(field, radio.value);
+                    radios.forEach((item) => { item.dataset.savedValue = radio.value; });
+                    if (status) status.textContent = tr('Saved.');
+                } catch (error) {
+                    const previous = radios.find((item) => item.value === previousValue);
+                    if (previous) previous.checked = true;
+                    if (status) status.textContent = tr('Save failed: {msg}', { msg: error.message });
+                } finally {
+                    radios.forEach((item) => { item.disabled = false; });
+                }
+            });
+        });
+    }
+    wireRadioGroup('desktop-window-controls-side', 'window_controls_side');
+    wireRadioGroup('desktop-shell-mode', 'shell_mode');
+    wireRadioGroup('desktop-clock-hour-cycle', 'clock_hour_cycle');
+
+    function syncDockSettingsVisibility() {
+        const dockSettings = el('desktop-dock-always-visible-setting');
+        const dockSelected = root.querySelector('input[name="desktop-shell-mode"][value="dock"]')?.checked === true;
+        if (dockSettings) dockSettings.hidden = !dockSelected;
+    }
+    root.querySelectorAll('input[name="desktop-shell-mode"]').forEach((radio) => radio.addEventListener('change', syncDockSettingsVisibility));
+    syncDockSettingsVisibility();
 
     const iconLinked = el('desktop-icon-decoration-linked');
     const iconDecoration = el('desktop-icon-decoration');
@@ -157,11 +199,21 @@
         checked('desktop-favorites-no-confirm', settings.favoritesNoConfirm);
         checked('desktop-trash-no-confirm', settings.trashNoConfirm);
         checked('desktop-try-experimental', settings.tryExperimentalFiles);
+        checked('desktop-dock-always-visible', settings.dockAlwaysVisible);
         checked('desktop-icon-decoration-linked', settings.iconDecorationLinked);
         selected('desktop-decoration', settings.decoration);
         selected('desktop-decoration-color', settings.decorationColor);
         selected('desktop-icon-decoration', settings.iconDecoration);
         selected('desktop-icon-color', settings.iconColor);
+        const controlsSide = root.querySelector(`input[name="desktop-window-controls-side"][value="${settings.windowControlsSide === 'left' ? 'left' : 'right'}"]`);
+        const shellMode = root.querySelector(`input[name="desktop-shell-mode"][value="${settings.shellMode === 'dock' ? 'dock' : 'taskbar'}"]`);
+        const clockHourCycle = root.querySelector(`input[name="desktop-clock-hour-cycle"][value="${settings.clockHourCycle === '12' ? '12' : '24'}"]`);
+        if (controlsSide) controlsSide.checked = true;
+        if (shellMode) shellMode.checked = true;
+        if (clockHourCycle) clockHourCycle.checked = true;
+        root.querySelectorAll('input[name="desktop-window-controls-side"]').forEach((node) => { node.dataset.savedValue = controlsSide?.value || 'right'; });
+        root.querySelectorAll('input[name="desktop-shell-mode"]').forEach((node) => { node.dataset.savedValue = shellMode?.value || 'taskbar'; });
+        root.querySelectorAll('input[name="desktop-clock-hour-cycle"]').forEach((node) => { node.dataset.savedValue = clockHourCycle?.value || '24'; });
         if (folderInput) folderInput.value = settings.desktopFolder || '';
         if (iconDecoration) iconDecoration.disabled = !!settings.iconDecorationLinked;
         if (iconColor) iconColor.disabled = !!settings.iconDecorationLinked;
@@ -178,6 +230,10 @@
             icon_decoration_linked: settings.iconDecorationLinked ? 'yes' : 'no',
             icon_decoration: settings.iconDecoration,
             icon_color: settings.iconColor,
+            window_controls_side: settings.windowControlsSide,
+            shell_mode: settings.shellMode,
+            dock_always_visible: settings.dockAlwaysVisible ? 'yes' : 'no',
+            clock_hour_cycle: settings.clockHourCycle === '12' ? '12' : '24',
         });
     }
 

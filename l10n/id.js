@@ -275,7 +275,10 @@ OC.L10N.register(
     "Dock controls": "Kontrol dok",
     "Always show the dock": "Selalu tunjukkan dok",
     "Show the button to open Nextcloud Files in a new tab": "Tampilkan tombol untuk membuka File Nextcloud di tab baru",
-    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Saat dinonaktifkan, dok akan tersembunyi ketika tertindih jendela dan muncul kembali saat Anda menunjuk ke tepi bawah."
+    "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Saat dinonaktifkan, dok akan tersembunyi ketika tertindih jendela dan muncul kembali saat Anda menunjuk ke tepi bawah.",
+"Time format": "Format waktu",
+"24-hour clock": "Jam 24 jam",
+"12-hour clock": "Jam 12 jam"
 },
     "nplurals=1; plural=0;"
 );
