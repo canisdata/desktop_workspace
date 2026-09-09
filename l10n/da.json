@@ -277,7 +277,9 @@
         "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Når den er deaktiveret, skjuler docken sig, mens et vindue overlapper den og vises igen, når du peger på den nederste kant.",
         "Time format": "Tidsformat",
         "24-hour clock": "24-timers ur",
-        "12-hour clock": "12-timers ur"
+        "12-hour clock": "12-timers ur",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace er gratis at bruge, men udvikling og vedligeholdelse kræver tid og ressourcer.",
+        "Please consider supporting its continued development.": "Overvej at støtte den fortsatte udvikling."
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

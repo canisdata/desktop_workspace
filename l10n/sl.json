@@ -277,7 +277,9 @@
         "Show the button to open Nextcloud Files in a new tab": "Pokažite gumb za odpiranje datotek Nextcloud v novem zavihku",
         "Time format": "Oblika zapisa časa",
         "24-hour clock": "24-urna oblika",
-        "12-hour clock": "12-urna oblika"
+        "12-hour clock": "12-urna oblika",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace je brezplačen za uporabo, vendar njegov razvoj in vzdrževanje zahtevata čas in sredstva.",
+        "Please consider supporting its continued development.": "Razmislite o podpori njegovega nadaljnjega razvoja."
     },
     "pluralForm": "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"
 }

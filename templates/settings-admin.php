@@ -2,12 +2,17 @@
 \OCP\Util::addTranslations('desktop_workspace');
 script('desktop_workspace', 'admin-settings');
 style('desktop_workspace', 'admin');
+style('desktop_workspace', 'support-callout');
 /** @var array $_ */
 $l = \OC::$server->getL10N('desktop_workspace');
 ?>
 <div id="desktop-admin-settings" class="section" data-save-url="<?= p($_['saveUrl']) ?>" data-decoration-policy-url="<?= p($_['decorationPolicyUrl']) ?>" data-files-button-policy-url="<?= p($_['filesButtonPolicyUrl']) ?>">
     <h2><?= p($l->t('Desktop Workspace')) ?></h2>
     <p class="settings-hint"><?= p($l->t('Configure the browser-contained desktop shell.')) ?></p>
+    <p class="settings-hint desktop-support-callout">
+        <?= p($l->t('Desktop Workspace is free to use, but developing and maintaining it takes time and resources.')) ?><br />
+        <a href="https://ko-fi.com/canisdata" target="_blank" rel="noopener noreferrer"><?= p($l->t('Please consider supporting its continued development.')) ?></a>
+    </p>
 
     <h3><?= p($l->t('Appearance choices')) ?></h3>
     <p>

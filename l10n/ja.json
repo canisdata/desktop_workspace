@@ -277,7 +277,9 @@
         "Show the button to open Nextcloud Files in a new tab": "Nextcloud ファイルを新しいタブで開くボタンを表示します",
         "Time format": "時刻の表示形式",
         "24-hour clock": "24時間制",
-        "12-hour clock": "12時間制"
+        "12-hour clock": "12時間制",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace は無料で利用できますが、開発と保守には時間とリソースが必要です。",
+        "Please consider supporting its continued development.": "継続的な開発への支援をご検討ください。"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

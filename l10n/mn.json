@@ -277,7 +277,9 @@
         "Show the button to open Nextcloud Files in a new tab": "Nextcloud файлуудыг шинэ таб дээр нээх товчийг харуул",
         "Time format": "Цагийн формат",
         "24-hour clock": "24 цагийн формат",
-        "12-hour clock": "12 цагийн формат"
+        "12-hour clock": "12 цагийн формат",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace-г үнэгүй ашиглах боломжтой боловч хөгжүүлэлт, засвар үйлчилгээ нь цаг хугацаа, нөөц шаарддаг.",
+        "Please consider supporting its continued development.": "Цаашдын хөгжүүлэлтийг нь дэмжих талаар бодож үзнэ үү."
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

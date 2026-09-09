@@ -277,7 +277,9 @@
         "Pin to dock": "Kiinnitä telakkaan",
         "Time format": "Ajan muoto",
         "24-hour clock": "24 tunnin kello",
-        "12-hour clock": "12 tunnin kello"
+        "12-hour clock": "12 tunnin kello",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspacea voi käyttää maksutta, mutta sen kehittäminen ja ylläpito vaativat aikaa ja resursseja.",
+        "Please consider supporting its continued development.": "Harkitse sen jatkuvan kehityksen tukemista."
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

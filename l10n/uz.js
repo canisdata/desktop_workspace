@@ -278,7 +278,9 @@ OC.L10N.register(
     "Show the button to open Nextcloud Files in a new tab": "Nextcloud Files-ni yangi tabda ochish tugmachasini ko'rsating",
 "Time format": "Vaqt formati",
 "24-hour clock": "24 soatlik format",
-"12-hour clock": "12 soatlik format"
+"12-hour clock": "12 soatlik format",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace-dan bepul foydalanish mumkin, ammo uni ishlab chiqish va qo‘llab-quvvatlash vaqt hamda resurslarni talab qiladi.",
+    "Please consider supporting its continued development.": "Uning keyingi rivojlanishini qo‘llab-quvvatlashni ko‘rib chiqing."
 },
     "nplurals=1; plural=0;"
 );

@@ -278,7 +278,9 @@ OC.L10N.register(
     "Always show the dock": "始终显示程序坞",
 "Time format": "时间格式",
 "24-hour clock": "24 小时制",
-"12-hour clock": "12 小时制"
+"12-hour clock": "12 小时制",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace 可免费使用，但开发和维护它需要投入时间和资源。",
+    "Please consider supporting its continued development.": "请考虑支持其持续开发。"
 },
     "nplurals=1; plural=0;"
 );

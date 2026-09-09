@@ -278,7 +278,9 @@ OC.L10N.register(
     "Show the button to open Nextcloud Files in a new tab": "Afișați butonul pentru a deschide Nextcloud Files într-o filă nouă",
 "Time format": "Formatul orei",
 "24-hour clock": "Ceas cu 24 de ore",
-"12-hour clock": "Ceas cu 12 ore"
+"12-hour clock": "Ceas cu 12 ore",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace poate fi utilizat gratuit, dar dezvoltarea și întreținerea sa necesită timp și resurse.",
+    "Please consider supporting its continued development.": "Vă rugăm să luați în considerare sprijinirea dezvoltării sale continue."
 },
     "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));"
 );

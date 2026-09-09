@@ -277,7 +277,9 @@
         "Show the button to open Nextcloud Files in a new tab": "Hiển thị nút để mở Tệp Nextcloud trong tab mới",
         "Time format": "Định dạng thời gian",
         "24-hour clock": "Đồng hồ 24 giờ",
-        "12-hour clock": "Đồng hồ 12 giờ"
+        "12-hour clock": "Đồng hồ 12 giờ",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace được sử dụng miễn phí, nhưng việc phát triển và bảo trì cần có thời gian và nguồn lực.",
+        "Please consider supporting its continued development.": "Vui lòng cân nhắc hỗ trợ quá trình phát triển lâu dài của ứng dụng."
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

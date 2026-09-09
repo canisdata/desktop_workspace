@@ -278,7 +278,9 @@ OC.L10N.register(
     "Always show the dock": "Заўсёды паказваць док-панэль",
 "Time format": "Фармат часу",
 "24-hour clock": "24-гадзінны фармат",
-"12-hour clock": "12-гадзінны фармат"
+"12-hour clock": "12-гадзінны фармат",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace можна выкарыстоўваць бясплатна, але яго распрацоўка і падтрымка патрабуюць часу і рэсурсаў.",
+    "Please consider supporting its continued development.": "Калі ласка, разгледзьце магчымасць падтрымаць яго далейшую распрацоўку."
 },
     "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"
 );

@@ -278,7 +278,9 @@ OC.L10N.register(
     "Show the button to open Nextcloud Files in a new tab": "Показывать кнопку для открытия файлов Nextcloud на новой вкладке.",
 "Time format": "Формат времени",
 "24-hour clock": "24-часовой формат",
-"12-hour clock": "12-часовой формат"
+"12-hour clock": "12-часовой формат",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace можно использовать бесплатно, но его разработка и поддержка требуют времени и ресурсов.",
+    "Please consider supporting its continued development.": "Пожалуйста, рассмотрите возможность поддержать его дальнейшую разработку."
 },
     "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"
 );

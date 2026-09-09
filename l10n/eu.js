@@ -278,7 +278,9 @@ OC.L10N.register(
     "Dock controls": "Dokearen kontrolak",
 "Time format": "Ordu-formatua",
 "24-hour clock": "24 orduko erlojua",
-"12-hour clock": "12 orduko erlojua"
+"12-hour clock": "12 orduko erlojua",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace doan erabil daiteke, baina garatzeak eta mantentzeak denbora eta baliabideak eskatzen ditu.",
+    "Please consider supporting its continued development.": "Mesedez, pentsatu haren etengabeko garapena babestea."
 },
     "nplurals=2; plural=(n != 1);"
 );

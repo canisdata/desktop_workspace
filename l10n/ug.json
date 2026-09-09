@@ -277,7 +277,9 @@
         "Show the button to open Nextcloud Files in a new tab": "يېڭى بەتكۈچتە Nextcloud ھۆججەتلىرىنى ئېچىش كۇنۇپكىسىنى كۆرسىتىڭ",
         "Time format": "ۋاقىت فورماتى",
         "24-hour clock": "24 سائەتلىك ۋاقىت",
-        "12-hour clock": "12 سائەتلىك ۋاقىت"
+        "12-hour clock": "12 سائەتلىك ۋاقىت",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace نى ھەقسىز ئىشلەتكىلى بولىدۇ، ئەمما ئۇنى تەرەققىي قىلدۇرۇش ۋە ئاسراشقا ۋاقىت ۋە بايلىق كېتىدۇ.",
+        "Please consider supporting its continued development.": "ئۇنىڭ داۋاملىق تەرەققىياتىنى قوللاشنى ئويلىشىپ كۆرۈڭ."
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

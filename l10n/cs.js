@@ -278,7 +278,9 @@ OC.L10N.register(
     "Pin to dock": "Připnout do doku",
 "Time format": "Formát času",
 "24-hour clock": "24hodinový formát",
-"12-hour clock": "12hodinový formát"
+"12-hour clock": "12hodinový formát",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace je možné používat zdarma, ale jeho vývoj a údržba vyžadují čas a prostředky.",
+    "Please consider supporting its continued development.": "Zvažte prosím podporu jeho dalšího vývoje."
 },
     "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
 );

@@ -278,7 +278,9 @@ OC.L10N.register(
     "Dock controls": "Dockningskontroller",
 "Time format": "Tidsformat",
 "24-hour clock": "24-timmarsklocka",
-"12-hour clock": "12-timmarsklocka"
+"12-hour clock": "12-timmarsklocka",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace är gratis att använda, men utveckling och underhåll kräver tid och resurser.",
+    "Please consider supporting its continued development.": "Överväg att stödja den fortsatta utvecklingen."
 },
     "nplurals=2; plural=(n != 1);"
 );

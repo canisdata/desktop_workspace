@@ -278,7 +278,9 @@ OC.L10N.register(
     "Always show the dock": "Taispeáin an duga i gcónaí",
 "Time format": "Formáid ama",
 "24-hour clock": "Clog 24 uair",
-"12-hour clock": "Clog 12 uair"
+"12-hour clock": "Clog 12 uair",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Tá Desktop Workspace saor in aisce le húsáid, ach teastaíonn am agus acmhainní chun é a fhorbairt agus a chothabháil.",
+    "Please consider supporting its continued development.": "Smaoinigh, le do thoil, ar thacú lena fhorbairt leanúnach."
 },
     "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);"
 );

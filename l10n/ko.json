@@ -277,7 +277,9 @@
         "Dock controls": "도크 컨트롤",
         "Time format": "시간 형식",
         "24-hour clock": "24시간제",
-        "12-hour clock": "12시간제"
+        "12-hour clock": "12시간제",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace는 무료로 사용할 수 있지만 개발과 유지 관리에는 시간과 자원이 필요합니다.",
+        "Please consider supporting its continued development.": "지속적인 개발을 후원해 주세요."
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

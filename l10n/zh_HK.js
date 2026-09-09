@@ -278,7 +278,9 @@ OC.L10N.register(
     "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "停用後，當視窗與 Dock 重疊時，Dock 會隱藏；將游標移至底部邊緣時，Dock 會再次出現。",
 "Time format": "時間格式",
 "24-hour clock": "24 小時制",
-"12-hour clock": "12 小時制"
+"12-hour clock": "12 小時制",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace 可免費使用，但開發和維護它需要投入時間和資源。",
+    "Please consider supporting its continued development.": "請考慮支持其持續開發。"
 },
     "nplurals=1; plural=0;"
 );

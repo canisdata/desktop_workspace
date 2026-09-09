@@ -278,7 +278,9 @@ OC.L10N.register(
     "Show the button to open Nextcloud Files in a new tab": "Vis knappen for å åpne Nextcloud Files i en ny fane",
 "Time format": "Tidsformat",
 "24-hour clock": "24-timersklokke",
-"12-hour clock": "12-timersklokke"
+"12-hour clock": "12-timersklokke",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace er gratis å bruke, men utvikling og vedlikehold krever tid og ressurser.",
+    "Please consider supporting its continued development.": "Vurder å støtte den videre utviklingen."
 },
     "nplurals=2; plural=(n != 1);"
 );

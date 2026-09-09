@@ -278,7 +278,9 @@ OC.L10N.register(
     "Pin to dock": "ปักหมุดไว้ที่ Dock",
 "Time format": "รูปแบบเวลา",
 "24-hour clock": "นาฬิกาแบบ 24 ชั่วโมง",
-"12-hour clock": "นาฬิกาแบบ 12 ชั่วโมง"
+"12-hour clock": "นาฬิกาแบบ 12 ชั่วโมง",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace ใช้งานได้ฟรี แต่การพัฒนาและบำรุงรักษาต้องใช้เวลาและทรัพยากร",
+    "Please consider supporting its continued development.": "โปรดพิจารณาสนับสนุนการพัฒนาอย่างต่อเนื่อง"
 },
     "nplurals=1; plural=0;"
 );

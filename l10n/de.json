@@ -277,7 +277,9 @@
         "Pin to dock": "An das Dock anheften",
         "Time format": "Zeitformat",
         "24-hour clock": "24-Stunden-Uhr",
-        "12-hour clock": "12-Stunden-Uhr"
+        "12-hour clock": "12-Stunden-Uhr",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace kann kostenlos genutzt werden, aber die Entwicklung und Pflege kosten Zeit und Ressourcen.",
+        "Please consider supporting its continued development.": "Bitte erwäge, die weitere Entwicklung zu unterstützen."
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

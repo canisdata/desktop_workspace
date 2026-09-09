@@ -277,7 +277,9 @@
         "Pin to dock": "Rögzítés a dokkhoz",
         "Time format": "Időformátum",
         "24-hour clock": "24 órás formátum",
-        "12-hour clock": "12 órás formátum"
+        "12-hour clock": "12 órás formátum",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "A Desktop Workspace ingyenesen használható, de a fejlesztése és karbantartása időt és erőforrásokat igényel.",
+        "Please consider supporting its continued development.": "Kérjük, fontolja meg a további fejlesztés támogatását."
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

@@ -278,7 +278,9 @@ OC.L10N.register(
     "Show the button to open Nextcloud Files in a new tab": "აჩვენეთ ღილაკი Nextcloud Files-ის გასახსნელად ახალ ჩანართში",
 "Time format": "დროის ფორმატი",
 "24-hour clock": "24-საათიანი საათი",
-"12-hour clock": "12-საათიანი საათი"
+"12-hour clock": "12-საათიანი საათი",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace-ის გამოყენება უფასოა, თუმცა მის განვითარებასა და მოვლას დრო და რესურსები სჭირდება.",
+    "Please consider supporting its continued development.": "გთხოვთ, განიხილოთ მისი შემდგომი განვითარების მხარდაჭერა."
 },
     "nplurals=2; plural=(n!=1);"
 );

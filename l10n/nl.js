@@ -278,7 +278,9 @@ OC.L10N.register(
     "Pin to dock": "Vastmaken aan dock",
 "Time format": "Tijdnotatie",
 "24-hour clock": "24-uursklok",
-"12-hour clock": "12-uursklok"
+"12-hour clock": "12-uursklok",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace is gratis te gebruiken, maar de ontwikkeling en het onderhoud kosten tijd en middelen.",
+    "Please consider supporting its continued development.": "Overweeg de verdere ontwikkeling te ondersteunen."
 },
     "nplurals=2; plural=(n != 1);"
 );

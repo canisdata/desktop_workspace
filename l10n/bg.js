@@ -278,7 +278,9 @@ OC.L10N.register(
     "Pin to dock": "Закачане към дока",
 "Time format": "Формат на часа",
 "24-hour clock": "24-часов формат",
-"12-hour clock": "12-часов формат"
+"12-hour clock": "12-часов формат",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace е безплатно за използване, но разработването и поддръжката му изискват време и ресурси.",
+    "Please consider supporting its continued development.": "Моля, обмислете да подкрепите по-нататъшната му разработка."
 },
     "nplurals=2; plural=(n != 1);"
 );

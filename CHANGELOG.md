@@ -3,6 +3,15 @@
 All notable changes to the Desktop app are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## 0.18.2 – 2026-09-07
+
+### Added
+- Added a localized, theme-aware development-support callout to the personal and administrator settings, with a Ko-fi link that always opens in a separate browser tab.
+
+### Fixed
+- Reworked the light and dark app icons as fill-based SVGs to improve rendering in the in-instance Nextcloud App Store.
+- Corrected App Store screenshot metadata so Standard Light provides the small thumbnail while all four entries retain their full-resolution images without unnecessary CDATA wrappers.
+
 ## 0.18.1 – 2026-09-03
 
 ### Added
@@ -10,6 +19,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ### Changed
 - Restored the digital clock, with the region-formatted date displayed beneath the time.
+- Replaced version-suffixed static asset names with stable descriptive names and removed obsolete duplicate assets.
+
+### Fixed
+- Improved the alignment of Nextcloud notification and user controls in the Desktop header.
+- Replaced English fallback text for the 12-hour and 24-hour clock settings across the locale set.
 
 ## 0.18.0 – 2026-09-03
 

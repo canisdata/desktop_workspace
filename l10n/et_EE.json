@@ -277,7 +277,9 @@
         "Always show the dock": "Näidake alati dokki",
         "Time format": "Ajavorming",
         "24-hour clock": "24-tunnine kell",
-        "12-hour clock": "12-tunnine kell"
+        "12-hour clock": "12-tunnine kell",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace on tasuta kasutatav, kuid selle arendamine ja hooldamine nõuab aega ning ressursse.",
+        "Please consider supporting its continued development.": "Palun kaalu selle edasise arendamise toetamist."
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

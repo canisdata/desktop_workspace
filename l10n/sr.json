@@ -277,7 +277,9 @@
         "Dock controls": "Контроле дока",
         "Time format": "Формат времена",
         "24-hour clock": "24-часовни формат",
-        "12-hour clock": "12-часовни формат"
+        "12-hour clock": "12-часовни формат",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace је бесплатан за коришћење, али његов развој и одржавање захтевају време и ресурсе.",
+        "Please consider supporting its continued development.": "Размислите о томе да подржите његов даљи развој."
     },
     "pluralForm": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
 }

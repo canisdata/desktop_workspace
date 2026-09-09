@@ -278,7 +278,9 @@ OC.L10N.register(
     "Pin to dock": "Piespraust dokam",
 "Time format": "Laika formāts",
 "24-hour clock": "24 stundu pulkstenis",
-"12-hour clock": "12 stundu pulkstenis"
+"12-hour clock": "12 stundu pulkstenis",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace var izmantot bez maksas, taču tā izstrāde un uzturēšana prasa laiku un resursus.",
+    "Please consider supporting its continued development.": "Lūdzu, apsveriet iespēju atbalstīt tā turpmāko izstrādi."
 },
     "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);"
 );

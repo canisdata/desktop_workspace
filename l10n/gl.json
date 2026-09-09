@@ -277,7 +277,9 @@
         "Show the button to open Nextcloud Files in a new tab": "Mostra o botón para abrir ficheiros de Nextcloud nunha nova pestana",
         "Time format": "Formato da hora",
         "24-hour clock": "Reloxo de 24 horas",
-        "12-hour clock": "Reloxo de 12 horas"
+        "12-hour clock": "Reloxo de 12 horas",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace é de uso gratuíto, pero desenvolvelo e mantelo require tempo e recursos.",
+        "Please consider supporting its continued development.": "Considera apoiar o seu desenvolvemento continuo."
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

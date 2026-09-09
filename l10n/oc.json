@@ -277,7 +277,9 @@
         "Dock controls": "Los contraròtles de dock",
         "Time format": "Format de l’ora",
         "24-hour clock": "Relòtge de 24 oras",
-        "12-hour clock": "Relòtge de 12 oras"
+        "12-hour clock": "Relòtge de 12 oras",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace es gratuit d’utilizar, mas son desvolopament e son manteniment demandan de temps e de ressorsas.",
+        "Please consider supporting its continued development.": "Mercés d’envisatjar de sostenir la seguida de son desvolopament."
     },
     "pluralForm": "nplurals=2; plural=(n > 1);"
 }

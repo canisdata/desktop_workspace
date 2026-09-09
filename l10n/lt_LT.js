@@ -278,7 +278,9 @@ OC.L10N.register(
     "Pin to dock": "Prisegti prie doko",
 "Time format": "Laiko formatas",
 "24-hour clock": "24 valandų laikrodis",
-"12-hour clock": "12 valandų laikrodis"
+"12-hour clock": "12 valandų laikrodis",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "„Desktop Workspace“ galima naudoti nemokamai, tačiau jo kūrimas ir priežiūra reikalauja laiko bei išteklių.",
+    "Please consider supporting its continued development.": "Apsvarstykite galimybę paremti tolesnį jo kūrimą."
 },
     "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);"
 );

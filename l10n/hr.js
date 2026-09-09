@@ -278,7 +278,9 @@ OC.L10N.register(
     "Dock controls": "Kontrole doka",
 "Time format": "Format vremena",
 "24-hour clock": "24-satni format",
-"12-hour clock": "12-satni format"
+"12-hour clock": "12-satni format",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace besplatan je za korištenje, ali njegov razvoj i održavanje zahtijevaju vrijeme i resurse.",
+    "Please consider supporting its continued development.": "Razmislite o podršci njegovu daljnjem razvoju."
 },
     "nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;"
 );

@@ -278,7 +278,9 @@ OC.L10N.register(
     "Dock controls": "Controls del Dock",
 "Time format": "Format de l’hora",
 "24-hour clock": "Rellotge de 24 hores",
-"12-hour clock": "Rellotge de 12 hores"
+"12-hour clock": "Rellotge de 12 hores",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace és d’ús gratuït, però desenvolupar-lo i mantenir-lo requereix temps i recursos.",
+    "Please consider supporting its continued development.": "Considereu la possibilitat de donar suport al seu desenvolupament continuat."
 },
     "nplurals=2; plural=(n != 1);"
 );

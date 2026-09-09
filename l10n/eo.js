@@ -278,7 +278,9 @@ OC.L10N.register(
     "Show the button to open Nextcloud Files in a new tab": "Montru la butonon por malfermi Nextcloud Files en nova langeto",
 "Time format": "Tempoformato",
 "24-hour clock": "24-hora horloĝo",
-"12-hour clock": "12-hora horloĝo"
+"12-hour clock": "12-hora horloĝo",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace estas senpage uzebla, sed ĝia evoluigo kaj prizorgado postulas tempon kaj rimedojn.",
+    "Please consider supporting its continued development.": "Bonvolu konsideri subteni ĝian pluan evoluigon."
 },
     "nplurals=2; plural=(n != 1);"
 );

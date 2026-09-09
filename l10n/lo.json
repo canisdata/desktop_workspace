@@ -277,7 +277,9 @@
         "Always show the dock": "ສະແດງດັອກສະເໝີ",
         "Time format": "ຮູບແບບເວລາ",
         "24-hour clock": "ໂມງແບບ 24 ຊົ່ວໂມງ",
-        "12-hour clock": "ໂມງແບບ 12 ຊົ່ວໂມງ"
+        "12-hour clock": "ໂມງແບບ 12 ຊົ່ວໂມງ",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace ໃຊ້ງານໄດ້ຟຣີ ແຕ່ການພັດທະນາ ແລະ ບຳລຸງຮັກສາຕ້ອງໃຊ້ເວລາ ແລະ ຊັບພະຍາກອນ.",
+        "Please consider supporting its continued development.": "ກະລຸນາພິຈາລະນາສະໜັບສະໜູນການພັດທະນາຢ່າງຕໍ່ເນື່ອງ."
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

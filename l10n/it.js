@@ -278,7 +278,9 @@ OC.L10N.register(
     "Pin to dock": "Blocca sul dock",
 "Time format": "Formato ora",
 "24-hour clock": "Orologio a 24 ore",
-"12-hour clock": "Orologio a 12 ore"
+"12-hour clock": "Orologio a 12 ore",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace è gratuito, ma svilupparlo e mantenerlo richiede tempo e risorse.",
+    "Please consider supporting its continued development.": "Valuta la possibilità di sostenerne lo sviluppo continuo."
 },
     "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 );

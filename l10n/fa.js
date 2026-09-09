@@ -278,7 +278,9 @@ OC.L10N.register(
     "Show the button to open Nextcloud Files in a new tab": "دکمه باز کردن Nextcloud Files را در یک تب جدید نشان دهید",
 "Time format": "قالب زمان",
 "24-hour clock": "ساعت 24 ساعته",
-"12-hour clock": "ساعت 12 ساعته"
+"12-hour clock": "ساعت 12 ساعته",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "استفاده از Desktop Workspace رایگان است، اما توسعه و نگهداری آن به زمان و منابع نیاز دارد.",
+    "Please consider supporting its continued development.": "لطفاً حمایت از توسعهٔ مستمر آن را در نظر بگیرید."
 },
     "nplurals=2; plural=(n > 1);"
 );

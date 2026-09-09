@@ -278,7 +278,9 @@ OC.L10N.register(
     "Dock controls": "Sterowanie dokiem",
 "Time format": "Format czasu",
 "24-hour clock": "Zegar 24-godzinny",
-"12-hour clock": "Zegar 12-godzinny"
+"12-hour clock": "Zegar 12-godzinny",
+    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace jest bezpłatny, ale jego rozwój i utrzymanie wymagają czasu oraz zasobów.",
+    "Please consider supporting its continued development.": "Rozważ wsparcie jego dalszego rozwoju."
 },
     "nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);"
 );

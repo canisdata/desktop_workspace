@@ -277,7 +277,9 @@
         "When disabled, the dock hides while a window overlaps it and appears again when you point to the bottom edge.": "Όταν είναι απενεργοποιημένο, το Dock κρύβεται όταν επικαλύπτεται από ένα παράθυρο και εμφανίζεται ξανά όταν δείχνετε στο κάτω άκρο.",
         "Time format": "Μορφή ώρας",
         "24-hour clock": "24ωρη μορφή ώρας",
-        "12-hour clock": "12ωρη μορφή ώρας"
+        "12-hour clock": "12ωρη μορφή ώρας",
+        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Το Desktop Workspace διατίθεται δωρεάν, αλλά η ανάπτυξη και η συντήρησή του απαιτούν χρόνο και πόρους.",
+        "Please consider supporting its continued development.": "Εξετάστε το ενδεχόμενο να υποστηρίξετε τη συνεχή ανάπτυξή του."
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }
