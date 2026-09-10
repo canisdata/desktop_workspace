@@ -278,8 +278,11 @@
         "Time format": "시간 형식",
         "24-hour clock": "24시간제",
         "12-hour clock": "12시간제",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace는 무료로 사용할 수 있지만 개발과 유지 관리에는 시간과 자원이 필요합니다.",
-        "Please consider supporting its continued development.": "지속적인 개발을 후원해 주세요."
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace는 무료 오픈 소스 소프트웨어입니다. Desktop Workspace로 Nextcloud를 더욱 유용하게 사용하고 계신다면 지속적인 개발을 지원해 주세요.",
+        "Support Desktop Workspace ↗": "Desktop Workspace 지원 ↗",
+        "Using Desktop Workspace in your organization?": "조직에서 Desktop Workspace를 사용하고 계신가요?",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace는 무료 오픈 소스 소프트웨어입니다. 개발을 지원하면 유지 관리, Nextcloud 호환성 및 지속적인 개선에 필요한 자금을 마련하는 데 도움이 됩니다.",
+        "Support development ↗": "개발 지원 ↗"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

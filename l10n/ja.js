@@ -279,8 +279,11 @@ OC.L10N.register(
 "Time format": "時刻の表示形式",
 "24-hour clock": "24時間制",
 "12-hour clock": "12時間制",
-    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace は無料で利用できますが、開発と保守には時間とリソースが必要です。",
-    "Please consider supporting its continued development.": "継続的な開発への支援をご検討ください。"
+    "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace は無料のオープンソースソフトウェアです。Desktop Workspace によって Nextcloud がより便利になったと感じたら、継続的な開発をご支援いただけます。",
+    "Support Desktop Workspace ↗": "Desktop Workspace を支援 ↗",
+    "Using Desktop Workspace in your organization?": "組織で Desktop Workspace を利用していますか？",
+    "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace は無料のオープンソースソフトウェアです。開発へのご支援は、メンテナンス、Nextcloud との互換性、継続的な改善に必要な資金として役立てられます。",
+    "Support development ↗": "開発を支援 ↗"
 },
     "nplurals=1; plural=0;"
 );

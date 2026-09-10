@@ -12,8 +12,8 @@ $l = \OC::$server->getL10N('desktop_workspace');
      data-reset-all-url="<?= p($_['resetAllUrl']) ?>">
     <h2><?= p($l->t('Desktop')) ?></h2>
     <p class="settings-hint desktop-support-callout">
-        <?= p($l->t('Desktop Workspace is free to use, but developing and maintaining it takes time and resources.')) ?><br />
-        <a href="https://ko-fi.com/canisdata" target="_blank" rel="noopener noreferrer"><?= p($l->t('Please consider supporting its continued development.')) ?></a>
+        <?= p($l->t('Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.')) ?><br />
+        <a href="https://ko-fi.com/canisdata" target="_blank" rel="noopener noreferrer"><?= p($l->t('Support Desktop Workspace ↗')) ?></a>
     </p>
 
     <h3><?= p($l->t('Appearance')) ?></h3>

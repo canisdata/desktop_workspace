@@ -278,8 +278,11 @@
         "Time format": "Ordu-formatua",
         "24-hour clock": "24 orduko erlojua",
         "12-hour clock": "12 orduko erlojua",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace doan erabil daiteke, baina garatzeak eta mantentzeak denbora eta baliabideak eskatzen ditu.",
-        "Please consider supporting its continued development.": "Mesedez, pentsatu haren etengabeko garapena babestea."
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace doakoa eta kode irekikoa da. Nextcloud erabilgarriago egiten badizu, haren etengabeko garapena babesten lagun dezakezu.",
+        "Support Desktop Workspace ↗": "Babestu Desktop Workspace ↗",
+        "Using Desktop Workspace in your organization?": "Desktop Workspace erabiltzen ari zara zure erakundean?",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace doakoa eta kode irekikoa da. Haren garapena babesteak mantentze-lanak, Nextcloud-ekiko bateragarritasuna eta etengabeko hobekuntzak finantzatzen laguntzen du.",
+        "Support development ↗": "Babestu garapena ↗"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

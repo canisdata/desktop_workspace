@@ -279,8 +279,11 @@ OC.L10N.register(
 "Time format": "Формат на времето",
 "24-hour clock": "24-часовен часовник",
 "12-hour clock": "12-часовен часовник",
-    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace е бесплатен за користење, но неговиот развој и одржување бараат време и ресурси.",
-    "Please consider supporting its continued development.": "Размислете да го поддржите неговиот понатамошен развој."
+    "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace е бесплатен софтвер со отворен код. Ако ви го прави Nextcloud покорисен, можете да помогнете во поддршката на неговиот понатамошен развој.",
+    "Support Desktop Workspace ↗": "Поддржете го Desktop Workspace ↗",
+    "Using Desktop Workspace in your organization?": "Го користите Desktop Workspace во вашата организација?",
+    "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace е бесплатен софтвер со отворен код. Поддршката на неговиот развој помага да се финансираат одржувањето, компатибилноста со Nextcloud и понатамошните подобрувања.",
+    "Support development ↗": "Поддржете го развојот ↗"
 },
     "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"
 );

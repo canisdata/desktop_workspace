@@ -279,8 +279,11 @@ OC.L10N.register(
 "Time format": "Laiko formatas",
 "24-hour clock": "24 valandų laikrodis",
 "12-hour clock": "12 valandų laikrodis",
-    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "„Desktop Workspace“ galima naudoti nemokamai, tačiau jo kūrimas ir priežiūra reikalauja laiko bei išteklių.",
-    "Please consider supporting its continued development.": "Apsvarstykite galimybę paremti tolesnį jo kūrimą."
+    "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace yra nemokama atvirojo kodo programinė įranga. Jei dėl jos Nextcloud jums yra naudingesnė, galite prisidėti prie tolesnio jos kūrimo.",
+    "Support Desktop Workspace ↗": "Paremti Desktop Workspace ↗",
+    "Using Desktop Workspace in your organization?": "Naudojate Desktop Workspace savo organizacijoje?",
+    "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace yra nemokama atvirojo kodo programinė įranga. Parama jos kūrimui padeda finansuoti priežiūrą, suderinamumą su Nextcloud ir nuolatinius patobulinimus.",
+    "Support development ↗": "Paremti kūrimą ↗"
 },
     "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);"
 );

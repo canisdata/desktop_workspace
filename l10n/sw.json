@@ -278,8 +278,11 @@
         "Time format": "Muundo wa saa",
         "24-hour clock": "Saa ya mfumo wa saa 24",
         "12-hour clock": "Saa ya mfumo wa saa 12",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace ni bure kutumia, lakini kuitengeneza na kuidumisha kunahitaji muda na rasilimali.",
-        "Please consider supporting its continued development.": "Tafadhali zingatia kuunga mkono maendeleo yake endelevu."
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace ni programu huria na yenye msimbo wazi. Ikiwa inafanya Nextcloud iwe na manufaa zaidi kwako, unaweza kusaidia kuendeleza utengenezaji wake.",
+        "Support Desktop Workspace ↗": "Saidia Desktop Workspace ↗",
+        "Using Desktop Workspace in your organization?": "Je, unatumia Desktop Workspace katika shirika lako?",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace ni programu huria na yenye msimbo wazi. Kusaidia utengenezaji wake hufadhili matengenezo, upatanifu na Nextcloud pamoja na maboresho yanayoendelea.",
+        "Support development ↗": "Saidia utengenezaji ↗"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

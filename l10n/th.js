@@ -279,8 +279,11 @@ OC.L10N.register(
 "Time format": "รูปแบบเวลา",
 "24-hour clock": "นาฬิกาแบบ 24 ชั่วโมง",
 "12-hour clock": "นาฬิกาแบบ 12 ชั่วโมง",
-    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace ใช้งานได้ฟรี แต่การพัฒนาและบำรุงรักษาต้องใช้เวลาและทรัพยากร",
-    "Please consider supporting its continued development.": "โปรดพิจารณาสนับสนุนการพัฒนาอย่างต่อเนื่อง"
+    "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace เป็นซอฟต์แวร์เสรีและโอเพนซอร์ส หาก Desktop Workspace ช่วยให้ Nextcloud มีประโยชน์ต่อคุณมากขึ้น คุณสามารถช่วยสนับสนุนการพัฒนาอย่างต่อเนื่องได้",
+    "Support Desktop Workspace ↗": "สนับสนุน Desktop Workspace ↗",
+    "Using Desktop Workspace in your organization?": "กำลังใช้ Desktop Workspace ในองค์กรของคุณอยู่ใช่ไหม?",
+    "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace เป็นซอฟต์แวร์เสรีและโอเพนซอร์ส การสนับสนุนการพัฒนาจะช่วยเป็นทุนสำหรับการบำรุงรักษา ความเข้ากันได้กับ Nextcloud และการปรับปรุงอย่างต่อเนื่อง",
+    "Support development ↗": "สนับสนุนการพัฒนา ↗"
 },
     "nplurals=1; plural=0;"
 );

@@ -10,8 +10,9 @@ $l = \OC::$server->getL10N('desktop_workspace');
     <h2><?= p($l->t('Desktop Workspace')) ?></h2>
     <p class="settings-hint"><?= p($l->t('Configure the browser-contained desktop shell.')) ?></p>
     <p class="settings-hint desktop-support-callout">
-        <?= p($l->t('Desktop Workspace is free to use, but developing and maintaining it takes time and resources.')) ?><br />
-        <a href="https://ko-fi.com/canisdata" target="_blank" rel="noopener noreferrer"><?= p($l->t('Please consider supporting its continued development.')) ?></a>
+        <strong><?= p($l->t('Using Desktop Workspace in your organization?')) ?></strong><br />
+        <?= p($l->t('Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.')) ?><br />
+        <a href="https://ko-fi.com/canisdata" target="_blank" rel="noopener noreferrer"><?= p($l->t('Support development ↗')) ?></a>
     </p>
 
     <h3><?= p($l->t('Appearance choices')) ?></h3>

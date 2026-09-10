@@ -279,8 +279,11 @@ OC.L10N.register(
 "Time format": "Formát času",
 "24-hour clock": "24-hodinový formát",
 "12-hour clock": "12-hodinový formát",
-    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace je možné používať bezplatne, ale jeho vývoj a údržba si vyžadujú čas a prostriedky.",
-    "Please consider supporting its continued development.": "Zvážte, prosím, podporu jeho ďalšieho vývoja."
+    "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace je bezplatný softvér s otvoreným zdrojovým kódom. Ak je vďaka nemu Nextcloud pre vás užitočnejší, môžete podporiť jeho ďalší vývoj.",
+    "Support Desktop Workspace ↗": "Podporiť Desktop Workspace ↗",
+    "Using Desktop Workspace in your organization?": "Používate Desktop Workspace vo svojej organizácii?",
+    "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace je bezplatný softvér s otvoreným zdrojovým kódom. Podporou jeho vývoja pomáhate financovať údržbu, kompatibilitu so službou Nextcloud a ďalšie vylepšenia.",
+    "Support development ↗": "Podporiť vývoj ↗"
 },
     "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);"
 );

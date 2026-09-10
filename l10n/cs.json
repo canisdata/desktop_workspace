@@ -278,8 +278,11 @@
         "Time format": "Formát času",
         "24-hour clock": "24hodinový formát",
         "12-hour clock": "12hodinový formát",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace je možné používat zdarma, ale jeho vývoj a údržba vyžadují čas a prostředky.",
-        "Please consider supporting its continued development.": "Zvažte prosím podporu jeho dalšího vývoje."
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace je svobodný software s otevřeným zdrojovým kódem, který je k dispozici zdarma. Pokud je díky němu pro vás Nextcloud užitečnější, můžete podpořit jeho další vývoj.",
+        "Support Desktop Workspace ↗": "Podpořit Desktop Workspace ↗",
+        "Using Desktop Workspace in your organization?": "Používáte Desktop Workspace ve své organizaci?",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace je svobodný software s otevřeným zdrojovým kódem, který je k dispozici zdarma. Podpora jeho vývoje pomáhá financovat údržbu, kompatibilitu s Nextcloud a průběžná vylepšení.",
+        "Support development ↗": "Podpořit vývoj ↗"
     },
     "pluralForm": "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
 }

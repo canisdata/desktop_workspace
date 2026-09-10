@@ -278,8 +278,11 @@
         "Time format": "时间格式",
         "24-hour clock": "24 小时制",
         "12-hour clock": "12 小时制",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace 可免费使用，但开发和维护它需要投入时间和资源。",
-        "Please consider supporting its continued development.": "请考虑支持其持续开发。"
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace 是免费开源软件。如果它让 Nextcloud 对您更有帮助，您可以支持其持续开发。",
+        "Support Desktop Workspace ↗": "支持 Desktop Workspace ↗",
+        "Using Desktop Workspace in your organization?": "您的组织正在使用 Desktop Workspace 吗？",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace 是免费开源软件。支持其开发有助于为维护、Nextcloud 兼容性和持续改进提供资金。",
+        "Support development ↗": "支持开发 ↗"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

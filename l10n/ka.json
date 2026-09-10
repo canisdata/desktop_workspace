@@ -278,8 +278,11 @@
         "Time format": "დროის ფორმატი",
         "24-hour clock": "24-საათიანი საათი",
         "12-hour clock": "12-საათიანი საათი",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace-ის გამოყენება უფასოა, თუმცა მის განვითარებასა და მოვლას დრო და რესურსები სჭირდება.",
-        "Please consider supporting its continued development.": "გთხოვთ, განიხილოთ მისი შემდგომი განვითარების მხარდაჭერა."
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace უფასო და ღია კოდის მქონე პროგრამაა. თუ ის Nextcloud-ს თქვენთვის უფრო სასარგებლოს ხდის, შეგიძლიათ მისი შემდგომი განვითარების მხარდაჭერაში დაგვეხმაროთ.",
+        "Support Desktop Workspace ↗": "Desktop Workspace-ის მხარდაჭერა ↗",
+        "Using Desktop Workspace in your organization?": "იყენებთ Desktop Workspace-ს თქვენს ორგანიზაციაში?",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace უფასო და ღია კოდის მქონე პროგრამაა. მისი განვითარების მხარდაჭერა ხელს უწყობს ტექნიკური მომსახურების, Nextcloud-თან თავსებადობისა და უწყვეტი გაუმჯობესების დაფინანსებას.",
+        "Support development ↗": "განვითარების მხარდაჭერა ↗"
     },
     "pluralForm": "nplurals=2; plural=(n!=1);"
 }

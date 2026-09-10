@@ -278,8 +278,11 @@
         "Time format": "Формат на часа",
         "24-hour clock": "24-часов формат",
         "12-hour clock": "12-часов формат",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace е безплатно за използване, но разработването и поддръжката му изискват време и ресурси.",
-        "Please consider supporting its continued development.": "Моля, обмислете да подкрепите по-нататъшната му разработка."
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace е безплатен софтуер с отворен код. Ако прави Nextcloud по-полезен за вас, можете да помогнете за продължаването на разработката му.",
+        "Support Desktop Workspace ↗": "Подкрепете Desktop Workspace ↗",
+        "Using Desktop Workspace in your organization?": "Използвате Desktop Workspace във вашата организация?",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace е безплатен софтуер с отворен код. Подкрепата за разработката му помага за финансирането на поддръжката, съвместимостта с Nextcloud и непрекъснатите подобрения.",
+        "Support development ↗": "Подкрепете разработката ↗"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

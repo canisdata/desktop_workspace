@@ -279,8 +279,11 @@ OC.L10N.register(
 "Time format": "Tempoformato",
 "24-hour clock": "24-hora horloĝo",
 "12-hour clock": "12-hora horloĝo",
-    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace estas senpage uzebla, sed ĝia evoluigo kaj prizorgado postulas tempon kaj rimedojn.",
-    "Please consider supporting its continued development.": "Bonvolu konsideri subteni ĝian pluan evoluigon."
+    "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace estas senpaga kaj malfermfonta. Se ĝi igas Nextcloud pli utila por vi, vi povas helpi subteni ĝian daŭran evoluigon.",
+    "Support Desktop Workspace ↗": "Subtenu Desktop Workspace ↗",
+    "Using Desktop Workspace in your organization?": "Ĉu vi uzas Desktop Workspace en via organizaĵo?",
+    "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace estas senpaga kaj malfermfonta. Subteni ĝian evoluigon helpas financi prizorgadon, kongruecon kun Nextcloud kaj daŭrajn plibonigojn.",
+    "Support development ↗": "Subtenu evoluigon ↗"
 },
     "nplurals=2; plural=(n != 1);"
 );

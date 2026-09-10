@@ -278,8 +278,11 @@
         "Time format": "Формат времени",
         "24-hour clock": "24-часовой формат",
         "12-hour clock": "12-часовой формат",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace можно использовать бесплатно, но его разработка и поддержка требуют времени и ресурсов.",
-        "Please consider supporting its continued development.": "Пожалуйста, рассмотрите возможность поддержать его дальнейшую разработку."
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace — бесплатное программное обеспечение с открытым исходным кодом. Если оно делает Nextcloud полезнее для вас, вы можете поддержать его дальнейшую разработку.",
+        "Support Desktop Workspace ↗": "Поддержать Desktop Workspace ↗",
+        "Using Desktop Workspace in your organization?": "Используете Desktop Workspace в своей организации?",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace — бесплатное программное обеспечение с открытым исходным кодом. Поддержка его разработки помогает финансировать техническое обслуживание, совместимость с Nextcloud и дальнейшие улучшения.",
+        "Support development ↗": "Поддержать разработку ↗"
     },
     "pluralForm": "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"
 }

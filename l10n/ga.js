@@ -279,8 +279,11 @@ OC.L10N.register(
 "Time format": "Formáid ama",
 "24-hour clock": "Clog 24 uair",
 "12-hour clock": "Clog 12 uair",
-    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Tá Desktop Workspace saor in aisce le húsáid, ach teastaíonn am agus acmhainní chun é a fhorbairt agus a chothabháil.",
-    "Please consider supporting its continued development.": "Smaoinigh, le do thoil, ar thacú lena fhorbairt leanúnach."
+    "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Tá Desktop Workspace saor in aisce agus foinse oscailte. Má dhéanann sé Nextcloud níos úsáidí duit, is féidir leat cabhrú le tacú lena fhorbairt leanúnach.",
+    "Support Desktop Workspace ↗": "Tacaigh le Desktop Workspace ↗",
+    "Using Desktop Workspace in your organization?": "An bhfuil Desktop Workspace á úsáid agat i d'eagraíocht?",
+    "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Tá Desktop Workspace saor in aisce agus foinse oscailte. Cuidíonn tacaíocht dá fhorbairt le cothabháil, comhoiriúnacht le Nextcloud agus feabhsuithe leanúnacha a mhaoiniú.",
+    "Support development ↗": "Tacaigh leis an bhforbairt ↗"
 },
     "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);"
 );

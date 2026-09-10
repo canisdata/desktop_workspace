@@ -278,8 +278,11 @@
         "Time format": "Μορφή ώρας",
         "24-hour clock": "24ωρη μορφή ώρας",
         "12-hour clock": "12ωρη μορφή ώρας",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Το Desktop Workspace διατίθεται δωρεάν, αλλά η ανάπτυξη και η συντήρησή του απαιτούν χρόνο και πόρους.",
-        "Please consider supporting its continued development.": "Εξετάστε το ενδεχόμενο να υποστηρίξετε τη συνεχή ανάπτυξή του."
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Το Desktop Workspace είναι δωρεάν λογισμικό ανοικτού κώδικα. Αν κάνει το Nextcloud πιο χρήσιμο για εσάς, μπορείτε να συμβάλετε στη συνέχιση της ανάπτυξής του.",
+        "Support Desktop Workspace ↗": "Υποστηρίξτε το Desktop Workspace ↗",
+        "Using Desktop Workspace in your organization?": "Χρησιμοποιείτε το Desktop Workspace στον οργανισμό σας;",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Το Desktop Workspace είναι δωρεάν λογισμικό ανοικτού κώδικα. Η υποστήριξη της ανάπτυξής του βοηθά στη χρηματοδότηση της συντήρησης, της συμβατότητας με το Nextcloud και των συνεχών βελτιώσεων.",
+        "Support development ↗": "Υποστηρίξτε την ανάπτυξη ↗"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

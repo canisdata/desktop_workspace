@@ -278,8 +278,11 @@
         "Time format": "Formatul orei",
         "24-hour clock": "Ceas cu 24 de ore",
         "12-hour clock": "Ceas cu 12 ore",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace poate fi utilizat gratuit, dar dezvoltarea și întreținerea sa necesită timp și resurse.",
-        "Please consider supporting its continued development.": "Vă rugăm să luați în considerare sprijinirea dezvoltării sale continue."
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace este gratuit și cu sursă deschisă. Dacă face Nextcloud mai util pentru tine, poți contribui la susținerea dezvoltării sale continue.",
+        "Support Desktop Workspace ↗": "Susține Desktop Workspace ↗",
+        "Using Desktop Workspace in your organization?": "Folosești Desktop Workspace în organizația ta?",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace este gratuit și cu sursă deschisă. Susținerea dezvoltării sale ajută la finanțarea întreținerii, a compatibilității cu Nextcloud și a îmbunătățirilor continue.",
+        "Support development ↗": "Susține dezvoltarea ↗"
     },
     "pluralForm": "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));"
 }

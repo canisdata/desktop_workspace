@@ -278,8 +278,11 @@
         "Time format": "ۋاقىت فورماتى",
         "24-hour clock": "24 سائەتلىك ۋاقىت",
         "12-hour clock": "12 سائەتلىك ۋاقىت",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace نى ھەقسىز ئىشلەتكىلى بولىدۇ، ئەمما ئۇنى تەرەققىي قىلدۇرۇش ۋە ئاسراشقا ۋاقىت ۋە بايلىق كېتىدۇ.",
-        "Please consider supporting its continued development.": "ئۇنىڭ داۋاملىق تەرەققىياتىنى قوللاشنى ئويلىشىپ كۆرۈڭ."
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace ھەقسىز ۋە ئوچۇق مەنبەلىك يۇمشاق دېتال. ئەگەر ئۇ Nextcloud نى سىز ئۈچۈن تېخىمۇ پايدىلىق قىلسا، ئۇنىڭ داۋاملىق تەرەققىي قىلىشىنى قوللىشىڭىزغا بولىدۇ.",
+        "Support Desktop Workspace ↗": "Desktop Workspace نى قوللاڭ ↗",
+        "Using Desktop Workspace in your organization?": "تەشكىلاتىڭىزدا Desktop Workspace ئىشلىتىۋاتامسىز؟",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace ھەقسىز ۋە ئوچۇق مەنبەلىك يۇمشاق دېتال. ئۇنىڭ تەرەققىياتىنى قوللاش ئاسراش، Nextcloud بىلەن ماسلىشىشچانلىق ۋە داۋاملىق ياخشىلاشقا مەبلەغ يەتكۈزۈشكە ياردەم بېرىدۇ.",
+        "Support development ↗": "تەرەققىياتنى قوللاڭ ↗"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

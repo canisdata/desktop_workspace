@@ -278,8 +278,11 @@
         "Time format": "Időformátum",
         "24-hour clock": "24 órás formátum",
         "12-hour clock": "12 órás formátum",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "A Desktop Workspace ingyenesen használható, de a fejlesztése és karbantartása időt és erőforrásokat igényel.",
-        "Please consider supporting its continued development.": "Kérjük, fontolja meg a további fejlesztés támogatását."
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "A Desktop Workspace ingyenes és nyílt forráskódú. Ha hasznosabbá teszi Önnek a Nextcloud használatát, hozzájárulhat a további fejlesztésének támogatásához.",
+        "Support Desktop Workspace ↗": "A Desktop Workspace támogatása ↗",
+        "Using Desktop Workspace in your organization?": "Használja a Desktop Workspace alkalmazást a szervezetében?",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "A Desktop Workspace ingyenes és nyílt forráskódú. Fejlesztésének támogatása hozzájárul a karbantartás, a Nextcloud-kompatibilitás és a folyamatos fejlesztések finanszírozásához.",
+        "Support development ↗": "A fejlesztés támogatása ↗"
     },
     "pluralForm": "nplurals=2; plural=(n != 1);"
 }

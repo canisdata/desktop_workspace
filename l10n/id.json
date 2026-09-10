@@ -278,8 +278,11 @@
         "Time format": "Format waktu",
         "24-hour clock": "Jam 24 jam",
         "12-hour clock": "Jam 12 jam",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace dapat digunakan secara gratis, tetapi pengembangan dan pemeliharaannya membutuhkan waktu dan sumber daya.",
-        "Please consider supporting its continued development.": "Pertimbangkan untuk mendukung pengembangannya lebih lanjut."
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace gratis dan bersumber terbuka. Jika Desktop Workspace membuat Nextcloud lebih bermanfaat bagi Anda, Anda dapat membantu mendukung pengembangannya agar terus berlanjut.",
+        "Support Desktop Workspace ↗": "Dukung Desktop Workspace ↗",
+        "Using Desktop Workspace in your organization?": "Menggunakan Desktop Workspace di organisasi Anda?",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace gratis dan bersumber terbuka. Dukungan terhadap pengembangannya membantu mendanai pemeliharaan, kompatibilitas Nextcloud, dan penyempurnaan berkelanjutan.",
+        "Support development ↗": "Dukung pengembangan ↗"
     },
     "pluralForm": "nplurals=1; plural=0;"
 }

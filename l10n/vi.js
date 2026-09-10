@@ -279,8 +279,11 @@ OC.L10N.register(
 "Time format": "Định dạng thời gian",
 "24-hour clock": "Đồng hồ 24 giờ",
 "12-hour clock": "Đồng hồ 12 giờ",
-    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace được sử dụng miễn phí, nhưng việc phát triển và bảo trì cần có thời gian và nguồn lực.",
-    "Please consider supporting its continued development.": "Vui lòng cân nhắc hỗ trợ quá trình phát triển lâu dài của ứng dụng."
+    "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace là phần mềm mã nguồn mở và miễn phí. Nếu ứng dụng giúp Nextcloud hữu ích hơn với bạn, bạn có thể góp phần hỗ trợ để ứng dụng tiếp tục được phát triển.",
+    "Support Desktop Workspace ↗": "Hỗ trợ Desktop Workspace ↗",
+    "Using Desktop Workspace in your organization?": "Bạn đang sử dụng Desktop Workspace trong tổ chức của mình?",
+    "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace là phần mềm mã nguồn mở và miễn phí. Việc hỗ trợ phát triển ứng dụng giúp tài trợ cho công tác bảo trì, khả năng tương thích với Nextcloud và các cải tiến liên tục.",
+    "Support development ↗": "Hỗ trợ phát triển ↗"
 },
     "nplurals=1; plural=0;"
 );

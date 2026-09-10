@@ -279,8 +279,11 @@ OC.L10N.register(
 "Time format": "Цагийн формат",
 "24-hour clock": "24 цагийн формат",
 "12-hour clock": "12 цагийн формат",
-    "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace-г үнэгүй ашиглах боломжтой боловч хөгжүүлэлт, засвар үйлчилгээ нь цаг хугацаа, нөөц шаарддаг.",
-    "Please consider supporting its continued development.": "Цаашдын хөгжүүлэлтийг нь дэмжих талаар бодож үзнэ үү."
+    "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace нь үнэгүй, нээлттэй эхийн програм хангамж юм. Хэрэв энэ нь Nextcloud-ийг танд илүү хэрэгтэй болгож байвал цаашдын хөгжүүлэлтийг нь дэмжихэд тусалж болно.",
+    "Support Desktop Workspace ↗": "Desktop Workspace-ийг дэмжих ↗",
+    "Using Desktop Workspace in your organization?": "Та байгууллагадаа Desktop Workspace ашигладаг уу?",
+    "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace нь үнэгүй, нээлттэй эхийн програм хангамж юм. Хөгжүүлэлтийг нь дэмжсэнээр засвар үйлчилгээ, Nextcloud-той нийцтэй байдал болон цаашдын сайжруулалтыг санхүүжүүлэхэд тусална.",
+    "Support development ↗": "Хөгжүүлэлтийг дэмжих ↗"
 },
     "nplurals=2; plural=(n != 1);"
 );

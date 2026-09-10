@@ -278,8 +278,11 @@
         "Time format": "Laika formāts",
         "24-hour clock": "24 stundu pulkstenis",
         "12-hour clock": "12 stundu pulkstenis",
-        "Desktop Workspace is free to use, but developing and maintaining it takes time and resources.": "Desktop Workspace var izmantot bez maksas, taču tā izstrāde un uzturēšana prasa laiku un resursus.",
-        "Please consider supporting its continued development.": "Lūdzu, apsveriet iespēju atbalstīt tā turpmāko izstrādi."
+        "Desktop Workspace is free and open source. If it makes Nextcloud more useful for you, you can help support its continued development.": "Desktop Workspace ir bezmaksas un atvērtā pirmkoda programmatūra. Ja tā padara Nextcloud jums noderīgāku, varat palīdzēt atbalstīt tās turpmāko izstrādi.",
+        "Support Desktop Workspace ↗": "Atbalstīt Desktop Workspace ↗",
+        "Using Desktop Workspace in your organization?": "Vai izmantojat Desktop Workspace savā organizācijā?",
+        "Desktop Workspace is free and open source. Supporting its development helps fund maintenance, Nextcloud compatibility and continued improvements.": "Desktop Workspace ir bezmaksas un atvērtā pirmkoda programmatūra. Atbalsts tās izstrādei palīdz finansēt uzturēšanu, saderību ar Nextcloud un turpmākus uzlabojumus.",
+        "Support development ↗": "Atbalstīt izstrādi ↗"
     },
     "pluralForm": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);"
 }
