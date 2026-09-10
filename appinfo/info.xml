@@ -23,6 +23,7 @@ Admins can enable the app like any other Nextcloud app and configure decorations
     <screenshot>https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/02-standard-dark.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/03-redmond-light.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/canisdata/desktop_workspace/main/screenshots/04-redmond-dark.png</screenshot>
+    <donation type="other" title="Donate via Ko-Fi">https://ko-fi.com/canisdata</donation>
     <dependencies>
         <nextcloud min-version="33" max-version="35" />
     </dependencies>
