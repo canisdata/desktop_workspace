@@ -7,10 +7,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ### Added
 - Added a localized, theme-aware development-support callout to the personal and administrator settings, with a Ko-fi link that always opens in a separate browser tab.
+- Added file and folder transfers between the Desktop and embedded native Nextcloud Files or experimental Desktop Files windows, and between Files windows, with Move by default, Ctrl to Copy, valid-target highlighting, and live arrow/plus feedback.
+- Added Rename, Overwrite, and Cancel choices for drag-transfer name conflicts; overwrite requires explicit confirmation, folder overwrite replaces rather than merges the destination, and Cancel stops remaining items without rolling back completed transfers.
+- Added compact, theme-aware indeterminate progress bars during drag-triggered Move/Copy operations, with cleanup and view refresh after success or failure.
+
+### Changed
+- Allowed accessible External Storage folders as the configured Desktop folder through Nextcloud's normal filesystem, while retaining the restrictions on incoming shares and Group/Team folders.
+- Kept Desktop filesystem drag sources limited to genuine direct children of the configured Desktop folder, while allowing Favorites to provide real folder destinations without making special icons or application shortcuts transfer sources.
 
 ### Fixed
 - Reworked the light and dark app icons as fill-based SVGs to improve rendering in the in-instance Nextcloud App Store.
 - Corrected App Store screenshot metadata so Standard Light provides the small thumbnail while all four entries retain their full-resolution images without unnecessary CDATA wrappers.
+- Fixed Desktop-to-native Files pointer drops independently of the experimental Desktop Files setting, including folder-row and current-folder background targets.
+- Rejected invalid paths, same-parent no-ops, self/descendant targets, and conflict renames that would replace a source's ancestor; cleared stale cross-window drag state without using persistent drag payloads.
+- Applied consistent shadows to filesystem icons, including Favorite files and folders.
+- Corrected diagonal iframe-window resize cursors in Chromium while preserving the correct directions in Firefox.
+- Completed Move-label translations across the locale set, corrected transfer-action wording, and localized rejected-transfer error messages.
 
 ## 0.18.1 – 2026-09-03
 

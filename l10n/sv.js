@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "Enhetlig sökning",
     "Search contacts": "Sök kontakter",
     "Settings menu": "Inställningsmeny",
+    "Move": "Flytta",
     "Copy": "Kopiera",
     "Skip": "Hoppa över",
     "Cancel": "Avbryt",

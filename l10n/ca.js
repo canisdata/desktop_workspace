@@ -5,6 +5,7 @@ OC.L10N.register(
     "Unified search": "Cerca unificada",
     "Search contacts": "Cerca de contactes",
     "Settings menu": "Menú de paràmetres",
+    "Move": "Mou",
     "Copy": "Copia",
     "Skip": "Omet",
     "Cancel": "Cancel·la",

@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "Ühendatud otsing",
     "Search contacts": "Otsi kontakte",
     "Settings menu": "Seadistuste menüü",
+    "Move": "Teisalda",
     "Copy": "Kopeeri",
     "Skip": "Jäta vahele",
     "Cancel": "Loobu",

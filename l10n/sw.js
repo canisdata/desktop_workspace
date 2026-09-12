@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "Utafutaji wa umoja",
     "Search contacts": "Tafuta mawasiliano",
     "Settings menu": "Pangilia mwongozo",
+    "Move": "Hamisha",
     "Copy": "Nakili",
     "Skip": "Ruka",
     "Cancel": "Sitisha",

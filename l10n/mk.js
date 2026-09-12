@@ -5,6 +5,7 @@ OC.L10N.register(
     "Unified search": "Унифицирано пребарување",
     "Search contacts": "Пребарување контакти",
     "Settings menu": "Мени за параметри",
+    "Move": "Премести",
     "Copy": "Копирај",
     "Skip": "Прескокни",
     "Cancel": "Откажи",

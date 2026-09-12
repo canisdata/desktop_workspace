@@ -5,6 +5,7 @@ OC.L10N.register(
     "Unified search": "통합검색",
     "Search contacts": "연락처 검색",
     "Settings menu": "설정 메뉴",
+    "Move": "이동",
     "Copy": "복사",
     "Skip": "건너뛰기",
     "Cancel": "취소",

@@ -3,6 +3,7 @@ OC.L10N.register(
 {
     "Apps": "Aplikaĵoj",
     "Settings menu": "Menuo de agordo",
+    "Move": "Movi",
     "Copy": "Kopii",
     "Skip": "Preterpasi",
     "Cancel": "Nuligi",

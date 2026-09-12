@@ -34,6 +34,8 @@
     let clipboard = null;
     let detailsOpen = false;
     let dragged = null;
+    const dragRules = window.DesktopWorkspaceDragRules;
+
 
     const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
     const iconHtml = (kind) => `<span class="desktop-files-symbol desktop-files-symbol-${kind}" aria-hidden="true"></span>`;
@@ -78,15 +80,19 @@
     function itemFromRow(row) { return currentItems.find((item) => item.path === row?.dataset.path) || null; }
     function humanSize(bytes) { const n = Number(bytes || 0); if (!n) return '—'; const units = ['B', 'KB', 'MB', 'GB']; let value = n; let i = 0; while (value >= 1024 && i < units.length - 1) { value /= 1024; i++; } return `${value.toFixed(i ? 1 : 0)} ${units[i]}`; }
 
+    const folderCapabilities = new Map();
     async function propfind(path = '/', depth = '1') {
         const response = await fetch(davUrl(path), {
             method: 'PROPFIND', credentials: 'same-origin',
             headers: requestHeaders({ Depth: depth, 'Content-Type': 'application/xml; charset=utf-8' }),
-            body: '<?xml version="1.0"?><d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns"><d:prop><d:displayname/><d:getcontentlength/><d:getlastmodified/><d:getcontenttype/><d:resourcetype/><oc:fileid/></d:prop></d:propfind>',
+            body: '<?xml version="1.0"?><d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns"><d:prop><d:displayname/><d:getcontentlength/><d:getlastmodified/><d:getcontenttype/><d:resourcetype/><oc:fileid/><oc:permissions/></d:prop></d:propfind>',
         });
         if (!response.ok) throw new Error(`WebDAV HTTP ${response.status}`);
         const xml = new DOMParser().parseFromString(await response.text(), 'application/xml');
-        return Array.from(xml.getElementsByTagNameNS('DAV:', 'response')).slice(depth === '0' ? 0 : 1).map((node) => {
+        const responses = Array.from(xml.getElementsByTagNameNS('DAV:', 'response'));
+        const ownPermissions = responses[0]?.getElementsByTagNameNS('http://owncloud.org/ns', 'permissions')[0]?.textContent;
+        if (ownPermissions != null) folderCapabilities.set(cleanPath(path), ownPermissions);
+        return responses.slice(depth === '0' ? 0 : 1).map((node) => {
             const href = node.getElementsByTagNameNS('DAV:', 'href')[0]?.textContent || '';
             const name = decodeURIComponent(href.replace(/\/$/, '').split('/').pop() || '') || cleanPath(path).split('/').pop() || t('Files');
             const isFolder = Boolean(node.getElementsByTagNameNS('DAV:', 'collection')[0]);
@@ -94,16 +100,28 @@
             const modified = node.getElementsByTagNameNS('DAV:', 'getlastmodified')[0]?.textContent || '';
             const fileId = node.getElementsByTagNameNS('http://owncloud.org/ns', 'fileid')[0]?.textContent || '';
             const mime = node.getElementsByTagNameNS('DAV:', 'getcontenttype')[0]?.textContent || '';
-            return { name, isFolder, size, modified, fileId, mime, path: depth === '0' ? cleanPath(path) : joinPath(path, name) };
+            const permissions = node.getElementsByTagNameNS('http://owncloud.org/ns', 'permissions')[0]?.textContent || '';
+            const itemPath = depth === '0' ? cleanPath(path) : joinPath(path, name);
+            if (isFolder) folderCapabilities.set(itemPath, permissions);
+            return { name, isFolder, size, modified, fileId, mime, permissions, canMove: permissions.includes('V'), canCopy: permissions.includes('G'), path: itemPath };
         }).filter((item) => item.name).sort((a, b) => Number(b.isFolder) - Number(a.isFolder) || a.name.localeCompare(b.name));
     }
 
+    let loadGeneration = 0;
+    let loading = false;
     async function load(path = '/') {
+        const generation = ++loadGeneration;
+        loading = true;
         currentPath = cleanPath(path); selectedItem = null; selection.clear(); anchorIndex = null; hideContextMenu();
         if (pathLabel) pathLabel.textContent = currentPath; notifyPath(); updateClipboardBar();
         rows.innerHTML = `<tr><td colspan="4">${escapeHtml(t('Loading…'))}</td></tr>`;
-        currentItems = await propfind(currentPath, '1');
-        renderRows(currentItems); renderDetails(null); ensureTreePath(currentPath).catch(() => {});
+        try {
+            const items = await propfind(currentPath, '1');
+            if (generation !== loadGeneration) return;
+            currentItems = items;
+            renderRows(currentItems); renderDetails(null); ensureTreePath(currentPath).catch(() => {});
+        } catch (error) { if (generation === loadGeneration) throw error; }
+        finally { if (generation === loadGeneration) loading = false; }
     }
 
     function renderRows(items) {
@@ -528,11 +546,73 @@
     });
     document.addEventListener('click', (event) => { if (!contextMenu?.contains(event.target)) hideContextMenu(); });
 
-    rows.addEventListener('dragstart', (event) => { const row = event.target.closest('tr[data-path]'); if (!row) return; dragged = { path: row.dataset.path, fromTree: false }; event.dataTransfer.effectAllowed = 'move'; event.dataTransfer.setData('text/plain', dragged.path); });
-    rows.addEventListener('dragover', (event) => { if (!dragged || dragged.fromTree) return; event.preventDefault(); const target = event.target.closest('tr[data-folder="true"]'); rows.querySelectorAll('.is-drop-target').forEach((node) => node.classList.remove('is-drop-target')); target?.classList.add('is-drop-target'); event.dataTransfer.dropEffect = 'move'; });
-    rows.addEventListener('dragleave', (event) => event.target.closest('tr')?.classList.remove('is-drop-target'));
-    rows.addEventListener('drop', (event) => { if (!dragged || dragged.fromTree) return; event.preventDefault(); rows.querySelectorAll('.is-drop-target').forEach((node) => node.classList.remove('is-drop-target')); const target = event.target.closest('tr[data-folder="true"]')?.dataset.path || currentPath; moveItem(dragged.path, target).catch(showError); dragged = null; });
-    rows.addEventListener('dragend', () => { dragged = null; rows.querySelectorAll('.is-drop-target').forEach((node) => node.classList.remove('is-drop-target')); });
+    function selectedDragItems(rowItem) {
+        if (!selection.has(rowItem.path)) {
+            selection = new Set([rowItem.path]); anchorIndex = indexOfPath(rowItem.path); paintSelection();
+        }
+        return [...selection].map((path) => currentItems.find((item) => item.path === path)).filter(Boolean)
+            .map((item) => ({ path: item.path, name: item.name, isFolder: item.isFolder, canMove: item.canMove, canCopy: item.canCopy }));
+    }
+    function forgetDragPayload() { dragRules?.endDrag(); }
+    function readDragPayload(dataTransfer) { return dragRules?.readDrag(dataTransfer); }
+    function dropTarget(event, container) {
+        if (container === tree) return event.target.closest('[data-tree-row]')?.dataset.path || '';
+        const row = event.target.closest('tr[data-path]');
+        return row ? (row.dataset.folder === 'true' ? row.dataset.path : null) : currentPath;
+    }
+    function clearDropTargets() {
+        rows.querySelectorAll('.is-drop-target').forEach((node) => node.classList.remove('is-drop-target'));
+        tree.querySelectorAll('.is-drop-target').forEach((node) => node.classList.remove('is-drop-target'));
+        root.classList.remove('is-drop-target');
+        delete root.dataset.dropOperation;
+    }
+    function operationForDrag(event, targetPath) {
+        if (loading || !targetPath || !/[CK]/.test(folderCapabilities.get(cleanPath(targetPath)) || '')) return null;
+        const payload = readDragPayload(event.dataTransfer);
+        return payload && dragRules.filesystemOperation(payload.items, targetPath, !!event.ctrlKey);
+    }
+    window.parent.addEventListener('desktop-workspace:drag-end', clearDropTargets);
+    window.addEventListener('pagehide', () => window.parent.removeEventListener('desktop-workspace:drag-end', clearDropTargets), { once: true });
+    function paintDropTarget(event, container) {
+        dragRules?.trackHover(event, (next) => paintDropTarget(next, container));
+        clearDropTargets();
+        const targetPath = dropTarget(event, container);
+        const operation = operationForDrag(event, targetPath);
+        dragRules?.showDragFeedback(event, operation);
+        if (!operation) { if (event.dataTransfer) event.dataTransfer.dropEffect = 'none'; return null; }
+        event.preventDefault();
+        const target = container === tree ? event.target.closest('[data-tree-row]') : event.target.closest('tr[data-folder="true"]');
+        (target || root).classList.add('is-drop-target');
+        root.dataset.dropOperation = operation.method;
+        event.dataTransfer.dropEffect = operation.method === 'COPY' ? 'copy' : 'move';
+        return operation;
+    }
+    async function finishDrop(event, container) {
+        const operation = operationForDrag(event, dropTarget(event, container));
+        clearDropTargets();
+        if (!operation) return;
+        event.preventDefault(); event.stopPropagation();
+        dragged = null;
+        forgetDragPayload();
+        await executeDropOperation(operation);
+    }
+
+    rows.addEventListener('dragstart', (event) => {
+        const row = event.target.closest('tr[data-path]'); if (!row || !dragRules) return;
+        const item = itemFromRow(row); if (loading || !item || (!item.canMove && !item.canCopy)) { event.preventDefault(); return; }
+        const payload = dragRules.createFilesystemPayload(selectedDragItems(item), myWindowId);
+        dragged = payload;
+        dragRules.beginDrag(payload, event.dataTransfer);
+        row.classList.add('is-filesystem-drag-source');
+        event.dataTransfer.effectAllowed = 'copyMove';
+        event.dataTransfer.setData(dragRules.FILESYSTEM_MIME, JSON.stringify(payload));
+        event.dataTransfer.setData('text/plain', payload.items.map((entry) => entry.path).join('\n'));
+    });
+    const dropPane = rows.closest('.desktop-files-main') || rows.parentElement.parentElement;
+    dropPane.addEventListener('dragover', (event) => paintDropTarget(event, rows));
+    dropPane.addEventListener('dragleave', (event) => { if (!dropPane.contains(event.relatedTarget)) { clearDropTargets(); dragRules?.trackHover(event, null); dragRules?.showDragFeedback(event, null); } });
+    dropPane.addEventListener('drop', (event) => finishDrop(event, rows).catch(showError));
+    rows.addEventListener('dragend', () => { dragged = null; forgetDragPayload(); clearDropTargets(); rows.querySelectorAll('.is-filesystem-drag-source').forEach((node) => node.classList.remove('is-filesystem-drag-source')); });
 
     function treeNode(path, label = path === '/' ? t('Files') : path.split('/').pop()) { return `<li class="desktop-files-tree-node" data-path="${escapeHtml(path)}" data-loaded="false" data-expanded="false"><div class="desktop-files-tree-row" data-tree-row data-path="${escapeHtml(path)}"><button type="button" class="desktop-files-tree-toggle" data-action="toggle-tree" aria-label="${escapeHtml(t('Expand {name}', { name: label }))}">▸</button><button type="button" class="desktop-files-tree-folder" data-action="open-tree-folder">${folderVisual()} <span>${escapeHtml(label)}</span></button></div><ul class="desktop-files-tree-children" hidden></ul></li>`; }
     async function loadTreeChildren(node) { const path = node.dataset.path; const children = node.querySelector(':scope > .desktop-files-tree-children'); children.innerHTML = `<li class="desktop-files-tree-loading">${escapeHtml(t('Loading…'))}</li>`; const folders = (await propfind(path, '1')).filter((item) => item.isFolder); children.innerHTML = folders.map((folder) => treeNode(folder.path, folder.name)).join('') || `<li class="desktop-files-tree-empty">${escapeHtml(t('No folders'))}</li>`; node.dataset.loaded = 'true'; }
@@ -541,9 +621,9 @@
     async function ensureTreePath(path) { const parts = cleanPath(path).split('/').filter(Boolean); let node = tree.querySelector('li[data-path="/"]'); if (!node) return; await expandTreeNode(node); let cursor = ''; for (const part of parts) { cursor = `${cursor}/${part}`; node = tree.querySelector(`li[data-path="${CSS.escape(cursor)}"]`); if (!node) return; await expandTreeNode(node); } tree.querySelectorAll('.is-current').forEach((element) => element.classList.remove('is-current')); tree.querySelector(`[data-tree-row][data-path="${CSS.escape(cleanPath(path))}"]`)?.classList.add('is-current'); }
     async function refreshTree() { tree.innerHTML = treeNode('/', t('Files')); await ensureTreePath(currentPath); }
     tree.addEventListener('click', (event) => { const node = event.target.closest('li[data-path]'); if (!node) return; if (event.target.closest('[data-action="toggle-tree"]')) { (node.dataset.expanded === 'true' ? Promise.resolve(collapseTreeNode(node)) : expandTreeNode(node)).catch(showError); return; } if (event.target.closest('[data-action="open-tree-folder"]')) load(node.dataset.path).catch(showError); });
-    tree.addEventListener('dragover', (event) => { if (!dragged || dragged.fromTree) return; const row = event.target.closest('[data-tree-row]'); if (!row) return; event.preventDefault(); tree.querySelectorAll('.is-drop-target').forEach((node) => node.classList.remove('is-drop-target')); row.classList.add('is-drop-target'); event.dataTransfer.dropEffect = 'move'; });
-    tree.addEventListener('dragleave', (event) => event.target.closest('[data-tree-row]')?.classList.remove('is-drop-target'));
-    tree.addEventListener('drop', (event) => { if (!dragged || dragged.fromTree) return; const row = event.target.closest('[data-tree-row]'); if (!row) return; event.preventDefault(); tree.querySelectorAll('.is-drop-target').forEach((node) => node.classList.remove('is-drop-target')); moveItem(dragged.path, row.dataset.path).catch(showError); dragged = null; });
+    tree.addEventListener('dragover', (event) => paintDropTarget(event, tree));
+    tree.addEventListener('dragleave', (event) => { if (!tree.contains(event.relatedTarget)) { clearDropTargets(); dragRules?.trackHover(event, null); dragRules?.showDragFeedback(event, null); } });
+    tree.addEventListener('drop', (event) => finishDrop(event, tree).catch(showError));
 
     function showError(error) { rows.innerHTML = `<tr><td colspan="4"><strong>${escapeHtml(t('Could not complete file operation.'))}</strong> ${escapeHtml(error.message)}</td></tr>`; }
     document.querySelector('[data-action="refresh"]')?.addEventListener('click', () => load(currentPath).catch(showError));
@@ -593,11 +673,41 @@
 
     async function copyOne(source, dest, overwrite) {
         const r = await fetch(davUrl(source), { method: 'COPY', credentials: 'same-origin', headers: requestHeaders({ Destination: new URL(davUrl(dest), window.location.origin).toString(), Overwrite: overwrite ? 'T' : 'F', Depth: 'infinity' }) });
-        if (!r.ok) throw new Error(`Copy failed: HTTP ${r.status}`);
+        if (!r.ok) throw Object.assign(new Error(`Copy failed: HTTP ${r.status}`), { status: r.status });
     }
     async function moveOne(source, dest, overwrite) {
         const r = await fetch(davUrl(source), { method: 'MOVE', credentials: 'same-origin', headers: requestHeaders({ Destination: new URL(davUrl(dest), window.location.origin).toString(), Overwrite: overwrite ? 'T' : 'F' }) });
-        if (!r.ok) throw new Error(`Move failed: HTTP ${r.status}`);
+        if (!r.ok) throw Object.assign(new Error(`Move failed: HTTP ${r.status}`), { status: r.status });
+    }
+
+    function makeOperationProgress(method, count) {
+        const overlay = document.createElement('div');
+        overlay.className = 'desktop-files-operation-progress';
+        overlay.setAttribute('role', 'status');
+        overlay.setAttribute('aria-live', 'polite');
+        overlay.setAttribute('aria-label', `${method === 'COPY' ? t('Copy') : t('Move')}: ${count}`);
+        overlay.innerHTML = '<span class="desktop-files-indeterminate" aria-hidden="true"><span></span></span>';
+        root.appendChild(overlay);
+        return overlay;
+    }
+
+    async function executeDropOperation(operation) {
+        if (!operation?.sources?.length) return;
+        const progress = makeOperationProgress(operation.method, operation.sources.length);
+        const failures = [];
+        try {
+            for (const source of operation.sources) {
+                try {
+                    const completed = await dragRules.transferWithConflicts(source, operation.targetPath, (destination, overwrite) =>
+                        operation.method === 'COPY' ? copyOne(source.path, destination, overwrite) : moveOne(source.path, destination, overwrite));
+                    if (!completed) break;
+                } catch (error) { failures.push(`${source.name}: ${error.message}`); }
+            }
+        } finally {
+            notifyDesktopChanged();
+            try { await load(currentPath); await refreshTree(); } finally { progress.remove(); }
+            if (failures.length) alert(t('Could not complete file operation.') + '\n' + failures.join('\n'));
+        }
     }
 
     function showCollisionDialog(name) {
@@ -669,25 +779,19 @@
     cutBtn?.addEventListener('click', () => setClipboard('cut'));
     pasteBtn?.addEventListener('click', () => paste().catch(showError));
 
-    // Files dragged from the desktop onto this window: move them into the current folder.
-    async function acceptDroppedPaths(paths) {
-        if (!Array.isArray(paths) || !paths.length) return;
-        const existing = new Set(currentItems.map((i) => i.name));
-        for (const p of paths) {
-            const name = String(p).split('/').filter(Boolean).pop();
-            if (!name || parentPath(p) === currentPath) continue;
-            let targetName = name;
-            if (existing.has(targetName)) targetName = nextAvailableName(name, false, existing);
-            try { await moveOne(p, joinPath(currentPath, targetName), false); existing.add(targetName); }
-            catch (error) { showError(error); }
-        }
-        await load(currentPath); await refreshTree();
-        postToDesktop({ type: 'nextcloud-desktop:desktop-reload' });
+    // Files dragged from the desktop onto this window. The shell supplies metadata because
+    // desktop icons use pointer dragging rather than HTML5 DataTransfer.
+    async function acceptDroppedPaths(paths, method = null, items = null) {
+        if (loading || !['MOVE', 'COPY'].includes(method) || !Array.isArray(items) || !/[CK]/.test(folderCapabilities.get(currentPath) || '')) return;
+        const sources = items;
+        const operation = dragRules?.filesystemOperation(sources, currentPath, method === 'COPY');
+        if (!operation) return;
+        await executeDropOperation(operation);
     }
     window.addEventListener('message', (event) => {
-        if (event.origin !== window.location.origin) return;
+        if (event.origin !== window.location.origin || event.source !== window.parent) return;
         const data = event.data || {};
-        if (data.type === 'nextcloud-desktop:files-drop') acceptDroppedPaths(data.paths).catch(showError);
+        if (data.type === 'nextcloud-desktop:files-drop') acceptDroppedPaths(data.paths, data.method, data.items).catch(showError);
         else if (data.type === 'nextcloud-desktop:files-reload') load(currentPath).then(() => refreshTree()).catch(() => {});
     });
     // Keep the paste button in sync when the desktop changes the shared clipboard.

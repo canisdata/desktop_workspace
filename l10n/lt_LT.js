@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "Vieninga paieška",
     "Search contacts": "Ieškoti adresatų",
     "Settings menu": "Nustatymų meniu",
+    "Move": "Perkelti",
     "Copy": "Kopijuoti",
     "Skip": "Praleisti",
     "Cancel": "Atsisakyti",

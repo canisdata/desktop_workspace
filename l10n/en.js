@@ -63,6 +63,7 @@ OC.L10N.register(
     "Tree View": "Tree View",
     "Folder content": "Folder content",
     "Clipboard": "Clipboard",
+    "Move": "Move",
     "Copy": "Copy",
     "Cut": "Cut",
     "Paste": "Paste",

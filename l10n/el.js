@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "Ενιαία αναζήτηση",
     "Search contacts": "Αναζήτηση επαφών",
     "Settings menu": "Μενού ρυθμίσεων",
+    "Move": "Μετακίνηση",
     "Copy": "Αντιγραφή",
     "Skip": "Παράλειψη",
     "Cancel": "Ακύρωση",

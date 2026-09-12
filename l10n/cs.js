@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "Sjednocené vyhledávání",
     "Search contacts": "Hledat v kontaktech",
     "Settings menu": "Nabídka nastavení",
+    "Move": "Přesunout",
     "Copy": "Zkopírovat",
     "Skip": "Přeskočit",
     "Cancel": "Storno",

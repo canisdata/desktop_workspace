@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "البحث الموحد",
     "Search contacts": "بحث جهات الاتصال",
     "Settings menu": "قائمة الإعدادات",
+    "Move": "نقل",
     "Copy": "نسخ",
     "Skip": "تخطي",
     "Cancel": "إلغاء",

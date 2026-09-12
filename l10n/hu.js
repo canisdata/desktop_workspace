@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "Egyesített keresés",
     "Search contacts": "Névjegyek keresése",
     "Settings menu": "Beállítások menü",
+    "Move": "Áthelyezés",
     "Copy": "Másolás",
     "Skip": "Kihagyás",
     "Cancel": "Mégse",

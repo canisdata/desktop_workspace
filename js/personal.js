@@ -167,7 +167,7 @@
         } catch (error) {
             const map = {
                 shared_not_allowed: tr('That folder is shared with you. Please pick a folder you own.'),
-                not_personal: tr('Group folders and external storage can’t be used. Please pick a personal folder you own.'),
+                group_folder_not_allowed: tr('That folder is not owned by you.'),
                 not_owned: tr('That folder is not owned by you.'),
                 not_a_folder: tr('That is not a folder.'),
                 not_found: tr('Folder not found.'),
@@ -179,7 +179,7 @@
         folderPick.addEventListener('click', () => {
             if (!(window.OC && OC.dialogs && OC.dialogs.filepicker)) { if (status) status.textContent = tr('File picker is not available.'); return; }
             const type = (OC.dialogs.FILEPICKER_TYPE_CHOOSE !== undefined) ? OC.dialogs.FILEPICKER_TYPE_CHOOSE : 1;
-            OC.dialogs.filepicker(tr('Choose a folder you own'), (path) => applyFolder(path), false, 'httpd/unix-directory', true, type);
+            OC.dialogs.filepicker(tr('Choose folder…'), (path) => applyFolder(path), false, 'httpd/unix-directory', true, type);
         });
     }
     if (folderClear) folderClear.addEventListener('click', () => applyFolder(''));

@@ -5,6 +5,7 @@ OC.L10N.register(
     "Apps": "Lietotnes",
     "Unified search": "Apvienotā meklēšana",
     "Settings menu": "Iestatījumu izvēlne",
+    "Move": "Pārvietot",
     "Copy": "Kopēt",
     "Skip": "Izlaist",
     "Cancel": "Atcelt",

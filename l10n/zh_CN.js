@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "统一搜索",
     "Search contacts": "搜索联系人",
     "Settings menu": "设置菜单",
+    "Move": "移动",
     "Copy": "复制",
     "Skip": "跳过",
     "Cancel": "取消",

@@ -63,6 +63,7 @@ OC.L10N.register(
     "Tree View": "Baumansicht",
     "Folder content": "Ordnerinhalt",
     "Clipboard": "Zwischenablage",
+    "Move": "Verschieben",
     "Copy": "Kopieren",
     "Cut": "Ausschneiden",
     "Paste": "Einfügen",

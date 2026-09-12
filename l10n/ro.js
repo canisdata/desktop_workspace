@@ -5,6 +5,7 @@ OC.L10N.register(
     "Unified search": "Căutare unificată",
     "Search contacts": "Cautare contacte",
     "Settings menu": "Meniul Setări",
+    "Move": "Mută",
     "Copy": "Copiază",
     "Skip": "Sari peste",
     "Cancel": "Anulare",

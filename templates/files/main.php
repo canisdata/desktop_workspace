@@ -1,5 +1,6 @@
 <?php
 \OCP\Util::addTranslations('desktop_workspace');
+script('desktop_workspace', 'desktop-drag-rules');
 script('desktop_workspace', 'files/files');
 style('desktop_workspace', 'files/files');
 /** @var array $_ */

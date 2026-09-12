@@ -1,5 +1,7 @@
 <?php
 \OCP\Util::addTranslations('desktop_workspace');
+script('desktop_workspace', 'desktop-drag-rules');
+script('desktop_workspace', 'native-files-drag');
 script('desktop_workspace', 'desktop-shell');
 style('desktop_workspace', 'desktop');
 style('desktop_workspace', 'decorations-release');

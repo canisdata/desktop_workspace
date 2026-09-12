@@ -468,15 +468,18 @@ class SettingsController extends Controller {
                     if (!($node instanceof Folder)) {
                         return new JSONResponse(['status' => 'error', 'message' => 'not_a_folder'], 400);
                     }
-                    // Personally owned only: reject anything shared with the user.
+                    // Incoming shares remain invalid. External-storage mounts are valid Desktop
+                    // folders, but Group folders/Team folders are not.
                     $storage = $node->getStorage();
                     if ($storage->instanceOfStorage('OCA\\Files_Sharing\\SharedStorage')) {
                         return new JSONResponse(['status' => 'error', 'message' => 'shared_not_allowed'], 400);
                     }
-                    // The user's own files live on their home storage. This also rejects
-                    // group folders, external storage and any other mounted storage.
-                    if (!$storage->instanceOfStorage(\OCP\Files\IHomeStorage::class)) {
-                        return new JSONResponse(['status' => 'error', 'message' => 'not_personal'], 400);
+                    $mountType = strtolower((string)$node->getMountPoint()->getMountType());
+                    $storageId = strtolower((string)$storage->getId());
+                    if (str_contains($mountType, 'group') || str_contains($mountType, 'team')
+                        || $storage->instanceOfStorage('OCA\\GroupFolders\\Mount\\GroupFolderStorage')
+                        || str_starts_with($storageId, 'groupfolders::')) {
+                        return new JSONResponse(['status' => 'error', 'message' => 'group_folder_not_allowed'], 400);
                     }
                     $owner = $node->getOwner();
                     if ($owner !== null && $owner->getUID() !== $uid) {

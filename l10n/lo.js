@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "ການຄົ້ນຫາແບບລວມ",
     "Search contacts": "ຄົ້ນຫາຜູ້ຕິດຕໍ່",
     "Settings menu": "ການຕັ້ງຄ່າເມນູ",
+    "Move": "ຍ້າຍ",
     "Copy": "ສຳເນົາ",
     "Skip": "ຂ້າມໄປ",
     "Cancel": "ຍົກເລີກ",

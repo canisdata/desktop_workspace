@@ -4,6 +4,7 @@ OC.L10N.register(
     "Apps": "แอป",
     "Search contacts": "ค้นหารายชื่อ",
     "Settings menu": "เมนูการตั้งค่า",
+    "Move": "ย้าย",
     "Copy": "คัดลอก",
     "Skip": "ข้าม",
     "Cancel": "ยกเลิก",

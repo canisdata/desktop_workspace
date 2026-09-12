@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "Bilaketa bateratua",
     "Search contacts": "Bilatu kontaktuak",
     "Settings menu": "Ezarpenen menua",
+    "Move": "Mugitu",
     "Copy": "Kopiatu",
     "Skip": "Saltatu",
     "Cancel": "Ezeztatu",

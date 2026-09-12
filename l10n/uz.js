@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "Yagona qidiruv",
     "Search contacts": "Kontaktlarni qidirish",
     "Settings menu": "Sozlamalar menyusi",
+    "Move": "Ko‘chirish",
     "Copy": "Nusxalash",
     "Skip": "O'tkazib yuborish",
     "Cancel": "Bekor qilish",

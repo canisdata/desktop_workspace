@@ -5,6 +5,7 @@ OC.L10N.register(
     "Unified search": "Нэгдсэн хайлт",
     "Search contacts": "Харилцагч хайх",
     "Settings menu": "Тохиргооны цэс",
+    "Move": "Зөөх",
     "Copy": "Хуулах",
     "Skip": "Алгасах",
     "Cancel": "Цуцлах",

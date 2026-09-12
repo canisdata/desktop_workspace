@@ -712,10 +712,12 @@ body:has(#desktop-root) .header-menu__wrapper {
 .desktop-resize-s { bottom: -3px; left: 10px; right: 10px; height: 8px; cursor: ns-resize; }
 .desktop-resize-e { top: 10px; bottom: 10px; right: -3px; width: 8px; cursor: ew-resize; }
 .desktop-resize-w { top: 10px; bottom: 10px; left: -3px; width: 8px; cursor: ew-resize; }
-.desktop-resize-ne { top: -3px; right: -3px; width: 16px; height: 16px; cursor: nesw-resize; }
-.desktop-resize-nw { top: -3px; left: -3px; width: 16px; height: 16px; cursor: nwse-resize; }
-.desktop-resize-se { bottom: -3px; right: -3px; width: 16px; height: 16px; cursor: nwse-resize; }
-.desktop-resize-sw { bottom: -3px; left: -3px; width: 16px; height: 16px; cursor: nesw-resize; }
+/* Explicit diagonal artwork avoids platform cursor-theme alias differences in
+   Chromium. Keep the geometrically correct native keywords as fallbacks. */
+.desktop-resize-ne { top: -3px; right: -3px; width: 16px; height: 16px; cursor: url('../img/cursor-resize-nesw.svg') 12 12, nesw-resize; }
+.desktop-resize-nw { top: -3px; left: -3px; width: 16px; height: 16px; cursor: url('../img/cursor-resize-nwse.svg') 12 12, nwse-resize; }
+.desktop-resize-se { bottom: -3px; right: -3px; width: 16px; height: 16px; cursor: url('../img/cursor-resize-nwse.svg') 12 12, nwse-resize; }
+.desktop-resize-sw { bottom: -3px; left: -3px; width: 16px; height: 16px; cursor: url('../img/cursor-resize-nesw.svg') 12 12, nesw-resize; }
 .desktop-window.is-maximized .desktop-resize { display: none; }
 .desktop-snap-preview { position: absolute; z-index: 5; background: var(--color-primary-element, #0a7cff); opacity: 0.22; border: 2px solid var(--color-primary-element, #0a7cff); border-radius: var(--border-radius-element, 8px); pointer-events: none; box-sizing: border-box; }
 
@@ -726,6 +728,11 @@ body:has(#desktop-root) .header-menu__wrapper {
 .desktop-fav.is-dragging { opacity: 0.85; z-index: 10; }
 .desktop-fav-icon { position: relative; display: inline-block; }
 .desktop-fav-icon img, .desktop-fav-icon svg { width: 48px; height: 48px; object-fit: contain; pointer-events: none; -webkit-user-drag: none; user-select: none; }
+.desktop-fav:not([data-kind="app"]):not([data-special]) .desktop-fav-icon > img,
+.desktop-fav:not([data-kind="app"]):not([data-special]) .desktop-fav-icon > .desktop-folder-symbol { filter: drop-shadow(0 1px 3px var(--color-box-shadow, rgba(0, 0, 0, 0.25))); }
+.desktop-fav.is-filesystem-drop-target { background: color-mix(in srgb, var(--color-primary-element-light, rgba(10, 124, 255, 0.25)) 82%, transparent); outline: 2px solid var(--color-primary-element, #0a7cff); outline-offset: 1px; }
+.desktop-fav.is-filesystem-drop-source .desktop-fav-icon::after { content: "↳"; position: absolute; right: -7px; bottom: -5px; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: var(--color-primary-element, #0a7cff); color: var(--color-primary-element-text, #fff); box-shadow: 0 1px 4px var(--color-box-shadow, rgba(0,0,0,.35)); font-size: 18px; font-weight: 700; line-height: 1; pointer-events: none; }
+.desktop-fav.is-filesystem-drop-source[data-drop-operation="COPY"] .desktop-fav-icon::after { content: "+"; }
 .desktop-fav-badge { position: absolute; left: -2px; bottom: -2px; width: 18px; height: 18px; line-height: 0; filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5)); pointer-events: none; }
 .desktop-fav-badge svg { width: 18px; height: 18px; display: block; }
 .desktop-fav-badge svg path { fill: var(--color-favorite, #a37200); }
@@ -761,6 +768,18 @@ body:has(#desktop-root) .header-menu__wrapper {
 .desktop-upload-text { font-size: var(--font-size-small, 13px); margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .desktop-upload-bar { height: 6px; border-radius: var(--border-radius-pill, 100px); background: var(--color-background-dark, #e0e0e0); overflow: hidden; }
 .desktop-upload-fill { height: 100%; width: 0; background: var(--color-primary-element, #0a7cff); transition: width 0.15s ease; }
+.desktop-operation-overlay { position: fixed; z-index: 2147483646; }
+.desktop-operation-overlay .desktop-upload-card { min-width: 180px; width: min(240px, 42vw); padding: 10px 12px; }
+.desktop-upload-bar-indeterminate .desktop-upload-fill { width: 38%; animation: desktop-operation-indeterminate 1s ease-in-out infinite; }
+
+
+@keyframes desktop-operation-indeterminate {
+    from { transform: translateX(-115%); }
+    to { transform: translateX(305%); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .desktop-upload-bar-indeterminate .desktop-upload-fill { animation-duration: 2s; }
+}
 .desktop-band { position: absolute; z-index: 4; border: 1px solid var(--color-primary-element, #0a7cff); background: var(--color-primary-element, #0a7cff); opacity: 0.18; pointer-events: none; border-radius: var(--border-radius-small, 4px); }
 
 

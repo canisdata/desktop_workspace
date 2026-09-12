@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "Birleşik arama",
     "Search contacts": "Kişi arama",
     "Settings menu": "Ayarlar menüsü",
+    "Move": "Taşı",
     "Copy": "Kopyala",
     "Skip": "Atla",
     "Cancel": "İptal",

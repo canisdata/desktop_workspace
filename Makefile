@@ -23,7 +23,7 @@ occ = ../../occ
 
 exclude = --exclude='build' --exclude='.git' --exclude='.github' \
           --exclude='node_modules' --exclude='.DS_Store' \
-          --exclude='*.swp' --exclude='Makefile' --exclude='references' \
+          --exclude='*.swp' --exclude='Makefile' --exclude='references' --exclude='tests' \
           --exclude='screenshots' --exclude='.gitignore' --exclude='.gitattributes'
 
 .PHONY: all appstore clean

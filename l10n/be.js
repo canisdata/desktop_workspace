@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "Уніфікаваны пошук",
     "Search contacts": "Пошук кантактаў",
     "Settings menu": "Меню налад",
+    "Move": "Перамясціць",
     "Copy": "Капіяваць",
     "Skip": "Прапусціць",
     "Cancel": "Скасаваць",

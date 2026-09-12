@@ -4,6 +4,7 @@ OC.L10N.register(
     "Apps": "Aplicacions",
     "Search contacts": "Cercar pels contactes",
     "Settings menu": "Menú paramètres",
+    "Move": "Desplaçar",
     "Copy": "Copiar",
     "Skip": "Sautar",
     "Cancel": "Anullar",

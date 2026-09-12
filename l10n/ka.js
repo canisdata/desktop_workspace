@@ -5,6 +5,7 @@ OC.L10N.register(
     "Unified search": "გაერთიანებული ძებნა",
     "Search contacts": "კონტაქტების ძებნა",
     "Settings menu": "მორგების მენიუ",
+    "Move": "გადატანა",
     "Copy": "კოპირება",
     "Skip": "გამოტოვება",
     "Cancel": "გაუქმება",

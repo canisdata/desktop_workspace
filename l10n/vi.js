@@ -4,6 +4,7 @@ OC.L10N.register(
     "Apps": "Ứng dụng",
     "Search contacts": "Tìm kiếm liên hệ",
     "Settings menu": "Menu cài đặt",
+    "Move": "Chuyển",
     "Copy": "Sao chép",
     "Skip": "Bỏ qua",
     "Cancel": "Hủy",

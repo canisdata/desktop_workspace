@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unified search": "Cuardach aontaithe",
     "Search contacts": "Cuardaigh teagmhálaithe",
     "Settings menu": "Roghchlár socruithe",
+    "Move": "Bog",
     "Copy": "Cóipeáil",
     "Skip": "Scipeáil",
     "Cancel": "Cealaigh",

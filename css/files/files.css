@@ -29,7 +29,15 @@ body {
     color: var(--color-main-text, #111827);
 }
 
-#desktop-files-root { display: flex; flex-direction: column; --desktop-files-tree-width: 220px; }
+#desktop-files-root { display: flex; flex-direction: column; position: relative; --desktop-files-tree-width: 220px; }
+#desktop-files-root.is-drop-target { outline: 2px solid var(--color-primary-element, #0082c9); outline-offset: -3px; }
+.desktop-files-operation-progress { pointer-events: none; position: absolute; left: 50%; bottom: 18px; z-index: 30; width: min(240px, 48%); transform: translateX(-50%); padding: 10px 12px; border: 1px solid var(--color-border, #d8dee9); border-radius: var(--border-radius-container, 12px); background: var(--color-main-background, #fff); box-shadow: 0 6px 20px var(--color-box-shadow, rgba(0,0,0,.25)); }
+.desktop-files-indeterminate { display: block; height: 6px; overflow: hidden; border-radius: 999px; background: var(--color-background-dark, #e0e0e0); }
+.desktop-files-indeterminate > span { display: block; width: 38%; height: 100%; border-radius: inherit; background: var(--color-primary-element, var(--color-primary, #006aa3)); animation: desktop-files-operation-indeterminate 1s ease-in-out infinite; }
+
+
+@keyframes desktop-files-operation-indeterminate { from { transform: translateX(-115%); } to { transform: translateX(305%); } }
+@media (prefers-reduced-motion: reduce) { .desktop-files-indeterminate > span { animation-duration: 2s; } }
 .desktop-files-details-root { display: block; }
 
 .desktop-files-symbol {
