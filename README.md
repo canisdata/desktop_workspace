@@ -33,20 +33,16 @@ desktop icons, and an optional built-in file manager.
 
 ---
 
+## Support Desktop Workspace
+
+If Desktop Workspace is useful to you, you can [support its continued development on Ko-fi](https://ko-fi.com/canisdata).
+
+---
+
 ## Requirements
 
 - Nextcloud **33**, **34**, or **35**
 - A standard Nextcloud app environment (PHP per the Nextcloud 33 requirements)
-
-### Compatibility smoke matrix
-
-Run the app against disposable, isolated Nextcloud 33, 34, and 35 containers:
-
-```bash
-./scripts/test-desktop-workspace-matrix
-```
-
-The matrix uses pinned Nextcloud 33.0.8 and 34.0.2 images plus the local checksum-pinned NC35 development image. For each major version it installs Desktop Workspace, creates a normal test user, verifies the shell and dynamic-data routes, confirms that a personal-settings request without a CSRF token is rejected, saves the setting with a valid token, confirms that the normal user is denied access to an administrator route, and confirms that the administrator can use that route. Run-specific container names make concurrent runs safe, and containers plus their anonymous volumes are removed automatically; set `KEEP_CONTAINERS=1` to retain them for debugging or `MATRIX_MAJORS="34 35"` to run a subset. Image environment variables can override the pinned defaults.
 
 ---
 
@@ -67,16 +63,6 @@ select the **Customization** category, find **Desktop Workspace**, and select **
    occ app:enable desktop_workspace
    ```
 4. Open **Desktop Workspace** from the app navigation.
-
-### From source
-
-```bash
-git clone <this-repo> desktop_workspace
-cd desktop_workspace
-make            # builds build/appstore/desktop_workspace-<version>.tar.gz
-```
-
-Place the resulting `desktop_workspace` folder in your Nextcloud apps directory and enable it as above.
 
 ---
 
@@ -104,12 +90,6 @@ Place the resulting `desktop_workspace` folder in your Nextcloud apps directory 
 - **Debug logging** to a log file.
 - **Reset a single user's** desktop settings completely.
 - Basic **usage stats** (unique users per day/week).
-
-### Early planning: decoration and icon-theme access
-
-For the full release, the project is exploring whether the optional **decoration styles and icon themes only** might require an unlock on instances with more than 10 active users. Instances with 10 or fewer active users would keep those appearance choices unlocked, while larger instances could receive an unlock code by supporting the project.
-
-This is an early planning and exploration notice, not implemented behavior. There is currently no lock, unlock-code system, or supporter check. The taskbar/dock choice and the left/right window-control choice are not part of this plan.
 
 ---
 
